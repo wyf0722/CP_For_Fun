@@ -1,2 +1,3 @@
-# lc
- This is my solutions!!! :joy:
+# My Private Repository
+ basic algorithms && contest recordings 
+ :computer:
