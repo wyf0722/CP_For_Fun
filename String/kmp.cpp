@@ -41,8 +41,8 @@ int main() {
             break;
         }
     }
-    printf("在主串的位置%d处查找到pattern串", i - j);
+    printf("in target position %d, got pattern", i - j);
     cout << t.substr(i - j, j) << endl;
-    printf("使用库函数,在target串的位置%d处查找到pattern串", t.find(p));
+    printf("used stl func, in target postion %d, got pattern", t.find(p));
     return 0;
 }

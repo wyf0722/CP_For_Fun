@@ -1,6 +1,7 @@
 from typing import List
 from functools import cache
 from collections import Counter
+from math import gcd
 import logging
 
 a = [i for i in range(10)]
@@ -17,3 +18,5 @@ cc = Counter()
 
 cc['a'] += 1
 print(cc)
+
+gcd(100, 50)
