@@ -36,6 +36,6 @@ struct DSU {
     }
 
     int size(int x) {
-        return siz[x];
+        return siz[find(x)];
     }
 };

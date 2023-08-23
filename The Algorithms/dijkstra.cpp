@@ -70,6 +70,9 @@ int dijkstra(std::vector<std::vector<std::pair<int, int>>> *adj, int s, int t) {
     /// setting all the distances initially to INF
     std::vector<int64_t> dist(n, INF);
 
+    // * add vis
+    std::vector<bool> vis(n, false);
+
     /// creating a min heap using priority queue
     /// first element of pair contains the distance
     /// second element of pair contains the vertex
@@ -91,6 +94,11 @@ int dijkstra(std::vector<std::vector<std::pair<int, int>>> *adj, int s, int t) {
         int currentDist = pq.top().first;
 
         pq.pop();
+        
+        // * if currentnode has been visited, we don't have to update it anymore
+        if (vis[currentNode])
+            continue;
+        vis[currentNode] = true;
 
         /// for all the reachable vertex from the currently exploring vertex
         /// we will try to minimize the distance

@@ -11,17 +11,45 @@ vector<int> getNext(string pattern) {
             // [0,j-1] and [i-j+1,i] 
             if(pattern.substr(0, j) == pattern.substr(i - j + 1, j)) {
                 ans[i] = j;
+                break;
             }
         }
     }
     return ans;
 }
 
+vector<int> prefix_function1(string s) {
+  int n = (int)s.length();
+  vector<int> pi(n);
+  for (int i = 1; i < n; i++)
+    for (int j = i; j >= 0; j--)
+      if (s.substr(0, j) == s.substr(i - j + 1, j)) {
+        pi[i] = j;
+        break;
+      }
+  return pi;
+}
+
+vector<int> prefix_function2(string s) {
+  int n = (int)s.length();
+  vector<int> pi(n);
+  for (int i = 1; i < n; i++) {
+    int j = pi[i - 1];
+    while (j > 0 && s[i] != s[j]) j = pi[j - 1];
+    if (s[i] == s[j]) j++;
+    pi[i] = j;
+  }
+  return pi;
+}
+
+
 int main() {
     // target and pattern
     string t = "ABABAABAA CAADB ABABCAADKDABC", p = "ABABC";
-    vector<int> next = getNext(p);
+    vector<int> next = prefix_function1(p);
     cout << to_string(next) << endl;
+    vector<int> nextt = prefix_function2(p);
+    cout << to_string(nextt) << endl;
 
     //! kmp匹配代码，i在t中只前进，不后退
     int i = 0, j = 0;
