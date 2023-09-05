@@ -1,4 +1,5 @@
-#include "../leetcode.h"
+#include <bits/stdc++.h>
+using namespace std;
 
 struct DSU {
     vector<int> f, siz;
