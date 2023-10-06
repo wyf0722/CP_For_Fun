@@ -2,8 +2,7 @@
 
 using namespace std;
 using i64 = long long;
-using ll = long long;
-const ll mod = 1e9 + 7;
+const i64 mod = 1e9 + 7;
 
 string to_string(string s) {
     return '"' + s + '"';
@@ -61,17 +60,11 @@ void mydebug(const char* format, Head H, Tail... T) {
 }
 
 // #define debug(...) mydebug(#__VA_ARGS__, __VA_ARGS__)
-#ifdef LOCAL
-#define debug(...)                                    \
-    cout << "\033[1;31m" << __FUNCTION__ << "\033[0m" \
-         << ":"                                       \
-         << "\033[1;32m" << __LINE__ << "\033[0m"     \
-         << "->"                                      \
-         << "[" << #__VA_ARGS__ << "] =",             \
+#define debug(...)                                  \
+    cout << __FUNCTION__ << ":" << __LINE__ << "->" \
+         << " [" << #__VA_ARGS__ << "] =",           \
         debug_out(__VA_ARGS__)
-#else
-#define debug(...)
-#endif
+
 // struct ListNode {
 //     int val;
 //     ListNode* next;
@@ -85,13 +78,20 @@ void mydebug(const char* format, Head H, Tail... T) {
 //     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 // };
 
-/*###########################################
-#############################################
-#######      Solution    ####################
-#############################################
-#############################################*/
-
+/*
+ * stuff you should look for
+ * int overflow, array bounds
+ * special cases (n=1?)
+ * do smth instead of nothing and stay organized
+ * WRITE STUFF DOWN
+ * DON'T GET STUCK ON ONE APPROACH
+ */
+ 
 int main() {
-    int a = 1;
-    debug(a);
+    int x = 342;
+    int subset = x;
+    while (subset) {
+        cout << bitset<8>(subset) << endl;
+        subset = (subset - 1) & x;
+    }
 }
