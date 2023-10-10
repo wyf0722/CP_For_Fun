@@ -87,18 +87,3 @@ void mydebug(const char* format, Head H, Tail... T) {
  * DON'T GET STUCK ON ONE APPROACH
  */
 
-class Solution {
-public:
-    int minOperations(string s1, string s2, int x) {
-        vector<int> a;
-        for (int i = 0; i < s1.size(); i++) if (s1[i] != s2[i]) a.push_back(i);
-        int n = a.size();
-        if (n & 1) return -1;
-        vector<int> dp(n + 1);
-        dp[1] = x;
-        for (int i = 2; i <= n; i++) {
-            dp[i] = min(dp[i - 1] + x, dp[i - 2] + 2 * (a[i - 1] - a[i - 2]));
-        }
-        return dp[n] / 2;
-    }
-};
