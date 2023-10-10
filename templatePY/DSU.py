@@ -22,6 +22,7 @@ class DSU:
             return False
         self.fa[y] = x
         self.siz[x] += self.siz[y]
+        return True
 
     def same(self, x:int, y:int) -> bool:
         return self.find(x) == self.find(y)
