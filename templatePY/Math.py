@@ -10,4 +10,3 @@ for i in range(2, MX + 1):
         prime.append(i)
         for j in range(i * i, MX + 1, i):
             is_prime[j] = False
-
