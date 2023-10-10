@@ -62,7 +62,7 @@ void mydebug(const char* format, Head H, Tail... T) {
 // #define debug(...) mydebug(#__VA_ARGS__, __VA_ARGS__)
 #define debug(...)                                  \
     cout << __FUNCTION__ << ":" << __LINE__ << "->" \
-         << " [" << #__VA_ARGS__ << "] =",           \
+         << " [" << #__VA_ARGS__ << "] =",          \
         debug_out(__VA_ARGS__)
 
 // struct ListNode {
@@ -86,12 +86,4 @@ void mydebug(const char* format, Head H, Tail... T) {
  * WRITE STUFF DOWN
  * DON'T GET STUCK ON ONE APPROACH
  */
- 
-int main() {
-    int x = 342;
-    int subset = x;
-    while (subset) {
-        cout << bitset<8>(subset) << endl;
-        subset = (subset - 1) & x;
-    }
-}
+

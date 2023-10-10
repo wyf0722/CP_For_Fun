@@ -5,7 +5,8 @@ class DSU:
     
     def find(self, x:int) -> int:
         while self.fa[x] != x:
-            x = self.fa[x] = self.fa[self.fa[x]]
+            self.fa[x] = self.fa[self.fa[x]]
+            x = self.fa[x]
         return x
         """
         if x == self.fa[x]:
@@ -15,8 +16,8 @@ class DSU:
         """
     
     def merge(self, x:int, y:int) -> bool:
-        x = self.fa[x]
-        y = self.fa[y]
+        x = self.find(x)
+        y = self.find(y)
         if x == y:
             return False
         self.fa[y] = x
