@@ -26,6 +26,29 @@ int init = []() -> int {
 }();
 
 /**
+ * 线性筛
+ */
+const int MX = 1e5 + 10;
+vector<int> prime;
+bool is_prime[MX + 1];
+int init = []() -> int {
+    for (int i = 0; i <= MX; i++) {
+        is_prime[i] = 1;
+    }
+    is_prime[0] = 0;
+    is_prime[1] = 0;
+    for (int i = 2; i <= MX; i++) {
+        if (is_prime[i]) prime.push_back(i);
+        for (int j = 0; i * prime[j] <= MX; j++) {
+            is_prime[i * prime[j]] = 0;
+            if (i % prime[j] == 0) break;
+        }
+    }
+    return 0;
+}();
+
+
+/**
  * 组合数（数量较小）
  */
 

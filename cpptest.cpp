@@ -2,7 +2,7 @@
 
 using namespace std;
 using i64 = long long;
-const i64 mod = 1e9 + 7;
+const i64 MOD = 1e9 + 7;
 
 string to_string(string s) {
     return '"' + s + '"';

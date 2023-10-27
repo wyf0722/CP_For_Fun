@@ -1,5 +1,5 @@
-#include "..\leetcode.h"
-
+#include <bits/stdc++.h>
+using namespace std;
 /**
  * 节点编号从1开始
 */
