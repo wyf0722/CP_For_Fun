@@ -1,4 +1,4 @@
-#include "..\leetcode.h"
+#include "../basic.h"
 
 // ! 数组存储
 struct trie {

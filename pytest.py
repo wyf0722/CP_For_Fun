@@ -16,4 +16,16 @@ do smth instead of nothing and stay organized
 WRITE STUFF DOWN
 DON'T GET STUCK ON ONE APPROACH
 """
+"""
+testcases = [
+    [[2,3,0,0,2], 4, 'd'],
+]
+
+s = Solution()
+func_name = dir(s)[-1]
+func = getattr(s, func_name)
+
+for args in testcases:
+    print(func(*args))
+""" 
 

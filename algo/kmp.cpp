@@ -1,4 +1,4 @@
-# include "..\leetcode.h"
+#include "./basic.h"
 
 //! 计算next数组
 vector<int> getNext(string pattern) {

@@ -30,34 +30,3 @@ class DSU:
     def size(self, x:int) -> int:
         return self.siz[self.find(x)]
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
