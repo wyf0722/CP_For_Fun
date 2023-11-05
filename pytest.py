@@ -27,5 +27,6 @@ func = getattr(s, func_name)
 
 for args in testcases:
     print(func(*args))
-""" 
+"""
+
 

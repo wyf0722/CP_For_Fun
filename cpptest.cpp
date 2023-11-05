@@ -90,3 +90,11 @@ void mydebug(const char* format, Head H, Tail... T) {
  * DON'T GET STUCK ON ONE APPROACH
  */
 
+
+int main() {
+    string s = "abc";
+    string t;
+    t = move(s);
+    debug(t);
+    debug(s);
+}
