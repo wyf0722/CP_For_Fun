@@ -90,11 +90,34 @@ void mydebug(const char* format, Head H, Tail... T) {
  * DON'T GET STUCK ON ONE APPROACH
  */
 
-
-int main() {
-    string s = "abc";
-    string t;
-    t = move(s);
-    debug(t);
-    debug(s);
-}
+class Solution {
+   public:
+    int getMaxLen(vector<int>& nums) {
+        nums.push_back(0);
+        int n = nums.size();
+        int ans = 0;
+        vector<int> pos;
+        int pre = -1;
+        for (int i = 0; i < n; i++) {
+            if (nums[i] == 0) {
+                if (pos.size() % 2 == 0) {
+                    ans = max(ans, i - pre);
+                } else {
+                    ans = max({ans, pos.back() - 1 - pre, i - pos[0] - 1});
+                }
+                pos.clear();
+                pre = i;
+            } else if (nums[i] < 0) {
+                pos.push_back(i);
+            }
+        }
+        // if (!pos.empty()) {
+        //     if (pos.size() % 2 == 0) {
+        //         ans = max(ans, n - pre);
+        //     } else {
+        //         ans = max({ans, pos.back() - 1 - pre, n - pos[0] - 1});
+        //     }
+        // }
+        return ans;
+    }
+};
