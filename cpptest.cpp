@@ -1,7 +1,14 @@
 #include <bits/stdc++.h>
 
+#define all(x) begin(x), end(x)
+#define rep(i, a, b) for (int i = a; i < (b); i++)
+#define rrep(i, a, b) for (int i = a; i >= b; i--)
 using namespace std;
 using i64 = long long;
+using ll = long long;
+using vi = vector<int>;
+using pii = pair<int, int>;
+
 const i64 MOD = 1e9 + 7;
 
 // int dx[4] = {1, 0, -1, 0};
@@ -89,5 +96,3 @@ void mydebug(const char* format, Head H, Tail... T) {
  * WRITE STUFF DOWN
  * DON'T GET STUCK ON ONE APPROACH
  */
-
-

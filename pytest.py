@@ -35,3 +35,4 @@ dp[i][j] = max(dp[i - 1][k] - abs(j - k)) + points[i][j]
 2. j <= k  -> max(dp[i - 1][k] - k) + points[i][j] + j
 '''
 
+
