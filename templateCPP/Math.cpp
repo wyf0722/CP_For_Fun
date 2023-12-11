@@ -7,13 +7,9 @@ i64 MOD = 1e9 + 7;
  */
 const int MX = 1e5 + 10;
 vector<int> prime;
-bool is_prime[MX + 1];
+vector<int> is_prime(MX + 1, 1);
 int init = []() -> int {
-    for (int i = 0; i <= MX; i++) {
-        is_prime[i] = 1;
-    }
-    is_prime[0] = 0;
-    is_prime[1] = 0;
+    is_prime[0] = is_prime[1] = 0;
     for (int i = 2; i <= MX; i++) {
         if (is_prime[i]) {
             prime.push_back(i);
@@ -30,13 +26,12 @@ int init = []() -> int {
  */
 const int MX = 1e5 + 10;
 vector<int> prime;
-bool is_prime[MX + 1];
+vector<int> is_prime(MX + 1, 1);
 int init = []() -> int {
     for (int i = 0; i <= MX; i++) {
         is_prime[i] = 1;
     }
-    is_prime[0] = 0;
-    is_prime[1] = 0;
+    is_prime[0] = is_prime[1] = 0;
     for (int i = 2; i <= MX; i++) {
         if (is_prime[i]) prime.push_back(i);
         for (int j = 0; i * prime[j] <= MX; j++) {

@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-const long long MOD = 1e9 + 7;
+// const long long MOD = 1e9 + 7;
 
 // int dx[4] = {1, 0, -1, 0};
 // int dy[4] = {0, 1, 0, -1};
@@ -87,3 +87,30 @@ using vi = vector<int>;
 using vii = vector<vector<int>>;
 using pii = pair<int, int>;
 
+class Solution {
+public:
+    int longestAwesome(string s) {
+        int n = s.size();
+        // 前缀和 and 状态压缩
+        // mp记录状态出现的位置
+        unordered_map<int, int> mp;
+        mp[0] = -1;
+        int cur = 0;
+        int ans = 0;
+        for (int i = 0; i < n; i++) {
+            cur ^= 1 << (s[i] - '0');
+            // 所有位置奇偶性相同，或者只有一位奇偶性不同
+            if (mp.count(cur)) {
+                ans = max(ans, i - mp[cur]);
+            } else {
+                mp[cur] = i;
+            }
+            for (int j = 0; j < n; j++) {
+                if (mp.count(cur ^ (1 << j))) {
+                    ans = max(ans, i - mp[cur ^ (1 << j)]);
+                }
+            }
+        }
+        return ans;
+    }
+};      
