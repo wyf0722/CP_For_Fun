@@ -28,9 +28,6 @@ const int MX = 1e5 + 10;
 vector<int> prime;
 vector<int> is_prime(MX + 1, 1);
 int init = []() -> int {
-    for (int i = 0; i <= MX; i++) {
-        is_prime[i] = 1;
-    }
     is_prime[0] = is_prime[1] = 0;
     for (int i = 2; i <= MX; i++) {
         if (is_prime[i]) prime.push_back(i);
