@@ -29,34 +29,3 @@ for args in testcases:
     print(func(*args))
 """
 
-class Solution:
-    def minOperations(self, nums1: List[int], nums2: List[int]) -> int:
-        s1 = sum(nums1)
-        s2 = sum(nums2)
-        if s1 == s2:
-            return 0
-        a = []
-        if s1 > s2:
-            for x in nums1:
-                if x != 1:
-                    a.append(x - 1)
-            for x in nums2:
-                if x != 6:
-                    a.append(6 - x)
-        else:
-            for x in nums2:
-                if x != 1:
-                    a.append(x - 1)
-            for x in nums1:
-                if x != 6:
-                    a.append(6 - x)
-        
-        a.sort(reverse=True)
-        d = abs(s1 - s2)
-        ans = 0
-        for x in a:
-            d -= x
-            ans += 1
-            if d <= 0:
-                return ans
-        return -1

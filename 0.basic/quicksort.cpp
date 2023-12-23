@@ -1,5 +1,3 @@
-#include "../basic.h"
-
 template <typename T>
 void QuickSort(vector<T>& v, int l, int r) {
     if (l > r)
