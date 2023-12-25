@@ -57,7 +57,6 @@ void debug_out(Head H, Tail... T) {
 
 #define all(x) begin(x), end(x)
 #define rep(i, a, b) for (int i = a; i < (b); i++)
-#define rep(i, a) rep(i, 0, a)
 #define rrep(i, a, b) for (int i = a; i >= b; i--)
 using i64 = long long;
 using ll = long long;
@@ -66,14 +65,15 @@ using vl = vector<ll>;
 using vll = vector<vector<ll>>;
 using vii = vector<vector<int>>;
 using pii = pair<int, int>;
-const int inf = 1'000'000'000;
+const int inf = INT_MAX / 2 - 100;
+const i64 infLL = LLONG_MAX / 3;
 const long long MOD = 1e9 + 7;
 const int dx[4]{1, 0, -1, 0}, dy[4]{0, 1, 0, -1};
 template<class T>
-bool ckmin(T &a, const T &b) {
+bool chmin(T &a, const T &b) {
     return b < a ? a = b, 1 : 0;
 }  // set a = min(a,b)
 template<class T>
-bool ckmax(T &a, const T &b) {
+bool chmax(T &a, const T &b) {
     return a < b ? a = b, 1 : 0;
 }  // set a = max(a,b)
