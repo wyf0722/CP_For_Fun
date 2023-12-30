@@ -49,10 +49,13 @@ void debug_out(Head H, Tail... T) {
          << " [" << #__VA_ARGS__ << "] =",          \
         debug_out(__VA_ARGS__)
 
-/**
- * **********************************************************
- *              this is my solution
- * **********************************************************
+/*
+ *             _       _   _                      __                   __
+ *   ___  ___ | |_   _| |_(_) ___  _ __     ___  / _| __      ___   _ / _|
+ *  / __|/ _ \| | | | | __| |/ _ \| '_ \   / _ \| |_  \ \ /\ / / | | | |_
+ *  \__ \ (_) | | |_| | |_| | (_) | | | | | (_) |  _|  \ V  V /| |_| |  _|
+ *  |___/\___/|_|\__,_|\__|_|\___/|_| |_|  \___/|_|     \_/\_/  \__, |_|
+ *                                                              |___/
  */
 
 #define all(x) begin(x), end(x)
@@ -69,11 +72,12 @@ const int inf = INT_MAX / 2 - 100;
 const i64 infLL = LLONG_MAX / 3;
 const long long MOD = 1e9 + 7;
 const int dx[4]{1, 0, -1, 0}, dy[4]{0, 1, 0, -1};
-template<class T>
-bool chmin(T &a, const T &b) {
+template <class T>
+bool chmin(T& a, const T& b) {
     return b < a ? a = b, 1 : 0;
 }  // set a = min(a,b)
-template<class T>
-bool chmax(T &a, const T &b) {
+template <class T>
+bool chmax(T& a, const T& b) {
     return a < b ? a = b, 1 : 0;
 }  // set a = max(a,b)
+
