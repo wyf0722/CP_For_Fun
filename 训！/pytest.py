@@ -1,8 +1,8 @@
 from bisect import bisect_left, bisect_right
 from collections import Counter, defaultdict, deque
-from functools import cache
+from functools import cache, reduce
 from heapq import heapify, heappop, heappush
-from itertools import accumulate, pairwise, permutations, count
+from itertools import accumulate, count, pairwise, permutations
 from math import comb, gcd, inf, lcm, log2, perm
 from typing import List
 
@@ -28,3 +28,4 @@ func = getattr(s, func_name)
 for args in testcases:
     print(func(*args))
 """
+
