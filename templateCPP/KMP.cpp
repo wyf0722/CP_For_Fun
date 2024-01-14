@@ -13,6 +13,7 @@ vector<int> prefix_function(string s) {
     return pi;
 }
 
+// 在text中查找pattern的出现位置
 vector<int> find_occurrences(string text, string pattern) {
     string cur = pattern + '#' + text;
     int sz1 = text.size(), sz2 = pattern.size();

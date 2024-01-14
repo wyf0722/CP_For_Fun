@@ -16,7 +16,7 @@ public:
         }
     }
     
-    // hash s[l, r]
+    // hash s[l, r] 注意下标从1开始!!!
     ULL get(int l, int r) { return h[r] - h[l - 1] * p[r - l + 1]; }
 
     bool substr(int l1, int r1, int l2, int r2) {
