@@ -6,24 +6,24 @@ string to_string(string s) {
     return '"' + s + '"';
 }
 
-string to_string(const char* s) {
-    return to_string((string)s);
+string to_string(const char *s) {
+    return to_string((string) s);
 }
 
 string to_string(bool b) {
     return (b ? "true" : "false");
 }
 
-template <typename A, typename B>
+template<typename A, typename B>
 string to_string(pair<A, B> p) {
     return "(" + to_string(p.first) + ", " + to_string(p.second) + ")";
 }
 
-template <typename A>
+template<typename A>
 string to_string(A v) {
     bool first = true;
     string res = "{";
-    for (const auto& x : v) {
+    for (const auto &x: v) {
         if (!first) {
             res += ", ";
         }
@@ -38,7 +38,7 @@ void debug_out() {
     cout << endl;
 }
 
-template <typename Head, typename... Tail>
+template<typename Head, typename... Tail>
 void debug_out(Head H, Tail... T) {
     cout << " " << to_string(H);
     debug_out(T...);
@@ -63,21 +63,55 @@ void debug_out(Head H, Tail... T) {
 #define rrep(i, a, b) for (int i = a; i >= b; i--)
 using i64 = long long;
 using ll = long long;
+using pii = pair<int, int>;
 using vi = vector<int>;
 using vl = vector<ll>;
-using vll = vector<vector<ll>>;
-using vii = vector<vector<int>>;
-using pii = pair<int, int>;
+using vvll = vector<vector<ll>>;
+using vvi = vector<vector<int>>;
+using vpii = vector<pair<int, int>>;
 const int inf = INT_MAX / 2 - 100;
 const i64 infLL = LLONG_MAX / 3;
 const long long MOD = 1e9 + 7;
 const int dx[4]{1, 0, -1, 0}, dy[4]{0, 1, 0, -1};
-template <class T>
-bool chmin(T& a, const T& b) {
+
+template<class T>
+void mkuni(vector<T> &v) {
+    sort(all(v));
+    v.erase(unique(all(v)), v.end());
+}
+
+template<class T>
+int lwb(vector<T> &a, const T &b) {
+    return int(lower_bound(all(a), b) - begin(a));
+}
+
+template<class T>
+int upb(vector<T> &a, const T &b) {
+    return int(upper_bound(all(a), b) - begin(a));
+}
+
+constexpr int popcount(int x) {
+    return __builtin_popcount(x);
+}
+
+constexpr int topbit(int x) {
+    return x == 0 ? 0 : 31 - __builtin_clz(x);
+}
+
+template<class T, class U>
+void safeErase(T &t, const U &u) {
+    auto it = t.find(u);
+    assert(it != end(t));
+    t.erase(it);
+}
+
+template<class T>
+bool chmin(T &a, const T &b) {
     return b < a ? a = b, 1 : 0;
 }  // set a = min(a,b)
-template <class T>
-bool chmax(T& a, const T& b) {
+template<class T>
+bool chmax(T &a, const T &b) {
     return a < b ? a = b, 1 : 0;
 }  // set a = max(a,b)
+
 
