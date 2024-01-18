@@ -138,3 +138,109 @@ bool chmax(T& a, const T& b) {
  *  |___/\___/|_|\__,_|\__|_|\___/|_| |_|  \___/|_|     \_/\_/  \__, |_|
  *                                                              |___/
  */
+
+struct DSU {
+    std::vector<int> f, siz;
+     
+    DSU() {}
+    DSU(int n) {
+        init(n);
+    }
+     
+    void init(int n) {
+        f.resize(n);
+        std::iota(f.begin(), f.end(), 0);
+        siz.assign(n, 1);
+    }
+     
+    int find(int x) {
+        while (x != f[x]) {
+            x = f[x] = f[f[x]];
+        }
+        return x;
+    }
+     
+    bool same(int x, int y) {
+        return find(x) == find(y);
+    }
+     
+    bool merge(int x, int y) {
+        x = find(x);
+        y = find(y);
+        if (x == y) {
+            return false;
+        }
+        siz[x] += siz[y];
+        f[y] = x;
+        return true;
+    }
+     
+    int size(int x) {
+        return siz[find(x)];
+    }
+};
+const int MX = 1e5 + 10;
+struct Primes {
+    vector<int> lpf, lpfcnt, primes, remaining;
+
+    Primes(int n) {
+        lpf.resize(n+1);
+        lpfcnt.resize(n+1);
+        remaining.resize(n+1);
+        for (int i=2; i<=n; i++) {
+            if (!lpf[i]) {
+                lpf[i] = i;
+                lpfcnt[i] = remaining[i] = 1;
+                primes.push_back(i);
+            }
+            for (int j = 0; i * primes[j] <= n; j++) {
+                int val = i * primes[j];
+                lpf[val] = primes[j];
+                lpfcnt[val] = lpfcnt[primes[j]] + (lpf[i] == primes[j] ? lpfcnt[i] : 0);
+                remaining[val] = (lpf[i] == primes[j]) ? remaining[i] : i;
+                if (primes[j] == lpf[i]) break;
+            }
+        }
+    }
+
+    bool isprime(long long x) {
+        if (x < 2) return false;
+        if (x < lpf.size()) return lpf[x] == x;
+        for (long long i=2; i*i<=x; i++) {
+            if (!(x%i)) return false;
+        }
+        return true;
+    }
+
+    vector<pair<int, int>> factorise(int x) {
+        vector<pair<int, int>> factors;
+        for (; x > 1; x = remaining[x]) factors.emplace_back(lpf[x], lpfcnt[x]);
+        return factors;
+    }
+} primes(MX);
+
+class Solution {
+public:
+    bool gcdSort(vector<int>& nums) {
+        int n = nums.size();
+        DSU dsu(n + MX);
+        for (int i = 0; i < n; i++) {
+            for (auto [p, _]: primes.factorise(nums[i])) {
+                dsu.merge(i, p + n);
+            }
+        }
+
+        unordered_map<int, vector<int>> mp;
+        for (int i = 0; i < n; i++) {
+            mp[dsu.find(i)].push_back(i);
+        }
+        for (auto &[_, v]: mp) {
+            vi vals;
+            for (int idx: v) vals.push_back(nums[idx]);
+            sort(all(vals));
+            for (int i = 0; i < vals.size(); i++) nums[v[i]] = vals[i];
+        }
+        for (int i = 1; i < n; i++) if (nums[i - 1] > nums[i]) return false;
+        return true;
+    }
+};
