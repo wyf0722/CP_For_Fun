@@ -113,6 +113,7 @@ string to_string(priority_queue<A> q) {
     res += "}";
     return res;
 }
+
 template <typename A>
 string to_string(priority_queue<A, vector<A>, greater<>> q) {
     bool first = true;
@@ -128,7 +129,6 @@ string to_string(priority_queue<A, vector<A>, greater<>> q) {
     res += "}";
     return res;
 }
-
 
 template <typename A>
 string to_string(stack<A> q) {
