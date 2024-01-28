@@ -63,17 +63,34 @@ void debug_out(Head H, Tail... T) {
          << " [" << #__VA_ARGS__ << "] =",          \
         debug_out(__VA_ARGS__)
 
+int readint() {
+    int x = 0, f = 1;
+    char ch = getchar();
+    while (ch < '0' || ch > '9') {
+        if (ch == '-')
+            f = -1;
+        ch = getchar();
+    }
+    while (ch >= '0' && ch <= '9') {
+        x = x * 10 + ch - '0';
+        ch = getchar();
+    }
+    return x * f;
+}
+
 #define all(x) begin(x), end(x)
 #define rep(i, a, b) for (int i = a; i < (b); i++)
 #define rrep(i, a, b) for (int i = a; i >= b; i--)
 using i64 = long long;
 using ll = long long;
 using pii = pair<int, int>;
+using pll = pair<i64, i64>;
 using vi = vector<int>;
 using vl = vector<ll>;
-using vvl = vector<vector<ll>>;
 using vvi = vector<vector<int>>;
-using vpii = vector<pair<int, int>>;
+using vvl = vector<vector<ll>>;
+using vpii = vector<pii>;
+using vpll = vector<pll>;
 const int inf = INT_MAX / 2 - 100;
 const i64 infLL = LLONG_MAX / 3;
 const long long MOD = 1e9 + 7;

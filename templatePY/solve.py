@@ -143,9 +143,7 @@ if 1:
             print('\033[0m', end='')
  
 def main():
-    a = 8
-    v = [1, 2]
-    debug(a, v)
+    pass
  
 t = 1
 for _ in range(t):
