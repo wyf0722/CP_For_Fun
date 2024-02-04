@@ -9,7 +9,8 @@ from functools import cache
 
 import requests
 
-url = 'https://leetcode-cn.com/graphql'
+# url = 'https://leetcode-cn.com/graphql'
+url = 'https://leetcode.cn/graphql'
 
 # 分页加载排名列表
 @cache
