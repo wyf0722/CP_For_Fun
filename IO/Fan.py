@@ -154,15 +154,29 @@ if 1:
 #           ░     ░ ░      ░  ░
 MULTITEST = 0
 def main():
-    n, x, k = MII()
-    cnt = n * x // k
-    print(cnt)
-    l = []
-    for i in range(1, cnt + 1):
-        pre = ((i - 1) * k + x - 1) // x
-        cur = (i * k + x - 1) // x
-        l.append(cur - pre)
-    print(*l)
+    l, r, k = MII()
+    mp = [1, 0, 0, 0, 1, 0, 1, 0, 2, 1]
+
+    def calc(num):
+        s = str(num)
+        n = len(s)
+
+        @lru_cache
+        def dp(i, cnt, is_num, is_limit) -> int:
+            if i == n:
+                nonlocal k
+                return is_num and cnt == k
+            res = 0
+            if not is_num:
+                res += dp(i + 1, 0, False, False)
+            down = 0 if is_num else 1
+            up = int(s[i]) if is_limit else 9
+            for d in range(down, up + 1):
+                res += dp(i + 1, cnt + mp[d], True, is_limit and d == up)
+            return res
+        return dp(0, 0, False, True)
+    
+    print(calc(r) - calc(l - 1))
 
     
 t = 1

@@ -100,3 +100,17 @@ struct SegmentTree {
         return findLast(1, 0, n, l, r, pred);
     }
 };
+
+// don't forget to set default value
+// T variable = value
+struct Info {
+    i64 x;
+    int sz;
+ 
+    Info(i64 _x = 0, int _sz = 1) : x{_x}, sz{_sz} {} 
+};
+
+// use Info or const Info &
+Info operator+(const Info &a, const Info &b) {
+    return Info{a.x + b.x, a.sz + b.sz};
+}

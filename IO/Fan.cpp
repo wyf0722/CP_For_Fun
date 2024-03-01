@@ -132,72 +132,8 @@ bool chmax(T& a, const T& b) {
  *           ░     ░ ░      ░  ░
  */
 #define MULTICASE 0
-namespace std {
-
-template<class Fun>
-class y_combinator_result {
-    Fun fun_;
-public:
-    template<class T>
-    explicit y_combinator_result(T &&fun): fun_(std::forward<T>(fun)) {}
-
-    template<class ...Args>
-    decltype(auto) operator()(Args &&...args) {
-        return fun_(std::ref(*this), std::forward<Args>(args)...);
-    }
-};
-
-template<class Fun>
-decltype(auto) y_combinator(Fun &&fun) {
-    return y_combinator_result<std::decay_t<Fun>>(std::forward<Fun>(fun));
-}
-
-} // namespace std
-
 void solve() {
-    int n;
-    cin >> n;
-    string s;
-    cin >> s;
-    vvi g(n);
-    rep(i, 0, n - 1) {
-        int x, y;
-        cin >> x >> y;
-        x--, y--;
-        g[x].push_back(y);
-        g[y].push_back(x);
-    }
-
-    vvi group(2);
-
-    y_combinator([&](auto dfs, int x, int fa, int f) -> void {
-        group[f].push_back(x);
-        for (int y: g[x]) {
-            if (y == fa) continue;
-            dfs(y, x, f ^ 1);
-        }
-    })(0, -1, 0);
-
-    string t = s;
-    auto check = [&]() -> bool {
-        for (int i = 0; i < n; i++) {
-            if (s[i] != '?' and s[i] != t[i]) return false;
-        }
-        return true;
-    };
-    for (int x : group[0]) t[x] = 'd';
-    for (int x : group[1]) t[x] = 'p';
-    if (check()) {
-        cout << t << endl;
-        return;
-    }
-    for (int x : group[0]) t[x] = 'p';
-    for (int x : group[1]) t[x] = 'd';
-    if (check()) {
-        cout << t << endl;
-        return;
-    }
-    cout << -1 << endl;
+    
 }
 
 int main() {

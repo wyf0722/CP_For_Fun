@@ -93,7 +93,10 @@ struct LazySegmentTree {
         return search(1, 0, n, l, r, v);
     }
 };
- 
+
+
+// don't forget to set default value
+// T variable = value
 struct Tag {
     i64 x;
  
@@ -115,6 +118,7 @@ struct Info {
     }
 };
  
+// use Info or const Info &
 Info operator+(const Info &a, const Info &b) {
     return Info{a.x + b.x, a.sz + b.sz};
 }
