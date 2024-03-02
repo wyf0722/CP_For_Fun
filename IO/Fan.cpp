@@ -131,9 +131,47 @@ bool chmax(T& a, const T& b) {
  *  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
  *           ░     ░ ░      ░  ░
  */
-#define MULTICASE 0
+#define MULTICASE 1
 void solve() {
-    
+    int n, m;
+    cin >> n >> m;
+
+    if (n >= 4 and m >= 4) {
+        cout << n * m << endl;
+        return;
+    }
+    if (min(n, m) == 3 and max(n, m) >= 4) {
+        cout << n * m << endl;
+        return;
+    }
+    if (min(n, m) == 1) {
+        cout << 1 << endl;
+        return;
+    }
+    if (min(n, m) == 2) {
+        cout << (max(n, m) + 1) / 2 << endl;
+        return;
+    }
+    vvi vis(n, vi(m));
+    queue<pair<int, int>> q;
+    vis[0][0] = 1;
+    q.emplace(0, 0);
+    vpii dirs = {{1, 2}, {-1, 2}, {1, -2}, {-1, -2}, {2, 1}, {-2, 1}, {2, -1}, {-2, -1}};
+    while (!q.empty()) {
+        auto [x, y] = q.front();
+        q.pop();
+        for (auto [dx, dy]: dirs) {
+            int nx = x + dx;
+            int ny = y + dy;
+            if (0 <= nx and nx < n and 0 <= ny and ny < m and vis[nx][ny] == 0) {
+                q.emplace(nx, ny);
+                vis[nx][ny] = 1;
+            }
+        }
+    }
+    int ans = 0;
+    rep(i, 0, n) rep(j, 0, m) ans += vis[i][j];
+    cout << ans << endl;
 }
 
 int main() {
