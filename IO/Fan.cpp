@@ -131,47 +131,31 @@ bool chmax(T& a, const T& b) {
  *  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
  *           ░     ░ ░      ░  ░
  */
-#define MULTICASE 1
+#define MULTICASE 0
 void solve() {
-    int n, m;
-    cin >> n >> m;
-
-    if (n >= 4 and m >= 4) {
-        cout << n * m << endl;
-        return;
+    int n;
+    cin >> n;
+    vi a(n);
+    unordered_map<int, int> mp;
+    rep(i, 0, n) {
+        cin >> a[i];
+        mp[a[i]]++;
     }
-    if (min(n, m) == 3 and max(n, m) >= 4) {
-        cout << n * m << endl;
-        return;
-    }
-    if (min(n, m) == 1) {
-        cout << 1 << endl;
-        return;
-    }
-    if (min(n, m) == 2) {
-        cout << (max(n, m) + 1) / 2 << endl;
-        return;
-    }
-    vvi vis(n, vi(m));
-    queue<pair<int, int>> q;
-    vis[0][0] = 1;
-    q.emplace(0, 0);
-    vpii dirs = {{1, 2}, {-1, 2}, {1, -2}, {-1, -2}, {2, 1}, {-2, 1}, {2, -1}, {-2, -1}};
-    while (!q.empty()) {
-        auto [x, y] = q.front();
-        q.pop();
-        for (auto [dx, dy]: dirs) {
-            int nx = x + dx;
-            int ny = y + dy;
-            if (0 <= nx and nx < n and 0 <= ny and ny < m and vis[nx][ny] == 0) {
-                q.emplace(nx, ny);
-                vis[nx][ny] = 1;
+    i64 ans = 0;
+    for (auto [k, v]: mp) {
+        for (int i = 0; i <= 30; i++) {
+            int t = (1 << i) - k;
+            if (mp.count(t)) {
+                if (k == t) {
+                    ans += 1LL * v * (v - 1);
+                } else {
+                    ans += 1LL * v * mp[t];
+                }
+                debug(k, t, ans);
             }
         }
     }
-    int ans = 0;
-    rep(i, 0, n) rep(j, 0, m) ans += vis[i][j];
-    cout << ans << endl;
+    cout << ans / 2 << endl;
 }
 
 int main() {
@@ -186,4 +170,3 @@ int main() {
     }
     return 0;
 }
-

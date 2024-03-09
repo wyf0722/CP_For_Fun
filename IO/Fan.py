@@ -154,7 +154,8 @@ if 1:
 #           ░     ░ ░      ░  ░
 MULTITEST = 0
 def main():
-
+    s = I()
+    print(s.lower())
 
 t = 1
 if MULTITEST:
