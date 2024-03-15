@@ -133,29 +133,8 @@ bool chmax(T& a, const T& b) {
  */
 #define MULTICASE 0
 void solve() {
-    int n;
-    cin >> n;
-    vi a(n);
-    unordered_map<int, int> mp;
-    rep(i, 0, n) {
-        cin >> a[i];
-        mp[a[i]]++;
-    }
-    i64 ans = 0;
-    for (auto [k, v]: mp) {
-        for (int i = 0; i <= 30; i++) {
-            int t = (1 << i) - k;
-            if (mp.count(t)) {
-                if (k == t) {
-                    ans += 1LL * v * (v - 1);
-                } else {
-                    ans += 1LL * v * mp[t];
-                }
-                debug(k, t, ans);
-            }
-        }
-    }
-    cout << ans / 2 << endl;
+    int x = readint();
+    debug(x);
 }
 
 int main() {

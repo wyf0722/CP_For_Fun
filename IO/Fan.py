@@ -154,8 +154,19 @@ if 1:
 #           ░     ░ ░      ░  ░
 MULTITEST = 0
 def main():
-    s = I()
-    print(s.lower())
+    n = II()
+    a = LII()
+    sa = list(sorted(a))
+    idx = Counter()
+    pre = [0]
+    for i, x in enumerate(sa):
+        pre.append(pre[-1] + x)
+        idx[x] = i
+    for x in a:
+        id = idx[x]
+        print(x * id - pre[id] + \
+            (pre[-1] - pre[id]) - x * (n - id))
+
 
 t = 1
 if MULTITEST:

@@ -2,8 +2,8 @@
 	{
 		"correct_answers":
 		[
-			"abc"
+			"YES\nNO\nNO\nYES\nYES\nNO"
 		],
-		"test": "ABC\n"
+		"test": "3\n2 1 4\n"
 	}
 ]

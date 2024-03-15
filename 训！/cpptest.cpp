@@ -115,3 +115,115 @@ bool chmax(T& a, const T& b) {
  *  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
  *           ░     ░ ░      ░  ░
  */
+
+template <typename T>
+struct Discrete {
+    Discrete() {}
+    void add(T t) { p.push_back(t); }
+
+    void init() {
+        sort(p.begin(), p.end());
+        p.resize(unique(p.begin(), p.end()) - p.begin());
+    }
+
+    int size() { return p.size(); }
+
+    int query(T t) { return lower_bound(p.begin(), p.end(), t) - p.begin(); }
+
+    T operator[](int id) { return p[id]; }
+
+    vector<T>& get() { return p; }
+    vector<T> p;
+};
+template <typename T>
+struct Fenwick {
+    int n;
+    std::vector<T> a;
+    
+    Fenwick(int n = 0) {
+        init(n);
+    }
+    
+    void init(int n) {
+        this->n = n;
+        a.assign(n, T());
+    }
+    
+    void add(int x, T v) {
+        for (int i = x + 1; i <= n; i += i & -i) {
+            a[i - 1] += v;
+        }
+    }
+    
+    T sum(int x) {
+        auto ans = T();
+        for (int i = x; i > 0; i -= i & -i) {
+            ans += a[i - 1];
+        }
+        return ans;
+    }
+    
+    T rangeSum(int l, int r) {
+        return sum(r) - sum(l);
+    }
+    
+    int kth(T k) {
+        int x = 0;
+        for (int i = 1 << std::__lg(n); i; i /= 2) {
+            if (x + i <= n && k >= a[x + i - 1]) {
+                x += i;
+                k -= a[x - 1];
+            }
+        }
+        return x;
+    }
+};
+struct Info {
+    int x;
+    Info(int x_ = 0): x(x_) {}
+    Info& operator+=(const Info &info) {
+        this->x = max(this->x, info.x);
+        return *this;
+    }
+};
+class Solution {
+public:
+    vector<int> maximumSumQueries(vector<int>& nums1, vector<int>& nums2, vector<vector<int>>& queries) {
+        int n = nums1.size();
+        vi idx(n);
+        iota(all(idx), 0);
+        sort(all(idx), [&](auto &a, auto &b) {
+            return nums1[a] > nums1[b];
+        });
+
+        // 离散化
+        Discrete<int> dc;
+        for (int x: nums2) dc.add(x);
+        for (auto &q: queries) dc.add(q[1]);
+        dc.init();
+
+        vvi qs;
+        rep(i, 0, queries.size()) {
+            qs.push_back({queries[i][0], queries[i][1], i});
+        }
+        sort(all(qs), [&](auto &a, auto &b) {
+            return a[0] > b[0];
+        });
+
+        Fenwick<Info> fen(dc.size());
+        vi ans(qs.size(), -1);
+        int now = 0;
+        for (auto q: qs) {
+            int x = q[0], y = q[1], id = q[2];
+            while (now < n and nums1[idx[now]] >= x) {
+                fen.add(dc.size() - 1 - dc.query(nums2[idx[now]]), nums1[idx[now]] + nums2[idx[now]]);
+                now++;
+            }
+            auto info = fen.sum(dc.size() - dc.query(y));
+            if (info.x != 0) {
+                ans[id] = info.x;
+            }
+        }
+        return ans;
+    }
+};
