@@ -49,6 +49,6 @@ struct Info{
     int x;
     Info(int x_ = 0):x(x_) {}
 };
-Info operator(const Info &a, const Info &b) {
+Info operator+(const Info &a, const Info &b) {
     return Info{max(a.x, b.x)};
 }
