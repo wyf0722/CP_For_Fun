@@ -18,6 +18,7 @@ the-hyp0cr1t3 | [:blue_heart:](https://github.com/the-hyp0cr1t3/CC)
 nreyog | [:blue_heart:](https://gitee.com/nreyog/algorithm-board)
 oldyan | [:blue_heart:](https://github.com/old-yan/CP-template)
 Priyansh | [:blue_heart:](https://github.com/Priyansh19077/CP-Templates)
+ecnerwala | [:blue_heart:](https://github.com/ecnerwala/cp-book)
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" width="50" height="50"/> | python
 PyRival | [:blue_heart:](https://github.com/cheran-senthil/PyRival)
 Liupengsay | [:blue_heart:](https://github.com/liupengsay/PyIsTheBestLang)
