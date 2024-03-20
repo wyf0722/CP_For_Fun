@@ -2,8 +2,13 @@
 
 using namespace std;
 
-#define yn(ans) printf("%s\n", (ans) ? "Yes" : "No");
-#define YN(ans) printf("%s\n", (ans) ? "YES" : "NO");
+// template<typename A, typename B> ostream& operator<<(ostream &os, const pair<A, B> &p) { return os << '(' << p.first << ", " << p.second << ')'; }
+// template<typename T_container, typename T = typename enable_if<!is_same<T_container, string>::value, typename T_container::value_type>::type> ostream& operator<<(ostream &os, const T_container &v) { os << '{'; string sep; for (const T &x : v) os << sep << x, sep = ", "; return os << '}'; }
+ 
+// void dbg_out() { cout << endl; }
+// template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) { cout << ' ' << H; dbg_out(T...); }
+// #define debug(...) cout << '[' << __FILE__ << ':' << __LINE__ << "] (" << #__VA_ARGS__ << "):", dbg_out(__VA_ARGS__)
+
 #define all(x) begin(x), end(x)
 #define rep(i, a, b) for (int i = a; i < (b); i++)
 #define rrep(i, a, b) for (int i = a; i >= b; i--)
@@ -19,23 +24,8 @@ using vpii = vector<pii>;
 using vpll = vector<pll>;
 const int inf = INT_MAX / 2 - 100;
 const i64 infLL = LLONG_MAX / 3;
-const long long MOD = 1e9 + 7;
-const int dx[4] {1, 0, -1, 0}, dy[4] {0, 1, 0, -1};
-
-int readint() {
-    int x = 0, f = 1;
-    char ch = getchar();
-    while (ch < '0' || ch > '9') {
-        if (ch == '-')
-            f = -1;
-        ch = getchar();
-    }
-    while (ch >= '0' && ch <= '9') {
-        x = x * 10 + ch - '0';
-        ch = getchar();
-    }
-    return x * f;
-}
+const int MOD = 1e9 + 7;
+const int dx[4]{1, 0, -1, 0}, dy[4]{0, 1, 0, -1};
 
 template <class T>
 void mkuni(vector<T>& v) {
@@ -68,15 +58,6 @@ void safeErase(T& t, const U& u) {
     t.erase(it);
 }
 
-template <class T>
-vector<int> sortidx(const vector<T>& a) {
-    int n = a.size();
-    vector<int> idx(n);
-    iota(idx.begin(), idx.end(), 0);
-    sort(idx.begin(), idx.end(), [&](int i, int j) { return a[i] < a[j]; });
-    return idx;
-}
-
 template <class T, class S = T>
 S SUM(const vector<T>& a) {
     return accumulate(a.begin(), a.end(), S(0));
@@ -92,17 +73,30 @@ T MIN(const vector<T>& a) {
     return *min_element(a.begin(), a.end());
 }
 
-template <class T>
-vector<T> presum(const vector<T>& a) {
-    vector<T> s(a.size() + 1);
-    rep(i, 0, a.size()) s[i + 1] = s[i] + a[i];
-    return s;
+template<class T, class U>
+T fstTrue(T lo, T hi, U f) {
+    ++hi;
+    assert(lo <= hi);  // assuming f is increasing
+    while (lo < hi) {  // find first index such that f is true
+        T mid = lo + (hi - lo) / 2;
+        f(mid) ? hi = mid : lo = mid + 1;
+    }
+    return lo;
 }
-vector<i64> presum(const vector<int>& a) {
-    vector<i64> s(a.size() + 1);
-    rep(i, 0, a.size()) s[i + 1] = s[i] + a[i];
-    return s;
+
+template<class T, class U>
+T lstTrue(T lo, T hi, U f) {
+    --lo;
+    assert(lo <= hi);  // assuming f is decreasing
+    while (lo < hi) {  // find first index such that f is true
+        T mid = lo + (hi - lo + 1) / 2;
+        f(mid) ? lo = mid : hi = mid - 1;
+    }
+    return lo;
 }
+
+inline void add_mod(int& x, int y) { x += y; if (x >= MOD) x -= MOD; }
+inline void sub_mod(int& x, int y) { x += MOD - y; if (x >= MOD) x -= MOD; }
 
 template <class T>
 bool chmin(T& a, const T& b) {

@@ -24,7 +24,7 @@ using vpii = vector<pii>;
 using vpll = vector<pll>;
 const int inf = INT_MAX / 2 - 100;
 const i64 infLL = LLONG_MAX / 3;
-const long long MOD = 1e9 + 7;
+const int MOD = 1e9 + 7;
 const int dx[4]{1, 0, -1, 0}, dy[4]{0, 1, 0, -1};
 
 template <class T>
@@ -58,15 +58,6 @@ void safeErase(T& t, const U& u) {
     t.erase(it);
 }
 
-template <class T>
-vector<int> sortidx(const vector<T>& a) {
-    int n = a.size();
-    vector<int> idx(n);
-    iota(idx.begin(), idx.end(), 0);
-    sort(idx.begin(), idx.end(), [&](int i, int j) { return a[i] < a[j]; });
-    return idx;
-}
-
 template <class T, class S = T>
 S SUM(const vector<T>& a) {
     return accumulate(a.begin(), a.end(), S(0));
@@ -82,6 +73,30 @@ T MIN(const vector<T>& a) {
     return *min_element(a.begin(), a.end());
 }
 
+template<class T, class U>
+T fstTrue(T lo, T hi, U f) {
+	++hi;
+	assert(lo <= hi);  // assuming f is increasing
+	while (lo < hi) {  // find first index such that f is true
+		T mid = lo + (hi - lo) / 2;
+		f(mid) ? hi = mid : lo = mid + 1;
+	}
+	return lo;
+}
+
+template<class T, class U>
+T lstTrue(T lo, T hi, U f) {
+	--lo;
+	assert(lo <= hi);  // assuming f is decreasing
+	while (lo < hi) {  // find first index such that f is true
+		T mid = lo + (hi - lo + 1) / 2;
+		f(mid) ? lo = mid : hi = mid - 1;
+	}
+	return lo;
+}
+
+inline void add_mod(int& x, int y) { x += y; if (x >= MOD) x -= MOD; }
+inline void sub_mod(int& x, int y) { x += MOD - y; if (x >= MOD) x -= MOD; }
 
 template <class T>
 bool chmin(T& a, const T& b) {
