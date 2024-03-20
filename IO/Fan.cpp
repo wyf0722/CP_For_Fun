@@ -131,10 +131,15 @@ bool chmax(T& a, const T& b) {
  *  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
  *           ░     ░ ░      ░  ░
  */
-#define MULTICASE 0
+#define MULTICASE 1
 void solve() {
-    int x = readint();
-    debug(x);
+    int n;
+    cin >> n;
+    string s;
+    cin >> s;
+
+    int dis = n + 1, idx = n + 1;
+    vi presum(n + 1);
 }
 
 int main() {

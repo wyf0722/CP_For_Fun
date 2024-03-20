@@ -82,17 +82,6 @@ T MIN(const vector<T>& a) {
     return *min_element(a.begin(), a.end());
 }
 
-template <class T>
-vector<T> getPresum(const vector<T>& a) {
-    vector<T> s(a.size() + 1);
-    rep(i, 0, a.size()) s[i + 1] = s[i] + a[i];
-    return s;
-}
-vector<i64> getPresum(const vector<int>& a) {
-    vector<i64> s(a.size() + 1);
-    rep(i, 0, a.size()) s[i + 1] = s[i] + a[i];
-    return s;
-}
 
 template <class T>
 bool chmin(T& a, const T& b) {
@@ -115,4 +104,3 @@ bool chmax(T& a, const T& b) {
  *  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
  *           ░     ░ ░      ░  ░
  */
-

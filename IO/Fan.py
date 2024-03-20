@@ -152,22 +152,11 @@ if 1:
 #  ░     ░░▒░ ░ ░   ░  ▒   ░ ░▒ ▒░
 #  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
 #           ░     ░ ░      ░  ░
-MULTITEST = 0
+MULTITEST = 1
 def main():
-    n = II()
-    a = LII()
-    sa = list(sorted(a))
-    idx = Counter()
-    pre = [0]
-    for i, x in enumerate(sa):
-        pre.append(pre[-1] + x)
-        idx[x] = i
-    for x in a:
-        id = idx[x]
-        print(x * id - pre[id] + \
-            (pre[-1] - pre[id]) - x * (n - id))
-
-
+    a, b, m = MII()
+    print(m // a + 1 + m // b + 1)
+                    
 t = 1
 if MULTITEST:
     t = II()
