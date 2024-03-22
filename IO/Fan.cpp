@@ -127,13 +127,33 @@ bool chmax(T& a, const T& b) {
  */
 #define MULTICASE 1
 void solve() {
-    int n;
-    cin >> n;
-    string s;
-    cin >> s;
-
-    int dis = n + 1, idx = n + 1;
-    vi presum(n + 1);
+    int n, x;
+    cin >> n >> x;
+    vi p(n);
+    int pos = -1;
+    rep(i, 0, n) {
+        cin >> p[i];
+        if (x == p[i]) {
+            pos = i;
+        }
+    }
+    
+    // pl == x后，pl不能增长了
+    int l = 0, r = n;
+    while (l + 1 < r) {
+        int mid = (l + r) / 2;
+        if (p[mid] <= x) {
+            l = mid;
+        } else {
+            r = mid;
+        }
+    }
+    if (p[l] == x) {
+        cout << 0 << endl;
+        return;
+    }
+    cout << 1 << endl;
+    cout << l + 1 << ' ' << pos + 1 << endl;
 }
 
 int main() {
