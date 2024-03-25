@@ -28,3 +28,10 @@ func = getattr(s, func_name)
 for args in testcases:
     print(func(*args))
 """
+class Solution:
+    def minOperations(self, k: int) -> int:
+        ans = inf
+        for d in range(1, k + 1):
+            ans = min(ans, (d - 1) + (k + d - 1) // d - 1)
+        return ans
+        

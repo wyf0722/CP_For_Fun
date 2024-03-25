@@ -152,10 +152,19 @@ if 1:
 #  ░     ░░▒░ ░ ░   ░  ▒   ░ ░▒ ▒░
 #  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
 #           ░     ░ ░      ░  ░
-MULTITEST = 1
+MULTITEST = 0
 def main():
-    a, b, m = MII()
-    print(m // a + 1 + m // b + 1)
+    n, k = MII()
+    a = LII()
+    cnt = 0
+    flag = 1
+    for i in range(1, n):
+        v = abs(a[i] - a[i - 1])
+        if v >= k:
+            flag = 1
+        if v > k:
+            cnt += (v - 1) // k
+    print(cnt + flag ^ 1)
                     
 t = 1
 if MULTITEST:
