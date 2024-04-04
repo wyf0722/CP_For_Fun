@@ -154,18 +154,33 @@ if 1:
 #           ░     ░ ░      ░  ░
 MULTITEST = 0
 def main():
-    n, k = MII()
-    a = LII()
+    n = II()
+    x = LII()
+    k = II()
+    pos = defaultdict(list)
+    for i in range(n):
+        pos[x[i]].append(i + 1)
+    x.sort()
+
+    ans = inf
+    idx = -1
+    s = 0
     cnt = 0
-    flag = 1
-    for i in range(1, n):
-        v = abs(a[i] - a[i - 1])
-        if v >= k:
-            flag = 1
-        if v > k:
-            cnt += (v - 1) // k
-    print(cnt + flag ^ 1)
-                    
+    cur_ans = 0
+    for i in range(n):
+        cur_ans = cur_ans + (cnt * x[i]) - s
+        s += x[i]
+        cnt += 1
+        if cnt == k:
+            if cur_ans < ans:
+                ans = cur_ans
+                idx = i
+            s -= x[i - k + 1]
+            cnt -= 1
+            cur_ans = cur_ans - s + (cnt * x[i - k + 1])
+    print(*[pos[x[i]].pop() for i in range(idx + 1 - k, idx + 1)])
+
+
 t = 1
 if MULTITEST:
     t = II()

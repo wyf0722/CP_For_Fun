@@ -11,7 +11,30 @@ public class Fan {
         FastScanner fs = new FastScanner();
         PrintWriter out = new PrintWriter(System.out);
         // usage:fs.nextInt()... out.println()
-        
+        int t = fs.nextInt();
+        long[] p2 = new long[100010];
+        p2[0] = 1;
+        for (int i = 1; i <= 100000; i++) {
+            p2[i] = p2[i - 1] * 2 % mod;
+        }
+        while (t-- > 0) {
+            int n = fs.nextInt();
+            int k = fs.nextInt();
+            long[] a = new long[n];
+            for (int i = 0; i < n; i++) {
+                a[i] = fs.nextLong();
+            }
+            // 挑选和最大的区间
+            long minn = 0L, s = 0L;
+            long maxx = (long) -1e18;
+            for (int i = 0; i < n; i++) {
+                s += a[i];
+                maxx = Math.max(maxx, s - minn);
+                minn = Math.min(minn, s);
+            }
+            maxx = Math.max(maxx, 0);
+            out.println((s % mod + (maxx * (p2[k] - 1) % mod) + mod) % mod);
+        }
         out.close();
     }
 

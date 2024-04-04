@@ -1,9 +1,11 @@
 from bisect import bisect_left, bisect_right
 from collections import Counter, defaultdict, deque
-from functools import cache, reduce
-from heapq import heapify, heappop, heappush
+from functools import cache, cmp_to_key, lru_cache, reduce
+from heapq import heapify, heappop, heappush, heappushpop, nlargest, nsmallest
 from itertools import accumulate, count, pairwise, permutations
 from math import comb, gcd, inf, lcm, log2, perm
+from operator import add, iand, ior, itemgetter, mul, xor
+from string import ascii_letters, ascii_lowercase, ascii_uppercase
 from typing import List
 
 from sortedcontainers import SortedDict, SortedList, SortedSet
@@ -28,10 +30,10 @@ func = getattr(s, func_name)
 for args in testcases:
     print(func(*args))
 """
-class Solution:
-    def minOperations(self, k: int) -> int:
-        ans = inf
-        for d in range(1, k + 1):
-            ans = min(ans, (d - 1) + (k + d - 1) // d - 1)
-        return ans
-        
+
+LOCAL_DEBUG = 1
+if LOCAL_DEBUG:
+    def debug(*args, **kwargs):
+        print('\033[35m', end='')
+        print(*args, **kwargs)
+        print('\033[0m', end='')
