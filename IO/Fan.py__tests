@@ -2,14 +2,15 @@
 	{
 		"correct_answers":
 		[
-			"2 3"
+			"4"
 		],
-		"test": "3\n1 100 101\n2\n"
+		"test": "2 4 3\n"
 	},
 	{
-		"test": "5\n11 21 30 40 50\n3\n"
-	},
-	{
-		"test": "3\n0 -4 -3\n2\n"
+		"correct_answers":
+		[
+			"21"
+		],
+		"test": "4 4 5\n"
 	}
 ]

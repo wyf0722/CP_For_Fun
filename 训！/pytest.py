@@ -33,7 +33,9 @@ for args in testcases:
 
 LOCAL_DEBUG = 1
 if LOCAL_DEBUG:
+
     def debug(*args, **kwargs):
-        print('\033[35m', end='')
+        print("\033[35m", end="")
         print(*args, **kwargs)
-        print('\033[0m', end='')
+        print("\033[0m", end="")
+
