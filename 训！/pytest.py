@@ -38,4 +38,3 @@ if LOCAL_DEBUG:
         print("\033[35m", end="")
         print(*args, **kwargs)
         print("\033[0m", end="")
-

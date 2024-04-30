@@ -2,15 +2,8 @@
 	{
 		"correct_answers":
 		[
-			"4"
+			"No\nYes\nYes\nYes\nNo"
 		],
-		"test": "2 4 3\n"
-	},
-	{
-		"correct_answers":
-		[
-			"21"
-		],
-		"test": "4 4 5\n"
+		"test": "3\n3 1 4\n"
 	}
 ]
