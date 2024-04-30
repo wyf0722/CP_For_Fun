@@ -124,12 +124,27 @@ bool chmax(T& a, const T& b) {
  *  ░     ░░▒░ ░ ░   ░  ▒   ░ ░▒ ▒░
  *  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
  *           ░     ░ ░      ░  ░
- * 𝓽𝓱𝓮 𝓼𝓸𝓵𝓾𝓽𝓲𝓸𝓷 𝓸𝓯 𝔀𝔂𝓯0722
  */
 #define MULTICASE 0
 void solve() {
-    vi a{32, 23};
-    debug(a);
+    int n;
+    cin >> n;
+    vi a(n), b(n);
+    rep(i, 0, n) cin >> a[i];
+    unordered_map<int, int> pos;
+    rep(i, 0, n) {
+        cin >> b[i];
+        pos[b[i]] = i;
+    }
+    unordered_map<int, int> cnt;
+    for (int i = 0; i < n; i++) {
+        int move;
+        if (pos[a[i]] >= i) cnt[pos[a[i]] - i]++;
+        else cnt[pos[a[i]] + n - i]++;
+    }
+    int ans = 0;
+    for (auto [_, c] : cnt) chmax(ans, c);
+    cout << ans << endl;
 }
 
 
