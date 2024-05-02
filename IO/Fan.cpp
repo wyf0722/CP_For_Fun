@@ -125,28 +125,25 @@ bool chmax(T& a, const T& b) {
  *  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
  *           ░     ░ ░      ░  ░
  */
-#define MULTICASE 0
+#define MULTICASE 1
 void solve() {
     int n;
     cin >> n;
     vi a(n), b(n);
     rep(i, 0, n) cin >> a[i];
-    unordered_map<int, int> pos;
-    rep(i, 0, n) {
-        cin >> b[i];
-        pos[b[i]] = i;
+    rep(i, 0, n) cin >> b[i];
+    int ans = n;
+    for (int i = 0, j = 0; i < n; i++) {
+        while (j < n && a[i] > b[j]) {
+            j++;
+        }
+        if (j < n) {
+            ans--;
+            j++;
+        }
     }
-    unordered_map<int, int> cnt;
-    for (int i = 0; i < n; i++) {
-        int move;
-        if (pos[a[i]] >= i) cnt[pos[a[i]] - i]++;
-        else cnt[pos[a[i]] + n - i]++;
-    }
-    int ans = 0;
-    for (auto [_, c] : cnt) chmax(ans, c);
     cout << ans << endl;
 }
-
 
 int main() {
     cin.tie(nullptr)->sync_with_stdio(false);
