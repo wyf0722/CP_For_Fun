@@ -125,24 +125,65 @@ bool chmax(T& a, const T& b) {
  *  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
  *           ░     ░ ░      ░  ░
  */
-#define MULTICASE 1
+#define MULTICASE 0
+
+template <typename F> struct reverse_comparator_t {
+    F f;
+    template <typename Arg1, typename Arg2> constexpr bool operator() (Arg1&& arg1, Arg2&& arg2) & {
+        return f(std::forward<Arg2>(arg2), std::forward<Arg1>(arg1));
+    }
+    template <typename Arg1, typename Arg2> constexpr bool operator() (Arg1&& arg1, Arg2&& arg2) const& {
+        return f(std::forward<Arg2>(arg2), std::forward<Arg1>(arg1));
+    }
+    template <typename Arg1, typename Arg2> constexpr bool operator() (Arg1&& arg1, Arg2&& arg2) && {
+        return std::move(f)(std::forward<Arg2>(arg2), std::forward<Arg1>(arg1));
+    }
+    template <typename Arg1, typename Arg2> constexpr bool operator() (Arg1&& arg1, Arg2&& arg2) const&& {
+        return std::move(f)(std::forward<Arg2>(arg2), std::forward<Arg1>(arg1));
+    }
+};
+
+template <typename F> constexpr reverse_comparator_t<std::decay_t<F>> reverse_comparator(F&& f) {
+    return { std::forward<F>(f) };
+}
+
+auto cmp = [] (pair<i64, i64> x, pair<i64, i64> y) {
+    return x < y;
+};
 void solve() {
-    int n;
-    cin >> n;
-    vi a(n), b(n);
-    rep(i, 0, n) cin >> a[i];
-    rep(i, 0, n) cin >> b[i];
-    int ans = n;
-    for (int i = 0, j = 0; i < n; i++) {
-        while (j < n && a[i] > b[j]) {
-            j++;
-        }
-        if (j < n) {
-            ans--;
-            j++;
+    int n, m; 
+    cin >> n >> m;
+    vector<vector<pair<int, int>>> adj(n + 1);
+    rep(i, 0, m) {
+        int v, u, w; 
+        cin >> v >> u >> w;
+        adj[v].push_back({u, 2 * w});
+        adj[u].push_back({v, 2 * w});
+    }
+    vector<i64> dis(n + 1, infLL);
+    rep(i, 1, n + 1) {
+        int w;
+        cin >> w;
+        adj[0].push_back({i, w});
+    }
+    dis[0] = 0LL;
+
+    priority_queue<pair<i64, i64>, vector<pair<i64, i64>>, greater<pair<i64, i64>>> pq;
+    pq.push({0, 0});
+    while (!pq.empty()) {
+        auto [d, x] = pq.top();
+        pq.pop();
+        if (d != dis[x]) continue;
+        for (auto [y, w] : adj[x]) {
+            if (d + w < dis[y]) {
+                dis[y] = d + w;
+                pq.push({dis[y], y});
+            }
         }
     }
-    cout << ans << endl;
+    for (int i = 1; i <= n; i++) {
+        cout << dis[i] << " \n"[i == n];
+    }
 }
 
 int main() {

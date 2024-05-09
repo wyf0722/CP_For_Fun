@@ -25,4 +25,4 @@ auto cmp = [] (int x, int y) {
 };
 sort(v.begin(), v.end(), reverse_comparator(cmp));
 // for priority_queue
-priority_queue<int, vector<int>, decltype(cmp)> pq;
+priority_queue<int, vector<int>, decltype(reverse_comparator(cmp))> pq;

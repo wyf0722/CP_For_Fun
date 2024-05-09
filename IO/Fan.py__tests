@@ -1,9 +1,1 @@
-[
-	{
-		"correct_answers":
-		[
-			"No\nYes\nYes\nYes\nNo"
-		],
-		"test": "3\n3 1 4\n"
-	}
-]
+[{"correct_answers": ["1"], "test": "201\n"}, {"correct_answers": ["-1"], "test": "135\n"}]
