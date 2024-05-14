@@ -121,3 +121,34 @@ bool chmax(T& a, const T& b) {
  *                         
  * 𝓽𝓱𝓮 𝓼𝓸𝓵𝓾𝓽𝓲𝓸𝓷 𝓸𝓯 𝔀𝔂𝓯0722
  */
+
+class Solution {
+public:
+    int pow(int b, int e, int mod) {
+        long long ans = 1;
+        for (; e; e /= 2) {
+            if (e & 1) {
+                ans = ans * b % mod;
+            }
+            b = b * b % mod;
+        }
+        return ans;
+    }
+
+    long long get(long long k) {
+        long long ans = 0;
+
+
+
+    }
+
+    vector<int> findProductsOfElements(vector<vector<long long>>& queries) {
+        vector<int> ans;
+        for (auto &q : queries) {
+            long long r = get(q[1] + 1);
+            long long l = get(q[0]);
+            ans.push_back(pow(2, r - l, q[2]));
+        }
+        return ans;
+    }
+};
