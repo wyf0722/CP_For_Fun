@@ -122,6 +122,7 @@ bool chmax(T& a, const T& b) {
  * 𝓽𝓱𝓮 𝓼𝓸𝓵𝓾𝓽𝓲𝓸𝓷 𝓸𝓯 𝔀𝔂𝓯0722
  */
 
+<<<<<<< HEAD
 class Solution {
 public:
     int pow(int b, int e, int mod) {
@@ -152,3 +153,5 @@ public:
         return ans;
     }
 };
+=======
+>>>>>>> 07e3d1d0317aef7cd5b9771ed16141153287c905

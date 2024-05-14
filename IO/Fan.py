@@ -154,7 +154,8 @@ if 1:
 #           ░     ░ ░      ░  ░
 MULTITEST = 0
 def main():
-    pass 
+    
+
 
 t = 1
 if MULTITEST:
