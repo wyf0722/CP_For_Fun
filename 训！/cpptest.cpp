@@ -26,6 +26,8 @@ const int inf = INT_MAX / 2 - 100;
 const i64 infLL = LLONG_MAX / 3;
 const int MOD = 1e9 + 7;
 const int dx[4]{1, 0, -1, 0}, dy[4]{0, 1, 0, -1};
+template<typename T> using min_heap=priority_queue<T,vector<T>,greater<T>>;
+template<typename T> using max_heap=priority_queue<T>;
 
 template <class T>
 void mkuni(vector<T>& v) {
@@ -108,50 +110,5 @@ bool chmax(T& a, const T& b) {
 }  // set a = max(a,b)
 
 /***
- *
- *   █████▒█    ██  ▄████▄   ██ ▄█▀       ██████╗ ██╗   ██╗ ██████╗
- * ▓██   ▒ ██  ▓██▒▒██▀ ▀█   ██▄█▒        ██╔══██╗██║   ██║██╔════╝
- * ▒████ ░▓██  ▒██░▒▓█    ▄ ▓███▄░        ██████╔╝██║   ██║██║  ███╗
- * ░▓█▒  ░▓▓█  ░██░▒▓▓▄ ▄██▒▓██ █▄        ██╔══██╗██║   ██║██║   ██║
- * ░▒█░   ▒▒█████▓ ▒ ▓███▀ ░▒██▒ █▄       ██████╔╝╚██████╔╝╚██████╔╝
- *  ▒ ░   ░▒▓▒ ▒ ▒ ░ ░▒ ▒  ░▒ ▒▒ ▓▒       ╚═════╝  ╚═════╝  ╚═════╝
- *  ░     ░░▒░ ░ ░   ░  ▒   ░ ░▒ ▒░
- *  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
- *           ░     ░ ░      ░  ░
- *                         
  * 𝓽𝓱𝓮 𝓼𝓸𝓵𝓾𝓽𝓲𝓸𝓷 𝓸𝓯 𝔀𝔂𝓯0722
  */
-
-<<<<<<< HEAD
-class Solution {
-public:
-    int pow(int b, int e, int mod) {
-        long long ans = 1;
-        for (; e; e /= 2) {
-            if (e & 1) {
-                ans = ans * b % mod;
-            }
-            b = b * b % mod;
-        }
-        return ans;
-    }
-
-    long long get(long long k) {
-        long long ans = 0;
-
-
-
-    }
-
-    vector<int> findProductsOfElements(vector<vector<long long>>& queries) {
-        vector<int> ans;
-        for (auto &q : queries) {
-            long long r = get(q[1] + 1);
-            long long l = get(q[0]);
-            ans.push_back(pow(2, r - l, q[2]));
-        }
-        return ans;
-    }
-};
-=======
->>>>>>> 07e3d1d0317aef7cd5b9771ed16141153287c905
