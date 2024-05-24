@@ -10,8 +10,14 @@ template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) { cout
 #define debug(...) cout << '[' << __FILE__ << ':' << __LINE__ << "] (" << #__VA_ARGS__ << "):", dbg_out(__VA_ARGS__)
 
 #define all(x) begin(x), end(x)
-#define rep(i, a, b) for (int i = a; i < (b); i++)
-#define rrep(i, a, b) for (int i = a; i >= b; i--)
+#define rall(x) begin(x), end(x)
+// loops
+#define FOR(i, a, b) for (int i = (a); i < (b); ++i)
+#define F0R(i, a) FOR(i, 0, a)
+#define ROF(i, a, b) for (int i = (b)-1; i >= (a); --i)
+#define R0F(i, a) ROF(i, 0, a)
+#define rep(a) F0R(_, a)
+#define each(a, x) for (auto &a : x)
 using i64 = long long;
 using ll = long long;
 using pii = pair<int, int>;
@@ -58,21 +64,6 @@ void safeErase(T& t, const U& u) {
     auto it = t.find(u);
     assert(it != end(t));
     t.erase(it);
-}
-
-template <class T, class S = T>
-S SUM(const vector<T>& a) {
-    return accumulate(a.begin(), a.end(), S(0));
-}
-
-template <class T>
-T MAX(const vector<T>& a) {
-    return *max_element(a.begin(), a.end());
-}
-
-template <class T>
-T MIN(const vector<T>& a) {
-    return *min_element(a.begin(), a.end());
 }
 
 template<class T, class U>

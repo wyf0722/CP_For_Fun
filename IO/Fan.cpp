@@ -10,8 +10,14 @@ using namespace std;
 // #define debug(...) cout << '[' << __FILE__ << ':' << __LINE__ << "] (" << #__VA_ARGS__ << "):", dbg_out(__VA_ARGS__)
 
 #define all(x) begin(x), end(x)
-#define rep(i, a, b) for (int i = a; i < (b); i++)
-#define rrep(i, a, b) for (int i = a; i >= b; i--)
+#define rall(x) begin(x), end(x)
+// loops
+#define FOR(i, a, b) for (int i = (a); i < (b); ++i)
+#define F0R(i, a) FOR(i, 0, a)
+#define ROF(i, a, b) for (int i = (b)-1; i >= (a); --i)
+#define R0F(i, a) ROF(i, 0, a)
+#define rep(a) F0R(_, a)
+#define each(a, x) for (auto &a : x)
 using i64 = long long;
 using ll = long long;
 using pii = pair<int, int>;
@@ -26,6 +32,8 @@ const int inf = INT_MAX / 2 - 100;
 const i64 infLL = LLONG_MAX / 3;
 const int MOD = 1e9 + 7;
 const int dx[4]{1, 0, -1, 0}, dy[4]{0, 1, 0, -1};
+template<typename T> using min_heap=priority_queue<T,vector<T>,greater<T>>;
+template<typename T> using max_heap=priority_queue<T>;
 
 template <class T>
 void mkuni(vector<T>& v) {
@@ -56,21 +64,6 @@ void safeErase(T& t, const U& u) {
     auto it = t.find(u);
     assert(it != end(t));
     t.erase(it);
-}
-
-template <class T, class S = T>
-S SUM(const vector<T>& a) {
-    return accumulate(a.begin(), a.end(), S(0));
-}
-
-template <class T>
-T MAX(const vector<T>& a) {
-    return *max_element(a.begin(), a.end());
-}
-
-template <class T>
-T MIN(const vector<T>& a) {
-    return *min_element(a.begin(), a.end());
 }
 
 template<class T, class U>
@@ -127,7 +120,29 @@ bool chmax(T& a, const T& b) {
  */
 #define MULTICASE 0
 void solve() {
-    
+    int n, k;
+    cin >> n >> k;
+    vector<pii> ps(n);
+    F0R(i, n) {
+        int v, w;
+        cin >> v >> w;
+        ps[i] = make_pair(v, w);
+    }
+    int mask = 0;
+    // 考虑每一位是否能取到
+    ROF(i, 0, 31) {
+        int total_v = (1 << 31) - 1;
+        int nxt_mask = mask | (1 << i);
+        for (auto &[v, w] : ps) {
+            if ((w & nxt_mask) == nxt_mask) {
+                total_v &= v;
+            }
+        }
+        if (total_v <= k) {
+            mask = nxt_mask;
+        }
+    }
+    cout << mask << endl;
 }
 
 int main() {
