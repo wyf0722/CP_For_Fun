@@ -152,9 +152,9 @@ if 1:
 #  ░     ░░▒░ ░ ░   ░  ▒   ░ ░▒ ▒░
 #  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
 #           ░     ░ ░      ░  ░
-MULTITEST = 0
+MULTITEST = 1
 def main():
-    pass
+    
 
 
 t = 1

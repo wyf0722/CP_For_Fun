@@ -120,29 +120,7 @@ bool chmax(T& a, const T& b) {
  */
 #define MULTICASE 0
 void solve() {
-    int n, k;
-    cin >> n >> k;
-    vector<pii> ps(n);
-    F0R(i, n) {
-        int v, w;
-        cin >> v >> w;
-        ps[i] = make_pair(v, w);
-    }
-    int mask = 0;
-    // 考虑每一位是否能取到
-    ROF(i, 0, 31) {
-        int total_v = (1 << 31) - 1;
-        int nxt_mask = mask | (1 << i);
-        for (auto &[v, w] : ps) {
-            if ((w & nxt_mask) == nxt_mask) {
-                total_v &= v;
-            }
-        }
-        if (total_v <= k) {
-            mask = nxt_mask;
-        }
-    }
-    cout << mask << endl;
+    
 }
 
 int main() {

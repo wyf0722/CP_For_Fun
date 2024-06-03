@@ -1,34 +1,32 @@
-template <typename T>
+template <typename T, typename F>
 class SparseTable {
-  using VT = vector<T>;
-  using VVT = vector<VT>;
-  using func_type = function<T(const T &, const T &)>;
+   public:
+    int n;
+    vector<vector<T>> mat;
+    F func;
 
-  VVT ST;
-
-  static T default_func(const T &t1, const T &t2) { return max(t1, t2); }
-
-  func_type op;
-
- public:
-  SparseTable(const vector<T> &v, func_type _func = default_func) {
-    op = _func;
-    int len = v.size(), l1 = ceil(log2(len)) + 1;
-    ST.assign(len, VT(l1, 0));
-    for (int i = 0; i < len; ++i) {
-      ST[i][0] = v[i];
+    SparseTable(const vector<T>& a, const F& f) : func(f) {
+        n = static_cast<int>(a.size());
+        int max_log = 32 - __builtin_clz(n);
+        mat.resize(max_log);
+        mat[0] = a;
+        for (int j = 1; j < max_log; j++) {
+            mat[j].resize(n - (1 << j) + 1);
+            for (int i = 0; i <= n - (1 << j); i++) {
+                mat[j][i] = func(mat[j - 1][i], mat[j - 1][i + (1 << (j - 1))]);
+            }
+        }
     }
-    for (int j = 1; j < l1; ++j) {
-      int pj = (1 << (j - 1));
-      for (int i = 0; i + pj < len; ++i) {
-        ST[i][j] = op(ST[i][j - 1], ST[i + (1 << (j - 1))][j - 1]);
-      }
-    }
-  }
 
-  T query(int l, int r) {
-    int lt = r - l + 1;
-    int q = floor(log2(lt));
-    return op(ST[l][q], ST[r - (1 << q) + 1][q]);
-  }
+    T query(int from, int to) const {
+        assert(0 <= from && from <= to && to <= n - 1);
+        int lg = 32 - __builtin_clz(to - from + 1) - 1;
+        return func(mat[lg][from], mat[lg][to - (1 << lg) + 1]);
+    }
 };
+
+auto get_max = [](auto a, auto b) { return max(a, b); };
+
+auto get_min = [](auto a, auto b) { return min(a, b); };
+
+// SparseTable<int, decltype(get_max)> st(input_data, get_max);

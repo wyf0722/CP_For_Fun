@@ -1,1 +1,9 @@
-[{"correct_answers": ["1"], "test": "201\n"}, {"correct_answers": ["-1"], "test": "135\n"}]
+[
+	{
+		"correct_answers":
+		[
+			"3\n-1\n3\n3\n3\n1"
+		],
+		"test": "6\n5 5\n1 2\n4 5\n1 5\n1 3\n2 4\n5\n5\n3\n1\n2\n4\n4 2\n1 1\n4 4\n2\n2\n3\n5 2\n1 5\n1 5\n4\n2\n1\n3\n4\n5 2\n1 5\n1 3\n5\n4\n1\n2\n3\n5\n5 5\n1 5\n1 5\n1 5\n1 5\n1 4\n3\n1\n4\n3\n3 2\n2 2\n1 3\n3\n2\n3\n1\n"
+	}
+]
