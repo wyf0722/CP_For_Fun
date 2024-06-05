@@ -154,8 +154,14 @@ if 1:
 #           ░     ░ ░      ░  ░
 MULTITEST = 1
 def main():
-    
-
+    n, m = map(int, input().split())
+    s = input()
+    c = Counter(s)
+    ans = 0
+    for x in "ABCDEFG":
+        if c[x] < m:
+            ans += m - c[x]
+    print(ans)
 
 t = 1
 if MULTITEST:
