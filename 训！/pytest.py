@@ -41,3 +41,18 @@ if LOCAL_DEBUG:
 
 
 # 𝓽𝓱𝓮 𝓼𝓸𝓵𝓾𝓽𝓲𝓸𝓷 𝓸𝓯 𝔀𝔂𝓯0722
+
+class Solution:
+    def maximumLength(self, nums: List[int], k: int) -> int:
+        n = len(nums)
+        dp = [[1] * (k + 1) for _ in range(n + 1)]
+        ans = 0
+        for i in range(n):
+            for j in range(i):
+                for kk in range(k + 1):
+                    if nums[i] == nums[j]:
+                        dp[i][kk] = max(dp[i][kk], dp[j][k] + 1)
+                    if nums[i] != nums[j] and kk:
+                        dp[i][kk] = max(dp[i][kk], dp[j][kk - 1] + 1)
+                    ans = max(ans, dp[i][kk])
+        return ans

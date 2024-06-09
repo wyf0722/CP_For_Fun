@@ -152,33 +152,39 @@ if 1:
 #  ░     ░░▒░ ░ ░   ░  ▒   ░ ░▒ ▒░
 #  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
 #           ░     ░ ░      ░  ░
-MULTITEST = 0
-MOD = 1_000_000_007
-from math import comb
+MULTITEST = 1
 def main():
-    T = II()
-    for _ in range(T):
-        x, y = MII()
-        tmp = x
-        fac = []
-        cur = 2
-        while cur * cur <= tmp:
-            if tmp % cur == 0:
-                cnt = 0
-                while tmp % cur == 0:
-                    cnt += 1
-                    tmp //= cur
-                fac.append((cur, cnt))
-            cur += 1
-        if tmp != 1:
-            fac.append((tmp, 1))
-        ans = 1
-        # v拆成y个非负数
-        for k, v in fac:
-            ans *= comb(v + y - 1, y - 1)
-            ans %= MOD
-        print(ans)
-
+    a, b, c, k = MII()
+    v = [a, b, c]
+    v.sort()
+    if k in [a, b, c]:
+        print(0)
+        return 
+    if k == 0:
+        print(1)
+        return
+    if k >= 3:
+        print(-1)
+        return
+    # a,b,c都与k不同
+    if k == 1:
+        if v[0] == 0:
+            print(1)
+        else:
+            print(2)
+    if k == 2:
+        if 0 in v and 1 in v:
+            print(1)
+            return
+        if 0 in v and 1 not in v:
+            print(2)
+            return
+        if 0 not in v and 1 in v:
+            print(2)
+            return
+        if 0 not in v and 1 not in v:
+            print(3)
+            return
 
 t = 1
 if MULTITEST:

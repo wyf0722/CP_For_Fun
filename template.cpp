@@ -2,12 +2,12 @@
 
 using namespace std;
 
-// template<typename A, typename B> ostream& operator<<(ostream &os, const pair<A, B> &p) { return os << '(' << p.first << ", " << p.second << ')'; }
-// template<typename T_container, typename T = typename enable_if<!is_same<T_container, string>::value, typename T_container::value_type>::type> ostream& operator<<(ostream &os, const T_container &v) { os << '{'; string sep; for (const T &x : v) os << sep << x, sep = ", "; return os << '}'; }
+template<typename A, typename B> ostream& operator<<(ostream &os, const pair<A, B> &p) { return os << '(' << p.first << ", " << p.second << ')'; }
+template<typename T_container, typename T = typename enable_if<!is_same<T_container, string>::value, typename T_container::value_type>::type> ostream& operator<<(ostream &os, const T_container &v) { os << '{'; string sep; for (const T &x : v) os << sep << x, sep = ", "; return os << '}'; }
  
-// void dbg_out() { cout << endl; }
-// template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) { cout << ' ' << H; dbg_out(T...); }
-// #define debug(...) cout << '[' << __FILE__ << ':' << __LINE__ << "] (" << #__VA_ARGS__ << "):", dbg_out(__VA_ARGS__)
+void dbg_out() { cout << endl; }
+template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) { cout << ' ' << H; dbg_out(T...); }
+#define debug(...) cout << '[' << __FILE__ << ':' << __LINE__ << "] (" << #__VA_ARGS__ << "):", dbg_out(__VA_ARGS__)
 
 #define all(x) begin(x), end(x)
 #define rall(x) begin(x), end(x)
@@ -100,49 +100,9 @@ bool chmax(T& a, const T& b) {
     return a < b ? a = b, 1 : 0;
 }  // set a = max(a,b)
 
-#ifdef FAN_DEBUG
-#include "Debug/template_cpp20_std.cpp"
-#else
-#define debug(...)
-#endif
-
-/***
- *
- *   █████▒█    ██  ▄████▄   ██ ▄█▀       ██████╗ ██╗   ██╗ ██████╗
- * ▓██   ▒ ██  ▓██▒▒██▀ ▀█   ██▄█▒        ██╔══██╗██║   ██║██╔════╝
- * ▒████ ░▓██  ▒██░▒▓█    ▄ ▓███▄░        ██████╔╝██║   ██║██║  ███╗
- * ░▓█▒  ░▓▓█  ░██░▒▓▓▄ ▄██▒▓██ █▄        ██╔══██╗██║   ██║██║   ██║
- * ░▒█░   ▒▒█████▓ ▒ ▓███▀ ░▒██▒ █▄       ██████╔╝╚██████╔╝╚██████╔╝
- *  ▒ ░   ░▒▓▒ ▒ ▒ ░ ░▒ ▒  ░▒ ▒▒ ▓▒       ╚═════╝  ╚═════╝  ╚═════╝
- *  ░     ░░▒░ ░ ░   ░  ▒   ░ ░▒ ▒░
- *  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
- *           ░     ░ ░      ░  ░
- */
-#define MULTICASE 1
+#define MULTICASE 0
 void solve() {
-    int n, x;
-    cin >> n >> x;
-    vi a(n);
-    map<int, int> cnt;
-    FOR(i, 0, n) {
-        cin >> a[i];
-        cnt[a[i]]++;
-    }
-    int t = a[x - 1];
-    mkuni(a);
-    if (t == a.back()) {
-        if (cnt[t] == 1) {
-            if (a.size() > 1) {
-                cout << cnt[a[a.size() - 2]] << endl;
-            } else {
-                cout << 0 << endl;
-            }
-        } else {
-            cout << cnt[t] - 1 << endl;
-        }
-    } else {
-        cout << cnt[a.back()] << endl;
-    }
+    
 }
 
 int main() {

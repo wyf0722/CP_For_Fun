@@ -24,3 +24,21 @@ PyRival | [:blue_heart:](https://github.com/cheran-senthil/PyRival)
 Liupengsay | [:blue_heart:](https://github.com/liupengsay/PyIsTheBestLang)
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original-wordmark.svg" alt="GoLang" width="50" height="50"/> | golang
 EndlessCheng | [:blue_heart:](https://github.com/EndlessCheng/codeforces-go)
+
+## 竞赛目录
+[leetcode国服](https://leetcode.cn/contest/)
+
+[leetcode国际服](https://leetcode.com/contest/)
+
+[nowcoder](https://ac.nowcoder.com/acm/contest/vip-index)
+
+[codeforces](https://codeforces.com/contests)
+
+[atcoder](https://atcoder.jp/contests/)
+
+## 题单
+[灵茶的试炼](https://docs.qq.com/sheet/DWGFoRGVZRmxNaXFz?tab=BB08J2)
+
+[CFTracker](https://cftracker.netlify.app/contests)
+
+[AtCoder Problems](https://kenkoooo.com/atcoder/#/table/)

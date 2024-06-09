@@ -2,8 +2,11 @@
 	{
 		"correct_answers":
 		[
-			"2\n5\n1"
+			"4\n6"
 		],
-		"test": "3\n10 1\nBGECDCBDED\n10 2\nBGECDCBDED\n9 1\nBBCDEFFGG\n"
+		"test": "2\n6 2\n12 2\n"
+	},
+	{
+		"test": "1\n93248 4\n"
 	}
 ]

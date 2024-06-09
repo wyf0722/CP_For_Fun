@@ -153,31 +153,18 @@ if 1:
 #  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
 #           ░     ░ ░      ░  ░
 MULTITEST = 0
-MOD = 1_000_000_007
-from math import comb
 def main():
-    T = II()
-    for _ in range(T):
-        x, y = MII()
-        tmp = x
-        fac = []
-        cur = 2
-        while cur * cur <= tmp:
-            if tmp % cur == 0:
-                cnt = 0
-                while tmp % cur == 0:
-                    cnt += 1
-                    tmp //= cur
-                fac.append((cur, cnt))
-            cur += 1
-        if tmp != 1:
-            fac.append((tmp, 1))
-        ans = 1
-        # v拆成y个非负数
-        for k, v in fac:
-            ans *= comb(v + y - 1, y - 1)
-            ans %= MOD
-        print(ans)
+    n, x = MII()
+    open = 0
+    for i in range(1, x + 1):
+        if i * i > x:
+            break
+        if x % i == 0:
+            if 1 <= i <= n:
+                open ^= 1
+            if i != (x // i) and 1 <= (x // i) <= n:
+                open ^= 1
+    print('ON' if open else 'OFF')
 
 
 t = 1
