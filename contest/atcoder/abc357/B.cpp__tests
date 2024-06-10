@@ -1,0 +1,23 @@
+[
+	{
+		"correct_answers":
+		[
+			"atcoder"
+		],
+		"test": "AtCoder\n"
+	},
+	{
+		"correct_answers":
+		[
+			"SUNTORY"
+		],
+		"test": "SunTORY\n"
+	},
+	{
+		"correct_answers":
+		[
+			"a"
+		],
+		"test": "a\n"
+	}
+]
