@@ -153,26 +153,28 @@ if 1:
 #  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
 #           ░     ░ ░      ░  ░
 MULTITEST = 1
-MOD = 1_000_000_007
 def main():
-    l, r, k = MII()
-    def get(s):
-        if k >= 10:
-            return 0
-        elif k >= 5:
-            # 取1
-            return pow(2, s, MOD)
-        elif k == 4:
-            # 取1、2
-            return pow(3, s, MOD)
-        elif k == 3:
-            # 取1、2、3
-            return pow(4, s, MOD)
-        elif k == 2:
-            return pow(5, s, MOD)
+    h, n = MII()
+    a = LII()
+    c = LII()
+    lo = 0
+    hi = 10**18
+    def check(x) -> bool:
+        remain = h
+        for i in range(n):
+            remain -= x // c[i] * a[i]
+            if x % c[i] != 0:
+                remain -= a[i]
+        return remain <= 0
+
+    while lo + 1 < hi:
+        mid = (lo + hi) // 2
+        if check(mid):
+            hi = mid
         else:
-            return pow(10, s, MOD)
-    print((get(r) - get(l) + MOD) % MOD)
+            lo = mid
+    print(hi)
+
 
 
 t = 1
