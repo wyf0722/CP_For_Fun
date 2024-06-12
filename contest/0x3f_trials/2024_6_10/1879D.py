@@ -157,7 +157,31 @@ MOD = 998244353
 def main():
     n = II()
     a = LII()
-    # 分析奇偶性
+    # solution1
+    # # 分析奇偶性
+    # rec = [[0] * 31 for _ in range(n + 1)]
+    # for i, x in enumerate(a):
+    #     for j in range(31):
+    #         rec[i + 1][j] = rec[i][j] ^ (x >> j & 1)
+    # ans = 0
+    # for j in range(31):
+    #     even = 0
+    #     odd = 0
+    #     cnt_even = 1
+    #     cnt_odd = 0
+    #     for i in range(n):
+    #         if rec[i + 1][j] & 1:
+    #            ans += (cnt_even * (i + 1) - even) << j;
+    #            ans %= MOD
+    #            odd += i + 1
+    #            cnt_odd += 1
+    #         else:
+    #             ans += (cnt_odd * (i + 1) - odd) << j
+    #             ans %= MOD
+    #             even += i + 1
+    #             cnt_even += 1
+
+    # solution2
     rec = [[0] * 2 for _ in range(31)]
     for i in range(31):
         rec[i][0] = 1   
@@ -174,7 +198,6 @@ def main():
             rec[j][bit] += 1
             s[j][bit] += i + 1
     print(ans)
-
 
 t = 1
 if MULTITEST:
