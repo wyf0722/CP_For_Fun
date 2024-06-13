@@ -220,6 +220,79 @@ void solve() {
     cout << ans << endl;
 }
 
+// 官方解答
+// void solve() {
+//     int n, m;
+//     cin >> n >> m;
+//     vector<string> g(n);
+//     FOR(i, 0, n) {
+//         cin >> g[i];
+//     }
+
+//     // 考虑每个联通分量的x区间和y区间
+//     vi R(n + 1), C(m + 1);
+//     vi freeR(n + 1), freeC(m + 1);
+//     vvi vis(n, vi(m));
+//     int sz = 0;
+//     int minR = n, maxR = -1;
+//     int minC = m, maxC = -1;
+
+//     auto dfs = [&](auto &&self, int i, int j) -> void {
+//         vis[i][j] = 1;
+//         sz++;
+//         chmax(maxR, i);
+//         chmin(minR, i);
+//         chmax(maxC, j);
+//         chmin(minC, j);
+//         FOR(d, 0, 4) {
+//             int ni = i + dx[d];
+//             int nj = j + dy[d];
+//             if (0 <= ni && ni < n && 0 <= nj && nj < m && !vis[ni][nj] && g[ni][nj] == '#') {
+//                 self(self, ni, nj);
+//             }
+//         }
+//     };
+
+//     FOR(i, 0, n) {
+//         FOR(j, 0, m) {
+//             if (g[i][j] == '.') {
+//                 freeR[i]++;
+//                 freeC[j]++;
+//                 continue;
+//             }
+//             if (vis[i][j]) continue;
+//             sz = 0;
+//             minR = n, maxR = -1;
+//             minC = m, maxC = -1;
+
+//             dfs(dfs, i, j);
+
+//             // debug(sz);
+//             // 可以覆盖哪些区间 ？
+//             chmin(minR, max(minR - 1, 0));
+//             chmax(maxR, min(maxR + 1, n - 1));
+//             chmin(minC, max(minC - 1, 0));
+//             chmax(maxC, min(maxC + 1, m - 1));
+
+//             R[minR] += sz;
+//             R[maxR + 1] -= sz;
+//             C[minC] += sz;
+//             C[maxC + 1] -= sz;
+//         }
+//     }
+
+//     int ans = 0;
+//     FOR(i, 0, n) {
+//         if (i) R[i] += R[i - 1];
+//         chmax(ans, freeR[i] + R[i]);
+//     }
+//     FOR(j, 0, m) {
+//         if (j) C[j] += C[j - 1];
+//         chmax(ans, freeC[j] + C[j]);
+//     }
+//     cout << ans << endl;
+// }
+
 int main() {
     cin.tie(nullptr)->sync_with_stdio(false);
     cout << fixed << setprecision(20);
