@@ -118,39 +118,34 @@ bool chmax(T& a, const T& b) {
  *  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
  *           ░     ░ ░      ░  ░
  */
-#define MULTICASE 1
+#define MULTICASE 0
 void solve() {
-    int n, a, b, x;
-    cin >> n >> a >> b;
-    vl cnt(2);
+    int n;
+    cin >> n;
+    vi a(n);
     FOR(i, 0, n) {
-        cin >> x;
-        cnt[x & 1]++;
+        cin >> a[i];
     }
-    sort(all(cnt));
+    vl pre(n + 1);
+    FOR(i, 0, n) {
+        pre[i + 1] = pre[i] + a[i];
+    }
     i64 ans = 0;
-    if (a <= 0 and b <= 0) {
-        // 所有边全部连上
-        ans = cnt[0] * (cnt[0] - 1) * a / 2 + cnt[1] * (cnt[1] - 1) * a / 2 + cnt[0] * cnt[1] * b;
-    } else if (a <= 0 and b > 0) {
-        // 奇偶相同的全部连上
-        // 不同的连0或1次
-        ans = cnt[0] * (cnt[0] - 1) * a / 2 + cnt[1] * (cnt[1] - 1) * a / 2 + (cnt[0] > 0 ? b : 0);
-    } else if (a > 0 and b <= 0) {
-        // 奇偶不同的全部连上
-        if (cnt[0] != 0) ans = cnt[0] * cnt[1] * b;
-        // 只能奇偶相同的连
-        else ans = 1LL * (n - 1) * a;
-    } else {
-        if (cnt[0] == 0) {
-            ans = 1LL * (n - 1) * a;
-        } else if (a <= b) {
-            // 组内 cnt[0] - 1 + cnt[1] - 1
-            // 组间 1
-            ans = 1LL * (n - 2) * a + b;
-        } else {
-            ans = 1LL * (n - 1) * b;
+    FOR(i, 1, n - 1) {
+        i64 b1 = pre[i];
+        int lo = i, hi = n;
+        while (lo + 1 < hi) {
+            int mid = (lo + hi) / 2;
+            i64 b2 = pre[mid + 1] - pre[i];
+            i64 b3 = pre.back() - pre[mid + 1];
+            if (b1 < b2 && b2 > b3) {
+                hi = mid;
+            } else {
+                lo = mid;
+            }
         }
+        ans += max(0, n - 1 - hi);
+        // debug(ans, hi);
     }
     cout << ans << endl;
 }

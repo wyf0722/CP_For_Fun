@@ -118,41 +118,17 @@ bool chmax(T& a, const T& b) {
  *  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
  *           ░     ░ ░      ░  ░
  */
-#define MULTICASE 1
+#define MULTICASE 0
 void solve() {
-    int n, a, b, x;
-    cin >> n >> a >> b;
-    vl cnt(2);
-    FOR(i, 0, n) {
-        cin >> x;
-        cnt[x & 1]++;
-    }
-    sort(all(cnt));
-    i64 ans = 0;
-    if (a <= 0 and b <= 0) {
-        // 所有边全部连上
-        ans = cnt[0] * (cnt[0] - 1) * a / 2 + cnt[1] * (cnt[1] - 1) * a / 2 + cnt[0] * cnt[1] * b;
-    } else if (a <= 0 and b > 0) {
-        // 奇偶相同的全部连上
-        // 不同的连0或1次
-        ans = cnt[0] * (cnt[0] - 1) * a / 2 + cnt[1] * (cnt[1] - 1) * a / 2 + (cnt[0] > 0 ? b : 0);
-    } else if (a > 0 and b <= 0) {
-        // 奇偶不同的全部连上
-        if (cnt[0] != 0) ans = cnt[0] * cnt[1] * b;
-        // 只能奇偶相同的连
-        else ans = 1LL * (n - 1) * a;
+    string a, b;
+    cin >> a >> b;
+    int x = a.size(), y = b.size();
+    if (x < y) swap(x, y);
+    if (x == 6) {
+        cout << "-1\n";
     } else {
-        if (cnt[0] == 0) {
-            ans = 1LL * (n - 1) * a;
-        } else if (a <= b) {
-            // 组内 cnt[0] - 1 + cnt[1] - 1
-            // 组间 1
-            ans = 1LL * (n - 2) * a + b;
-        } else {
-            ans = 1LL * (n - 1) * b;
-        }
+        cout << x - y + 1 << "\n";
     }
-    cout << ans << endl;
 }
 
 int main() {
