@@ -293,6 +293,63 @@ void solve() {
 //     cout << ans << endl;
 // }
 
+
+// 并查集 + 差分
+// void solve() {
+//     int n, m;
+//     cin >> n >> m;
+//     vector<string> g(n);
+//     FOR(i, 0, n) {
+//         cin >> g[i];
+//     }
+//     int N = n * m;
+//     // 考虑每个联通分量的x区间和y区间
+//     vi freeR(n + 1), freeC(m + 1);
+//     vi maxR(N, -1), maxC(N, -1), minR(N, n), minC(N, m);
+//     DSU dsu(N);
+
+//     FOR(i, 0, n) {
+//         FOR(j, 0, m) {
+//             if (i + 1 < n && g[i][j] == '#' && g[i + 1][j] == '#') dsu.merge(i * m + j, (i + 1) * m + j);
+//             if (j + 1 < m && g[i][j] == '#' && g[i][j + 1] == '#') dsu.merge(i * m + j, i * m + j + 1);
+//         }
+//     }
+
+//     FOR(i, 0, n) {
+//         FOR(j, 0, m) {
+//             if (g[i][j] == '.') {
+//                 freeR[i]++;
+//                 freeC[j]++;
+//             } else {
+//                 int root = dsu.find(i * m + j);
+//                 chmax(maxR[root], min(n - 1, i + 1));
+//                 chmax(maxC[root], min(m - 1, j + 1));
+//                 chmin(minR[root], max(0, i - 1));
+//                 chmin(minC[root], max(0, j - 1));
+//             }
+//         }
+//     }
+//     int ans = 0;
+//     vi R(n + 1), C(m + 1);
+//     FOR(i, 0, N) {
+//         if (dsu.find(i) == i && g[i / m][i % m] == '#') {
+//             int sz = dsu.size(i);
+//             R[minR[i]] += sz;
+//             R[maxR[i] + 1] -= sz;
+//             C[minC[i]] += sz;
+//             C[maxC[i] + 1] -= sz;
+//         }
+//     }
+//     FOR(i, 0, n) {
+//         if (i) R[i] += R[i - 1];
+//         chmax(ans, R[i] + freeR[i]);
+//     }
+//     FOR(j, 0, m) {
+//         if (j) C[j] += C[j - 1];
+//         chmax(ans, C[j] + freeC[j]);
+//     }
+//     cout << ans << endl;
+// }
 int main() {
     cin.tie(nullptr)->sync_with_stdio(false);
     cout << fixed << setprecision(20);
