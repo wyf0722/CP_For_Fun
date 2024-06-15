@@ -155,23 +155,12 @@ if 1:
 MULTITEST = 0
 MOD = 998244353
 def main():
-    n, m = MII()
-    a = LII()
-    b = LII()
-    a.sort()
-    b.sort()
-    now = 0
-    ans = 0
-    for x in b:
-        while now < n and a[now] < x:
-            now += 1
-        if now == n:
-            ans = -1
-            break
-        ans += a[now]
-        now += 1
-    print(ans)
-
+    n, a = MII()
+    T = LII()
+    last = 0
+    for x in T:
+        last = max(last, x) + a
+        print(last)
 
 t = 1
 if MULTITEST:

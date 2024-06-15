@@ -155,22 +155,11 @@ if 1:
 MULTITEST = 0
 MOD = 998244353
 def main():
-    n, m = MII()
-    a = LII()
-    b = LII()
-    a.sort()
-    b.sort()
-    now = 0
-    ans = 0
-    for x in b:
-        while now < n and a[now] < x:
-            now += 1
-        if now == n:
-            ans = -1
-            break
-        ans += a[now]
-        now += 1
-    print(ans)
+    a, b = map(str, input().split())
+    if a == 'AtCoder' and b == 'Land':
+        print('Yes')
+    else:
+        print('No')
 
 
 t = 1

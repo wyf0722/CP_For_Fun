@@ -156,22 +156,22 @@ MULTITEST = 0
 MOD = 998244353
 def main():
     n, m = MII()
-    a = LII()
-    b = LII()
-    a.sort()
-    b.sort()
-    now = 0
-    ans = 0
-    for x in b:
-        while now < n and a[now] < x:
-            now += 1
-        if now == n:
-            ans = -1
-            break
-        ans += a[now]
-        now += 1
+    rec = [0] * n
+    for i in range(n):
+        s = I()
+        for j in range(m):
+            if s[j] == 'o':
+                rec[i] |= 1 << j
+    s = (1 << m) - 1
+    ans = n
+    for mask in range(1 << n):
+        cur = 0
+        for i in range(n):
+            if mask >> i & 1:
+                cur |= rec[i]
+        if cur == s and ans > mask.bit_count():
+            ans = mask.bit_count()
     print(ans)
-
 
 t = 1
 if MULTITEST:
