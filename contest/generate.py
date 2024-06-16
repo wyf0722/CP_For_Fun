@@ -5,7 +5,7 @@ import sys
 def create_files(file_names):
     """在Temporary目录下创建文件"""
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    script_dir = os.path.join(script_dir, 'Temporary')
+    script_dir = os.path.join(script_dir, 'Cache_For_Contest')
     
     # 遍历文件名列表，创建每个文件
     for file_name in file_names:
