@@ -122,20 +122,31 @@ bool chmax(T& a, const T& b) {
 void solve() {
     i64 n;
     cin >> n;
-    cout << fstTrue(1LL, (i64)(1e14), [&](i64 x) -> bool {
+
+    i64 lo = -1, hi = 1e13;
+    auto check = [&](i64 x) -> bool {
         // %3 == 0
         i64 c = x / 3;
         // 末尾为3的且不是3的倍数
-        if (x % 10 >= 3) {
-            c += x / 10 - (x / 10) / 3;
-        } else {
-            i64 tmp = x;
-            while (tmp % 10 != 3 and tmp) tmp--;
-            c += tmp / 10 - (tmp / 10) / 3;
-        }
-        // debug(x, c, n);
+        // if (x % 10 >= 3) {
+        //     c += x / 10 - (x / 10) / 3;
+        // } else {
+        //     i64 tmp = x;
+        //     while (tmp % 10 != 3 and tmp) tmp--;
+        //     c += tmp / 10 - (tmp / 10) / 3;
+        // }
+        c += (x - 3) / 10 - ((x - 3) / 10) / 3;
         return x - c >= n ? true : false;
-    }) << endl;
+    };
+    while (lo + 1 < hi) {
+        i64 mid = lo + (hi - lo >> 1);
+        if (check(mid)) {
+            hi = mid;
+        } else {
+            lo = mid;
+        }
+    }
+    cout << hi << endl;
 }
 
 int main() {

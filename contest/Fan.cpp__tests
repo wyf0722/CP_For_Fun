@@ -2,8 +2,8 @@
 	{
 		"correct_answers":
 		[
-			"1\n5\n14"
+			"4"
 		],
-		"test": "3\n1\n4\n9\n"
+		"test": "4\n2 2 3 4\n"
 	}
 ]
