@@ -118,24 +118,28 @@ bool chmax(T& a, const T& b) {
  *  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
  *           ░     ░ ░      ░  ░
  */
-#define MULTICASE 1
+#define MULTICASE 0
 void solve() {
-    i64 n;
+    int n;
     cin >> n;
-    cout << fstTrue(1LL, (i64)(1e14), [&](i64 x) -> bool {
-        // %3 == 0
-        i64 c = x / 3;
-        // 末尾为3的且不是3的倍数
-        if (x % 10 >= 3) {
-            c += x / 10 - (x / 10) / 3;
-        } else {
-            i64 tmp = x;
-            while (tmp % 10 != 3 and tmp) tmp--;
-            c += tmp / 10 - (tmp / 10) / 3;
+    string s;
+    vi cnt(26);
+    FOR(i, 0, n) {
+        cin >> s;
+        vi c(26);
+        for (char ch : s) {
+            c[ch - 'a']++;
         }
-        // debug(x, c, n);
-        return x - c >= n ? true : false;
-    }) << endl;
+        FOR(j, 0, 26) {
+            if (c[j]) cnt[j]++;
+        }
+    }
+    FOR(i, 0, 26) {
+        if (cnt[i] == n) {
+            cout << char('a' + i) << endl;
+            return;
+        }
+    }
 }
 
 int main() {
