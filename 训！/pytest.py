@@ -26,12 +26,3 @@ func = getattr(s, func_name)
 for args in testcases:
     print(func(*args))
 """
-LOCAL_DEBUG = 1
-if LOCAL_DEBUG:
-    def debug(*args, **kwargs):
-        print("\033[35m", end="")
-        print(*args, **kwargs)
-        print("\033[0m", end="")
-
-# 𝓽𝓱𝓮 𝓼𝓸𝓵𝓾𝓽𝓲𝓸𝓷 𝓸𝓯 𝔀𝔂𝓯0722
-

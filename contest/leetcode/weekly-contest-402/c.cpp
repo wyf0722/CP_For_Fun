@@ -115,9 +115,10 @@ public:
 		int n = p.size();
 		vl dp(n + 1);
 		FOR(i, 0, n) {
+            dp[i + 1] = dp[i];
 			auto &[x, c] = p[i];
 			int j = i - 1;
-			while (j && p[j].first >= x - 2) {
+			while (j >= 0 && p[j].first >= x - 2) {
 				j--;
 			}
 			chmax(dp[i + 1], dp[j + 1] + 1LL * x * c);
