@@ -120,14 +120,13 @@ bool chmax(T& a, const T& b) {
  */
 #define MULTICASE 1
 void solve() {
-    i64 n, a, b;
-    cin >> n >> a >> b;
-    i64 ans = 1LL * n * a;
-    if (a >= b) {
-        cout << ans << endl;
-    } else {
-        i64 x = min(b - a, n);
-        cout << (b + b - x + 1) * x / 2 + (n - x) * a << endl;
+    int n;
+    cin >> n;
+    int a, mx = 0;
+    FOR(i, 0, n) {
+        cin >> a;
+        if (i != n - 1) chmax(mx, a);
+        else cout << mx + a << endl;
     }
 }
 
