@@ -20,4 +20,3 @@ dy = [1, 0, -1, 0]
 def debug(*args, **kwargs):
     print("Line " + str(sys._getframe().f_lineno), end=": ")
     print(*args, **kwargs)
-
