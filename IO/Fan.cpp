@@ -30,8 +30,8 @@ using vpii = vector<pii>;
 using vpll = vector<pll>;
 const int inf = INT_MAX / 2 - 100;
 const i64 infLL = LLONG_MAX / 3;
-const int MOD = 1e9 + 7;
-const int dx[4]{1, 0, -1, 0}, dy[4]{0, 1, 0, -1};
+int MOD = 1e9 + 7;
+int dx[4]{1, 0, -1, 0}, dy[4]{0, 1, 0, -1};
 template<typename T> using min_heap=priority_queue<T,vector<T>,greater<T>>;
 template<typename T> using max_heap=priority_queue<T>;
 
@@ -120,34 +120,7 @@ bool chmax(T& a, const T& b) {
  */
 #define MULTICASE 0
 void solve() {
-    int n;
-    cin >> n;
-    vi tmp(n);
-    FOR(i, 0, n) {
-        cin >> tmp[i];
-    }
-    vi a(tmp);
-    a.insert(a.end(), all(tmp));
-    a.insert(a.end(), all(tmp));
-
-    deque<int> q;
-    int ans;
-    // i增大，约束减少，所以j一定单调不减
-    for (int i = 0, j = 0; i < n; i++) {
-        for (; j < 3 * n && (q.empty() || a[j] * 2 >= a[q.front()]); j++) {
-            while (!q.empty() && a[q.back()] <= a[j]) {
-                q.pop_back();
-            }
-            q.push_back(j);
-        }
-        if (j == 3 * n) {
-            ans = -1;
-        } else {
-            ans = j - i;
-        }
-        cout << ans << " \n"[i == n - 1];
-        while (!q.empty() && q.front() <= i) q.pop_front();
-    }
+    
 }
 
 int main() {

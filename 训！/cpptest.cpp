@@ -30,8 +30,8 @@ using vpii = vector<pii>;
 using vpll = vector<pll>;
 const int inf = INT_MAX / 2 - 100;
 const i64 infLL = LLONG_MAX / 3;
-const int MOD = 1e9 + 7;
-const int dx[4]{1, 0, -1, 0}, dy[4]{0, 1, 0, -1};
+int MOD = 1e9 + 7;
+int dx[4]{1, 0, -1, 0}, dy[4]{0, 1, 0, -1};
 template<typename T> using min_heap=priority_queue<T,vector<T>,greater<T>>;
 template<typename T> using max_heap=priority_queue<T>;
 
@@ -104,24 +104,3 @@ bool chmax(T& a, const T& b) {
  * 𝓽𝓱𝓮 𝓼𝓸𝓵𝓾𝓽𝓲𝓸𝓷 𝓸𝓯 𝔀𝔂𝓯0722
  */
 
-class Solution {
-public:
-    long long maximumTotalDamage(vector<int>& power) {
-        map<int, int> cnt;
-        for (auto &i : power) {
-            cnt[i]++;
-        }
-        vpii p(all(cnt));
-		int n = p.size();
-		vl dp(n + 1);
-		FOR(i, 0, n) {
-			auto &[x, c] = p[i];
-			int j = i - 1;
-			while (j && p[j].first >= x - 2) {
-				j--;
-			}
-			chmax(dp[i + 1], dp[j + 1] + 1LL * x * c);
-		}
-		return dp.back();
-    }
-};
