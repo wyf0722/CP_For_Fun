@@ -35,3 +35,22 @@ if LOCAL_DEBUG:
 
 # 𝓽𝓱𝓮 𝓼𝓸𝓵𝓾𝓽𝓲𝓸𝓷 𝓸𝓯 𝔀𝔂𝓯0722
 
+class Solution:
+    def maximumTotalDamage(self, power: List[int]) -> int:
+        cnt = defaultdict(int)
+        for i in power:
+            cnt[i] += i
+        infos = list(sorted(cnt.items()))
+        n = len(infos)
+        dp = [0] * (n + 1)
+        mx = [0] * (n + 1)
+        ans = 0
+        for i in range(n):
+            v, c = infos[i][0], infos[i][1]
+            if i - 1 >= 0 and infos[i - 1][0] < v - 2:
+                dp[i + 1] = max(dp[i + 1], dp[i] + c)
+            if i - 2 >= 0 and infos[i - 2][0] < v - 2:
+                dp[i + 1] = max(dp[i + 1], dp[i - 1] + c)
+            dp[i + 1] = max(dp[i + 1], mx[max(0, i - 2)] + c)
+            mx[i + 1] = max(mx[i], dp[i + 1])
+        return mx[-1]
