@@ -103,7 +103,7 @@ bool chmax(T& a, const T& b) {
 #ifdef FAN_DEBUG
 #include "../Util_For_Debug/template_cpp20_std.cpp"
 #else
-#define debug(...)z
+#define debug(...)
 #endif
 
 /***
@@ -120,6 +120,7 @@ bool chmax(T& a, const T& b) {
  */
 #define MULTICASE 0
 void solve() {
+    
 }
 
 int main() {
