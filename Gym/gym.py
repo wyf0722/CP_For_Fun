@@ -30,22 +30,3 @@ def debug(*args, **kwargs):
         print(f"{COLOR}Line {line_number}{RESET}: ", *args, **kwargs)
     else:
         print(f"Line {line_number}: ", *args, **kwargs)
-
-class Solution:
-    def minTaps(self, n: int, ranges: List[int]) -> int:
-        max_r = 0
-        segs = [(i - r, i + 1) for i, r in enumerate(ranges)]
-        segs.sort()
-        i = 0
-        while i < n + 1:
-            mx = -1
-            while i < n + 1 and segs[i][0] <= max_r:
-                mx = max(mx, max_r)
-                i += 1
-            if mx == -1:
-                return -1
-            max_r = mx
-            ans += 1
-            if max_r >= n:
-                return ans
-        return -1

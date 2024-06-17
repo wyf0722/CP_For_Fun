@@ -101,9 +101,9 @@ bool chmax(T& a, const T& b) {
 }  // set a = max(a,b)
 
 #ifdef FAN_DEBUG
-#include "../Debug/template_cpp20_std.cpp"
+#include "../Util_For_Debug/template_cpp20_std.cpp"
 #else
-#define debug(...)
+#define debug(...)z
 #endif
 
 /***
@@ -120,42 +120,6 @@ bool chmax(T& a, const T& b) {
  */
 #define MULTICASE 0
 void solve() {
-    int n;
-    cin >> n;
-    vi a(n);
-    i64 total = 0;
-    FOR(i, 0, n) {
-        cin >> a[i];
-        total += a[i];
-    }
-    vi l(n + 1), r(n + 1);
-    FOR(i, 0, n) {
-        l[i + 1] = max(l[i], a[i]);
-    }
-    ROF(i, 0, n) {
-        r[i] = max(r[i + 1], a[i]);
-    }
-    // 让其他颜色的气球相互消耗
-    int ans = 0;
-    FOR(i, 0, n) {
-        // 剩余n-1种，最大的和除去最大的之和
-        int mx = max(l[i], r[i + 1]);
-        i64 remain = total - a[i];
-        if (mx <= remain - mx) {
-            // 剩一个
-            if (remain & 1) {
-                ans += (a[i] >= 2);
-            } else {
-                // 不剩
-                ans++;
-            }
-        } else {
-            if (a[i] > 2 * mx - remain) {
-                ans++;
-            }
-        }
-    }
-    cout << ans << endl;
 }
 
 int main() {
