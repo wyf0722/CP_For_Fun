@@ -256,7 +256,7 @@ inline namespace Debug {
              << "[" << args << "] = ";
     }
 
-#ifdef LOCAL
+#ifdef FAN_DEBUG
 #define dbg(args...) err_prefix(__FUNCTION__, __LINE__, #args), err(args)
 #define dbgn(args...) err_prefix(__FUNCTION__, __LINE__, #args), errn(args)
 #else
@@ -299,3 +299,8 @@ inline namespace FileIO {
  * WRITE STUFF DOWN
  * DON'T GET STUCK ON ONE APPROACH
  */
+
+int main() {
+    def(int, n);
+    dbg(n);
+}
