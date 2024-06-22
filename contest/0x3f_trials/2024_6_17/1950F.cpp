@@ -127,28 +127,23 @@ void solve() {
         cout << "-1\n";
         return;
     }
+    queue<int> q;
+    q.push(0);
     int ans = 0;
-    // queue<int> q;
-    // q.push(0);
-    // while (!q.empty()) {
-    //     int x = q.front();
-    //     q.pop();
-    //     ans = x;
-    //     if (a > 0) {
-    //         a--;
-    //         q.push(x + 1);
-    //         q.push(x + 1);
-    //     } else if (b > 0) {
-    //         b--;
-    //         q.push(x + 1);
-    //     }
-    // }    
-    // cout << ans << endl;
-
-    int layer = a == 0 ? 0 : 32 - __builtin_clz(a);
-    b -= (1 << layer) - c;
-    chmax(b, 0);
-    cout << layer + (b + c - 1) / c << endl;  
+    while (!q.empty()) {
+        int x = q.front();
+        q.pop();
+        ans = x;
+        if (a > 0) {
+            a--;
+            q.push(x + 1);
+            q.push(x + 1);
+        } else if (b > 0) {
+            b--;
+            q.push(x + 1);
+        }
+    }    
+    cout << ans << endl;
 }
 
 int main() {

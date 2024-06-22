@@ -257,11 +257,11 @@ inline namespace Debug {
     }
 
 #ifdef FAN_DEBUG
-#define dbg(args...) err_prefix(__FUNCTION__, __LINE__, #args), err(args)
-#define dbgn(args...) err_prefix(__FUNCTION__, __LINE__, #args), errn(args)
+#define debug(args...) err_prefix(__FUNCTION__, __LINE__, #args), err(args)
+#define debugn(args...) err_prefix(__FUNCTION__, __LINE__, #args), errn(args)
 #else
-#define dbg(...)
-#define dbgn(args...)
+#define debug(...)
+#define debugn(args...)
 #endif
 
     const auto beg_time = std::chrono::high_resolution_clock::now();
@@ -300,7 +300,3 @@ inline namespace FileIO {
  * DON'T GET STUCK ON ONE APPROACH
  */
 
-int main() {
-    def(int, n);
-    dbg(n);
-}

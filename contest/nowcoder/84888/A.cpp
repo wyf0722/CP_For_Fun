@@ -118,37 +118,13 @@ bool chmax(T& a, const T& b) {
  *  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
  *           ░     ░ ░      ░  ░
  */
-#define MULTICASE 1
+#define MULTICASE 0
 void solve() {
-    int a, b, c;
-    cin >> a >> b >> c;
-    // a + b + c = a * 2 + b + 1 -> a + 1 = c
-    if (a + 1 != c) {
-        cout << "-1\n";
-        return;
-    }
-    int ans = 0;
-    // queue<int> q;
-    // q.push(0);
-    // while (!q.empty()) {
-    //     int x = q.front();
-    //     q.pop();
-    //     ans = x;
-    //     if (a > 0) {
-    //         a--;
-    //         q.push(x + 1);
-    //         q.push(x + 1);
-    //     } else if (b > 0) {
-    //         b--;
-    //         q.push(x + 1);
-    //     }
-    // }    
-    // cout << ans << endl;
-
-    int layer = a == 0 ? 0 : 32 - __builtin_clz(a);
-    b -= (1 << layer) - c;
-    chmax(b, 0);
-    cout << layer + (b + c - 1) / c << endl;  
+    // 1 1 2 1 3 1 4 1 5 1 6
+    i64 n;
+    cin >> n;
+    i64 x = (n + 1) / 2;
+    cout << (1 + x) * x / 2 + n - x << endl;
 }
 
 int main() {
