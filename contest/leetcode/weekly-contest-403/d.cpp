@@ -106,15 +106,63 @@ bool chmax(T& a, const T& b) {
 
 class Solution {
 public:
-    long long maximumTotalCost(vector<int>& nums) {
-        i64 ans = 0;
-        int n = nums.size();
-        vector<vector<i64>> dp(n, vector<i64>(2, -infLL));
-        dp[0][0] = nums[0];
-        FOR(i, 1, n) {
-            dp[i][0] = max({dp[i - 1][0] + nums[i], dp[i - 1][1] + nums[i]});
-            dp[i][1] = dp[i - 1][0] - nums[i];
+    vector<vector<int>> rotate_matrix(vector<vector<int>> &matrix) {
+        int m = matrix.size(), n = matrix[0].size();
+        vvi rotated(n, vi(m));
+        FOR(i, 0, m) {
+            FOR(j, 0, n) {
+                rotated[j][m - 1 - i] = matrix[i][j];
+            }
         }
-        return max(dp[n - 1][0], dp[n - 1][1]);
+        return rotated;
+    }
+
+    int minimumOfArea(vector<vector<int>> &area, int u, int d, int l, int r) {
+        int mx = area.size(), Mx = -1;
+        int my = area[0].size(), My = -1;
+        FOR(i, u, d) {
+            FOR(j, l, r) {
+                if (area[i][j] == 1) {
+                    chmin(mx, i);
+                    chmin(my, j);
+                    chmax(Mx, i);
+                    chmax(My, j);
+                }
+            }
+        }
+        return (My - my + 1) * (Mx - mx + 1);
+    }
+
+    int f(vector<vector<int>>& grid) {
+        int ans = inf;
+        int m = grid.size(), n = grid[0].size();
+        if (m >= 3) {
+            for (int i = 1; i < m; i++) {
+                for (int j = i + 1; j < m; j++) {
+                    chmin(ans, minimumOfArea(grid, 0, i, 0, n) + 
+                    minimumOfArea(grid, i, j, 0, n) + 
+                    minimumOfArea(grid, j, m, 0, n));
+                }
+            }
+        }
+        if (m >= 2 && n >= 2) {
+            for (int i = 1; i < m; i++) {
+                for (int j = 1; j < n; j++) {
+                    chmin(ans, minimumOfArea(grid, 0, i, 0, n) +
+                    minimumOfArea(grid, i, m, 0, j) + 
+                    minimumOfArea(grid, i, m, j, n));
+
+                    chmin(ans, minimumOfArea(grid, 0, i, 0, j) + 
+                    minimumOfArea(grid, 0, i, j, n) + 
+                    minimumOfArea(grid, i, m, 0, n));
+                }
+            }
+        }
+        return ans;
+    }
+
+    int minimumSum(vector<vector<int>>& grid) {
+        auto rotated_grid = rotate_matrix(grid);
+        return min(f(grid), f(rotated_grid));
     }
 };

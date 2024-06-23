@@ -109,7 +109,9 @@ public:
     long long maximumTotalCost(vector<int>& nums) {
         i64 ans = 0;
         int n = nums.size();
-        vector<vector<i64>> dp(n, vector<i64>(2, -infLL));
+        // vector<vector<i64>> dp(n, vector<i64>(2, -infLL));
+        // vector嵌套性能较低
+        vector<array<i64, 2>> dp(n, {-infLL, -infLL});
         dp[0][0] = nums[0];
         FOR(i, 1, n) {
             dp[i][0] = max({dp[i - 1][0] + nums[i], dp[i - 1][1] + nums[i]});
