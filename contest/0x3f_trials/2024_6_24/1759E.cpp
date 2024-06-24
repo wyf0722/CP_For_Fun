@@ -120,7 +120,29 @@ bool chmax(T& a, const T& b) {
  */
 #define MULTICASE 1
 void solve() {
-    
+    int n, h;
+    cin >> n >> h;
+    vi a(n);
+    FOR(i, 0, n) {
+        cin >> a[i];
+    }
+    sort(all(a));
+    auto get = [&](vi vec) -> int {
+        i64 cur = h;
+        int now = 0;
+        for (int i = 0; i < n;) {
+            if (cur > a[i]) {
+                cur += a[i++] / 2;
+            } else {
+                if (now == 3) {
+                    return i; 
+                }
+                cur *= vec[now++];
+            }
+        }
+        return n;
+    };
+    cout << max({get({2, 2, 3}), get({2, 3, 2}), get({3, 2, 2})}) << endl;
 }
 
 int main() {
