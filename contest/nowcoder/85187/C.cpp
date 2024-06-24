@@ -120,7 +120,25 @@ bool chmax(T& a, const T& b) {
  */
 #define MULTICASE 0
 void solve() {
-    
+    int n;
+    cin >> n;
+    string x, y;
+    cin >> x >> y;
+    vpii ans;
+    FOR(i, 0, n - 1) {
+        if (x[i] != y[i]) {
+            x[i + 1] = "10"[x[i + 1] - '0'];
+            ans.emplace_back(i + 1, i + 2);
+        }
+    }
+    if (x.back() != y.back()) {
+        cout << "-1\n";
+    } else {
+        cout << ans.size() << endl;
+        for (auto &[a, b] : ans) {
+            cout << a << " " << b << endl;
+        }
+    }
 }
 
 int main() {

@@ -120,7 +120,9 @@ bool chmax(T& a, const T& b) {
  */
 #define MULTICASE 0
 void solve() {
-    
+    int a, b, c;
+    cin >> a >> b >> c;
+    cout << max({a, b, c}) * 3 - a - b - c << endl;
 }
 
 int main() {
