@@ -2,15 +2,8 @@
 	{
 		"correct_answers":
 		[
-			"2\n1 2\n2 3"
+			"1\n1\n4\n7\n4\n28"
 		],
-		"test": "3\n010\n111\n"
-	},
-	{
-		"correct_answers":
-		[
-			"-1"
-		],
-		"test": "1\n0\n1\n"
+		"test": "6\n1\n1\n2\n1 1\n3\n1 2 1\n4\n2 3 2 1\n5\n4 5 4 5 4\n10\n1 7 7 2 3 4 3 2 1 100\n"
 	}
 ]

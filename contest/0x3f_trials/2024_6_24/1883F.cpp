@@ -123,13 +123,13 @@ void solve() {
     int n;
     cin >> n;
     vi a(n);
-    unordered_map<int, int> cnt;
+    map<int, int> cnt;
     FOR(i, 0, n) {
         cin >> a[i];
         cnt[a[i]]++;
     }
     i64 ans = 0;
-    unordered_set<int> pre;
+    set<int> pre;
     FOR(i, 0, n) {
         if (pre.find(a[i]) == pre.end()) {
             ans += cnt.size();
