@@ -120,7 +120,30 @@ bool chmax(T& a, const T& b) {
  */
 #define MULTICASE 0
 void solve() {
-    
+    string s;
+    cin >> s;
+    int n = s.size();
+    vvl dif(26, vl(n + 1)), sum(26, vl(n + 1));
+    FOR(i, 0, n) {
+        FOR(j, 0, 26) {
+            if (s[i] - 'a' == j) {
+                dif[j][i + 1] = dif[j][i];
+                sum[j][i + 1] = sum[j][i];
+            } else {
+                dif[j][i + 1] = dif[j][i] + 1;
+                sum[j][i + 1] = sum[j][i] + (n - i);
+            }
+        }
+    }
+    i64 ans = 0;
+    FOR(i, 0, n) {
+        int j = n - 1 - i, c = s[i] - 'a';
+        chmax(j, i + 1);
+        i64 c1 = (dif[c][j] - dif[c][i]) * (i + 1);
+        i64 c2 = sum[c][n] - sum[c][j];
+        ans += c1 + c2;
+    }
+    cout << ans << endl;
 }
 
 int main() {
