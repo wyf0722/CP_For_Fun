@@ -153,10 +153,17 @@ if 1:
 #  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
 #           ░     ░ ░      ░  ░
 MULTITEST = 0
-MOD = 1_000_000_007
+MOD = 998244353
 def main():
-    pass
-    
+    n = II()
+    a = LII()
+    # 0和非0
+    zero = sum(1 for x in a if x == 0)
+    if zero and zero != n:
+        print('NO')
+    else:
+        print('YES')
+
 t = 1
 if MULTITEST:
     t = II()

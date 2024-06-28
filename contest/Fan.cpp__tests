@@ -4,13 +4,6 @@
 		[
 			"6"
 		],
-		"test": "abca\n"
-	},
-	{
-		"correct_answers":
-		[
-			"5"
-		],
-		"test": "acac\n"
+		"test": "3 3 10\n1 2 3\n0 1 4\n0 0 0\n1 0 0\n0 0 1\n0 1 0\n"
 	}
 ]

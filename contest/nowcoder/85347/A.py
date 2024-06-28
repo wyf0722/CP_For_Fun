@@ -153,10 +153,18 @@ if 1:
 #  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
 #           ░     ░ ░      ░  ░
 MULTITEST = 0
-MOD = 1_000_000_007
+MOD = 998244353
 def main():
-    pass
-    
+    n = II()
+    a = LII()
+    cnt = defaultdict(int)
+    ok = 0
+    for x in a:
+        cnt[x] += 1
+        if cnt[x] == 3:
+            ok = 1
+    print('YES' if ok else 'NO')
+
 t = 1
 if MULTITEST:
     t = II()
