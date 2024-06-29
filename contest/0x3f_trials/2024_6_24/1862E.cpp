@@ -120,7 +120,27 @@ bool chmax(T& a, const T& b) {
  */
 #define MULTICASE 1
 void solve() {
-    
+    int n, m, d;
+    cin >> n >> m >> d;
+    vi a(n);
+    FOR(i, 0, n) {
+        cin >> a[i];
+    }   
+    i64 ans = 0;
+    // 最后一个元素下标为i，那么总减去的值为d * (i + 1)
+    priority_queue<int, vi, greater<int>> heap;
+    i64 s = 0;
+    FOR(i, 0, n) {
+        chmax(ans, s + a[i] - 1LL * d * (i + 1));
+        if (a[i] <= 0) continue;
+        heap.push(a[i]);
+        s += a[i];
+        if (heap.size() == m) {
+            s -= heap.top();
+            heap.pop();
+        }
+    }
+    cout << ans << endl;
 }
 
 int main() {
