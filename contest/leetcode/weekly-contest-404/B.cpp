@@ -106,47 +106,22 @@ bool chmax(T& a, const T& b) {
 
 class Solution {
 public:
-    int maximumLength(vector<int>& nums, int k) {
+    int maximumLength(vector<int>& nums) {
         int n = nums.size();
-		vi fst(k, -1);
-		int ans = 2;
-		unordered_map<int, vi> rec;
-		FOR(i, 0, n) {
-			if (fst[nums[i] % k] == -1) {
-				fst[nums[i] % k] = i;
-			}
-			rec[nums[i] % k].push_back(i);
-			nums[i] %= k;
+		int even = 0, odd = 0;
+		for (int x : nums) {
+			if (x & 1) odd++;
+			else even++;
 		}
-		FOR(st, 0, k) {
-			if (fst[st] == -1) continue;
-			FOR(m, 0, k) {
-				int pre = fst[st];
-				int r = 1;
-				while (1) {
-					int t = (m - nums[pre] + k) % k;
-                    if (rec.find(t) == rec.end()) break;
-					auto &ids = rec[t];
-					int lo = -1, hi = ids.size();
-					while (lo + 1 < hi) {
-						int mid = (lo + hi) / 2;
-						if (ids[mid] > pre) {
-							hi = mid;
-						} else {
-							lo = mid;
-						}
-					}
-					if (hi == ids.size()) {
-                        break;
-                    } else {
-						r++;
-						pre = ids[hi];
-					}
-				}
-				chmax(ans, r);
+		int ans = max(even, odd);
+		int pre = -1;
+		int cnt = 0;
+		for (int x : nums) {
+			if (pre != x % 2) {
+				cnt++;
+				pre = x % 2;
 			}
 		}
-
-		return ans;
+		return max(ans, cnt);
     }
 };

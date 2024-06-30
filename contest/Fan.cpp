@@ -118,9 +118,22 @@ bool chmax(T& a, const T& b) {
  *  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
  *           ░     ░ ░      ░  ░
  */
-#define MULTICASE 1
+#define MULTICASE 0
 void solve() {
-    
+    i64 n, m;
+    cin >> n >> m;
+    i64 pre = -infLL;
+    int ans = n;
+    FOR(i, 0, n) {
+        i64 y;
+        cin >> y;
+        if (y - pre < m) {
+            ans--;
+        } else {
+            pre = y;
+        }
+    }
+    cout << ans << endl;
 }
 
 int main() {

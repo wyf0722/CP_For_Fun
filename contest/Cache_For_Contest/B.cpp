@@ -106,20 +106,42 @@ bool chmax(T& a, const T& b) {
 
 class Solution {
 public:
-    int minimumArea(vector<vector<int>>& grid) {
-        int m = grid.size(), n = grid[0].size();
-        int mx = m, Mx = -1;
-        int my = n, My = -1;
-        FOR(i, 0, m) {
-            FOR(j, 0, n) {
-                if (grid[i][j] == 1) {
-                    chmin(mx, i);
-                    chmin(my, j);
-                    chmax(Mx, i);
-                    chmax(My, j);
-                }
-            }
-        }
-        return (My - my + 1) * (Mx - mx + 1);
+    int maximumLength(vector<int>& nums) {
+        int n = nums.size();
+		int ans = 2;
+		vi cnt(2);
+		int fst_even = -1, fst_odd = -1;
+		FOR(i, 0, n) {
+			cnt[nums[i] & 1]++;
+			if (nums[i] & 1) {
+				if (fst_odd == -1) fst_odd = i;
+			} else {
+				if (fst_even == -1) fst_even = i;
+			}
+		}
+		chmax(ans, max(cnt[0], cnt[1]));
+		if (fst_even != -1) {
+			int r = 1;
+			int pre = fst_even, now = fst_even + 1;
+			for (; now < n; now++) {
+				if ((nums[pre] & 1) != (nums[now] & 1)) {
+					r++;
+					pre= now;
+				}
+			}
+			chmax(ans, r);
+		}
+		if (fst_odd != -1) {
+			int r = 1;
+			int pre = fst_odd, now = fst_odd + 1;
+			for (; now < n; now++) {
+				if ((nums[pre] & 1) != (nums[now] & 1)) {
+					r++;
+					pre= now;
+				}
+			}
+			chmax(ans, r);
+		}
+		return ans;
     }
 };

@@ -106,47 +106,35 @@ bool chmax(T& a, const T& b) {
 
 class Solution {
 public:
-    int maximumLength(vector<int>& nums, int k) {
-        int n = nums.size();
-		vi fst(k, -1);
-		int ans = 2;
-		unordered_map<int, vi> rec;
-		FOR(i, 0, n) {
-			if (fst[nums[i] % k] == -1) {
-				fst[nums[i] % k] = i;
-			}
-			rec[nums[i] % k].push_back(i);
-			nums[i] %= k;
+	int get(vector<vector<int>> &edge) {
+		int n = edge.size() + 1;
+		vvi g(n);
+		for (auto &e : edge) {
+			int x = e[0], y = e[1];
+			g[x].push_back(y);
+			g[y].push_back(x);
 		}
-		FOR(st, 0, k) {
-			if (fst[st] == -1) continue;
-			FOR(m, 0, k) {
-				int pre = fst[st];
-				int r = 1;
-				while (1) {
-					int t = (m - nums[pre] + k) % k;
-                    if (rec.find(t) == rec.end()) break;
-					auto &ids = rec[t];
-					int lo = -1, hi = ids.size();
-					while (lo + 1 < hi) {
-						int mid = (lo + hi) / 2;
-						if (ids[mid] > pre) {
-							hi = mid;
-						} else {
-							lo = mid;
-						}
-					}
-					if (hi == ids.size()) {
-                        break;
-                    } else {
-						r++;
-						pre = ids[hi];
-					}
+		vi depth(n);
+		int mx = 0;
+		auto dfs = [&](auto &&self, int x, int fa) -> void {
+			for (int y : g[x]) {
+				if (y == fa) continue;
+				depth[y] = depth[x] + 1;
+				if (depth[y] >= depth[mx]) {
+					mx = y;
 				}
-				chmax(ans, r);
+				self(self, y, x);
 			}
-		}
+		};
+		dfs(dfs, 0, -1);
+		depth[mx] = 0;
+		dfs(dfs, mx, -1);
+		return depth[mx];
+	}
 
-		return ans;
+    int minimumDiameterAfterMerge(vector<vector<int>>& edges1, vector<vector<int>>& edges2) {
+        int d1 = get(edges1);
+		int d2 = get(edges2);
+		return max({d1, d2, (d1 + 1) / 2 + (d2 + 1) / 2 + 1});
     }
 };

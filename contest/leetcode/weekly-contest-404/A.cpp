@@ -106,47 +106,32 @@ bool chmax(T& a, const T& b) {
 
 class Solution {
 public:
-    int maximumLength(vector<int>& nums, int k) {
-        int n = nums.size();
-		vi fst(k, -1);
-		int ans = 2;
-		unordered_map<int, vi> rec;
-		FOR(i, 0, n) {
-			if (fst[nums[i] % k] == -1) {
-				fst[nums[i] % k] = i;
-			}
-			rec[nums[i] % k].push_back(i);
-			nums[i] %= k;
-		}
-		FOR(st, 0, k) {
-			if (fst[st] == -1) continue;
-			FOR(m, 0, k) {
-				int pre = fst[st];
-				int r = 1;
-				while (1) {
-					int t = (m - nums[pre] + k) % k;
-                    if (rec.find(t) == rec.end()) break;
-					auto &ids = rec[t];
-					int lo = -1, hi = ids.size();
-					while (lo + 1 < hi) {
-						int mid = (lo + hi) / 2;
-						if (ids[mid] > pre) {
-							hi = mid;
-						} else {
-							lo = mid;
-						}
-					}
-					if (hi == ids.size()) {
-                        break;
+    int maxHeightOfTriangle(int red, int blue) {
+        int ans = 0;
+        auto get = [&](int x, int y) -> int {
+            int cur = 1;
+            int r = 0;
+            while (1) {
+                if (cur & 1) {
+                    if (x >= cur) {
+                        x -= cur;
+                        cur++;
+                        r++;
                     } else {
-						r++;
-						pre = ids[hi];
-					}
-				}
-				chmax(ans, r);
-			}
-		}
-
-		return ans;
+                        break;
+                    }
+                } else {
+                    if (y >= cur) {
+                        y -= cur;
+                        cur++;
+                        r++;
+                    } else {
+                        break;
+                    }
+                }
+            }
+            return r;
+        };
+        return max(get(red, blue), get(blue, red));
     }
 };

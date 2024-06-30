@@ -155,7 +155,8 @@ if 1:
 MULTITEST = 0
 MOD = 1_000_000_007
 def main():
-    pass
+    a, b = MII()
+    print(a % abs(b))
     
 t = 1
 if MULTITEST:
