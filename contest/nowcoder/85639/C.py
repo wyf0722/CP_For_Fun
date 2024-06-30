@@ -152,21 +152,20 @@ if 1:
 #  ░     ░░▒░ ░ ░   ░  ▒   ░ ░▒ ▒░
 #  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
 #           ░     ░ ░      ░  ░
-MULTITEST = 1
+MULTITEST = 0
 MOD = 1_000_000_007
 def main():
-    l, r = MII()
+    n, x = MII()
+    a = LII()
+    pre_min = 0
     ans = 0
-
-    # [0, x]在bit位置1的个数
-    def get(n:int, bit:int):
-        return (n >> (bit + 1) << i) + max(0, (n & ((2 << i) - 1)) - (1 << i) + 1)
-
-    for i in range(60):
-        c = get(r, i) - get(l - 1, i)
-        ans += (c & 1) << i
+    s = 0
+    for val in a:
+        s += val - x
+        ans = max(ans, s - pre_min)
+        pre_min = min(pre_min, s)
     print(ans)
-
+    
 t = 1
 if MULTITEST:
     t = II()
