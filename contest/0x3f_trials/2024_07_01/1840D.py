@@ -155,7 +155,28 @@ if 1:
 MULTITEST = 1
 MOD = 1_000_000_007
 def main():
-    pass
+    n = II()
+    a = LII()
+    a.sort()
+    lo = -1
+    hi = a[-1] - a[0]
+
+    def check(d:int) -> bool:
+        r = 0
+        last = -10**10
+        for x in a:
+            if x - last > 2 * d:
+                r += 1
+                last = x
+        return r <= 3
+
+    while lo + 1 < hi:
+        mid = (lo + hi) // 2
+        if check(mid):
+            hi = mid
+        else:
+            lo = mid
+    print(hi)
 
 t = 1
 if MULTITEST:
