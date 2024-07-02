@@ -155,7 +155,11 @@ if 1:
 MULTITEST = 0
 MOD = 1_000_000_007
 def main():
-    pass
+    s = I()
+    if s.index('R') < s.index('M'):
+        print('Yes')
+    else:
+        print('No')
 
 t = 1
 if MULTITEST:

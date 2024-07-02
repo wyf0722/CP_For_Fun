@@ -155,7 +155,17 @@ if 1:
 MULTITEST = 0
 MOD = 1_000_000_007
 def main():
-    pass
+    n = II()
+    A = LII()
+    W = LII()
+    rec = defaultdict(list)
+    for i, x in enumerate(A):
+        rec[x].append(W[i])
+    ans = 0
+    for v in rec.values():
+        if len(v) > 1:
+            ans += sum(v) - max(v)
+    print(ans)
 
 t = 1
 if MULTITEST:

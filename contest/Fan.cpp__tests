@@ -2,10 +2,22 @@
 	{
 		"correct_answers":
 		[
-			"2\n0\n60\n3\n0\n7",
-			"3",
-			"2"
+			"Yes"
 		],
-		"test": "3 2\n1 2 3\n"
+		"test": "atcoder toe\n"
+	},
+	{
+		"correct_answers":
+		[
+			"No"
+		],
+		"test": "beginner r\n"
+	},
+	{
+		"correct_answers":
+		[
+			"No"
+		],
+		"test": "verticalreading agh\n"
 	}
 ]
