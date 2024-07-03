@@ -2,22 +2,22 @@
 	{
 		"correct_answers":
 		[
-			"Yes"
+			"1"
 		],
-		"test": "atcoder toe\n"
+		"test": "3\n0 2 0\n"
 	},
 	{
 		"correct_answers":
 		[
-			"No"
+			"2"
 		],
-		"test": "beginner r\n"
+		"test": "4\n0 0 1 1\n"
 	},
 	{
 		"correct_answers":
 		[
-			"No"
+			"4"
 		],
-		"test": "verticalreading agh\n"
+		"test": "7\n0 1 0 0 1 0 2\n"
 	}
 ]

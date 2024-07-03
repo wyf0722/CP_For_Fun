@@ -120,40 +120,7 @@ bool chmax(T& a, const T& b) {
  */
 #define MULTICASE 0
 void solve() {
-    int n;
-    cin >> n;
-    vi a(n);
-    FOR(i, 0, n) {
-        cin >> a[i];
-    }
-    // 考察每个非0段
-    int ans = 0;
-    auto paint = [&](int idx) -> bool {
-        if (idx < 0 || idx >= n || a[idx] != 0) return false;
-        a[idx] = 1;
-        return true;
-    };
-    for (int i = 0; i < n;) {
-        if (a[i] == 0) i++;
-        else {
-            int st = i;
-            int two = 0;
-            for (; i < n && a[i] != 0; i++) {
-                if (a[i] == 2) two = 1;
-            }
-            ans += 1;
-            if (two) {
-                paint(st - 1);
-                if (paint(i)) i++;
-            } else {
-                if (!paint(st - 1)) {
-                    if (paint(i)) i++;
-                }
-            }
-        }
-    }
-    for (int x : a) ans += (x == 0);
-    cout << ans << endl;
+    
 }
 
 int main() {
