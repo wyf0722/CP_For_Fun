@@ -4,7 +4,7 @@
 *.py__tests
 *.cpp__tests
 # cache file
-contest\Cache_For_Contest
+contest/Cache_For_Contest/*
 
 # Global/VisualStudioCode.gitignore
 .vscode/*
