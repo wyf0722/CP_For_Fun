@@ -119,8 +119,90 @@ bool chmax(T& a, const T& b) {
  *           ░     ░ ░      ░  ░
  */
 #define MULTICASE 0
+struct DSU {
+    std::vector<int> f, siz;
+     
+    DSU() {}
+    DSU(int n) {
+        init(n);
+    }
+     
+    void init(int n) {
+        f.resize(n);
+        std::iota(f.begin(), f.end(), 0);
+        siz.assign(n, 1);
+    }
+     
+    int find(int x) {
+        while (x != f[x]) {
+            x = f[x] = f[f[x]];
+        }
+        return x;
+    }
+     
+    bool same(int x, int y) {
+        return find(x) == find(y);
+    }
+     
+    bool merge(int x, int y) {
+        x = find(x);
+        y = find(y);
+        if (x == y) {
+            return false;
+        }
+        siz[x] += siz[y];
+        f[y] = x;
+        return true;
+    }
+     
+    int size(int x) {
+        return siz[find(x)];
+    }
+};
 void solve() {
+    int n, m, q;
+    cin >> n >> m >> q;
+    vvi g(n + 1);   
+    while (m--) {
+        int x, y;
+        cin >> x >> y;
+        g[x].push_back(y);
+        g[y].push_back(x);
+    }
+    DSU dsu(n + 1);
+    vi d(n + 1);
+    FOR(i, 0, n) {
+        if (dsu.find(i) != i) continue;
+        auto dfs = [&](auto &&self, int x, int f) -> int {
+            dsu.merge(i, x);
+            int mx = 0;
+            for (int y : g[x]) {
+                if (y == f) continue;
+                int cur = self(self, y, x) + 1;
+                chmax(d[i], cur + mx);
+                chmax(mx, cur);
+            }
+            return mx;
+        };
+        dfs(dfs, i, 0);
+    }
 
+    while (q--) {
+        int op, x;
+        cin >> op >> x;
+        if (op == 1) {
+            cout << d[dsu.find(x)] << endl;
+        } else {
+            int y;
+            cin >> y;
+            x = dsu.find(x);
+            y = dsu.find(y);
+            if (x != y) {
+                chmax(d[x], max(d[y], 1 + (d[x] + 1) / 2 + (d[y] + 1) / 2));
+                dsu.merge(x, y);
+            }
+        }
+    }
 }
 
 int main() {
