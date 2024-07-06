@@ -31,3 +31,14 @@ def debug(*args, **kwargs):
     else:
         print(f"Line {line_number}: ", *args, **kwargs)
 
+
+
+class Solution:
+    def numberOfAlternatingGroups(self, colors: List[int]) -> int:
+        v = colors + colors[:2]
+        n = len(v)
+        ans = 0
+        for i in range(n - 2):
+            if v[i] != v[i + 1] and v[i + 1] != v[i + 2]:
+                ans += 1
+        return ans

@@ -31,3 +31,20 @@ def debug(*args, **kwargs):
     else:
         print(f"Line {line_number}: ", *args, **kwargs)
 
+class Solution:
+    def maximumPoints(self, v: List[int], x: int) -> int:
+        v.sort()
+        n = len(v)
+        i, j = 0, n - 1
+        ans = 0
+        while i <= j:
+            if x >= v[i]:
+               ans += x // v[i]
+               x %= v[i]
+            else:
+                if ans >= 1:
+                    x += v[j]
+                    j -= 1
+                else:
+                    break
+        return ans 
