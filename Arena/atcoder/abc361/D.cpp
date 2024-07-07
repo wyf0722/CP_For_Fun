@@ -120,7 +120,52 @@ bool chmax(T& a, const T& b) {
  */
 #define MULTICASE 0
 void solve() {
-    
+    int n;
+    cin >> n;
+    string s, t;
+    cin >> s >> t;
+
+    n += 2;
+    int c = 1;
+    FOR(i, 0, n) c *= 3;
+    vi dis(c, -1);
+    // 3进制描述状态
+    int src = 0, des = 0;
+    FOR(i, 0, n) {
+        src = src * 3 + (i < n - 2 ? (s[i] == 'W' ? 1 : 2) : 0);
+        des = des * 3 + (i < n - 2 ? (t[i] == 'W' ? 1 : 2) : 0);
+    }
+    queue<int> q;
+    dis[src] = 0;
+    q.push(src);
+    vi rec(n);
+    while (!q.empty()) {
+        int x = q.front();
+        q.pop();
+        int d_x = dis[x];
+        ROF(i, 0, n) {
+            rec[i] = x % 3;
+            x /= 3;
+        }
+        // 空缺位置
+        int p = find(all(rec), 0) - rec.begin();
+        FOR(i, 0, n - 1) {
+            if (rec[i] != 0 && rec[i + 1] != 0) {
+                auto tmp = rec;
+                swap(tmp[p], tmp[i]);
+                swap(tmp[p + 1], tmp[i + 1]);
+                int y = 0;
+                FOR(i, 0, n) {
+                    y = y * 3 + tmp[i];
+                }
+                if (dis[y] == -1) {
+                    dis[y] = d_x + 1;
+                    q.push(y);
+                }
+            }
+        }
+    }
+    cout << dis[des] << endl;
 }
 
 int main() {

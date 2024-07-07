@@ -120,7 +120,15 @@ bool chmax(T& a, const T& b) {
  */
 #define MULTICASE 0
 void solve() {
-    
+    int a, b, c, d, e, f;
+    cin >> a >> b >> c >> d >> e >> f;
+    int g, h, i, j, k, l;
+    cin >> g >> h >> i >> j >> k >> l;
+    if (max(a, g) < min(d, j) && max(b, h) < min(e, k) && max(c, i) < min(f, l)) {
+        cout << "Yes\n";
+    } else {
+        cout << "No\n";
+    }
 }
 
 int main() {
