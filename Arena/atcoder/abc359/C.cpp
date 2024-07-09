@@ -120,7 +120,18 @@ bool chmax(T& a, const T& b) {
  */
 #define MULTICASE 0
 void solve() {
+    i64 sx, sy, tx, ty;
+    cin >> sx >> sy >> tx >> ty;
 
+    i64 ans = abs(sy - ty);
+    // x + y为偶数，点在tile的左边
+    if (((sx + sy) & 1) && tx < sx || 
+        ((sx + sy) % 2 == 0) && tx > sx) {
+            ans += max(0LL, abs(sx - tx) - abs(sy - ty) >> 1);
+    } else {
+        ans += max(0LL, abs(sx - tx) - abs(sy - ty) + 1 >> 1);
+    }
+    cout << ans << "\n";
 }
 
 int main() {
