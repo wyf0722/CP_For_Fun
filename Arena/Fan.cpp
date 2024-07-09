@@ -118,7 +118,7 @@ bool chmax(T& a, const T& b) {
  *  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
  *           ░     ░ ░      ░  ░
  */
-#define MULTICASE 0
+#define MULTICASE 1
 void solve() {
 
 }
