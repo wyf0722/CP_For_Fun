@@ -120,7 +120,32 @@ bool chmax(T& a, const T& b) {
  */
 #define MULTICASE 0
 void solve() {
-    
+    int n, L, R;
+    cin >> n >> L >> R;
+    string s;
+    cin >> s;
+    vi a(n + 1), b(n + 1);
+    FOR(i, 0, n) {
+        a[i + 1] = a[i];
+        b[i + 1] = b[i];
+        if (s[i] == '0') a[i + 1]++;
+        else b[i + 1]++;
+    }
+    vvi dp(n, vi(n, 0));
+    FOR(len, 1, n + 1) {
+        FOR(l, 0, n - len + 1) {
+            int r = l + len - 1;
+            FOR(cut, l, r) {
+                // [l, cut] [cut + 1, r]
+                int c0 = a[cut + 1] - a[l];
+                int c1 = b[r + 1] - b[cut + 1];
+                if (L <= abs(c0 - c1) && abs(c0 - c1) <= R) {
+                    chmax(dp[l][r], dp[l][cut] + dp[cut + 1][r] + 1);
+                }
+            }
+        }
+    }
+    cout << dp[0][n - 1] << "\n";
 }
 
 int main() {
