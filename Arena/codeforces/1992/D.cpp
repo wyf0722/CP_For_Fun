@@ -120,7 +120,41 @@ bool chmax(T& a, const T& b) {
  */
 #define MULTICASE 1
 void solve() {
-    
+    int n, m, k;
+    cin >> n >> m >> k;
+    string s;
+    cin >> s;
+    s = "L" + s + "L";
+
+    int now = 0, swim = 0;
+    while (now <= n) {
+        if (s[now] == 'C') break;
+        if (s[now] == 'W') {
+            now++;
+            swim++;
+            continue;
+        }
+        bool jump = false;
+        // 尽量往远处石头跳
+        for (int i = min(now + m, n + 1); i > now; i--) {
+            if (s[i] == 'L') {
+                jump = true;
+                now = i;
+                break;
+            }
+        }
+        if (jump) continue;
+        // 没有石头只能跳到水里面
+        for (int i = min(now + m, n + 1); i > now; i--) {
+            if (s[i] == 'W') {
+                jump = true;
+                now = i;
+                break;
+            }
+        }
+        if (!jump) break;
+    }
+    cout << (now >= n + 1 && swim <= k ? "YES" : "NO") << "\n";
 }
 
 int main() {

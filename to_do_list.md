@@ -2,3 +2,4 @@
 
 - [ ] [biweekly 131 t4](https://leetcode.cn/problems/block-placement-queries/)
 - [ ] [biweekly 130 t4](https://leetcode.cn/problems/find-products-of-elements-of-big-array/description/)
+- [ ] [weekly 405 t4](https://leetcode.cn/problems/construct-string-with-minimum-cost/description/)
