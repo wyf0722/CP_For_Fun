@@ -120,7 +120,34 @@ bool chmax(T& a, const T& b) {
  */
 #define MULTICASE 0
 void solve() {
-    
+    int n, t;
+    cin >> n >> t;
+    vi a(n);
+    FOR(i, 0, n) {
+        cin >> a[i];
+    }
+    vi f;
+    FOR(i, 0, min(n, t)) {
+        for (int x : a) {
+            int idx = upper_bound(all(f), x) - f.begin();
+            if (idx == f.size()) f.push_back(x);
+            else f[idx] = x;
+        }
+    }
+    if (t <= n) cout << f.size() << "\n";
+    else {
+        // 哪个数字出现次数最多？
+        unordered_set<int> s(all(f));
+        unordered_map<int, int> mp;
+        int mx = 0;
+        for (int x : a) {
+            if (s.find(x) != s.end()) {
+                mp[x]++;
+                chmax(mx, mp[x]);
+            }
+        }
+        cout << f.size() + (t - n) * mx << "\n";
+    }
 }
 
 int main() {
