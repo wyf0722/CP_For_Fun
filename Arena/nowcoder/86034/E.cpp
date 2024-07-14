@@ -119,8 +119,79 @@ bool chmax(T& a, const T& b) {
  *           ░     ░ ░      ░  ░
  */
 #define MULTICASE 0
+struct DSU {
+    std::vector<int> f, siz;
+     
+    DSU() {}
+    DSU(int n) {
+        init(n);
+    }
+     
+    void init(int n) {
+        f.resize(n);
+        std::iota(f.begin(), f.end(), 0);
+        siz.assign(n, 1);
+    }
+     
+    int find(int x) {
+        while (x != f[x]) {
+            x = f[x] = f[f[x]];
+        }
+        return x;
+    }
+     
+    bool same(int x, int y) {
+        return find(x) == find(y);
+    }
+     
+    bool merge(int x, int y) {
+        x = find(x);
+        y = find(y);
+        if (x == y) {
+            return false;
+        }
+        siz[x] += siz[y];
+        f[y] = x;
+        return true;
+    }
+     
+    int size(int x) {
+        return siz[find(x)];
+    }
+};
 void solve() {
+    int n;
+    cin >> n;
+    vvi g(n, vi(n));
+    int mx = 0;
+    FOR(i, 0, n) FOR(j, 0, n) {
+        cin >> g[i][j];
+        chmax(mx, g[i][j]);
+    }
 
+    auto check = [&](int x) -> bool {
+        DSU dsu(n * n);
+        FOR(i, 0, n) {
+            FOR(j, 0, n) {
+                if (g[i][j] <= x) {
+                    if (i + 1 < n && g[i + 1][j] <= x) dsu.merge(i * n + j, (i + 1) * n + j);
+                    if (j + 1 < n && g[i][j + 1] <= x) dsu.merge(i * n + j, i * n + (j + 1));
+                }
+            }
+        }
+        return dsu.same(0, n * n - 1);
+    };
+
+    int lo = 0, hi = mx + 1;
+    while (lo + 1 < hi) {
+        int mid = lo + (hi - lo) / 2;
+        if (check(mid)) {
+            hi = mid;
+        } else {
+            lo = mid;
+        }
+    }
+    cout << hi << endl;
 }
 
 int main() {
