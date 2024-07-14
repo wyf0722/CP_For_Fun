@@ -120,7 +120,30 @@ bool chmax(T& a, const T& b) {
  */
 #define MULTICASE 1
 void solve() {
-    
+    int n;
+    cin >> n;
+
+    vpii ans;
+    FOR(a, 1, 10001) {
+        string s = to_string(n);
+        int len = s.size();
+        // n * a - b 一定小于1E6 
+        // 保留的位数有限
+        for (int b = max(1, len * a - 5); b <= min(10000, len * a - 1); b++) {
+            int expect = n * a - b;
+            int actual = 0;
+            FOR(i, 0, len * a - b) {
+                actual = actual * 10 + (s[i % len] - '0');
+            }
+            if (expect == actual) {
+                ans.emplace_back(a, b);
+            }
+        }
+    }
+    cout << ans.size() << '\n';
+    for (auto& [a, b] : ans) {
+        cout << a << " " << b << '\n';
+    }
 }
 
 int main() {
