@@ -120,7 +120,21 @@ bool chmax(T& a, const T& b) {
  */
 #define MULTICASE 1
 void solve() {
-    
+    int n;
+    cin >> n;
+    vi a(n);
+    i64 s = 0;
+    FOR(i, 0, n) {
+        cin >> a[i];
+        s += a[i];
+    }
+    // 用操作1操作小的数字，攒出来后操作大的
+    sort(all(a));
+    int i = 0;
+    for (i64 op1 = 0; i < n && op1 + a[i] <= (s + 1) / 2; i++) {
+        op1 += a[i];
+    }
+    cout << (s + 1) / 2 + n - i << endl;
 }
 
 int main() {
