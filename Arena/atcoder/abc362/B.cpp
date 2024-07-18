@@ -120,7 +120,17 @@ bool chmax(T& a, const T& b) {
  */
 #define MULTICASE 0
 void solve() {
-    
+    int x1, y1, x2, y2, x3, y3;
+    cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
+    auto g = [&](int x, int y) -> int {
+        return (x - y) * (x - y);
+    };
+    int d1 = g(x1, x2) + g(y1, y2);
+    int d2 = g(x1, x3) + g(y1, y3);
+    int d3 = g(x2, x3) + g(y2, y3);
+    vi d{d1, d2, d3};
+    sort(all(d));
+    cout << (d[0] + d[1] == d[2] ? "Yes" : "No") << endl;
 }
 
 int main() {
