@@ -155,28 +155,7 @@ if 1:
 MULTITEST = 0 
 MOD = 1_000_000_007
 def main():
-    n, m = MII()
-    a = LII()
-    g = [[] for _ in range(n)]
-    for _ in range(m):
-        u, v, w = MII()
-        u -= 1
-        v -= 1
-        g[u].append((v, w))
-        g[v].append((u, w))
-    dis = [inf] * n
-    dis[0] = a[0]
-    h = [(dis[0], 0)]
-    while h:
-        d, x = heappop(h)
-        if d != dis[x]:
-            continue
-        for y, w in g[x]:
-            nd = dis[x] + w + a[y]
-            if dis[y] > nd:
-                dis[y] = nd
-                heappush(h, (dis[y], y))
-    print(*dis[1:])
+    
 
 t = 1
 if MULTITEST:
