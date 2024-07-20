@@ -30,3 +30,5 @@ def debug(*args, **kwargs):
         print(f"{COLOR}Line {line_number}{RESET}: ", *args, **kwargs)
     else:
         print(f"Line {line_number}: ", *args, **kwargs)
+
+
