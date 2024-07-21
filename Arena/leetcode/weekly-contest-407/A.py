@@ -18,7 +18,7 @@ dx = [0, 1, 0, -1]
 dy = [1, 0, -1, 0]
 
 
-DEBUG_WITH_COLOR = 0
+DEBUG_WITH_COLOR = 1
 def debug(*args, **kwargs):
     stack_info = inspect.stack()[1]  # [1] 表示获取调用栈中的第二个帧（第一个帧是当前函数）
     line_number = stack_info.lineno
@@ -31,3 +31,15 @@ def debug(*args, **kwargs):
     else:
         print(f"Line {line_number}: ", *args, **kwargs)
 
+
+class Solution:
+    def minChanges(self, n: int, k: int) -> int:
+        ans = 0
+        for i in range(30):
+            x = n >> i & 1
+            y = k >> i & 1
+            if x == 0 and y == 1:
+                return -1
+            if x == 1 and y == 0:
+                ans += 1
+        return ans

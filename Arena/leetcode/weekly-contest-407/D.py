@@ -31,3 +31,32 @@ def debug(*args, **kwargs):
     else:
         print(f"Line {line_number}: ", *args, **kwargs)
 
+
+class Solution:
+    def minimumOperations(self, nums: List[int], target: List[int]) -> int:
+        n = len(nums)
+        dif = [nums[i] - target[i] for i in range(n)]
+        ans = 0
+        
+        def get(l:int, r:int) -> int:
+            res = 0
+            lst = 0
+            for i in range(l, r + 1):
+                x = abs(dif[i])
+                if x > lst:
+                    res += x - lst
+                lst = x
+            return res
+
+        # 分段处理， 比如两个正数段中间夹着一个负数段，拆开情况不会变差
+        i = 0
+        while i < n:
+            if dif[i] == 0:
+                i += 1
+                continue
+            st = i
+            while i < n and dif[i] * dif[st] > 0:
+                i += 1
+                continue
+            ans += get(st, i - 1)
+        return ans

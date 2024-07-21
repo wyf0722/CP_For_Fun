@@ -103,3 +103,25 @@ bool chmax(T& a, const T& b) {
 /***
  * 𝓽𝓱𝓮 𝓼𝓸𝓵𝓾𝓽𝓲𝓸𝓷 𝓸𝓯 𝔀𝔂𝓯0722
  */
+
+class Solution {
+public:
+    int maxOperations(string s) {
+        int n = s.size();
+		int c = 0;
+		int ans = 0;
+		int lst = -1;
+		for (int i = 0; i < n;) {
+			if (s[i] == '0') i++;
+			else {
+				int st = i;
+				while (i < n && s[i] == '1') i++;
+				ans += c;
+				c += i - st;
+				lst = i - 1;
+			}
+		}
+		if (lst != n - 1) ans += c; 
+		return ans;
+    }
+};

@@ -18,7 +18,7 @@ dx = [0, 1, 0, -1]
 dy = [1, 0, -1, 0]
 
 
-DEBUG_WITH_COLOR = 0
+DEBUG_WITH_COLOR = 1
 def debug(*args, **kwargs):
     stack_info = inspect.stack()[1]  # [1] 表示获取调用栈中的第二个帧（第一个帧是当前函数）
     line_number = stack_info.lineno
@@ -31,3 +31,13 @@ def debug(*args, **kwargs):
     else:
         print(f"Line {line_number}: ", *args, **kwargs)
 
+
+class Solution:
+    def doesAliceWin(self, s: str) -> bool:
+        c = 0
+        for x in s:
+            if x in 'aeiou':
+                c += 1
+        if c == 0:
+            return False
+        return True
