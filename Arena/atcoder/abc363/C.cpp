@@ -120,7 +120,31 @@ bool chmax(T& a, const T& b) {
  */
 #define MULTICASE 0
 void solve() {
-    
+    int n, k;
+    cin >> n >> k;
+    string s;
+    cin >> s;
+
+    sort(all(s));
+    int ans = 0;
+    do {
+        bool ok = true;
+        FOR(i, 0, n - k + 1) {
+            bool par = true; 
+            FOR(j, 0, k - 1 - j) {
+                if (s[i + j] != s[i + k - 1 - j]) {
+                    par = false;
+                    break;
+                }
+            }
+            if (par) {
+                ok = false;
+                break;
+            }
+        }
+        if (ok) ans++;
+    } while (next_permutation(all(s)));
+    cout << ans << '\n';
 }
 
 int main() {

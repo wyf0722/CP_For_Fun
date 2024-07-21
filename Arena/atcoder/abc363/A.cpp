@@ -120,7 +120,9 @@ bool chmax(T& a, const T& b) {
  */
 #define MULTICASE 0
 void solve() {
-    
+    int R;
+    cin >> R;
+    cout << (R / 100 + 1) * 100 - R << endl;
 }
 
 int main() {

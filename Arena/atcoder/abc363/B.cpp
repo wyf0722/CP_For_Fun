@@ -120,7 +120,14 @@ bool chmax(T& a, const T& b) {
  */
 #define MULTICASE 0
 void solve() {
-    
+    int n, t, p;
+    cin >> n >> t >> p;
+    vi L(n);
+    FOR(i, 0, n) {
+        cin >> L[i];
+    }
+    sort(all(L), greater<int>());
+    cout << max(0, t - L[p - 1]) << endl;
 }
 
 int main() {
