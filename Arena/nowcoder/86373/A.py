@@ -152,10 +152,15 @@ if 1:
 #  ░     ░░▒░ ░ ░   ░  ▒   ░ ░▒ ▒░
 #  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
 #           ░     ░ ░      ░  ░
-MULTITEST = 0
+MULTITEST = 0 
 MOD = 1_000_000_007
 def main():
-    
+    n = II()
+    if n <= 2:
+        print('NO')
+    else:
+        print('YES')
+        print(1, n - 1)
 
 t = 1
 if MULTITEST:

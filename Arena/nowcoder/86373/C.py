@@ -155,7 +155,27 @@ if 1:
 MULTITEST = 0
 MOD = 1_000_000_007
 def main():
-    
+    n = II()
+    a = LII()
+    cnt = defaultdict(int)
+    neg = zero = pos = 0
+    for x in a:
+        if x < 0:
+            neg += 1
+        elif x == 0:
+            zero += 1
+        else:
+            cnt[x] += 1
+    # 非负数先自己消去
+    zero %= 2
+    for v in cnt.values():
+        pos += v % 2
+    delete = min(neg, pos)
+    neg -= delete
+    pos -= delete
+    print((neg + zero) % 2 + pos)
+
+
 
 t = 1
 if MULTITEST:

@@ -152,10 +152,14 @@ if 1:
 #  ░     ░░▒░ ░ ░   ░  ▒   ░ ░▒ ▒░
 #  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
 #           ░     ░ ░      ░  ░
-MULTITEST = 0
+MULTITEST = 1 
 MOD = 1_000_000_007
 def main():
-    
+    a, b, n = MII()
+    b //= 2
+    n = max(n % 3, n - b * 3)
+    print('NO' if a < n else 'YES')
+
 
 t = 1
 if MULTITEST:
