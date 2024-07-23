@@ -120,7 +120,30 @@ bool chmax(T& a, const T& b) {
  */
 #define MULTICASE 1
 void solve() {
-    
+    int n, a;
+    cin >> n;
+    int x = inf, y = -1;
+    FOR(i, 0, n) {
+        cin >> a;
+        chmin(x, a);
+        chmax(y, a);
+    }
+    // 考虑+0或者+1后再除以2
+    vi ans;
+    while (x != y) {
+        if ((x % 2 ) == (y % 2)) a = 1;
+        else if (x % 2) a = 1;
+        else a = 2;
+        ans.push_back(a);
+        x = (x + a) / 2;
+        y = (y + a) / 2;
+    }
+    cout << ans.size() << endl;
+    if (ans.size() <= n) {
+        FOR(i, 0, ans.size()) {
+            cout << ans[i] << " \n"[i == ans.size() - 1];
+        }
+    }
 }
 
 int main() {
