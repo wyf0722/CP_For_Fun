@@ -31,3 +31,31 @@ def debug(*args, **kwargs):
     else:
         print(f"Line {line_number}: ", *args, **kwargs)
 
+class Solution:
+    def maximumDetonation(self, bs: List[List[int]]) -> int:
+        n = len(bs)
+        g = [[0] * n for _ in range(n)]
+        for i in range(n):
+            for j in range(n):
+                if i == j:
+                    continue
+                if (bs[i][0] - bs[j][0]) ** 2 + (bs[i][1] - bs[j][1]) ** 2 <= bs[i][2] ** 2:
+                    g[i][j] = 1
+        ans = 1
+        for i in range(n):
+            vis = [0] * n
+            vis[i] = 1
+            q = deque()
+            q.append(i)
+            cur = 1
+            while q:
+                x = q.popleft()
+                for y in range(n):
+                    if vis[y]:
+                        continue
+                    vis[y] = 1
+                    q.append(y)
+                    cur += 1
+            ans = max(ans, cur)
+        return ans
+                
