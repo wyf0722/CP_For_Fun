@@ -69,8 +69,73 @@ template<class T, class U> T lstTrue(T lo, T hi, U f) { --lo; assert(lo <= hi); 
  *           ░     ░ ░      ░  ░
  */
 #define MULTICASE 1
+struct DSU {
+    std::vector<int> f, siz;
+     
+    DSU() {}
+    DSU(int n) {
+        init(n);
+    }
+     
+    void init(int n) {
+        f.resize(n);
+        std::iota(f.begin(), f.end(), 0);
+        siz.assign(n, 1);
+    }
+     
+    int find(int x) {
+        while (x != f[x]) {
+            x = f[x] = f[f[x]];
+        }
+        return x;
+    }
+     
+    bool same(int x, int y) {
+        return find(x) == find(y);
+    }
+     
+    bool merge(int x, int y) {
+        x = find(x);
+        y = find(y);
+        if (x == y) {
+            return false;
+        }
+        siz[x] += siz[y];
+        f[y] = x;
+        return true;
+    }
+     
+    int size(int x) {
+        return siz[find(x)];
+    }
+};
 void solve() {
-
+    int n;
+    cin >> n;
+    vi a(n);
+    FOR(i, 0, n) {
+        cin >> a[i];
+    }
+    DSU dsu(n);
+    // 操作顺序不重要，反着做
+    // 第i次操作，目前有n - i + 1个联通分量，但是是找mod (n - i)相同的数，根据鸽笼原理，一定能找到
+    vi u(n - 1), v(n - 1);
+    ROF(x, 1, n) {
+        vi rec(x, -1);
+        FOR(i, 0, n) {
+            if (dsu.find(i) != i) continue;
+            // 如果之前出现了相同的模数
+            if (rec[a[i] % x] != -1) {
+                u[x - 1] = i;
+                v[x - 1] = rec[a[i] % x];
+                dsu.merge(u[x - 1], v[x - 1]);
+                break;
+            }
+            rec[a[i] % x] = i;
+        }
+    }
+    cout << "YES\n";
+    FOR(i, 0, n - 1) cout << u[i] + 1 << ' ' << v[i] + 1 << '\n';
 }
 
 int main() {
