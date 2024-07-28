@@ -68,9 +68,11 @@ template<class T, class U> T lstTrue(T lo, T hi, U f) { --lo; assert(lo <= hi); 
  *  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
  *           ░     ░ ░      ░  ░
  */
-#define MULTICASE 1
+#define MULTICASE 0
 void solve() {
-
+    int n;
+    cin >> n;
+    cout << 0.5 << endl;
 }
 
 int main() {

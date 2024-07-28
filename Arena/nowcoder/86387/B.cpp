@@ -68,9 +68,18 @@ template<class T, class U> T lstTrue(T lo, T hi, U f) { --lo; assert(lo <= hi); 
  *  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
  *           ░     ░ ░      ░  ░
  */
-#define MULTICASE 1
+#define MULTICASE 0
 void solve() {
-
+    string s;
+    cin >> s;
+    int n = s.size();
+    int ans = 0;
+    for (int i = 0, j = n - 1; i < j; i++, j--) {
+        int x = s[i] - 'a', y = s[j] - 'a';
+        if (x > y) swap(x, y);
+        ans += min(y - x, x + 26 - y);
+    }
+    cout << ans << endl;
 }
 
 int main() {
