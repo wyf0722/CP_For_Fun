@@ -31,3 +31,12 @@ def debug(*args, **kwargs):
     else:
         print(f"Line {line_number}: ", *args, **kwargs)
 
+class Solution:
+    def canAliceWin(self, nums: List[int]) -> bool:
+        x = y = 0
+        for i in nums:
+            if 1 <= i <= 9:
+                x += i
+            else:
+                y += i
+        return x != y
