@@ -70,7 +70,25 @@ template<class T, class U> T lstTrue(T lo, T hi, U f) { --lo; assert(lo <= hi); 
  */
 #define MULTICASE 0
 void solve() {
-    
+    int n, q;
+    cin >> n >> q;
+    vi a(n), b(q), k(q);
+    FOR(i, 0, n) cin >> a[i];
+    FOR(i, 0, q) cin >> b[i] >> k[i];
+    sort(all(a));
+    FOR(i, 0, q) {
+        int lo = -1, hi = 2E8;
+        // 找到第一个满足数量大于等于k[i]的区间大小
+        while (lo + 1 < hi) {
+            int mid = (lo + hi) / 2;
+            int l = b[i] - mid;
+            int r = b[i] + mid;
+            int c = upper_bound(all(a), r) - lower_bound(all(a), l);
+            if (c >= k[i]) hi = mid;
+            else lo = mid;
+        }
+        cout << hi << endl;
+    }
 }
 
 int main() {
