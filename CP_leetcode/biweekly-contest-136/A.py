@@ -30,3 +30,17 @@ def debug(*args, **kwargs):
         print(f"{COLOR}Line {line_number}{RESET}: ", *args, **kwargs)
     else:
         print(f"Line {line_number}: ", *args, **kwargs)
+
+class Solution:
+    def winningPlayerCount(self, n: int, pick: List[List[int]]) -> int:
+        c = [[0] * 11 for _ in range(n + 1)]
+        for x, y in pick:
+            c[x][y] += 1
+        ans = 0
+        for i in range(n):
+            ok = 0
+            for j in range(11):
+                if c[i][j] >= i + 1:
+                    ok = 1
+            ans += ok
+        return ans
