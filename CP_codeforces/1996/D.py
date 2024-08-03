@@ -155,7 +155,15 @@ if 1:
 MULTITEST = 1
 MOD = 1_000_000_007
 def main():
-    
+    n, x = MII()
+    ans = 0
+    for a in range(1, n + 1):
+        for b in range(1, x - a + 1):
+            if a * b > n:
+                break
+            ans += min((n - a * b) // (a + b), x - a - b)
+    print(ans)
+
 t = 1
 if MULTITEST:
     t = II()

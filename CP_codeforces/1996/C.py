@@ -155,7 +155,22 @@ if 1:
 MULTITEST = 1
 MOD = 1_000_000_007
 def main():
-    
+    n, q = MII()
+    a = I()
+    b = I()
+    c = [[0] * 26 for _ in range(n + 1)]
+    for i in range(n):
+        for j in range(26):
+            c[i + 1][j] = c[i][j]
+        c[i + 1][ord(a[i]) - ord('a')] += 1
+        c[i + 1][ord(b[i]) - ord('a')] -= 1
+    for _ in range(q):
+        l, r = MII()
+        ans = 0
+        for i in range(26):
+            ans += max(0, c[r][i] - c[l - 1][i])
+        print(ans)
+
 t = 1
 if MULTITEST:
     t = II()

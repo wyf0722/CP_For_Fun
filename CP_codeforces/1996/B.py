@@ -155,7 +155,15 @@ if 1:
 MULTITEST = 1
 MOD = 1_000_000_007
 def main():
-    
+    n, k = MII()
+    g = [I() for _ in range(n)]
+    ans = []
+    for i in range(0, n, k):
+        r = []
+        for j in range(0, n, k):
+            r.append(g[i][j])
+        print(''.join(r))
+
 t = 1
 if MULTITEST:
     t = II()
