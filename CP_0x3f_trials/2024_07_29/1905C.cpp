@@ -70,7 +70,29 @@ template<class T, class U> T lstTrue(T lo, T hi, U f) { --lo; assert(lo <= hi); 
  */
 #define MULTICASE 1
 void solve() {
-    
+    int n;
+    cin >> n;
+    string s;
+    cin >> s;
+    vi ids;
+    for (int i = 0; i < n; i++) {
+        char c = s[i];
+        while (!ids.empty() && s[ids.back()] < c) {
+            ids.pop_back();
+        }
+        ids.push_back(i);
+    }
+    string t = s;
+    for (int i = 0; i < ids.size(); i++) {
+        t[ids[i]] = s[ids[ids.size() - 1 - i]];
+    }
+    if (is_sorted(all(t))) {
+        int i = 1;
+        while (i < ids.size() && s[ids[i]] == s[ids[i - 1]]) i++;
+        cout << ids.size() - i << endl;
+    } else {
+        cout << -1 << endl;
+    }
 }
 
 int main() {
