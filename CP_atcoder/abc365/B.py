@@ -155,8 +155,17 @@ if 1:
 MULTITEST = 0
 MOD = 1_000_000_007
 def main():
-    
-
+    n = II()
+    a = LII()
+    mx1 = 0
+    mx2 = 0
+    for x in a:
+        if x > mx1:
+            mx2 = mx1
+            mx1 = x
+        elif x > mx2:
+            mx2 = x
+    print(a.index(mx2) + 1)
 
 t = 1
 if MULTITEST:

@@ -155,8 +155,17 @@ if 1:
 MULTITEST = 0
 MOD = 1_000_000_007
 def main():
-    
-
+    n = II()
+    if n % 4:
+        print(365)
+    else:
+        if n % 100:
+            print(366)
+        else:
+            if n % 400:
+                print(365)
+            else:
+                print(366)
 
 t = 1
 if MULTITEST:

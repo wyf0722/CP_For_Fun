@@ -154,8 +154,28 @@ if 1:
 #           ░     ░ ░      ░  ░
 MULTITEST = 0
 MOD = 1_000_000_007
+from bisect import bisect_left, bisect_right
 def main():
-    
+    n, m = MII()
+    a = LII()
+    a.sort()
+    s = [0]
+    for x in a:
+        s.append(s[-1] + x)
+    lo = 0
+    hi = 10**15
+    while lo + 1 < hi:
+        mid = (lo + hi) // 2
+        idx = bisect_left(a, mid)
+        total = s[idx] + (n - idx) * mid
+        if total <= m:
+            lo = mid
+        else:
+            hi = mid
+    if lo >= 10**14:
+        print('infinite')
+    else:
+        print(lo)
 
 
 t = 1
