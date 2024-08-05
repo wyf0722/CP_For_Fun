@@ -77,21 +77,6 @@ struct LazySegmentTree {
     void rangeApply(int l, int r, const Tag &v) {
         return rangeApply(1, 0, n, l, r, v);
     }
- 
-    int search(int p, int l, int r, int x, int y, i64 v) {
-        if (l >= y || r <= x) return y;
-        if (info[p].min >= v) return y;
-        if (r - l == 1) return l;
-        int m = (l + r) / 2;
-        push(p);
-        int res = search(2 * p, l, m, x, y, v);
-        if (res == y) res = search(2 * p + 1, m, r, x, y, v);
-        return res;
-    }
- 
-    int search(int l, int r, i64 v) {
-        return search(1, 0, n, l, r, v);
-    }
 };
 
 

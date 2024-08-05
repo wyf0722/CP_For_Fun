@@ -31,3 +31,33 @@ def debug(*args, **kwargs):
     else:
         print(f"Line {line_number}: ", *args, **kwargs)
 
+class Solution:
+    def minFlips(self, grid: List[List[int]]) -> int:
+        m, n = len(grid), len(grid[0])
+        ans = 0
+        for i in range(m // 2):
+            for j in range(n // 2):
+                c1 = grid[i][j] + grid[m - 1 - i][j] + grid[i][n - 1 - j] + grid[m - 1 - i][n - 1 - j]
+                ans += min(c1, 4 - c1)
+        if m & 1 and n & 1:
+            ans += grid[m // 2][n // 2]
+        dif, c1 = 0, 0
+        if m % 2:
+            for j in range(n // 2):
+                if grid[m // 2][j] != grid[m // 2][n - 1 - j]:
+                    dif += 1
+                else:
+                    c1 += grid[m // 2][j] * 2
+        if n % 2:
+            for i in range(m // 2):
+                if grid[i][n // 2] != grid[m - 1 - i][n // 2]:
+                    dif += 1
+                else:
+                    c1 += grid[i][n // 2] * 2
+        if c1 % 4 == 0:
+            return ans + dif
+        # 余数只可能为2
+        assert c1 % 4 == 2
+        if dif:
+            return ans + dif
+        return ans + 2
