@@ -70,7 +70,43 @@ template<class T, class U> T lstTrue(T lo, T hi, U f) { --lo; assert(lo <= hi); 
  */
 #define MULTICASE 0
 void solve() {
+    MOD = 998244353;
+    int n, k;
+    cin >> n >> k;
+    string s;
+    cin >> s;
     
+    vi pal(1 << k, 0);
+    FOR(i, 0, 1 << k) {
+        int ok = 1;
+        FOR(j, 0, k / 2) {
+            if ((i >> j & 1) != (i >> (k - 1 - j) & 1)) {
+                ok = 0;
+                break;
+            }
+        }
+        if (ok) pal[i] = 1;
+    }
+
+    int mask = (1 << (k - 1)) - 1;
+    vvl mem(n, vl(1 << k, -1));
+    auto dfs = [&](auto &&self, int i, int j) -> i64 {
+        if (i < 0) return 1;
+        if (mem[i][j] != -1) return mem[i][j];
+        i64 ans = 0;
+        for (int b : {0, 1}) {
+            if (s[i] != '?' && b != (s[i] - 'A')) continue;
+            int t = j << 1 | b;
+            if (i > n - k || !pal[t]) {
+                ans += self(self, i - 1, t & mask);
+                ans %= MOD;
+            }
+        }
+        mem[i][j] = ans;
+        return ans;
+    };
+
+    cout << dfs(dfs, n - 1, 0) << endl;
 }
 
 int main() {
