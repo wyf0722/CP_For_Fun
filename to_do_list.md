@@ -6,7 +6,7 @@
 - [ ] [biweekly 135 t4](https://leetcode.cn/problems/maximum-score-from-grid-operations/description/)
 - [ ] [weekly 408 t4](https://leetcode.cn/problems/check-if-the-rectangle-corner-is-reachable/description/)
 - [ ] [weekly 409 t4](https://leetcode.cn/problems/alternating-groups-iii/description/)
-- [ ] [biweekly 136 t4](https://leetcode.cn/problems/time-taken-to-mark-all-nodes/description/)
+- [x] [biweekly 136 t4](https://leetcode.cn/problems/time-taken-to-mark-all-nodes/description/)
 
 # 学习资料
 - [ ] [Efficient and easy segment trees](https://codeforces.com/blog/entry/18051)
