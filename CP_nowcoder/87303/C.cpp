@@ -68,9 +68,25 @@ template<class T, class U> T lstTrue(T lo, T hi, U f) { --lo; assert(lo <= hi); 
  *  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
  *           ░     ░ ░      ░  ░
  */
-#define MULTICASE 1
+#define MULTICASE 0
 void solve() {
-    
+    int n, m;
+    cin >> n >> m;
+    int mx = 1E5;
+    vi cnt(mx + 1);
+    FOR(i, 0, n) {
+        int a;
+        cin >> a;
+        if (a <= mx) cnt[a]++;
+    }
+    i64 ans = 0;
+    int limit = 1E8;
+    FOR(i, 1, mx + 1) {
+        chmin(limit, cnt[i]);
+        ans += limit;
+        // debug(ans);
+    }
+    cout << ans << '\n';
 }
 
 int main() {

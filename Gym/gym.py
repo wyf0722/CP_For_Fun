@@ -31,3 +31,4 @@ def debug(*args, **kwargs):
     else:
         print(f"Line {line_number}: ", *args, **kwargs)
 
+
