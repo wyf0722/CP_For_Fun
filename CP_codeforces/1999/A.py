@@ -155,7 +155,8 @@ if 1:
 MULTITEST = 1
 MOD = 1_000_000_007
 def main():
-
+    n = II()
+    print(n // 10 + n % 10)
 
 t = 1
 if MULTITEST:

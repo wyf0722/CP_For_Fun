@@ -155,6 +155,17 @@ if 1:
 MULTITEST = 1
 MOD = 1_000_000_007
 def main():
+    n, s, m = LII()
+    pre = 0
+    ok = 0
+    for _ in range(n):
+        l, r = MII()
+        if l - pre >= s:
+            ok = 1
+        pre = r
+    if m - pre >= s:
+        ok = 1
+    print('YES' if ok else 'NO')
 
 
 t = 1

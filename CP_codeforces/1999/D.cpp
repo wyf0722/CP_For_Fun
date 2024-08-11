@@ -70,7 +70,25 @@ template<class T, class U> T lstTrue(T lo, T hi, U f) { --lo; assert(lo <= hi); 
  */
 #define MULTICASE 1
 void solve() {
-    
+    string s, t;
+    cin >> s >> t;
+    int i = 0, n = s.size();
+    for (char c : t) {
+        while (i < n && s[i] != '?' && s[i] != c) {
+            i++;
+        }
+        if (i == n) {
+            cout << "NO\n";
+            return;
+        }
+        if (s[i] == '?') s[i] = c;
+        i++;
+    }
+    cout << "YES\n";
+    FOR(i, 0, n) {
+        cout << (s[i] == '?' ? 'a' : s[i]);
+    }
+    cout << "\n";
 }
 
 int main() {

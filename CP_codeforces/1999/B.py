@@ -155,7 +155,17 @@ if 1:
 MULTITEST = 1
 MOD = 1_000_000_007
 def main():
-
+    a1, a2, b1, b2 = MII()
+    ans = 0
+    for a, b in [(a1, a2), (a2, a1)]:
+        for c, d in [(b1, b2), (b2, b1)]:
+            if a > c and b > d:
+                ans += 1
+            if a > c and b == d:
+                ans += 1
+            if a == c and b > d:
+                ans += 1
+    print(ans)
 
 t = 1
 if MULTITEST:
