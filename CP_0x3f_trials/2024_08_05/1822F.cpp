@@ -70,7 +70,47 @@ template<class T, class U> T lstTrue(T lo, T hi, U f) { --lo; assert(lo <= hi); 
  */
 #define MULTICASE 1
 void solve() {
+    int n, k, c;
+    cin >> n >> k >> c;
+    vvi g(n);
+    FOR(i, 0, n - 1) {
+        int x, y;
+        cin >> x >> y;
+        x--, y--;
+        g[x].push_back(y);
+        g[y].push_back(x);
+    }
 
+    vector<tuple<i64, i64, int>> rec(n);
+    auto dfs1 = [&](auto &&self, int x, int fa) -> i64 {
+        i64 mx_d1 = 0, mx_d2 = 0, mx_node = 0;
+        for (int y : g[x]) {
+            if (y == fa) continue;
+            i64 cur_d = self(self, y, x) + k;
+            if (cur_d > mx_d1) {
+                mx_d2 = mx_d1;
+                mx_d1 = cur_d;
+                mx_node = y;
+            } else if (cur_d > mx_d2) {
+                mx_d2 = cur_d;
+            }
+        }
+        rec[x] = make_tuple(mx_d1, mx_d2, mx_node);
+        return mx_d1;
+    };
+    i64 ans = dfs1(dfs1, 0, -1);
+
+    auto dfs2 = [&](auto &&self, int x, int fa, i64 from_up, i64 cost) -> void {
+        auto [mx_d1, mx_d2, mx_node] = rec[x];
+        chmax(ans, max(from_up, mx_d1) - cost);
+        for (int y : g[x]) {
+            if (y == fa) continue;
+            self(self, y, x, max(from_up, y == mx_node ? mx_d2 : mx_d1) + k, cost + c);
+        }
+    };
+    dfs2(dfs2, 0, -1, 0, 0);
+
+    cout << ans << "\n";
 }
 
 int main() {
