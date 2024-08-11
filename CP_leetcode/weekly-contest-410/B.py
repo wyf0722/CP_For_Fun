@@ -32,30 +32,28 @@ def debug(*args, **kwargs):
         print(f"Line {line_number}: ", *args, **kwargs)
 
 
-'''
-arr1[i] = j
-arr2[i] = nums[i] - j
-
-arr1[i - 1] = k
-arr2[i - 1] = nums[i - 1] - k
-约束：
-k <= j && nums[i - 1] - k >= nums[i] - j
-
-k <= j && k <= nums[i - 1] - nums[i] + j
-'''
 class Solution:
-    def countOfPairs(self, nums: List[int]) -> int:
-        n = len(nums)
-        
-        dp = [[0] * 1001 for _ in range(n)]
-        for j in range(nums[0] + 1):
-            dp[0][j] = 1
-        for i in range(1, n):
-            s = dp[i - 1]
-            for j in range(1, 1001):
-                s[j] += s[j - 1]
-            for j in range(nums[i] + 1):
-                limit = min(j, nums[i - 1] - nums[i] + j)
-                dp[i][j] = s[limit] % MOD if limit >= 0 else 0
-        return sum(dp[-1][:nums[-1] + 1])
-        
+    def countGoodNodes(self, edges: List[List[int]]) -> int:
+        n = len(edges) + 1
+        g = [[] for _ in range(n)]
+        for x, y in edges:
+            g[x].append(y)
+            g[y].append(x)
+
+        ans = 0
+        def dfs(x:int, fa:int) -> int:
+            c = 1
+            rec = set()
+            for y in g[x]:
+                if y == fa:
+                    continue
+                son_c = dfs(y, x)
+                c += son_c
+                rec.add(son_c)
+            if len(rec) <= 1:
+                nonlocal ans
+                ans += 1
+            return c
+        dfs(0, -1)
+
+        return ans
