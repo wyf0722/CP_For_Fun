@@ -70,7 +70,29 @@ template<class T, class U> T lstTrue(T lo, T hi, U f) { --lo; assert(lo <= hi); 
  */
 #define MULTICASE 0
 void solve() {
-    
+    int n, q;
+    cin >> n >> q;
+    vi mask(n, 3);
+    int bad = 0;
+    while (q--) {
+        int x, y;
+        cin >> x >> y;
+        x--, y--;
+        if (y > 0) {
+            bad -= ((mask[y] & mask[y - 1]) == 0);
+        }
+        if (y < n - 1) {
+            bad -= ((mask[y] & mask[y + 1]) == 0);
+        }
+        mask[y] ^= (1 << x);
+        if (y > 0) {
+            bad += ((mask[y] & mask[y - 1]) == 0);
+        }
+        if (y < n - 1) {
+            bad += ((mask[y] & mask[y + 1]) == 0);
+        }
+        cout << (bad > 0 ? "No" : "Yes") << "\n";
+    }
 }
 
 int main() {
