@@ -70,7 +70,48 @@ template<class T, class U> T lstTrue(T lo, T hi, U f) { --lo; assert(lo <= hi); 
  */
 #define MULTICASE 1
 void solve() {
-    
+    int n, k;
+    cin >> n >> k;
+
+    vvi g(n);
+    FOR(i, 0, n - 1) {
+        int x, y;
+        cin >> x >> y;
+        x--, y--;
+        g[x].push_back(y);
+        g[y].push_back(x);
+    }
+
+
+    auto check = [&](int sz) -> bool {
+        // 连通块个数
+        int cnt = 0;
+        auto dfs = [&](auto &&self, int x, int fa) -> int {
+            int s = 1;
+            for (int y : g[x]) {
+                if (y == fa) continue;
+                s += self(self, y, x);
+            }
+            if (s >= sz) {
+                cnt++;
+                return 0;
+            }
+            return s;
+        };
+        if (dfs(dfs, 0, -1) >= sz) cnt++;
+        return cnt >= k + 1;
+    };
+
+    int lo = 1, hi = n / (k + 1) + 1;
+    while (lo + 1 < hi) {
+        int mid = (lo + hi) / 2;
+        if (check(mid)) {
+            lo = mid;
+        } else {
+            hi = mid;
+        }
+    }
+    cout << lo << "\n";
 }
 
 int main() {
