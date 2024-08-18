@@ -155,7 +155,15 @@ if 1:
 MULTITEST = 1
 MOD = 1_000_000_007
 def main():
-
+    n = II()
+    a = LII()
+    a.sort(reverse=True)
+    ans = -1
+    for i in range(n - 2):
+        if a[i] < a[i + 1] + a[i + 2]:
+            ans = a[i] + a[i + 1] + a[i + 2]
+            break
+    print(ans)
 
 
 t = 1

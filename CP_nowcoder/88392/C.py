@@ -155,7 +155,19 @@ if 1:
 MULTITEST = 1
 MOD = 1_000_000_007
 def main():
-
+    a = II()
+    b, c = 0, 0
+    for i in range(31):
+        if a >> i & 1:
+            if b <= c:
+                b |= 1 << i
+            else:
+                c |= 1 << i
+        else:
+            if min(b, c) == 0:
+                b |= 1 << i
+                c |= 1 << i
+    print(b, c)
 
 
 t = 1

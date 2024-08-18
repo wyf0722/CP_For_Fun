@@ -152,11 +152,11 @@ if 1:
 #  ░     ░░▒░ ░ ░   ░  ▒   ░ ░▒ ▒░
 #  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
 #           ░     ░ ░      ░  ░
-MULTITEST = 1
+MULTITEST = 0
 MOD = 1_000_000_007
 def main():
-
-
+    x, y, n = MII()
+    print('YES' if x + y <= n else 'NO')
 
 t = 1
 if MULTITEST:

@@ -152,10 +152,13 @@ if 1:
 #  ░     ░░▒░ ░ ░   ░  ▒   ░ ░▒ ▒░
 #  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
 #           ░     ░ ░      ░  ░
-MULTITEST = 1
+MULTITEST = 0
 MOD = 1_000_000_007
 def main():
-
+    n, m, k = MII()
+    a = LII()
+    tot = sum(a) // k
+    print(min(tot, m + 1))
 
 
 t = 1
