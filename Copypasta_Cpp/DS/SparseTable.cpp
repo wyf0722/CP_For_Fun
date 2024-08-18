@@ -1,3 +1,6 @@
+/**
+ * https://github.com/the-tourist/algo/blob/master/data/sparsetable.cpp
+ */
 template <typename T, typename F>
 class SparseTable {
    public:
