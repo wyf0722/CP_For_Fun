@@ -53,3 +53,18 @@ template<class T, class U> T lstTrue(T lo, T hi, U f) { --lo; assert(lo <= hi); 
 /***
  * 𝓽𝓱𝓮 𝓼𝓸𝓵𝓾𝓽𝓲𝓸𝓷 𝓸𝓯 𝔀𝔂𝓯0722
  */
+
+class Solution {
+public:
+    int countKConstraintSubstrings(string s, int k) {
+        int ans = 0, n = s.size();
+        for (int i = 0; i < n; i++) {
+            vector<int> cnt(2);
+            for (int j = i; j < n; j++) {
+                cnt[s[j] - '0']++;
+                if (min(cnt[0], cnt[1]) <= k) ans++;
+            }
+        }
+        return ans;
+    }
+};

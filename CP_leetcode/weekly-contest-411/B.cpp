@@ -53,3 +53,20 @@ template<class T, class U> T lstTrue(T lo, T hi, U f) { --lo; assert(lo <= hi); 
 /***
  * 𝓽𝓱𝓮 𝓼𝓸𝓵𝓾𝓽𝓲𝓸𝓷 𝓸𝓯 𝔀𝔂𝓯0722
  */
+
+class Solution {
+public:
+    long long maxEnergyBoost(vector<int>& energyDrinkA, vector<int>& energyDrinkB) {
+        int n = energyDrinkA.size();
+        vector<i64> dp(4);
+        for (int i = 0; i < n; i++) {
+            vector<i64> ndp(4);
+            ndp[0] = max(dp[0], dp[2]) + energyDrinkA[i];
+            ndp[1] = max(dp[1], dp[3]) + energyDrinkB[i];
+            ndp[2] = dp[1];
+            ndp[3] = dp[0];
+            swap(dp, ndp);
+        }
+        return *max_element(dp.begin(), dp.end());
+    }
+};
