@@ -5,7 +5,7 @@ import java.io.PrintWriter;
 import java.util.*;
 
 // https://codeforces.com/profile/SecondThread
-public class Fan {
+public class Arena {
 
     public static void main(String[] subscribeToSecondThread) {
         FastScanner fs = new FastScanner();
