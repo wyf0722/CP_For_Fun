@@ -70,7 +70,26 @@ template<class T, class U> T lstTrue(T lo, T hi, U f) { --lo; assert(lo <= hi); 
  */
 #define MULTICASE 1
 void solve() {
-    
+    int n;
+    cin >> n;
+    string s, t;
+    cin >> s >> t;
+
+    // 找到一定向下走的位置
+    int down = 0;
+    for (; down < n - 1; down++) {
+        if (s[down + 1] > t[down]) {
+            break;
+        }
+    }
+    cout << s.substr(0, down + 1) + t.substr(down) << endl;
+    int ans = 1;
+    int idx = down - 1;
+    for (; idx >= 0; idx--) {
+        if (s[idx + 1] != t[idx]) break;
+        else ans++;
+    }
+    cout << ans << endl;
 }
 
 int main() {
