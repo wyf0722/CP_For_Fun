@@ -69,8 +69,76 @@ template<class T, class U> T lstTrue(T lo, T hi, U f) { --lo; assert(lo <= hi); 
  *           ░     ░ ░      ░  ░
  */
 #define MULTICASE 1
-void solve() {
+struct DSU {
+    std::vector<int> f, siz;
+     
+    DSU() {}
+    DSU(int n) {
+        init(n);
+    }
+     
+    void init(int n) {
+        f.resize(n);
+        std::iota(f.begin(), f.end(), 0);
+        siz.assign(n, 1);
+    }
+     
+    int find(int x) {
+        while (x != f[x]) {
+            x = f[x] = f[f[x]];
+        }
+        return x;
+    }
+     
+    bool same(int x, int y) {
+        return find(x) == find(y);
+    }
+     
+    bool merge(int x, int y) {
+        x = find(x);
+        y = find(y);
+        if (x == y) {
+            return false;
+        }
+        siz[x] += siz[y];
+        f[y] = x;
+        return true;
+    }
+     
+    int size(int x) {
+        return siz[find(x)];
+    }
+};
 
+void solve() {
+    int n, m, k;
+    cin >> n >> m >> k;
+
+    vector<tuple<int, int, int>> edges;
+    for (int i = 0; i < m; i++) {
+        int x, y, w;
+        cin >> x >> y >> w;
+        x--, y--;
+        edges.emplace_back(w, x, y);
+    }
+    sort(all(edges));
+    DSU dsu(n);
+    i64 ans = 0;
+    for (int i = 0; i < m; i++) {
+        int x = get<1>(edges[i]);
+        int y = get<2>(edges[i]);
+        if (dsu.merge(x, y)) {
+            ans += max(get<0>(edges[i]) - k, 0);
+        }
+    }
+    // 全部小于等于k
+    if (ans == 0) {
+        ans = infLL;
+        for (int i = 0; i < m; i++) {
+            chmin(ans, 1LL * abs(get<0>(edges[i]) - k));
+        }
+    }
+    cout << ans << endl;
 }
 
 int main() {
