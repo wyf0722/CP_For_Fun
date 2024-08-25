@@ -9,7 +9,7 @@
 - [ ] [405 t4](https://leetcode.cn/problems/construct-string-with-minimum-cost/description/)
 - [ ] [408 t4](https://leetcode.cn/problems/check-if-the-rectangle-corner-is-reachable/description/)
 - [ ] [409 t4](https://leetcode.cn/problems/alternating-groups-iii/description/)
-- [ ] [411 t3](https://leetcode.cn/problems/find-the-largest-palindrome-divisible-by-k/description/)
+- [x] [411 t3](https://leetcode.cn/problems/find-the-largest-palindrome-divisible-by-k/description/)
 - [ ] [411 t4](https://leetcode.cn/problems/count-substrings-that-satisfy-k-constraint-ii/description/)
 
 # 学习资料
