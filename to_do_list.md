@@ -1,7 +1,7 @@
 # 待解决的题目
 ## LeetCode biweekly
-- [ ] [131 t4](https://leetcode.cn/problems/block-placement-queries/)
 - [ ] [130 t4](https://leetcode.cn/problems/find-products-of-elements-of-big-array/description/)
+- [x] [131 t4](https://leetcode.cn/problems/block-placement-queries/)
 - [ ] [135 t4](https://leetcode.cn/problems/maximum-score-from-grid-operations/description/)
 - [x] [136 t4](https://leetcode.cn/problems/time-taken-to-mark-all-nodes/description/)
 
