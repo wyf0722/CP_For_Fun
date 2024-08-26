@@ -155,7 +155,42 @@ if 1:
 MULTITEST = 1
 MOD = 1_000_000_007
 def main():
-    
+    n, k = MII()
+    a = LII()
+    l, r = 0, n - 1
+    while k:
+        if l > r:
+            break
+        if l == r:
+            d = min(a[l], k)
+            k -= d
+            a[l] -= d
+            break   
+        if a[l] <= a[r]:
+            d = min(a[l], k // 2)
+            a[l] -= d
+            a[r] -= d
+            k -= d * 2
+            if k == 1 and a[l]:
+                a[l] -= 1
+                k -= 1
+            if a[l] == 0:
+                l += 1
+            if a[r] == 0:
+                r -= 1
+        else:
+            d = min(a[r], k // 2)
+            a[l] -= d
+            a[r] -= d
+            k -= d * 2
+            if k == 1 and a[l]:
+                a[l] -= 1
+                k -= 1
+            if a[l] == 0:
+                l += 1
+            if a[r] == 0:
+                r -= 1
+    print(a.count(0))
 
 t = 1
 if MULTITEST:
