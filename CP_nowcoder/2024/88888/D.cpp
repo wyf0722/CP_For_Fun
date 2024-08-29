@@ -70,7 +70,54 @@ template<class T, class U> T lstTrue(T lo, T hi, U f) { --lo; assert(lo <= hi); 
  */
 #define MULTICASE 0
 void solve() {
-    
+    i64 n, k, b;
+    cin >> n >> k >> b;
+    vector<int> up, down, on;
+    for (int i = 1; i <= 2 * n; i++) {
+        i64 x, y;
+        cin >> x >> y;
+        int fx = k * x + b;
+        if (fx == y) on.push_back(i);
+        else if (fx < y) down.push_back(i);
+        else up.push_back(i);
+    }
+    // 在线的两侧
+    int i = 0, j = 0;
+    int ans = 0;
+    vector<string> segs;
+    while (i < up.size() && j < down.size()) {
+        segs.push_back(to_string(up[i]) + " " + to_string(down[j]) + " Y");
+        i++, j++;
+        ans++;
+    }
+    int l = 0;
+    while (i < up.size() && l < on.size()) {
+        segs.push_back(to_string(up[i]) + " " + to_string(on[l]) + " Y");
+        i++, l++;
+        ans++;
+    }
+    while (j < down.size() && l < on.size()) {
+        segs.push_back(to_string(down[j]) + " " + to_string(on[l]) + " Y");
+        j++, l++;
+        ans++;
+    }
+    while (l < on.size()) {
+        segs.push_back(to_string(on[l]) + " " + to_string(on[l + 1]) + " Y");
+        l += 2;
+        ans++;
+    }
+    while (i < up.size()) {
+        segs.push_back(to_string(up[i]) + " " + to_string(up[i + 1]) + " N");
+        i += 2;
+    }
+    while (j < down.size()) {
+        segs.push_back(to_string(down[j]) + " " + to_string(down[j + 1]) + " N");
+        j += 2;
+    }
+    cout << ans << "\n";
+    for (int i = 0; i < n; i++) {
+        cout << segs[i] << "\n";
+    }
 }
 
 int main() {
