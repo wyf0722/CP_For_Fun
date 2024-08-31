@@ -101,16 +101,16 @@ struct SegmentTree {
     }
 };
 
-// don't forget to set default value
-// T variable = value
+/**
+ * Hints:
+ *      1. don't forget to set default value (T variable = value)
+ *      2. use Info or const Info& in operator+
+ */
 struct Info {
-    i64 x;
-    int sz;
- 
-    Info(i64 _x = 0, int _sz = 1) : x{_x}, sz{_sz} {} 
+    int x = 0;
 };
 
 // use Info or const Info &
 Info operator+(const Info &a, const Info &b) {
-    return Info{a.x + b.x, a.sz + b.sz};
+    return Info{a.x + b.x};
 }
