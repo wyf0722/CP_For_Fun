@@ -53,3 +53,19 @@ template<class T, class U> T lstTrue(T lo, T hi, U f) { --lo; assert(lo <= hi); 
 /***
  * 𝓽𝓱𝓮 𝓼𝓸𝓵𝓾𝓽𝓲𝓸𝓷 𝓸𝓯 𝔀𝔂𝓯0722
  */
+
+class Solution {
+public:
+    string stringHash(string s, int k) {
+        int n = s.size();
+        string ans = "";
+        for (int i = 0; i < n; i += k) {
+            int mod = 0;
+            for (int j = i; j < i + k; j++) {
+                mod = (mod + s[j] - 'a') % 26;
+            }
+            ans.push_back('a' + mod);
+        }
+        return ans;
+    }
+};

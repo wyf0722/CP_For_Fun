@@ -53,3 +53,24 @@ template<class T, class U> T lstTrue(T lo, T hi, U f) { --lo; assert(lo <= hi); 
 /***
  * 𝓽𝓱𝓮 𝓼𝓸𝓵𝓾𝓽𝓲𝓸𝓷 𝓸𝓯 𝔀𝔂𝓯0722
  */
+
+class Solution {
+public:
+    long long minDamage(int power, vector<int>& damage, vector<int>& health) {
+        int n = damage.size();
+        vector<int> ord(n);
+        iota(all(ord), 0);
+        sort(all(ord), [&](int x, int y) {
+            int tx = (health[x] + power - 1) / power;
+            int ty = (health[y] + power - 1) / power;
+            return 1LL * tx * damage[y] < 1LL * ty * damage[x];
+        });
+        i64 ans = 0;
+        i64 time = 0;
+        for (int id : ord) {
+            time += (health[id] + power - 1) / power;
+            ans += time * damage[id];
+        }
+        return ans;
+    }
+};

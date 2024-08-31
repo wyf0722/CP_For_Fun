@@ -53,3 +53,23 @@ template<class T, class U> T lstTrue(T lo, T hi, U f) { --lo; assert(lo <= hi); 
 /***
  * 𝓽𝓱𝓮 𝓼𝓸𝓵𝓾𝓽𝓲𝓸𝓷 𝓸𝓯 𝔀𝔂𝓯0722
  */
+
+class Solution {
+public:
+    int generateKey(int num1, int num2, int num3) {
+        auto get = [](int x) -> vector<int> {
+            vector<int> bits;
+            for (int i = 0; i < 4; i++) {
+                bits.push_back(x % 10);
+                x /= 10;
+            }
+            return bits;
+        };
+        auto v1 = get(num1), v2 = get(num2), v3 = get(num3);
+        int ans = 0;
+        for (int i = 3; i >= 0; i--) {
+            ans = ans * 10 + min({v1[i], v2[i], v3[i]});
+        }
+        return ans;
+    }
+};
