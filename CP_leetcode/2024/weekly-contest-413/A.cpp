@@ -54,3 +54,10 @@ template<class T, class U> T lstTrue(T lo, T hi, U f) { --lo; assert(lo <= hi); 
  * 𝓽𝓱𝓮 𝓼𝓸𝓵𝓾𝓽𝓲𝓸𝓷 𝓸𝓯 𝔀𝔂𝓯0722
  */
 
+class Solution {
+public:
+    bool checkTwoChessboards(string coordinate1, string coordinate2) {
+        return (coordinate1[0] - 'a' + coordinate1[1] - '1') % 2 == 
+        (coordinate2[0] - 'a' + coordinate2[1] - '1') % 2;
+    }
+};

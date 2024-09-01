@@ -54,3 +54,17 @@ template<class T, class U> T lstTrue(T lo, T hi, U f) { --lo; assert(lo <= hi); 
  * 𝓽𝓱𝓮 𝓼𝓸𝓵𝓾𝓽𝓲𝓸𝓷 𝓸𝓯 𝔀𝔂𝓯0722
  */
 
+class Solution {
+public:
+    vector<int> resultsArray(vector<vector<int>>& queries, int k) {
+        max_heap<int> heap;
+        vi ans;
+        for (auto &q: queries) {
+            int x = q[0], y = q[1];
+            heap.emplace(abs(x) + abs(y));
+            if (heap.size() > k) heap.pop();
+            ans.push_back(heap.size() == k ? heap.top() : -1);
+        } 
+        return ans;
+    }
+};
