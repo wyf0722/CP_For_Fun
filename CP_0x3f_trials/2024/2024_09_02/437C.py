@@ -155,7 +155,17 @@ if 1:
 MULTITEST = 0
 MOD = 1_000_000_007
 def main():
-    
+    n, m = MII()
+    a = LII()
+    ans = 0
+    for i in range(m):
+        x, y = MII()
+        if a[x - 1] <= a[y - 1]:
+            ans += a[x - 1]
+        else:
+            ans += a[y - 1]
+    print(ans)
+
 
 t = 1
 if MULTITEST:

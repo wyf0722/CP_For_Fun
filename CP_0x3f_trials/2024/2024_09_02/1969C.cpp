@@ -70,7 +70,26 @@ template<class T, class U> T lstTrue(T lo, T hi, U f) { --lo; assert(lo <= hi); 
  */
 #define MULTICASE 1
 void solve() {
-    
+    int n, k;
+    cin >> n >> k;
+
+    vector<int> a(n);
+    FOR(i, 0, n) {
+        cin >> a[i];
+    }
+
+    vector<vector<i64>> dp(n + 1, vector<i64>(k + 1, infLL));
+    dp[0][0] = 0;
+    for (int i = 0; i < n; i++) {
+        int min = a[i];
+        for (int j = 0; i + j < n && j <= k; j++) {
+            chmin(min, a[i + j]);
+            for (int x = 0; x + j <= k; x++) {
+                chmin(dp[i + j + 1][x + j], dp[i][x] + 1LL * min * (j + 1));
+            }
+        }
+    }
+    cout << *min_element(all(dp[n])) << endl;
 }
 
 int main() {

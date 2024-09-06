@@ -68,9 +68,50 @@ template<class T, class U> T lstTrue(T lo, T hi, U f) { --lo; assert(lo <= hi); 
  *  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
  *           ░     ░ ░      ░  ░
  */
-#define MULTICASE 1
+#define MULTICASE 0
 void solve() {
-    
+    int n, m;
+    cin >> n >> m;
+    vector<string> g(n);
+    int lst = -1;
+    FOR(i, 0, n) {
+        cin >> g[i];
+        if (count(all(g[i]), 'W')) lst = i;
+    }
+    if (lst == -1) {
+        cout << 0 << endl;
+        return;
+    }
+    int cur_col = 0;
+    int ans = lst;
+    FOR(i, 0, n) {
+        int l = m, r = -1;
+        FOR(j, 0, m) {
+            if (g[i][j] == 'W') {
+                chmin(l, j);
+                chmax(r, j);
+            }
+        }
+        if (l == m) continue;
+        if (i % 2 == 0) {
+            // right
+            if (cur_col <= l) {
+                ans += r - cur_col;
+            } else {
+                ans += cur_col - l + r - l;
+            }
+            cur_col = r;
+        } else {
+            // left
+            if (cur_col >= r) {
+                ans += cur_col - l;
+            } else {
+                ans += r - cur_col + r - l;
+            }
+            cur_col = l;
+        }
+    }
+    cout << ans << endl;
 }
 
 int main() {
