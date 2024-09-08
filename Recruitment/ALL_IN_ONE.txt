@@ -1,0 +1,2565 @@
+--- File: Cpp_IO.cpp ---
+/**
+ *    author:  WuYifan
+**/
+#include <bits/stdc++.h>
+
+using namespace std;
+
+template<typename A, typename B> ostream& operator<<(ostream &os, const pair<A, B> &p) { return os << '(' << p.first << ", " << p.second << ')'; }
+template<typename T_container, typename T = typename enable_if<!is_same<T_container, string>::value, typename T_container::value_type>::type> ostream& operator<<(ostream &os, const T_container &v) { os << '{'; string sep; for (const T &x : v) os << sep << x, sep = ", "; return os << '}'; }
+ 
+void dbg_out() { cout << endl; }
+template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) { cout << ' ' << H; dbg_out(T...); }
+#define debug(...) cout << '[' << __LINE__ << "] (" << #__VA_ARGS__ << "):", dbg_out(__VA_ARGS__)
+
+#define all(x) begin(x), end(x)
+#define rall(x) begin(x), end(x)
+// loops
+#define FOR(i, a, b) for (int i = (a); i < (b); ++i)
+#define ROF(i, a, b) for (int i = (b)-1; i >= (a); --i)
+#define rep(a) F0R(_, a)
+#define each(a, x) for (auto &a : x)
+using i64 = long long;
+using ll = long long;
+using pii = pair<int, int>;
+using pll = pair<i64, i64>;
+using vi = vector<int>;
+using vl = vector<ll>;
+using vvi = vector<vector<int>>;
+using vvl = vector<vector<ll>>;
+using vpii = vector<pii>;
+using vpll = vector<pll>;
+const int inf = INT_MAX / 2 - 100;
+const i64 infLL = LLONG_MAX / 3;
+int MOD = 1e9 + 7;
+int dx[4]{1, 0, -1, 0}, dy[4]{0, 1, 0, -1};
+template<typename T> using min_heap=priority_queue<T,vector<T>,greater<T>>;
+template<typename T> using max_heap=priority_queue<T>;
+
+constexpr int popcount(int x) { return __builtin_popcount(x); }
+constexpr int topbit(int x) { return x == 0 ? 0 : 31 - __builtin_clz(x); }
+
+inline void add_mod(int& x, int y) { x += y; if (x >= MOD) x -= MOD; }
+inline void sub_mod(int& x, int y) { x += MOD - y; if (x >= MOD) x -= MOD; }
+
+template <class T> bool chmin(T& a, const T& b) { return b < a ? a = b, 1 : 0; }  // set a = min(a,b)
+template <class T> bool chmax(T& a, const T& b) { return a < b ? a = b, 1 : 0; }  // set a = max(a,b)
+
+template <class T> void mkuni(vector<T>& v) { sort(all(v)); v.erase(unique(all(v)), v.end()); }
+template <class T> int lwb(vector<T>& a, const T& b) { return int(lower_bound(all(a), b) - begin(a)); }
+template <class T> int upb(vector<T>& a, const T& b) { return int(upper_bound(all(a), b) - begin(a)); }
+template <class T, class U> void safeErase(T& t, const U& u) { auto it = t.find(u); assert(it != end(t)); t.erase(it); }
+
+template<class T, class U> T fstTrue(T lo, T hi, U f) { ++hi; assert(lo <= hi); while (lo < hi) { T mid = lo + (hi - lo) / 2; f(mid) ? hi = mid : lo = mid + 1; } return lo; }
+template<class T, class U> T lstTrue(T lo, T hi, U f) { --lo; assert(lo <= hi); while (lo < hi) { T mid = lo + (hi - lo + 1) / 2; f(mid) ? lo = mid : hi = mid - 1; } return lo; }
+
+#define MULTICASE 1
+void solve() {
+
+}
+
+int main() {
+    cin.tie(nullptr)->sync_with_stdio(false);
+    cout << fixed << setprecision(20);
+    int T = 1;
+#if MULTICASE
+    cin >> T;
+#endif
+    while (T--) {
+        solve();
+    }
+    return 0;
+}
+########################################################################################
+--- File: DSU.cpp ---
+struct DSU {
+    std::vector<int> f, siz;
+     
+    DSU() {}
+    DSU(int n) {
+        init(n);
+    }
+     
+    void init(int n) {
+        f.resize(n);
+        std::iota(f.begin(), f.end(), 0);
+        siz.assign(n, 1);
+    }
+     
+    int find(int x) {
+        while (x != f[x]) {
+            x = f[x] = f[f[x]];
+        }
+        return x;
+    }
+     
+    bool same(int x, int y) {
+        return find(x) == find(y);
+    }
+     
+    bool merge(int x, int y) {
+        x = find(x);
+        y = find(y);
+        if (x == y) {
+            return false;
+        }
+        siz[x] += siz[y];
+        f[y] = x;
+        return true;
+    }
+     
+    int size(int x) {
+        return siz[find(x)];
+    }
+};
+########################################################################################
+--- File: Fenwick.cpp ---
+template <typename T>
+struct Fenwick {
+    int n;
+    std::vector<T> a;
+    
+    Fenwick(int n_ = 0) {
+        init(n_);
+    }
+    
+    void init(int n_) {
+        n = n_;
+        a.assign(n, T{});
+    }
+    
+    void add(int x, const T &v) {
+        for (int i = x + 1; i <= n; i += i & -i) {
+            a[i - 1] = a[i - 1] + v;
+        }
+    }
+    
+    T sum(int x) {
+        T ans{};
+        for (int i = x; i > 0; i -= i & -i) {
+            ans = ans + a[i - 1];
+        }
+        return ans;
+    }
+    
+    T rangeSum(int l, int r) {
+        return sum(r) - sum(l);
+    }
+    
+    int select(const T &k) {
+        int x = 0;
+        T cur{};
+        for (int i = 1 << std::__lg(n); i; i /= 2) {
+            if (x + i <= n && cur + a[x + i - 1] <= k) {
+                x += i;
+                cur = cur + a[x - 1];
+            }
+        }
+        return x;
+    }
+};
+
+// don't forget to set default value
+// T variable = value
+struct Info{
+    int x;
+    Info(int x_ = 0):x(x_) {}
+};
+Info operator+(const Info &a, const Info &b) {
+    return Info{max(a.x, b.x)};
+}
+########################################################################################
+--- File: LazySegmentTree.cpp ---
+template <class Info, class Tag>
+struct LazySegmentTree {
+    const int n;
+    std::vector<Info> info;
+    std::vector<Tag> tag;
+    LazySegmentTree(int n) : n(n), info(4 << std::__lg(n)), tag(4 << std::__lg(n)) {}
+    LazySegmentTree(std::vector<Info> init) : LazySegmentTree(init.size()) {
+        std::function<void(int, int, int)> build = [&](int p, int l, int r) {
+            if (r - l == 1) {
+                info[p] = init[l];
+                return;
+            }
+            int m = (l + r) / 2;
+            build(2 * p, l, m);
+            build(2 * p + 1, m, r);
+            pull(p);
+        };
+        build(1, 0, n);
+    }
+    void pull(int p) {
+        info[p] = info[2 * p] + info[2 * p + 1];
+    }
+    void apply(int p, const Tag &v) {
+        info[p].apply(v);
+        tag[p].apply(v);
+    }
+    void push(int p) {
+        apply(2 * p, tag[p]);
+        apply(2 * p + 1, tag[p]);
+        tag[p] = Tag();
+    }
+    void modify(int p, int l, int r, int x, const Info &v) {
+        if (r - l == 1) {
+            info[p] = v;
+            return;
+        }
+        int m = (l + r) / 2;
+        push(p);
+        if (x < m) {
+            modify(2 * p, l, m, x, v);
+        } else {
+            modify(2 * p + 1, m, r, x, v);
+        }
+        pull(p);
+    }
+    void modify(int p, const Info &v) {
+        modify(1, 0, n, p, v);
+    }
+    Info rangeQuery(int p, int l, int r, int x, int y) {
+        if (l >= y || r <= x) {
+            return Info();
+        }
+        if (l >= x && r <= y) {
+            return info[p];
+        }
+        int m = (l + r) / 2;
+        push(p);
+        return rangeQuery(2 * p, l, m, x, y) + rangeQuery(2 * p + 1, m, r, x, y);
+    }
+    Info rangeQuery(int l, int r) {
+        return rangeQuery(1, 0, n, l, r);
+    }
+    void rangeApply(int p, int l, int r, int x, int y, const Tag &v) {
+        if (l >= y || r <= x) {
+            return;
+        }
+        if (l >= x && r <= y) {
+            apply(p, v);
+            return;
+        }
+        int m = (l + r) / 2;
+        push(p);
+        rangeApply(2 * p, l, m, x, y, v);
+        rangeApply(2 * p + 1, m, r, x, y, v);
+        pull(p);
+    }
+    void rangeApply(int l, int r, const Tag &v) {
+        return rangeApply(1, 0, n, l, r, v);
+    }
+};
+
+
+/**
+ * Hints:
+ *      1. don't forget to set default value (T variable = value)
+ *      2. use Info or const Info& in operator+
+ */
+struct Tag {
+    int x = 0;
+ 
+    void apply(const Tag &t) {
+        x += t.x;
+    }
+};
+struct Info {
+    int x = 0;
+ 
+    void apply(const Tag &t) {
+        x += t.x;
+    }
+};
+Info operator+(const Info &a, const Info &b) {
+    return Info{a.x + b.x};
+}
+########################################################################################
+--- File: MatrixSum.cpp ---
+class MatrixSum {
+private:
+    vector<vector<int>> sum;
+
+public:
+    MatrixSum(vector<vector<int>> &matrix) {
+        int m = matrix.size(), n = matrix[0].size();
+        sum = vector<vector<int>>(m + 1, vector<int>(n + 1));
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                sum[i + 1][j + 1] = sum[i + 1][j] + sum[i][j + 1] - sum[i][j] + matrix[i][j];
+            }
+        }
+    }
+
+    // 左闭，右开  左上角(x1,y1) 右下角(x2 - 1,y2 - 1)
+    int query(int x1, int y1, int x2, int y2) {
+        return sum[x2][y2] - sum[x1][y2] - sum[x2][y1] + sum[x1][y1];
+    }
+};
+########################################################################################
+--- File: Rmq.cpp ---
+template <typename T, class Compare = std::less<T>> class RangeMinQuery : private Compare {
+	static const int BUCKET_SIZE = 32;
+	static const int BUCKET_SIZE_LOG = 5;
+	static_assert(BUCKET_SIZE == (1 << BUCKET_SIZE_LOG), "BUCKET_SIZE should be a power of 2");
+	static const int CACHE_LINE_ALIGNMENT = 64;
+	int n = 0;
+	std::vector<T> data;
+	std::vector<T> pref_data;
+	std::vector<T> suff_data;
+	std::vector<T> sparse_table;
+	std::vector<uint32_t> range_mask;
+
+private:
+	int num_buckets() const {
+		return n >> BUCKET_SIZE_LOG;
+	}
+	int num_levels() const {
+		return num_buckets() ? 32 - __builtin_clz(num_buckets()) : 0;
+	}
+	int sparse_table_size() const {
+		return num_buckets() * num_levels();
+	}
+private:
+	const T& min(const T& a, const T& b) const {
+		return Compare::operator()(a, b) ? a : b;
+	}
+	void setmin(T& a, const T& b) const {
+		if (Compare::operator()(b, a)) a = b;
+	}
+
+	template <typename Vec> static int get_size(const Vec& v) { using std::size; return int(size(v)); }
+
+public:
+	RangeMinQuery() {}
+	template <typename Vec> explicit RangeMinQuery(const Vec& data_, const Compare& comp_ = Compare())
+		: Compare(comp_)
+		, n(get_size(data_))
+		, data(n)
+		, pref_data(n)
+		, suff_data(n)
+		, sparse_table(sparse_table_size())
+		, range_mask(n)
+	{
+		for (int i = 0; i < n; i++) data[i] = data_[i];
+		for (int i = 0; i < n; i++) {
+			if (i & (BUCKET_SIZE-1)) {
+				uint32_t m = range_mask[i-1];
+				while (m && !Compare::operator()(data[(i | (BUCKET_SIZE-1)) - __builtin_clz(m)], data[i])) {
+					m -= uint32_t(1) << (BUCKET_SIZE - 1 - __builtin_clz(m));
+				}
+				m |= uint32_t(1) << (i & (BUCKET_SIZE - 1));
+				range_mask[i] = m;
+			} else {
+				range_mask[i] = 1;
+			}
+		}
+		for (int i = 0; i < n; i++) {
+			pref_data[i] = data[i];
+			if (i & (BUCKET_SIZE-1)) {
+				setmin(pref_data[i], pref_data[i-1]);
+			}
+		}
+		for (int i = n-1; i >= 0; i--) {
+			suff_data[i] = data[i];
+			if (i+1 < n && ((i+1) & (BUCKET_SIZE-1))) {
+				setmin(suff_data[i], suff_data[i+1]);
+			}
+		}
+		for (int i = 0; i < num_buckets(); i++) {
+			sparse_table[i] = data[i * BUCKET_SIZE];
+			for (int v = 1; v < BUCKET_SIZE; v++) {
+				setmin(sparse_table[i], data[i * BUCKET_SIZE + v]);
+			}
+		}
+		for (int l = 0; l+1 < num_levels(); l++) {
+			for (int i = 0; i + (1 << (l+1)) <= num_buckets(); i++) {
+				sparse_table[(l+1) * num_buckets() + i] = min(sparse_table[l * num_buckets() + i], sparse_table[l * num_buckets() + i + (1 << l)]);
+			}
+		}
+	}
+
+	T query(int l, int r) const {
+		assert(l <= r);
+		int bucket_l = (l >> BUCKET_SIZE_LOG);
+		int bucket_r = (r >> BUCKET_SIZE_LOG);
+		if (bucket_l == bucket_r) {
+			uint32_t msk = range_mask[r] & ~((uint32_t(1) << (l & (BUCKET_SIZE-1))) - 1);
+			int ind = (l & ~(BUCKET_SIZE-1)) + __builtin_ctz(msk);
+			return data[ind];
+		} else {
+			T ans = min(suff_data[l], pref_data[r]);
+			bucket_l++;
+			if (bucket_l < bucket_r) {
+				int level = (32 - __builtin_clz(bucket_r - bucket_l)) - 1;
+				setmin(ans, sparse_table[level * num_buckets() + bucket_l]);
+				setmin(ans, sparse_table[level * num_buckets() + bucket_r - (1 << level)]);
+			}
+			return ans;
+		}
+	}
+};
+
+template <typename T> using RangeMaxQuery = RangeMinQuery<T, std::greater<T>>;
+########################################################################################
+--- File: SegmentTree.cpp ---
+template<class Info>
+struct SegmentTree {
+    int n;
+    std::vector<Info> info;
+    SegmentTree() : n(0) {}
+    SegmentTree(int n_, Info v_ = Info()) {
+        init(n_, v_);
+    }
+    template<class T>
+    SegmentTree(std::vector<T> init_) {
+        init(init_);
+    }
+    void init(int n_, Info v_ = Info()) {
+        init(std::vector(n_, v_));
+    }
+    template<class T>
+    void init(std::vector<T> init_) {
+        n = init_.size();
+        info.assign(4 << std::__lg(n), Info());
+        std::function<void(int, int, int)> build = [&](int p, int l, int r) {
+            if (r - l == 1) {
+                info[p] = init_[l];
+                return;
+            }
+            int m = (l + r) / 2;
+            build(2 * p, l, m);
+            build(2 * p + 1, m, r);
+            pull(p);
+        };
+        build(1, 0, n);
+    }
+    void pull(int p) {
+        info[p] = info[2 * p] + info[2 * p + 1];
+    }
+    void modify(int p, int l, int r, int x, const Info &v) {
+        if (r - l == 1) {
+            info[p] = v;
+            return;
+        }
+        int m = (l + r) / 2;
+        if (x < m) {
+            modify(2 * p, l, m, x, v);
+        } else {
+            modify(2 * p + 1, m, r, x, v);
+        }
+        pull(p);
+    }
+    void modify(int p, const Info &v) {
+        modify(1, 0, n, p, v);
+    }
+    Info rangeQuery(int p, int l, int r, int x, int y) {
+        if (l >= y || r <= x) {
+            return Info();
+        }
+        if (l >= x && r <= y) {
+            return info[p];
+        }
+        int m = (l + r) / 2;
+        return rangeQuery(2 * p, l, m, x, y) + rangeQuery(2 * p + 1, m, r, x, y);
+    }
+    Info rangeQuery(int l, int r) {
+        return rangeQuery(1, 0, n, l, r);
+    }
+    template<class F>
+    int findFirst(int p, int l, int r, int x, int y, F pred) {
+        if (l >= y || r <= x || !pred(info[p])) {
+            return -1;
+        }
+        if (r - l == 1) {
+            return l;
+        }
+        int m = (l + r) / 2;
+        int res = findFirst(2 * p, l, m, x, y, pred);
+        if (res == -1) {
+            res = findFirst(2 * p + 1, m, r, x, y, pred);
+        }
+        return res;
+    }
+    template<class F>
+    int findFirst(int l, int r, F pred) {
+        return findFirst(1, 0, n, l, r, pred);
+    }
+    template<class F>
+    int findLast(int p, int l, int r, int x, int y, F pred) {
+        if (l >= y || r <= x || !pred(info[p])) {
+            return -1;
+        }
+        if (r - l == 1) {
+            return l;
+        }
+        int m = (l + r) / 2;
+        int res = findLast(2 * p + 1, m, r, x, y, pred);
+        if (res == -1) {
+            res = findLast(2 * p, l, m, x, y, pred);
+        }
+        return res;
+    }
+    template<class F>
+    int findLast(int l, int r, F pred) {
+        return findLast(1, 0, n, l, r, pred);
+    }
+};
+
+/**
+ * Hints:
+ *      1. don't forget to set default value (T variable = value)
+ *      2. use Info or const Info& in operator+
+ */
+struct Info {
+    int x = 0;
+};
+
+// use Info or const Info &
+Info operator+(const Info &a, const Info &b) {
+    return Info{a.x + b.x};
+}
+########################################################################################
+--- File: SparseTable.cpp ---
+/**
+ * https://github.com/the-tourist/algo/blob/master/data/sparsetable.cpp
+ */
+template <typename T, typename F>
+class SparseTable {
+   public:
+    int n;
+    vector<vector<T>> mat;
+    F func;
+
+    SparseTable(const vector<T>& a, const F& f) : func(f) {
+        n = static_cast<int>(a.size());
+        int max_log = 32 - __builtin_clz(n);
+        mat.resize(max_log);
+        mat[0] = a;
+        for (int j = 1; j < max_log; j++) {
+            mat[j].resize(n - (1 << j) + 1);
+            for (int i = 0; i <= n - (1 << j); i++) {
+                mat[j][i] = func(mat[j - 1][i], mat[j - 1][i + (1 << (j - 1))]);
+            }
+        }
+    }
+
+    T query(int from, int to) const {
+        assert(0 <= from && from <= to && to <= n - 1);
+        int lg = 32 - __builtin_clz(to - from + 1) - 1;
+        return func(mat[lg][from], mat[lg][to - (1 << lg) + 1]);
+    }
+};
+
+auto get_max = [](auto a, auto b) { return max(a, b); };
+
+auto get_min = [](auto a, auto b) { return min(a, b); };
+
+// SparseTable<int, decltype(get_max)> st(input_data, get_max);
+########################################################################################
+--- File: xorTrie.cpp ---
+/**
+ * https://github.com/Joshc88/CPTemplates/blob/main/Math/xortrie.h
+*/
+template <class T = int>
+struct xortrie {
+    vector<array<int, 2>> trie = {{0, 0}};
+    vector<int> cnt = {0};
+    int NUM_BITS = 31;
+
+    xortrie() {}
+
+    xortrie(int bits, int elements = -1) {
+        NUM_BITS = bits;
+        if (elements != -1) {
+            trie.reserve(elements * bits);
+            cnt.reserve(elements * bits);
+        }
+    }
+
+    void update(T val, int delta) {
+        int node = 0;
+        for (int i = NUM_BITS - 1; i >= 0; i--) {
+            int c = val & (1ll << i) ? 1 : 0;
+            if (!trie[node][c]) {
+                trie[node][c] = trie.size();
+                trie.push_back({0, 0});
+                cnt.push_back(0);
+            }
+            node = trie[node][c];
+            cnt[node] += delta;
+        }
+    }
+
+    void insert(T val) { update(val, 1); }
+
+    void erase(T val) { update(val, -1); }
+
+    T max(T val) {
+        // Find max of val XOR element
+        T res = 0;
+        int node = 0;
+        for (int i = NUM_BITS - 1; i >= 0; i--) {
+            int c = val & (1ll << i) ? 0 : 1;
+            if (trie[node][c] && cnt[trie[node][c]]) {
+                res ^= 1ll << i;
+                node = trie[node][c];
+            } else
+                node = trie[node][c ^ 1];
+        }
+        return res;
+    }
+
+    T min(T val) {
+        // Find min of val XOR element
+        T res = 0;
+        int node = 0;
+        for (int i = NUM_BITS - 1; i >= 0; i--) {
+            int c = val & (1ll << i) ? 1 : 0;
+            if (trie[node][c] && cnt[trie[node][c]])
+                node = trie[node][c];
+            else {
+                res ^= 1ll << i;
+                node = trie[node][c ^ 1];
+            }
+        }
+        return res;
+    }
+
+    int less_than(T val, T limit) {
+        // How many elements satisfy val XOR element < limit ?
+        int res = 0, node = 0;
+        for (int i = NUM_BITS - 1; i >= 0; i--) {
+            int c = val & (1ll << i) ? 1 : 0;
+            if (limit & (1ll << i)) {
+                res += cnt[trie[node][c]];
+                if (trie[node][c ^ 1] && cnt[trie[node][c ^ 1]])
+                    node = trie[node][c ^ 1];
+                else
+                    break;
+            } else {
+                if (trie[node][c] && cnt[trie[node][c]])
+                    node = trie[node][c];
+                else
+                    break;
+            }
+        }
+        return res;
+    }
+};
+########################################################################################
+--- File: BFS.cpp ---
+/**
+ * https://github.com/Joshc88/CPTemplates/blob/main/Graph/bfs.h
+ * directed: True(有向图) False(无向图)
+*/
+template <bool directed = true> struct BFS { // 0 or 1-indexed, doesn't matter
+    int n;
+    vector<vector<int>> edges;
+
+    BFS() {}
+
+    BFS(int N) {
+        n = N;
+        edges.resize(n+1);
+    }
+
+    void add_edge(int from, int to) {
+        edges[from].push_back(to);
+        if (!directed) edges[to].push_back(from);
+    }
+
+    vector<int> dist(vector<int> sources) {
+        vector<int> res(n+1, -1);
+        queue<int> q;
+        for (int i : sources) {
+            res[i] = 0;
+            q.push(i);
+        }
+        while (!q.empty()) {
+            int cur = q.front();
+            q.pop();
+            for (int i : edges[cur]) {
+                if (res[i] == -1) {
+                    res[i] = res[cur]+1;
+                    q.push(i);
+                }
+            }
+        }
+        return res;
+    }
+
+    int dist(int source, int dest) {
+        return dist({source})[dest];
+    }
+
+    pair<int, vector<int>> path(int source, int dest) {
+        vector<int> res(n+1, -1);
+        vector<int> before(n+1);
+        queue<int> q;
+        res[source] = 0;
+        q.push(source);
+        while (!q.empty()) {
+            int cur = q.front();
+            q.pop();
+            for (int i : edges[cur]) {
+                if (res[i] == -1) {
+                    res[i] = res[cur]+1;
+                    before[i] = cur;
+                    q.push(i);
+                }
+            }
+        }
+        if (res[dest] == -1) return make_pair(-1, vector<int>());
+        vector<int> path = {dest};
+        while (path.back() != source) path.push_back(before[path.back()]);
+        reverse(path.begin(), path.end());
+        return make_pair(res[dest], path);
+    }
+};
+########################################################################################
+--- File: dijkstra.cpp ---
+/**
+ * https://github.com/the-tourist/algo/blob/master/graph/dijkstra.cpp
+*/
+template <typename T>
+class graph {
+   public:
+    struct edge {
+        int from;
+        int to;
+        T cost;
+    };
+
+    vector<edge> edges;
+    vector<vector<int>> g;
+    int n;
+
+    graph(int _n) : n(_n) { g.resize(n); }
+
+    virtual int add(int from, int to, T cost) = 0;
+};
+
+// 有向图
+template <typename T>
+class digraph : public graph<T> {
+   public:
+    using graph<T>::edges;
+    using graph<T>::g;
+    using graph<T>::n;
+
+    digraph(int _n) : graph<T>(_n) {}
+
+    int add(int from, int to, T cost = 1) {
+        assert(0 <= from && from < n && 0 <= to && to < n);
+        int id = (int)edges.size();
+        g[from].push_back(id);
+        edges.push_back({from, to, cost});
+        return id;
+    }
+
+    digraph<T> reverse() const {
+        digraph<T> rev(n);
+        for (auto& e : edges) {
+            rev.add(e.to, e.from, e.cost);
+        }
+        return rev;
+    }
+};
+
+// 无向图
+template <typename T>
+class undigraph : public graph<T> {
+   public:
+    using graph<T>::edges;
+    using graph<T>::g;
+    using graph<T>::n;
+
+    undigraph(int _n) : graph<T>(_n) {}
+
+    int add(int from, int to, T cost = 1) {
+        assert(0 <= from && from < n && 0 <= to && to < n);
+        int id = (int)edges.size();
+        g[from].push_back(id);
+        g[to].push_back(id);
+        edges.push_back({from, to, cost});
+        return id;
+    }
+};
+
+template <typename T>
+vector<T> dijkstra(const graph<T>& g, int start) {
+    assert(0 <= start && start < g.n);
+    vector<T> dist(g.n, numeric_limits<T>::max());
+    priority_queue<pair<T, int>, vector<pair<T, int>>, greater<pair<T, int>>> s;
+    dist[start] = 0;
+    s.emplace(dist[start], start);
+    while (!s.empty()) {
+        T expected = s.top().first;
+        int i = s.top().second;
+        s.pop();
+        if (dist[i] != expected) {
+            continue;
+        }
+        for (int id : g.g[i]) {
+            auto& e = g.edges[id];
+            int to = e.from ^ e.to ^ i;
+            if (dist[i] + e.cost < dist[to]) {
+                dist[to] = dist[i] + e.cost;
+                s.emplace(dist[to], to);
+            }
+        }
+    }
+    return dist;
+    // returns numeric_limits<T>::max() if there's no path
+}
+########################################################################################
+--- File: Tarjan.cpp ---
+// 无向图tarjan
+int n, t;
+vector<vector<int>> g(n);
+vector<int> dfn(n), low(n);
+vector<vector<int>> bridges;
+
+void tarjan(int x, int fa) {
+    dfn[x] = low[x] = ++t;
+    for (int y : g[x]) {
+        if (y == fa)
+            continue;
+        if (!dfn[y]) {
+            tarjan(y, x);
+            low[x] = min(low[x], low[y]);
+            if (dfn[x] < low[y]) {
+                bridges.push_back({x, y});
+            }
+        } else {
+            low[x] = min(low[x], dfn[y]);
+        }
+    }
+}
+########################################################################################
+--- File: Comb.cpp ---
+using u32 = unsigned;
+using i64 = long long;
+using u64 = unsigned long long;
+
+template<typename T>
+constexpr T power(T a, u64 b) {
+    T res {1};
+    for (; b != 0; b /= 2, a *= a) {
+        if (b % 2 == 1) {
+            res *= a;
+        }
+    }
+    return res;
+}
+ 
+template<u32 P>
+constexpr u32 mulMod(u32 a, u32 b) {
+    return 1ULL * a * b % P;
+}
+ 
+template<u64 P>
+constexpr u64 mulMod(u64 a, u64 b) {
+    u64 res = a * b - u64(1.L * a * b / P - 0.5L) * P;
+    res %= P;
+    return res;
+}
+ 
+template<typename U, U P>
+requires std::unsigned_integral<U>
+struct ModIntBase {
+public:
+    constexpr ModIntBase() : x {0} {}
+     
+    template<typename T>
+    requires std::integral<T>
+    constexpr ModIntBase(T x_) : x {norm(x_ % T {P})} {}
+     
+    constexpr static U norm(U x) {
+        if ((x >> (8 * sizeof(U) - 1) & 1) == 1) {
+            x += P;
+        }
+        if (x >= P) {
+            x -= P;
+        }
+        return x;
+    }
+     
+    constexpr U val() const {
+        return x;
+    }
+     
+    constexpr ModIntBase operator-() const {
+        ModIntBase res;
+        res.x = norm(P - x);
+        return res;
+    }
+     
+    constexpr ModIntBase inv() const {
+        return power(*this, P - 2);
+    }
+     
+    constexpr ModIntBase &operator*=(const ModIntBase &rhs) & {
+        x = mulMod<P>(x, rhs.val());
+        return *this;
+    }
+     
+    constexpr ModIntBase &operator+=(const ModIntBase &rhs) & {
+        x = norm(x + rhs.x);
+        return *this;
+    }
+     
+    constexpr ModIntBase &operator-=(const ModIntBase &rhs) & {
+        x = norm(x - rhs.x);
+        return *this;
+    }
+     
+    constexpr ModIntBase &operator/=(const ModIntBase &rhs) & {
+        return *this *= rhs.inv();
+    }
+     
+    friend constexpr ModIntBase operator*(ModIntBase lhs, const ModIntBase &rhs) {
+        lhs *= rhs;
+        return lhs;
+    }
+     
+    friend constexpr ModIntBase operator+(ModIntBase lhs, const ModIntBase &rhs) {
+        lhs += rhs;
+        return lhs;
+    }
+     
+    friend constexpr ModIntBase operator-(ModIntBase lhs, const ModIntBase &rhs) {
+        lhs -= rhs;
+        return lhs;
+    }
+     
+    friend constexpr ModIntBase operator/(ModIntBase lhs, const ModIntBase &rhs) {
+        lhs /= rhs;
+        return lhs;
+    }
+     
+    friend constexpr std::ostream &operator<<(std::ostream &os, const ModIntBase &a) {
+        return os << a.val();
+    }
+     
+    friend constexpr bool operator==(ModIntBase lhs, ModIntBase rhs) {
+        return lhs.val() == rhs.val();
+    }
+     
+    friend constexpr bool operator!=(ModIntBase lhs, ModIntBase rhs) {
+        return lhs.val() != rhs.val();
+    }
+     
+    friend constexpr bool operator<(ModIntBase lhs, ModIntBase rhs) {
+        return lhs.val() < rhs.val();
+    }
+     
+private:
+    U x;
+};
+ 
+template<u32 P>
+using ModInt = ModIntBase<u32, P>;
+ 
+template<u64 P>
+using ModInt64 = ModIntBase<u64, P>;
+ 
+constexpr u32 P = 998244353;
+using Z = ModInt<P>;
+
+struct Comb {
+    int n;
+    std::vector<Z> _fac;
+    std::vector<Z> _invfac;
+    std::vector<Z> _inv;
+    
+    Comb() : n{0}, _fac{1}, _invfac{1}, _inv{0} {}
+    Comb(int n) : Comb() {
+        init(n);
+    }
+    
+    void init(int m) {
+        if (m <= n) return;
+        _fac.resize(m + 1);
+        _invfac.resize(m + 1);
+        _inv.resize(m + 1);
+        
+        for (int i = n + 1; i <= m; i++) {
+            _fac[i] = _fac[i - 1] * i;
+        }
+        _invfac[m] = _fac[m].inv();
+        for (int i = m; i > n; i--) {
+            _invfac[i - 1] = _invfac[i] * i;
+            _inv[i] = _invfac[i] * _fac[i - 1];
+        }
+        n = m;
+    }
+    
+    Z fac(int m) {
+        if (m > n) init(2 * m);
+        return _fac[m];
+    }
+    Z invfac(int m) {
+        if (m > n) init(2 * m);
+        return _invfac[m];
+    }
+    Z inv(int m) {
+        if (m > n) init(2 * m);
+        return _inv[m];
+    }
+    Z binom(int n, int m) {
+        if (n < m || m < 0) return 0;
+        return fac(n) * invfac(m) * invfac(n - m);
+    }
+} comb;
+########################################################################################
+--- File: Math.cpp ---
+#include <bits/stdc++.h>
+using namespace std;
+using i64 = long long;
+i64 MOD = 1e9 + 7;
+/**
+ * 埃氏筛
+ */
+const int MX = 1e5 + 10;
+vector<int> prime;
+vector<int> is_prime(MX + 1, 1);
+int init = []() -> int {
+    is_prime[0] = is_prime[1] = 0;
+    for (int i = 2; i <= MX; i++) {
+        if (is_prime[i]) {
+            prime.push_back(i);
+            for (int j = i; j <= MX / i; j++) {
+                is_prime[i * j] = 0;
+            }
+        }
+    }
+    return 0;
+}();
+
+/**
+ * 线性筛
+ */
+const int MX = 1e5 + 10;
+vector<int> prime;
+vector<int> is_prime(MX + 1, 1);
+int init = []() -> int {
+    is_prime[0] = is_prime[1] = 0;
+    for (int i = 2; i <= MX; i++) {
+        if (is_prime[i]) prime.push_back(i);
+        for (int j = 0; i * prime[j] <= MX; j++) {
+            is_prime[i * prime[j]] = 0;
+            if (i % prime[j] == 0) break;
+        }
+    }
+    return 0;
+}();
+
+
+/**
+ * 组合数（数量较小）
+ */
+
+i64 C(i64 a, int b) {
+    i64 ans = 1LL;
+    for (int i = 1; i <= b; i++) {
+        ans = (ans * (a + 1 - i) / i) % MOD;
+    }
+    return ans;
+}
+
+/**
+ * 快速幂
+*/
+i64 power(i64 a, int b) {
+    i64 ans = 1LL;
+    for (; b; b /= 2) {
+        if (b & 1) ans = (ans * a) % MOD;
+        a = a * a % MOD;
+    }
+    return ans;
+}
+
+
+########################################################################################
+--- File: Palindromic.cpp ---
+vector<int> pal;
+auto init = [] {
+    // 严格按顺序从小到大生成所有回文数（不用字符串转换）
+    for (int base = 1; base <= 10000; base *= 10) {
+        // 生成奇数长度回文数
+        for (int i = base; i < base * 10; i++) {
+            int x = i;
+            for (int t = i / 10; t; t /= 10) {
+                x = x * 10 + t % 10;
+            }
+            pal.push_back(x);
+        }
+        // 生成偶数长度回文数
+        if (base <= 1000) {
+            for (int i = base; i < base * 10; i++) {
+                int x = i;
+                for (int t = i; t; t /= 10) {
+                    x = x * 10 + t % 10;
+                }
+                pal.push_back(x);
+            }
+        }
+    }
+    return 0;
+}();
+
+########################################################################################
+--- File: Primes.cpp ---
+// https://github.com/Joshc88/CPTemplates/blob/main/Math/primes.h
+const int MX = 1e5 + 10;
+struct Primes {
+    vector<int> lpf, lpfcnt, primes, remaining;
+
+    Primes(int n) {
+        lpf.resize(n + 1);
+        lpfcnt.resize(n + 1);
+        remaining.resize(n + 1);
+        for (int i = 2; i <= n; i++) {
+            if (!lpf[i]) {
+                lpf[i] = i;
+                lpfcnt[i] = remaining[i] = 1;
+                primes.push_back(i);
+            }
+            for (int j = 0; i * primes[j] <= n; j++) {
+                int val = i * primes[j];
+                lpf[val] = primes[j];
+                lpfcnt[val] = lpfcnt[primes[j]] + (lpf[i] == primes[j] ? lpfcnt[i] : 0);
+                remaining[val] = (lpf[i] == primes[j]) ? remaining[i] : i;
+                if (primes[j] == lpf[i])
+                    break;
+            }
+        }
+    }
+
+    bool isprime(long long x) {
+        if (x < 2)
+            return false;
+        if (x < lpf.size())
+            return lpf[x] == x;
+        for (long long i = 2; i * i <= x; i++) {
+            if (!(x % i))
+                return false;
+        }
+        return true;
+    }
+
+    vector<pair<int, int>> factorise(int x) {
+        vector<pair<int, int>> factors;
+        for (; x > 1; x = remaining[x])
+            factors.emplace_back(lpf[x], lpfcnt[x]);
+        return factors;
+    }
+} primes(MX);
+########################################################################################
+--- File: KMP.cpp ---
+// j(n) = pi[j(n-1) - 1]
+vector<int> prefix_function(string s) {
+    int n = (int)s.length();
+    vector<int> pi(n);
+    for (int i = 1; i < n; i++) {
+        int j = pi[i - 1];
+        while (j > 0 && s[i] != s[j])
+            j = pi[j - 1];
+        if (s[i] == s[j])
+            j++;
+        pi[i] = j;
+    }
+    return pi;
+}
+
+// 在text中查找pattern的出现位置
+vector<int> find_occurrences(string text, string pattern) {
+    string cur = pattern + '#' + text;
+    int sz1 = text.size(), sz2 = pattern.size();
+    vector<int> v;
+    vector<int> lps = prefix_function(cur);
+    for (int i = sz2 + 1; i <= sz1 + sz2; i++) {
+        if (lps[i] == sz2)
+            v.push_back(i - 2 * sz2);
+    }
+    return v;
+}
+########################################################################################
+--- File: StringHash自然溢出.cpp ---
+typedef unsigned long long ULL;
+const int P = 131;
+const int N = 100010;
+class StringHash {
+public:
+    ULL p[N], h[N];
+    int n;
+
+    StringHash(string s) {
+        n = s.size();
+        p[0] = 1;
+        h[0] = 0;
+        for (int i = 1; i <= n; i++) {
+            h[i] = h[i - 1] * P + s[i - 1];
+            p[i] = p[i - 1] * P;
+        }
+    }
+    
+    // hash s[l, r] 注意下标从1开始!!!
+    ULL get(int l, int r) { return h[r] - h[l - 1] * p[r - l + 1]; }
+
+    bool substr(int l1, int r1, int l2, int r2) {
+        return get(l1, r1) == get(l2, r2);
+    }
+};
+
+########################################################################################
+--- File: StringHash随机模数.cpp ---
+// 随机模数
+mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
+
+int rnd(int x, int y) {
+    return uniform_int_distribution<int>(x, y)(rng);
+}
+
+int SINGLE_MOD = 998244353 + rnd(0, 1e9), SINGLE_BASE = 233 + rnd(0, 1e3);
+
+// 单模数
+struct StringHash {
+    vector<long long> P, H;
+    int MOD, BASE;
+
+    StringHash() {}
+
+    StringHash(string &s, int m = SINGLE_MOD, int b = SINGLE_BASE) {
+        MOD = m;
+        BASE = b;
+        int n = s.size();
+        P.resize(n + 1);
+        P[0] = 1;
+        for (int i = 1; i <= n; i++) P[i] = P[i - 1] * BASE % MOD;
+        H.resize(n + 1);
+        H[0] = 0;
+        for (int i = 1; i <= n; i++) H[i] = (H[i - 1] * BASE + (s[i - 1] ^ 7)) % MOD;
+    }
+
+    // s[l, r]下标从1开始
+    long long query(int l, int r) {
+        return (H[r] - H[l - 1] * P[r - l + 1] % MOD + MOD) % MOD;
+    }
+};
+
+// 双模数
+int MOD1 = 998244353 + rnd(0, 1e9), BASE1 = 233 + rnd(0, 1e3);
+int MOD2 = 998244353 + rnd(0, 1e9), BASE2 = 233 + rnd(0, 1e3);
+struct DoubleHash {
+    StringHash hash1, hash2;
+
+    DoubleHash(string &s) {
+        hash1 = StringHash(s, MOD1, BASE1);
+        hash2 = StringHash(s, MOD2, BASE2);
+    }
+
+    pair<long long, long long> query(int l, int r) {
+        return make_pair(hash1.query(l, r), hash2.query(l, r));
+    }
+};
+
+########################################################################################
+--- File: Trie.cpp ---
+/**
+ * @link https://github.com/nealwu/competitive-programming/blob/master/strings/trie.cc
+*/
+template <char MIN_CHAR = 'a', int ALPHABET = 26>
+struct array_trie {
+    struct trie_node {
+        array<int, ALPHABET> child;
+        int words_here = 0, starting_with = 0;
+
+        trie_node() { memset(&child[0], -1, ALPHABET * sizeof(int)); }
+    };
+
+    static const int ROOT = 0;
+
+    vector<trie_node> nodes = {trie_node()};
+
+    array_trie(int total_length = -1) {
+        if (total_length >= 0)
+            nodes.reserve(total_length + 1);
+    }
+
+    int get_or_create_child(int node, int c) {
+        if (nodes[node].child[c] < 0) {
+            nodes[node].child[c] = int(nodes.size());
+            nodes.emplace_back();
+        }
+
+        return nodes[node].child[c];
+    }
+
+    int build(const string& word, int delta) {
+        int node = ROOT;
+
+        for (char ch : word) {
+            nodes[node].starting_with += delta;
+            node = get_or_create_child(node, ch - MIN_CHAR);
+        }
+
+        nodes[node].starting_with += delta;
+        return node;
+    }
+
+    int add(const string& word) {
+        int node = build(word, +1);
+        nodes[node].words_here++;
+        return node;
+    }
+
+    int erase(const string& word) {
+        int node = build(word, -1);
+        nodes[node].words_here--;
+        return node;
+    }
+
+    int find(const string& str) const {
+        int node = ROOT;
+
+        for (char ch : str) {
+            node = nodes[node].child[ch - MIN_CHAR];
+
+            if (node < 0)
+                break;
+        }
+
+        return node;
+    }
+
+    // Given a string, how many words in the trie are prefixes of the string?
+    int count_prefixes(const string& str, bool include_full) const {
+        int node = ROOT, count = 0;
+
+        for (char ch : str) {
+            count += nodes[node].words_here;
+            node = nodes[node].child[ch - MIN_CHAR];
+
+            if (node < 0)
+                break;
+        }
+
+        if (include_full && node >= 0)
+            count += nodes[node].words_here;
+
+        return count;
+    }
+
+    // Given a string, how many words in the trie start with the given string?
+    int count_starting_with(const string& str, bool include_full) const {
+        int node = find(str);
+
+        if (node < 0)
+            return 0;
+
+        return nodes[node].starting_with -
+               (include_full ? 0 : nodes[node].words_here);
+    }
+};
+########################################################################################
+--- File: zFunction.cpp ---
+std::vector<int> zFunction(std::string s) {
+    int n = s.size();
+    std::vector<int> z(n + 1);
+    z[0] = n;
+    for (int i = 1, j = 1; i < n; i++) {
+        z[i] = std::max(0, std::min(j + z[j] - i, z[i - j]));
+        while (i + z[i] < n && s[z[i]] == s[i + z[i]]) {
+            z[i]++;
+        }
+        if (i + z[i] > j + z[j]) {
+            j = i;
+        }
+    }
+    return z;
+}
+########################################################################################
+--- File: Discrete.cpp ---
+template <typename T>
+struct Discrete {
+    Discrete() {}
+    void add(T t) { p.push_back(t); }
+
+    void init() {
+        sort(p.begin(), p.end());
+        p.resize(unique(p.begin(), p.end()) - p.begin());
+    }
+
+    int size() { return p.size(); }
+
+    int query(T t) { return lower_bound(p.begin(), p.end(), t) - p.begin(); }
+
+    T operator[](int id) { return p[id]; }
+
+    vector<T>& get() { return p; }
+    vector<T> p;
+};
+########################################################################################
+--- File: Mint.cpp ---
+using u32 = unsigned;
+using i64 = long long;
+using u64 = unsigned long long;
+
+template<typename T>
+constexpr T power(T a, u64 b) {
+    T res {1};
+    for (; b != 0; b /= 2, a *= a) {
+        if (b % 2 == 1) {
+            res *= a;
+        }
+    }
+    return res;
+}
+ 
+template<u32 P>
+constexpr u32 mulMod(u32 a, u32 b) {
+    return 1ULL * a * b % P;
+}
+ 
+template<u64 P>
+constexpr u64 mulMod(u64 a, u64 b) {
+    u64 res = a * b - u64(1.L * a * b / P - 0.5L) * P;
+    res %= P;
+    return res;
+}
+ 
+template<typename U, U P>
+requires std::unsigned_integral<U>
+struct ModIntBase {
+public:
+    constexpr ModIntBase() : x {0} {}
+     
+    template<typename T>
+    requires std::integral<T>
+    constexpr ModIntBase(T x_) : x {norm(x_ % T {P})} {}
+     
+    constexpr static U norm(U x) {
+        if ((x >> (8 * sizeof(U) - 1) & 1) == 1) {
+            x += P;
+        }
+        if (x >= P) {
+            x -= P;
+        }
+        return x;
+    }
+     
+    constexpr U val() const {
+        return x;
+    }
+     
+    constexpr ModIntBase operator-() const {
+        ModIntBase res;
+        res.x = norm(P - x);
+        return res;
+    }
+     
+    constexpr ModIntBase inv() const {
+        return power(*this, P - 2);
+    }
+     
+    constexpr ModIntBase &operator*=(const ModIntBase &rhs) & {
+        x = mulMod<P>(x, rhs.val());
+        return *this;
+    }
+     
+    constexpr ModIntBase &operator+=(const ModIntBase &rhs) & {
+        x = norm(x + rhs.x);
+        return *this;
+    }
+     
+    constexpr ModIntBase &operator-=(const ModIntBase &rhs) & {
+        x = norm(x - rhs.x);
+        return *this;
+    }
+     
+    constexpr ModIntBase &operator/=(const ModIntBase &rhs) & {
+        return *this *= rhs.inv();
+    }
+     
+    friend constexpr ModIntBase operator*(ModIntBase lhs, const ModIntBase &rhs) {
+        lhs *= rhs;
+        return lhs;
+    }
+     
+    friend constexpr ModIntBase operator+(ModIntBase lhs, const ModIntBase &rhs) {
+        lhs += rhs;
+        return lhs;
+    }
+     
+    friend constexpr ModIntBase operator-(ModIntBase lhs, const ModIntBase &rhs) {
+        lhs -= rhs;
+        return lhs;
+    }
+     
+    friend constexpr ModIntBase operator/(ModIntBase lhs, const ModIntBase &rhs) {
+        lhs /= rhs;
+        return lhs;
+    }
+     
+    friend constexpr std::ostream &operator<<(std::ostream &os, const ModIntBase &a) {
+        return os << a.val();
+    }
+     
+    friend constexpr bool operator==(ModIntBase lhs, ModIntBase rhs) {
+        return lhs.val() == rhs.val();
+    }
+     
+    friend constexpr bool operator!=(ModIntBase lhs, ModIntBase rhs) {
+        return lhs.val() != rhs.val();
+    }
+     
+    friend constexpr bool operator<(ModIntBase lhs, ModIntBase rhs) {
+        return lhs.val() < rhs.val();
+    }
+     
+private:
+    U x;
+};
+ 
+template<u32 P>
+using ModInt = ModIntBase<u32, P>;
+ 
+template<u64 P>
+using ModInt64 = ModIntBase<u64, P>;
+ 
+constexpr u32 P = 998244353;
+using Z = ModInt<P>;
+########################################################################################
+--- File: Modnum.cpp ---
+// @link: https://github.com/ecnerwala/cp-book/blob/master/src/modnum.hpp
+
+template <typename T> T mod_inv_in_range(T a, T m) {
+	// assert(0 <= a && a < m);
+	T x = a, y = m;
+	// coeff of a in x and y
+	T vx = 1, vy = 0;
+	while (x) {
+		T k = y / x;
+		y %= x;
+		vy -= k * vx;
+		std::swap(x, y);
+		std::swap(vx, vy);
+	}
+	assert(y == 1);
+	return vy < 0 ? m + vy : vy;
+}
+
+template <typename T> struct extended_gcd_result {
+	T gcd;
+	T coeff_a, coeff_b;
+};
+template <typename T> extended_gcd_result<T> extended_gcd(T a, T b) {
+	T x = a, y = b;
+	// coeff of a and b in x and y
+	T ax = 1, ay = 0;
+	T bx = 0, by = 1;
+	while (x) {
+		T k = y / x;
+		y %= x;
+		ay -= k * ax;
+		by -= k * bx;
+		std::swap(x, y);
+		std::swap(ax, ay);
+		std::swap(bx, by);
+	}
+	return {y, ay, by};
+}
+
+template <typename T> T mod_inv(T a, T m) {
+	a %= m;
+	a = a < 0 ? a + m : a;
+	return mod_inv_in_range(a, m);
+}
+
+template <int MOD_> struct modnum {
+	static constexpr int MOD = MOD_;
+	static_assert(MOD_ > 0, "MOD must be positive");
+
+private:
+	int v;
+
+public:
+
+	modnum() : v(0) {}
+	modnum(int64_t v_) : v(int(v_ % MOD)) { if (v < 0) v += MOD; }
+	explicit operator int() const { return v; }
+	friend std::ostream& operator << (std::ostream& out, const modnum& n) { return out << int(n); }
+	friend std::istream& operator >> (std::istream& in, modnum& n) { int64_t v_; in >> v_; n = modnum(v_); return in; }
+
+	friend bool operator == (const modnum& a, const modnum& b) { return a.v == b.v; }
+	friend bool operator != (const modnum& a, const modnum& b) { return a.v != b.v; }
+
+	modnum inv() const {
+		modnum res;
+		res.v = mod_inv_in_range(v, MOD);
+		return res;
+	}
+	friend modnum inv(const modnum& m) { return m.inv(); }
+	modnum neg() const {
+		modnum res;
+		res.v = v ? MOD-v : 0;
+		return res;
+	}
+	friend modnum neg(const modnum& m) { return m.neg(); }
+
+	modnum operator- () const {
+		return neg();
+	}
+	modnum operator+ () const {
+		return modnum(*this);
+	}
+
+	modnum& operator ++ () {
+		v ++;
+		if (v == MOD) v = 0;
+		return *this;
+	}
+	modnum& operator -- () {
+		if (v == 0) v = MOD;
+		v --;
+		return *this;
+	}
+	modnum& operator += (const modnum& o) {
+		v -= MOD-o.v;
+		v = (v < 0) ? v + MOD : v;
+		return *this;
+	}
+	modnum& operator -= (const modnum& o) {
+		v -= o.v;
+		v = (v < 0) ? v + MOD : v;
+		return *this;
+	}
+	modnum& operator *= (const modnum& o) {
+		v = int(int64_t(v) * int64_t(o.v) % MOD);
+		return *this;
+	}
+	modnum& operator /= (const modnum& o) {
+		return *this *= o.inv();
+	}
+
+	friend modnum operator ++ (modnum& a, int) { modnum r = a; ++a; return r; }
+	friend modnum operator -- (modnum& a, int) { modnum r = a; --a; return r; }
+	friend modnum operator + (const modnum& a, const modnum& b) { return modnum(a) += b; }
+	friend modnum operator - (const modnum& a, const modnum& b) { return modnum(a) -= b; }
+	friend modnum operator * (const modnum& a, const modnum& b) { return modnum(a) *= b; }
+	friend modnum operator / (const modnum& a, const modnum& b) { return modnum(a) /= b; }
+};
+
+template <typename T> T pow(T a, long long b) {
+	assert(b >= 0);
+	T r = 1; while (b) { if (b & 1) r *= a; b >>= 1; a *= a; } return r;
+}
+
+template <typename U, typename V> struct pairnum {
+	U u;
+	V v;
+
+	pairnum() : u(0), v(0) {}
+	pairnum(long long val) : u(val), v(val) {}
+	pairnum(const U& u_, const V& v_) : u(u_), v(v_) {}
+
+	friend std::ostream& operator << (std::ostream& out, const pairnum& n) { return out << '(' << n.u << ',' << ' ' << n.v << ')'; }
+	friend std::istream& operator >> (std::istream& in, pairnum& n) { long long val; in >> val; n = pairnum(val); return in; }
+
+	friend bool operator == (const pairnum& a, const pairnum& b) { return a.u == b.u && a.v == b.v; }
+	friend bool operator != (const pairnum& a, const pairnum& b) { return a.u != b.u || a.v != b.v; }
+
+	pairnum inv() const {
+		return pairnum(u.inv(), v.inv());
+	}
+	pairnum neg() const {
+		return pairnum(u.neg(), v.neg());
+	}
+	pairnum operator- () const {
+		return pairnum(-u, -v);
+	}
+	pairnum operator+ () const {
+		return pairnum(+u, +v);
+	}
+
+	pairnum& operator ++ () {
+		++u, ++v;
+		return *this;
+	}
+	pairnum& operator -- () {
+		--u, --v;
+		return *this;
+	}
+
+	pairnum& operator += (const pairnum& o) {
+		u += o.u;
+		v += o.v;
+		return *this;
+	}
+	pairnum& operator -= (const pairnum& o) {
+		u -= o.u;
+		v -= o.v;
+		return *this;
+	}
+	pairnum& operator *= (const pairnum& o) {
+		u *= o.u;
+		v *= o.v;
+		return *this;
+	}
+	pairnum& operator /= (const pairnum& o) {
+		u /= o.u;
+		v /= o.v;
+		return *this;
+	}
+
+	friend pairnum operator ++ (pairnum& a, int) { pairnum r = a; ++a; return r; }
+	friend pairnum operator -- (pairnum& a, int) { pairnum r = a; --a; return r; }
+	friend pairnum operator + (const pairnum& a, const pairnum& b) { return pairnum(a) += b; }
+	friend pairnum operator - (const pairnum& a, const pairnum& b) { return pairnum(a) -= b; }
+	friend pairnum operator * (const pairnum& a, const pairnum& b) { return pairnum(a) *= b; }
+	friend pairnum operator / (const pairnum& a, const pairnum& b) { return pairnum(a) /= b; }
+};
+
+template <typename tag> struct dynamic_modnum {
+private:
+#if __cpp_inline_variables >= 201606
+	// C++17 and up
+	inline static int MOD_ = 0;
+	inline static uint64_t BARRETT_M = 0;
+#else
+	// NB: these must be initialized out of the class by hand:
+	//   static int dynamic_modnum<tag>::MOD = 0;
+	//   static int dynamic_modnum<tag>::BARRETT_M = 0;
+	static int MOD_;
+	static uint64_t BARRETT_M;
+#endif
+
+public:
+	// Make only the const-reference public, to force the use of set_mod
+	static constexpr int const& MOD = MOD_;
+
+	// Barret reduction taken from KACTL:
+	/**
+	 * Author: Simon Lindholm
+	 * Date: 2020-05-30
+	 * License: CC0
+	 * Source: https://en.wikipedia.org/wiki/Barrett_reduction
+	 * Description: Compute $a \% b$ about 5 times faster than usual, where $b$ is constant but not known at compile time.
+	 * Returns a value congruent to $a \pmod b$ in the range $[0, 2b)$.
+	 * Status: proven correct, stress-tested
+	 * Measured as having 4 times lower latency, and 8 times higher throughput, see stress-test.
+	 * Details:
+	 * More precisely, it can be proven that the result equals 0 only if $a = 0$,
+	 * and otherwise lies in $[1, (1 + a/2^64) * b)$.
+	 */
+	static void set_mod(int mod) {
+		assert(mod > 0);
+		MOD_ = mod;
+		BARRETT_M = (uint64_t(-1) / MOD);
+	}
+	static uint32_t barrett_reduce_partial(uint64_t a) {
+		return uint32_t(a - uint64_t((__uint128_t(BARRETT_M) * a) >> 64) * MOD);
+	}
+	static int barrett_reduce(uint64_t a) {
+		int32_t res = int32_t(barrett_reduce_partial(a) - MOD);
+		return (res < 0) ? res + MOD : res;
+	}
+
+	struct mod_reader {
+		friend std::istream& operator >> (std::istream& i, mod_reader) {
+			int mod; i >> mod;
+			dynamic_modnum::set_mod(mod);
+			return i;
+		}
+	};
+	static mod_reader MOD_READER() {
+		return mod_reader();
+	}
+
+private:
+	int v;
+
+public:
+
+	dynamic_modnum() : v(0) {}
+	dynamic_modnum(int64_t v_) : v(int(v_ % MOD)) { if (v < 0) v += MOD; }
+	explicit operator int() const { return v; }
+	friend std::ostream& operator << (std::ostream& out, const dynamic_modnum& n) { return out << int(n); }
+	friend std::istream& operator >> (std::istream& in, dynamic_modnum& n) { int64_t v_; in >> v_; n = dynamic_modnum(v_); return in; }
+
+	friend bool operator == (const dynamic_modnum& a, const dynamic_modnum& b) { return a.v == b.v; }
+	friend bool operator != (const dynamic_modnum& a, const dynamic_modnum& b) { return a.v != b.v; }
+
+	dynamic_modnum inv() const {
+		dynamic_modnum res;
+		res.v = mod_inv_in_range(v, MOD);
+		return res;
+	}
+	friend dynamic_modnum inv(const dynamic_modnum& m) { return m.inv(); }
+	dynamic_modnum neg() const {
+		dynamic_modnum res;
+		res.v = v ? MOD-v : 0;
+		return res;
+	}
+	friend dynamic_modnum neg(const dynamic_modnum& m) { return m.neg(); }
+
+	dynamic_modnum operator- () const {
+		return neg();
+	}
+	dynamic_modnum operator+ () const {
+		return dynamic_modnum(*this);
+	}
+
+	dynamic_modnum& operator ++ () {
+		v ++;
+		if (v == MOD) v = 0;
+		return *this;
+	}
+	dynamic_modnum& operator -- () {
+		if (v == 0) v = MOD;
+		v --;
+		return *this;
+	}
+	dynamic_modnum& operator += (const dynamic_modnum& o) {
+		v -= MOD-o.v;
+		v = (v < 0) ? v + MOD : v;
+		return *this;
+	}
+	dynamic_modnum& operator -= (const dynamic_modnum& o) {
+		v -= o.v;
+		v = (v < 0) ? v + MOD : v;
+		return *this;
+	}
+	dynamic_modnum& operator *= (const dynamic_modnum& o) {
+		v = barrett_reduce(int64_t(v) * int64_t(o.v));
+		return *this;
+	}
+	dynamic_modnum& operator /= (const dynamic_modnum& o) {
+		return *this *= o.inv();
+	}
+
+	friend dynamic_modnum operator ++ (dynamic_modnum& a, int) { dynamic_modnum r = a; ++a; return r; }
+	friend dynamic_modnum operator -- (dynamic_modnum& a, int) { dynamic_modnum r = a; --a; return r; }
+	friend dynamic_modnum operator + (const dynamic_modnum& a, const dynamic_modnum& b) { return dynamic_modnum(a) += b; }
+	friend dynamic_modnum operator - (const dynamic_modnum& a, const dynamic_modnum& b) { return dynamic_modnum(a) -= b; }
+	friend dynamic_modnum operator * (const dynamic_modnum& a, const dynamic_modnum& b) { return dynamic_modnum(a) *= b; }
+	friend dynamic_modnum operator / (const dynamic_modnum& a, const dynamic_modnum& b) { return dynamic_modnum(a) /= b; }
+};
+
+template <typename T> struct mod_constraint {
+	T v, mod;
+
+	friend mod_constraint operator & (mod_constraint a, mod_constraint b) {
+		if (a.mod < b.mod) std::swap(a, b);
+		if (b.mod == 1) return a;
+
+		extended_gcd_result<T> egcd = extended_gcd<T>(a.mod, b.mod);
+		assert(a.v % egcd.gcd == b.v % egcd.gcd);
+
+		T extra = b.v - a.v % b.mod;
+		extra /= egcd.gcd;
+
+		extra *= egcd.coeff_a;
+		extra %= b.mod / egcd.gcd;
+		extra += (extra < 0) ? b.mod / egcd.gcd : 0;
+
+		return mod_constraint{
+			a.v + extra * a.mod,
+			a.mod * (b.mod / egcd.gcd)
+		};
+	}
+};
+
+using Z = modnum<1'000'000'007>;
+
+########################################################################################
+--- File: reverse_comparator.cpp ---
+template <typename F> struct reverse_comparator_t {
+	F f;
+	template <typename Arg1, typename Arg2> constexpr bool operator() (Arg1&& arg1, Arg2&& arg2) & {
+		return f(std::forward<Arg2>(arg2), std::forward<Arg1>(arg1));
+	}
+	template <typename Arg1, typename Arg2> constexpr bool operator() (Arg1&& arg1, Arg2&& arg2) const& {
+		return f(std::forward<Arg2>(arg2), std::forward<Arg1>(arg1));
+	}
+	template <typename Arg1, typename Arg2> constexpr bool operator() (Arg1&& arg1, Arg2&& arg2) && {
+		return std::move(f)(std::forward<Arg2>(arg2), std::forward<Arg1>(arg1));
+	}
+	template <typename Arg1, typename Arg2> constexpr bool operator() (Arg1&& arg1, Arg2&& arg2) const&& {
+		return std::move(f)(std::forward<Arg2>(arg2), std::forward<Arg1>(arg1));
+	}
+};
+
+template <typename F> constexpr reverse_comparator_t<std::decay_t<F>> reverse_comparator(F&& f) {
+	return { std::forward<F>(f) };
+}
+
+// for sort
+vector<int> v;
+auto cmp = [] (int x, int y) {
+    return x < y;
+};
+sort(v.begin(), v.end(), reverse_comparator(cmp));
+// for priority_queue
+priority_queue<int, vector<int>, decltype(reverse_comparator(cmp))> pq;
+########################################################################################
+--- File: tensor.cpp ---
+template <typename T, int NDIMS>
+struct tensor_view {
+    static_assert(NDIMS >= 0, "NDIMS must be nonnegative");
+
+   protected:
+    std::array<int, NDIMS> shape;
+    std::array<int, NDIMS> strides;
+    T* data;
+
+    tensor_view(std::array<int, NDIMS> shape_,
+                std::array<int, NDIMS> strides_,
+                T* data_)
+        : shape(shape_), strides(strides_), data(data_) {}
+
+   public:
+    tensor_view() : shape{0}, strides{0}, data(nullptr) {}
+
+   protected:
+    int flatten_index(std::array<int, NDIMS> idx) const {
+        int res = 0;
+        for (int i = 0; i < NDIMS; i++) {
+            res += idx[i] * strides[i];
+        }
+        return res;
+    }
+    int flatten_index_checked(std::array<int, NDIMS> idx) const {
+        int res = 0;
+        for (int i = 0; i < NDIMS; i++) {
+            assert(0 <= idx[i] && idx[i] < shape[i]);
+            res += idx[i] * strides[i];
+        }
+        return res;
+    }
+
+   public:
+    T& operator[](std::array<int, NDIMS> idx) const {
+#ifdef FAN_DEBUG
+        return data[flatten_index_checked(idx)];
+#else
+        return data[flatten_index(idx)];
+#endif
+    }
+    T& at(std::array<int, NDIMS> idx) const {
+        return data[flatten_index_checked(idx)];
+    }
+
+    template <int D = NDIMS>
+    typename std::enable_if<(0 < D), tensor_view<T, NDIMS - 1>>::type
+    operator[](int idx) const {
+        std::array<int, NDIMS - 1> nshape;
+        std::copy(shape.begin() + 1, shape.end(), nshape.begin());
+        std::array<int, NDIMS - 1> nstrides;
+        std::copy(strides.begin() + 1, strides.end(), nstrides.begin());
+        T* ndata = data + (strides[0] * idx);
+        return tensor_view<T, NDIMS - 1>(nshape, nstrides, ndata);
+    }
+    template <int D = NDIMS>
+    typename std::enable_if<(0 < D), tensor_view<T, NDIMS - 1>>::type at(
+        int idx) const {
+        assert(0 <= idx && idx < shape[0]);
+        return operator[](idx);
+    }
+
+    template <int D = NDIMS>
+    typename std::enable_if<(0 == D), T&>::type operator*() const {
+        return *data;
+    }
+
+    template <typename U, int D>
+    friend struct tensor_view;
+    template <typename U, int D>
+    friend struct tensor;
+};
+
+template <typename T, int NDIMS>
+struct tensor {
+    static_assert(NDIMS >= 0, "NDIMS must be nonnegative");
+
+   protected:
+    std::array<int, NDIMS> shape;
+    std::array<int, NDIMS> strides;
+    int len;
+    T* data;
+
+   public:
+    tensor() : shape{0}, strides{0}, len(0), data(nullptr) {}
+
+    explicit tensor(std::array<int, NDIMS> shape_, const T& t = T()) {
+        shape = shape_;
+        len = 1;
+        for (int i = NDIMS - 1; i >= 0; i--) {
+            strides[i] = len;
+            len *= shape[i];
+        }
+        data = new T[len];
+        std::fill(data, data + len, t);
+    }
+
+    tensor(const tensor& o)
+        : shape(o.shape), strides(o.strides), len(o.len), data(new T[len]) {
+        for (int i = 0; i < len; i++) {
+            data[i] = o.data[i];
+        }
+    }
+
+    tensor& operator=(tensor&& o) noexcept {
+        using std::swap;
+        swap(shape, o.shape);
+        swap(strides, o.strides);
+        swap(len, o.len);
+        swap(data, o.data);
+        return *this;
+    }
+    tensor(tensor&& o) : tensor() { *this = std::move(o); }
+    tensor& operator=(const tensor& o) { return *this = tensor(o); }
+    ~tensor() { delete[] data; }
+
+    using view_t = tensor_view<T, NDIMS>;
+    view_t view() { return tensor_view<T, NDIMS>(shape, strides, data); }
+    operator view_t() { return view(); }
+
+    using const_view_t = tensor_view<const T, NDIMS>;
+    const_view_t view() const {
+        return tensor_view<const T, NDIMS>(shape, strides, data);
+    }
+    operator const_view_t() const { return view(); }
+
+    T& operator[](std::array<int, NDIMS> idx) { return view()[idx]; }
+    T& at(std::array<int, NDIMS> idx) { return view().at(idx); }
+    const T& operator[](std::array<int, NDIMS> idx) const {
+        return view()[idx];
+    }
+    const T& at(std::array<int, NDIMS> idx) const { return view().at(idx); }
+
+    template <int D = NDIMS>
+    typename std::enable_if<(0 < D), tensor_view<T, NDIMS - 1>>::type
+    operator[](int idx) {
+        return view()[idx];
+    }
+    template <int D = NDIMS>
+    typename std::enable_if<(0 < D), tensor_view<T, NDIMS - 1>>::type at(
+        int idx) {
+        return view().at(idx);
+    }
+
+    template <int D = NDIMS>
+    typename std::enable_if<(0 < D), tensor_view<const T, NDIMS - 1>>::type
+    operator[](int idx) const {
+        return view()[idx];
+    }
+    template <int D = NDIMS>
+    typename std::enable_if<(0 < D), tensor_view<const T, NDIMS - 1>>::type at(
+        int idx) const {
+        return view().at(idx);
+    }
+
+    template <int D = NDIMS>
+    typename std::enable_if<(0 == D), T&>::type operator*() {
+        return *view();
+    }
+    template <int D = NDIMS>
+    typename std::enable_if<(0 == D), const T&>::type operator*() const {
+        return *view();
+    }
+};
+########################################################################################
+--- File: y_combinator.cpp ---
+/**
+ * Description: wraps a lambda so it can call itself
+ * Source: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0200r0.html
+ */
+
+namespace std {
+ 
+template<class Fun>
+class y_combinator_result {
+	Fun fun_;
+public:
+	template<class T>
+	explicit y_combinator_result(T &&fun): fun_(std::forward<T>(fun)) {}
+ 
+	template<class ...Args>
+	decltype(auto) operator()(Args &&...args) {
+		return fun_(std::ref(*this), std::forward<Args>(args)...);
+	}
+};
+ 
+template<class Fun>
+decltype(auto) y_combinator(Fun &&fun) {
+	return y_combinator_result<std::decay_t<Fun>>(std::forward<Fun>(fun));
+}
+ 
+} // namespace std
+
+void y_comb_demo() {
+	cout << y_combinator([](auto gcd, int a, int b) -> int {
+		return b == 0 ? a : gcd(b, a % b);
+	})(20,30) << "\n"; // outputs 10
+}
+########################################################################################
+--- File: Comb.py ---
+class Combinatorics:
+    def __init__(self, n, mod):
+        assert mod > n
+        self.n = n + 10
+        self.mod = mod
+
+        self.perm = [1]
+        self.rev = [1]
+        self.inv = [0]
+        self.fault = [0]
+
+        self.build_perm()
+        self.build_rev()
+        self.build_inv()
+        self.build_fault()
+        return
+
+    def build_perm(self):
+        self.perm = [1] * (self.n + 1)  # (i!) % mod
+        for i in range(1, self.n + 1):
+            self.perm[i] = self.perm[i - 1] * i % self.mod
+        return
+
+    def build_rev(self):
+        self.rev = [1] * (self.n + 1)  # pow(i!, -1, mod)
+        self.rev[-1] = pow(self.perm[-1], -1, self.mod)  # GcdLike().mod_reverse(self.perm[-1], self.mod)
+        for i in range(self.n - 1, 0, -1):
+            self.rev[i] = (self.rev[i + 1] * (i + 1) % self.mod)  # pow(i!, -1, mod)
+        return
+
+    def build_inv(self):
+        self.inv = [0] * (self.n + 1)  # pow(i, -1, mod)
+        self.inv[1] = 1
+        for i in range(2, self.n + 1):
+            self.inv[i] = (self.mod - self.mod // i) * self.inv[self.mod % i] % self.mod
+        return
+
+    def build_fault(self):
+        self.fault = [0] * (self.n + 1)  # fault permutation
+        self.fault[0] = 1
+        self.fault[2] = 1
+        for i in range(3, self.n + 1):
+            self.fault[i] = (i - 1) * (self.fault[i - 1] + self.fault[i - 2])
+            self.fault[i] %= self.mod
+        return
+
+    def comb(self, a, b):
+        if a < b:
+            return 0
+        res = self.perm[a] * self.rev[b] * self.rev[a - b]  # comb(a, b) % mod = (a!/(b!(a-b)!)) % mod
+        return res % self.mod
+
+    def factorial(self, a):
+        res = self.perm[a]  # (a!) % mod
+        return res % self.mod
+
+    def inverse(self, n):
+        res = self.perm[n - 1] * self.rev[n] % self.mod  # pow(n, -1, mod)
+        return res
+
+    def catalan(self, n):
+        res = (self.comb(2 * n, n) - self.comb(2 * n, n - 1)) % self.mod
+        return res
+
+
+########################################################################################
+--- File: DSU.py ---
+from collections import defaultdict
+class DSU:
+    def __init__(self, n: int) -> None:
+        self.root_or_size = [-1] * n
+        self.part = n
+        self.n = n
+        return
+
+    def initialize(self):
+        for i in range(self.n):
+            self.root_or_size[i] = -1
+        self.part = self.n
+        return
+
+    def find(self, x):
+        y = x
+        while self.root_or_size[x] >= 0:
+            # range_merge_to_disjoint to the direct root node after query
+            x = self.root_or_size[x]
+        while y != x:
+            self.root_or_size[y], y = x, self.root_or_size[y]
+        return x
+
+    def merge(self, x, y):
+        root_x = self.find(x)
+        root_y = self.find(y)
+        if root_x == root_y:
+            return False
+        if self.root_or_size[root_x] < self.root_or_size[root_y]:
+            root_x, root_y = root_y, root_x
+        self.root_or_size[root_y] += self.root_or_size[root_x]
+        self.root_or_size[root_x] = root_y
+        self.part -= 1
+        return True
+
+    def merge_left(self, x, y):
+        root_x = self.find(x)
+        root_y = self.find(y)
+        if root_x == root_y:
+            return False
+        self.root_or_size[root_x] += self.root_or_size[root_y]
+        self.root_or_size[root_y] = root_x
+        self.part -= 1
+        return True
+
+    def merge_right(self, x, y):
+        root_x = self.find(x)
+        root_y = self.find(y)
+        if root_x == root_y:
+            return False
+        self.root_or_size[root_y] += self.root_or_size[root_x]
+        self.root_or_size[root_x] = root_y
+        self.part -= 1
+        return True
+
+    def merge_max(self, x, y):
+        root_x = self.find(x)
+        root_y = self.find(y)
+        if root_x == root_y:
+            return False
+        if root_x > root_y:
+            root_x, root_y = root_y, root_x
+        self.root_or_size[root_y] += self.root_or_size[root_x]
+        self.root_or_size[root_x] = root_y
+        self.part -= 1
+        return
+
+    def merge_min(self, x, y):
+        root_x = self.find(x)
+        root_y = self.find(y)
+        if root_x == root_y:
+            return False
+        if root_x < root_y:
+            root_x, root_y = root_y, root_x
+        self.root_or_size[root_y] += self.root_or_size[root_x]
+        self.root_or_size[root_x] = root_y
+        self.part -= 1
+        return
+
+    def same(self, x, y):
+        return self.find(x) == self.find(y)
+
+    def size(self, x):
+        return -self.root_or_size[self.find(x)]
+
+    def get_root_part(self):
+        # get the nodes list of every root
+        part = defaultdict(list)
+        n = len(self.root_or_size)
+        for i in range(n):
+            part[self.find(i)].append(i)
+        return part
+
+    def get_root_size(self):
+        # get the size of every root
+        size = defaultdict(int)
+        n = len(self.root_or_size)
+        for i in range(n):
+            if self.find(i) == i:
+                size[i] = -self.root_or_size[i]
+        return size
+
+########################################################################################
+--- File: Fenwick.py ---
+import typing
+
+
+class Fenwick:
+    '''Reference: https://en.wikipedia.org/wiki/Fenwick_tree'''
+
+    def __init__(self, n: int = 0) -> None:
+        self._n = n
+        self.data = [0] * n
+
+    def add(self, p: int, x: typing.Any) -> None:
+        assert 0 <= p < self._n
+
+        p += 1
+        while p <= self._n:
+            self.data[p - 1] += x
+            p += p & -p
+
+    def rangeSum(self, left: int, right: int) -> typing.Any:
+        assert 0 <= left <= right <= self._n
+
+        return self.sum(right) - self.sum(left)
+
+    def sum(self, r: int) -> typing.Any:
+        s = 0
+        while r > 0:
+            s += self.data[r - 1]
+            r -= r & -r
+
+        return s
+########################################################################################
+--- File: Math.py ---
+"""
+埃氏筛
+"""
+MX = 10**5 + 10
+prime = []
+is_prime = [True] * (MX + 1)
+is_prime[0] = is_prime[1] = False
+for i in range(2, MX + 1):
+    if is_prime[i]:
+        prime.append(i)
+        for j in range(i * i, MX + 1, i):
+            is_prime[j] = False
+
+'''
+组合数
+'''
+MOD = 998244353
+N = 1000
+fac = [1]
+for i in range(1, N + 1):
+    fac.append(fac[-1] * i % MOD)
+fac_inv = [1] * (N + 1)
+fac_inv[N] = pow(fac[N], MOD - 2, MOD)
+for i in range(N - 1, 0, -1):
+    fac_inv[i] = fac_inv[i + 1] * (i + 1) % MOD
+def Comb(n:int, m:int) -> int:
+    assert n >= m and n >= 0 and m >= 0
+    return fac[n] * fac_inv[m] % MOD * fac_inv[n - m] % MOD
+########################################################################################
+--- File: Prime.py ---
+class PrimeFactor:
+    def __init__(self, n):
+        self.n = n
+        # calculate the minimum prime factor for all numbers from 1 to self.n
+        self.min_prime = [0] * (self.n + 1)
+        # determine whether all numbers from 1 to self.n are prime numbers
+        self.is_prime = [0] * (self.n + 1)
+        # calculate the prime factorization of all numbers from 1 to self.n
+        self.prime_factor = [[] for _ in range(self.n + 1)]
+        # calculate all factors of all numbers from 1 to self.n, including 1 and the number itself
+        self.all_factor = [[], [1]] + [[1, i] for i in range(2, self.n + 1)]
+        self.build()
+        return
+
+    def build(self):
+
+        # complexity is O(nlogn)
+        for i in range(2, self.n + 1):
+            if not self.min_prime[i]:
+                self.is_prime[i] = 1
+                self.min_prime[i] = i
+                for j in range(i * i, self.n + 1, i):
+                    if not self.min_prime[j]:
+                        self.min_prime[j] = i
+
+        # complexity is O(nlogn)
+        for num in range(2, self.n + 1):
+            i = num
+            while num > 1:
+                p = self.min_prime[num]
+                cnt = 0
+                while num % p == 0:
+                    num //= p
+                    cnt += 1
+                self.prime_factor[i].append((p, cnt))
+
+        # complexity is O(nlogn)
+        for i in range(2, self.n + 1):
+            x = i
+            while x * i <= self.n:
+                self.all_factor[x * i].append(i)
+                if i != x:
+                    self.all_factor[x * i].append(x)
+                x += 1
+        for i in range(self.n + 1):
+            self.all_factor[i].sort()
+        return
+
+    def comb(self, a, b):
+        # Use prime factor decomposition to solve the values of combinatorial mathematics
+        # and prime factor decomposition O ((a+b) log (a+b))
+        cnt = defaultdict(int)
+        for i in range(1, a + 1):  # a!
+            for num, y in self.prime_factor[i]:
+                cnt[num] += y
+        for i in range(1, b + 1):  # b!
+            for num, y in self.prime_factor[i]:
+                cnt[num] -= y
+        for i in range(1, a - b + 1):  # (a-b)!
+            for num, y in self.prime_factor[i]:
+                cnt[num] -= y
+        ans = 1
+        for w in cnt:
+            ans *= w ** cnt[w]
+        return ans
+
+    def get_prime_numbers(self):
+        return [i for i in range(1, self.n + 1) if self.is_prime[i]]
+########################################################################################
+--- File: Python_IO.py ---
+standard_input, packages, output_together = 1, 1, 1
+dfs, hashing, read_from_file = 0, 0, 0
+de = 1
+ 
+if 1:
+ 
+    if standard_input:
+        import io, os, sys
+        input = lambda: sys.stdin.readline().strip()
+ 
+        inf = float('inf')
+ 
+        def I():
+            return input()
+        
+        def II():
+            return int(input())
+ 
+        def MII():
+            return map(int, input().split())
+ 
+        def LI():
+            return list(input().split())
+ 
+        def LII():
+            return list(map(int, input().split()))
+ 
+        def LFI():
+            return list(map(float, input().split()))
+ 
+        def GMI():
+            return map(lambda x: int(x) - 1, input().split())
+ 
+        def LGMI():
+            return list(map(lambda x: int(x) - 1, input().split()))
+ 
+    if packages:
+        from io import BytesIO, IOBase
+        import math
+ 
+        import random
+        import os
+ 
+        import bisect
+        import typing
+        from collections import Counter, defaultdict, deque
+        from copy import deepcopy
+        from functools import cmp_to_key, lru_cache, reduce
+        from heapq import heapify, heappop, heappush, heappushpop, nlargest, nsmallest
+        from itertools import accumulate, combinations, permutations, count, product
+        from operator import add, iand, ior, itemgetter, mul, xor
+        from string import ascii_lowercase, ascii_uppercase, ascii_letters
+        from typing import *
+        BUFSIZE = 4096
+ 
+    if output_together:
+        class FastIO(IOBase):
+            newlines = 0
+ 
+            def __init__(self, file):
+                self._fd = file.fileno()
+                self.buffer = BytesIO()
+                self.writable = "x" in file.mode or "r" not in file.mode
+                self.write = self.buffer.write if self.writable else None
+ 
+            def read(self):
+                while True:
+                    b = os.read(self._fd, max(os.fstat(self._fd).st_size, BUFSIZE))
+                    if not b:
+                        break
+                    ptr = self.buffer.tell()
+                    self.buffer.seek(0, 2), self.buffer.write(b), self.buffer.seek(ptr)
+                self.newlines = 0
+                return self.buffer.read()
+ 
+            def readline(self):
+                while self.newlines == 0:
+                    b = os.read(self._fd, max(os.fstat(self._fd).st_size, BUFSIZE))
+                    self.newlines = b.count(b"\n") + (not b)
+                    ptr = self.buffer.tell()
+                    self.buffer.seek(0, 2), self.buffer.write(b), self.buffer.seek(ptr)
+                self.newlines -= 1
+                return self.buffer.readline()
+ 
+            def flush(self):
+                if self.writable:
+                    os.write(self._fd, self.buffer.getvalue())
+                    self.buffer.truncate(0), self.buffer.seek(0)
+ 
+        class IOWrapper(IOBase):
+            def __init__(self, file):
+                self.buffer = FastIO(file)
+                self.flush = self.buffer.flush
+                self.writable = self.buffer.writable
+                self.write = lambda s: self.buffer.write(s.encode("ascii"))
+                self.read = lambda: self.buffer.read().decode("ascii")
+                self.readline = lambda: self.buffer.readline().decode("ascii")
+ 
+        sys.stdout = IOWrapper(sys.stdout)
+ 
+    if dfs:
+        from types import GeneratorType
+ 
+        def bootstrap(f, stack=[]):
+            def wrappedfunc(*args, **kwargs):
+                if stack:
+                    return f(*args, **kwargs)
+                else:
+                    to = f(*args, **kwargs)
+                    while True:
+                        if type(to) is GeneratorType:
+                            stack.append(to)
+                            to = next(to)
+                        else:
+                            stack.pop()
+                            if not stack:
+                                break
+                            to = stack[-1].send(to)
+                    return to
+            return wrappedfunc
+ 
+    if hashing:
+        RANDOM = random.getrandbits(20)
+        class Wrapper(int):
+            def __init__(self, x):
+                int.__init__(x)
+ 
+            def __hash__(self):
+                return super(Wrapper, self).__hash__() ^ RANDOM
+ 
+    if read_from_file:
+        file = open("input.txt", "r").readline().strip()[1:-1]
+        fin = open(file, 'r')
+        input = lambda: fin.readline().strip()
+        output_file = open("output.txt", "w")
+        def fprint(*args, **kwargs):
+            print(*args, **kwargs, file=output_file)
+ 
+    if de:
+        def debug(*args, **kwargs):
+            print('\033[92m', end='')
+            print(*args, **kwargs)
+            print('\033[0m', end='')
+ 
+def main():
+    pass
+ 
+t = 1
+for _ in range(t):
+    main()
+########################################################################################
