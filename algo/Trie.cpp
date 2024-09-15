@@ -1,5 +1,3 @@
-#include "../basic.h"
-
 // ! 数组存储
 struct trie {
     int nex[100000][26], cnt;

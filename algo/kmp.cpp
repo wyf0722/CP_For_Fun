@@ -1,5 +1,3 @@
-#include "./basic.h"
-
 vector<int> prefix_function1(string s) {
     int n = (int)s.length();
     vector<int> pi(n);
