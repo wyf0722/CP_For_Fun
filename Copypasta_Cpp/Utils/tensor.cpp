@@ -163,3 +163,8 @@ struct tensor {
         return *view();
     }
 };
+
+// Usage:
+// tensor<T, NDIMS> t(shape, [initial_value])
+// t[{i1, i2, ..., iN}]
+// *t[i1][i2]...[iN]
