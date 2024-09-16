@@ -70,7 +70,40 @@ template<class T, class U> T lstTrue(T lo, T hi, U f) { --lo; assert(lo <= hi); 
  */
 #define MULTICASE 0
 void solve() {
-    
+    int n;
+    cin >> n; 
+    vector<vector<string>> f(6);
+    for (int i = 0; i < n; i++) {
+        string s;
+        cin >> s;
+        f[s.size()].push_back(s);
+    }
+
+    i64 ans = 0;
+    for (int x = 1; x <= 5; x++) {
+        for (int y = 1; y <= 5; y++) {
+            vector<int> cnt(100);
+            if ((x + y) & 1) continue;
+            int h = (x + y) / 2;
+            for (auto &a : f[x]) {
+                int s = 50;
+                for (int i = 0; i < x; i++) {
+                    if (i < h) s += a[i] - '0';
+                    else s -= a[i] - '0';
+                }
+                cnt[s]++;
+            }
+            for (auto &a : f[y]) {
+                int s = 50;
+                for (int i = 0; i < y; i++) {
+                    if (x + i >= h) s += a[i] - '0';
+                    else s -= a[i] - '0';
+                }
+                ans += cnt[s];
+            }
+        }
+    }
+    cout << ans << "\n";
 }
 
 int main() {
