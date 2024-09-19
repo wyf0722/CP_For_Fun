@@ -70,7 +70,36 @@ template<class T, class U> T lstTrue(T lo, T hi, U f) { --lo; assert(lo <= hi); 
  */
 #define MULTICASE 0
 void solve() {
+    int n, m;
+    i64 p;
+    cin >> n >> m >> p;
+    vector<i64> a(n);
+    FOR(i, 0, n) {
+        cin >> a[i];
+    }
+    vector<i64> b(m);
+    FOR(i, 0, m) {
+        cin >> b[i];
+    }
 
+    sort(all(a));
+    sort(all(b));
+    auto f = [&](int i, int j) -> i64 {
+        return abs(a[i] - b[j]) + abs(b[j] - p);
+    };
+    // 一定是按顺序来最好
+    vector<vector<i64>> dp(n + 1, vector<i64>(m + 1, infLL));
+    for (int j = 0; j <= m; j++) dp[0][j] = 0;
+    for (int i = 0; i < n; i++) {
+        for (int j = i; j < m; j++) {
+            i64 mn = infLL;
+            for (int pre = i; pre <= j; pre++) {
+                chmin(mn, max(dp[i][pre], f(i, pre)));
+            }
+            dp[i + 1][j + 1] = mn;
+        }
+    }
+    cout << dp[n][m] << endl;
 }
 
 

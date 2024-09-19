@@ -155,7 +155,42 @@ if 1:
 MULTITEST = 1
 MOD = 1_000_000_007
 def main():
+    n, m, k = MII()
+    x = 0
+    y = 0
+    ans = 0
 
+    def f(x:int, y:int) -> int:
+        return x * m + y
+
+    if n != 1:
+        if k <= n - 1:
+            ans += (f(1, 0) + f(k, 0)) * k // 2
+            k = 0
+        else:
+            ans += (f(1, 0) + f(n - 1, 0)) * (n - 1) // 2
+            k -= n - 1
+    if k == 0:
+        print(ans)
+        return
+
+    if m != 1:
+        if k <= m - 1:
+            ans += (f(n - 1, 1) + f(n - 1, k)) * k // 2
+            k = 0
+        else:
+            ans += (f(n - 1, 1) + f(n - 1, m - 1)) * (m - 1) // 2
+            k -= m - 1
+    if k == 0:
+        print(ans)
+        return
+    if k > 0:
+        node1 = f(n - 1, m - 1)
+        node2 = f(n - 2, m - 1) if m == 1 else f(n - 1, m - 2)
+        ans += (k // 2) * (node1 + node2)
+        if k & 1:
+            ans += node2
+    print(ans)
 
 
 t = 1
