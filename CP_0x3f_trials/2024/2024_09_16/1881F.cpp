@@ -70,7 +70,65 @@ template<class T, class U> T lstTrue(T lo, T hi, U f) { --lo; assert(lo <= hi); 
  */
 #define MULTICASE 1
 void solve() {
-    
+    int n, k;
+    cin >> n >> k;
+    vector<int> mark(n);
+    for (int i = 0; i < k; i++) {
+        int x;
+        cin >> x;
+        mark[x - 1] = 1;
+    }
+    vector<vector<int>> g(n);
+    vector<int> deg(n);
+    for (int i = 0; i < n - 1; i++) {
+        int x, y;
+        cin >> x >> y;
+        x--, y--;
+        g[x].push_back(y);
+        g[y].push_back(x);
+        deg[x]++;
+        deg[y]++;
+    }
+    queue<int> q;
+    for (int i = 0; i < n; i++) {
+        if (deg[i] == 1 && !mark[i]) {
+            q.push(i);
+        }
+    }
+    int left = n;
+    while (!q.empty()) {
+        int x = q.front();
+        q.pop();
+        left--;
+        for (int y : g[x]) {
+            deg[y]--;
+            if (deg[y] == 1 and !mark[y]) {
+                q.push(y);
+            }
+        }
+    }
+        
+    int ans = 0;
+    for (int i = 0; i < n; i++) {
+        if (deg[i] == 1 && mark[i]) {
+            q.push(i);
+        }
+    }
+    for (; left > 2; ans++) {
+        left -= q.size();
+        int sz = q.size();
+        for (int _ = 0; _ < sz; _++) {
+            int x = q.front();
+            q.pop();
+            for (int y : g[x]) {
+                deg[y]--;
+                if (deg[y] == 1) {
+                    q.push(y);
+                }
+            }
+        }
+    }
+    cout << ans + (left == 2 ? 1 : 0) << endl;
 }
 
 
