@@ -53,3 +53,28 @@ template<class T, class U> T lstTrue(T lo, T hi, U f) { --lo; assert(lo <= hi); 
 /***
  * 𝓽𝓱𝓮 𝓼𝓸𝓵𝓾𝓽𝓲𝓸𝓷 𝓸𝓯 𝔀𝔂𝓯0722
  */
+
+class Solution {
+public:
+    long long validSubstringCount(string word1, string word2) {
+        int n = word1.size();
+        unordered_map<char, int> cnt1, cnt2;
+        for (char c: word2) cnt2[c]++;
+        int should_good = cnt2.size();
+        int good = 0;
+        i64 ans = 0;
+        for (int i = 0, j = 0; j < n; j++) {
+            if (++cnt1[word1[j]] == cnt2[word1[j]]) {
+                good++;
+            }
+            while (good == should_good) {
+                if (cnt1[word1[i]]-- == cnt2[word1[i]]) {
+                    good--;
+                }          
+                i++;     
+            }
+            ans += i;
+        }
+        return ans;
+    }
+};

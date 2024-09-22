@@ -5,7 +5,7 @@ from collections import Counter, defaultdict, deque
 from functools import cache, cmp_to_key, lru_cache, reduce
 from heapq import heapify, heappop, heappush, heappushpop, nlargest, nsmallest
 from itertools import accumulate, count, pairwise, permutations
-from math import comb, gcd, inf, lcm, log2, perm, sqrt
+from math import comb, gcd, inf, lcm, log2, perm
 from operator import add, iand, ior, itemgetter, mul, xor
 from string import ascii_letters, ascii_lowercase, ascii_uppercase
 from typing import List
@@ -30,3 +30,12 @@ def debug(*args, **kwargs):
         print(f"{COLOR}Line {line_number}{RESET}: ", *args, **kwargs)
     else:
         print(f"Line {line_number}: ", *args, **kwargs)
+
+class Solution:
+    def reportSpam(self, message: List[str], bannedWords: List[str]) -> bool:
+        banned = set(bannedWords)
+        cnt = 0
+        for word in message:
+            if word in banned:
+                cnt += 1
+        return cnt >= 2

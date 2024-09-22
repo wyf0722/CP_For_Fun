@@ -30,3 +30,27 @@ def debug(*args, **kwargs):
         print(f"{COLOR}Line {line_number}{RESET}: ", *args, **kwargs)
     else:
         print(f"Line {line_number}: ", *args, **kwargs)
+
+class Solution:
+    def minNumberOfSeconds(self, mountainHeight: int, workerTimes: List[int]) -> int:
+        def check(x:int) -> bool:
+            tot = 0
+            for t in workerTimes:
+                l, r = 0, 10**6
+                while l + 1 < r:
+                    mid = (l + r) // 2
+                    if mid * (mid + 1) // 2 * t <= x:
+                        l = mid
+                    else:
+                        r = mid
+                tot += l
+            return tot >= mountainHeight
+
+        lo, hi = 0, max(workerTimes) * mountainHeight * (mountainHeight + 1) // 2
+        while lo + 1 < hi:
+            mid = (lo + hi) // 2
+            if check(mid):
+                hi = mid
+            else:
+                lo = mid
+        return hi
