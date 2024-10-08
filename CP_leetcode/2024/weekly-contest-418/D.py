@@ -31,3 +31,28 @@ def debug(*args, **kwargs):
     else:
         print(f"Line {line_number}: ", *args, **kwargs)
 
+'''
+cnt_gcd[i] = C(cnt[k * i], 2) - cnt_gcd[i * 2] - cnt_gcd[i * 3] - ....
+倒序递推
+'''
+class Solution:
+    def gcdValues(self, nums: List[int], queries: List[int]) -> List[int]:
+        mx = max(nums)
+        cnt_x = [0] * (mx + 1)
+        for x in nums:
+            cnt_x[x] += 1
+        
+        cnt_gcd = [0] * (mx + 1)
+        for i in range(mx, 0, -1):
+            c = 0
+            for j in range(i, mx + 1, i):
+                c += cnt_x[j]
+                cnt_gcd[i] -= cnt_gcd[j]
+            cnt_gcd[i] += c * (c - 1) // 2
+
+        pre_sum = list(accumulate(cnt_gcd))
+        ans = []
+        for q in queries:
+            r = bisect_right(pre_sum, q)
+            ans.append(r)
+        return ans
