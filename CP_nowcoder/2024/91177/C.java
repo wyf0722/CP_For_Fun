@@ -5,15 +5,37 @@ import java.io.PrintWriter;
 import java.util.*;
 
 // https://codeforces.com/profile/SecondThread
-public class Arena {
+public class Main {
 
     public static void main(String[] subscribeToSecondThread) {
         FastScanner fs = new FastScanner();
         PrintWriter out = new PrintWriter(System.out);
         // usage:fs.nextInt()... out.println()
-        int t = fs.nextInt();
+        int t = 1;
+//        t = fs.nextInt();
         while (t-- > 0) {
-            
+            double pi = 3.14159265358979324;
+            int n = fs.nextInt(), k = fs.nextInt();
+            // pi * r * r * moveDistance
+            List<Double> rec = new ArrayList<>();
+            for (int i = 0; i < n; i++) {
+                long x = fs.nextLong(), y = fs.nextLong(), r = fs.nextLong();
+                if (x * x + y * y <= r * r) {
+                    double dis = r - Math.sqrt(x * x + y * y);
+                    rec.add(dis * r * r);
+                }
+            }
+            int now = rec.size();
+            rec.sort((o1, o2) -> (int) (o1 - o2));
+            double ans = 0;
+            int i = 0;
+            while (now > k) {
+                ans += rec.get(i);
+                i++;
+                now--;
+            }
+            ans *= pi;
+            out.println(ans);
         }
         out.close();
     }

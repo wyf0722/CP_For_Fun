@@ -5,15 +5,21 @@ import java.io.PrintWriter;
 import java.util.*;
 
 // https://codeforces.com/profile/SecondThread
-public class Arena {
+public class Main {
 
     public static void main(String[] subscribeToSecondThread) {
         FastScanner fs = new FastScanner();
         PrintWriter out = new PrintWriter(System.out);
         // usage:fs.nextInt()... out.println()
-        int t = fs.nextInt();
+        int t = 1;
+//        t = fs.nextInt();
         while (t-- > 0) {
-            
+            String s = fs.next();
+            char[] a = s.toCharArray();
+            char tmp = a[1];
+            a[1] = a[0];
+            a[0] = tmp;
+            out.println(String.valueOf(a));
         }
         out.close();
     }
