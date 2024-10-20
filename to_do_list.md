@@ -14,6 +14,7 @@
 - [ ] [411 t4](https://leetcode.cn/problems/count-substrings-that-satisfy-k-constraint-ii/description/)
 - [ ] [413 t3](https://leetcode.cn/problems/select-cells-in-grid-with-maximum-score/description/)
 - [ ] [413 t4](https://leetcode.cn/problems/maximum-xor-score-subarray-queries/description/)
+- [ ] [419 t4](https://leetcode.cn/problems/find-x-sum-of-all-k-long-subarrays-ii/description/)
 
 # 学习资料
 - [ ] [Efficient and easy segment trees](https://codeforces.com/blog/entry/18051)
