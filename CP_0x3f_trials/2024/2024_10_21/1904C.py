@@ -156,7 +156,32 @@ MULTITEST = 1
 MOD = 1_000_000_007
 from bisect import bisect_right, bisect_left
 def main():
-    pass
+    n, k = MII()
+    a = LII()
+    if k >= 3:
+        # 前两次选择的i，j
+        print(0)
+    elif k == 1:
+        a.sort()
+        ans = a[0]
+        for i in range(n - 1):
+            ans = min(ans, a[i + 1] - a[i])
+        print(ans)
+    else:
+        a.sort()
+        ans = a[0]
+        values = set()
+        for i in range(n):
+            for j in range(i):
+                values.add(a[i] - a[j])
+                ans = min(ans, a[i] - a[j])
+        for x in values:
+            idx = bisect_left(a, x)
+            if idx != n:
+                ans = min(ans, a[idx] - x)
+            if idx > 0:
+                ans = min(ans, x - a[idx - 1])
+        print(ans)
 
 t = 1
 if MULTITEST:
