@@ -173,9 +173,8 @@ if 1:
 #  ░     ░░▒░ ░ ░   ░  ▒   ░ ░▒ ▒░
 #  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
 #           ░     ░ ░      ░  ░
-MULTITEST = 1
+MULTITEST = 0
 MOD = 1_000_000_007
-from bisect import bisect_right, bisect_left
 def main():
     pass
 
