@@ -173,7 +173,7 @@ if 1:
 #  ░     ░░▒░ ░ ░   ░  ▒   ░ ░▒ ▒░
 #  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
 #           ░     ░ ░      ░  ░
-MULTITEST = 0
+MULTITEST = 1
 MOD = 1_000_000_007
 def main():
     pass
