@@ -13,7 +13,7 @@ if 1:
 
         def I():
             return input()
-        
+
         def II():
             return int(input())
 
@@ -54,6 +54,7 @@ if 1:
         BUFSIZE = 4096
 
     if output_together:
+
         class FastIO(IOBase):
             newlines = 0
 
@@ -65,20 +66,24 @@ if 1:
 
             def read(self):
                 while True:
-                    b = os.read(self._fd, max(os.fstat(self._fd).st_size, BUFSIZE))
+                    b = os.read(self._fd,
+                                max(os.fstat(self._fd).st_size, BUFSIZE))
                     if not b:
                         break
                     ptr = self.buffer.tell()
-                    self.buffer.seek(0, 2), self.buffer.write(b), self.buffer.seek(ptr)
+                    self.buffer.seek(
+                        0, 2), self.buffer.write(b), self.buffer.seek(ptr)
                 self.newlines = 0
                 return self.buffer.read()
 
             def readline(self):
                 while self.newlines == 0:
-                    b = os.read(self._fd, max(os.fstat(self._fd).st_size, BUFSIZE))
+                    b = os.read(self._fd,
+                                max(os.fstat(self._fd).st_size, BUFSIZE))
                     self.newlines = b.count(b"\n") + (not b)
                     ptr = self.buffer.tell()
-                    self.buffer.seek(0, 2), self.buffer.write(b), self.buffer.seek(ptr)
+                    self.buffer.seek(
+                        0, 2), self.buffer.write(b), self.buffer.seek(ptr)
                 self.newlines -= 1
                 return self.buffer.readline()
 
@@ -88,6 +93,7 @@ if 1:
                     self.buffer.truncate(0), self.buffer.seek(0)
 
         class IOWrapper(IOBase):
+
             def __init__(self, file):
                 self.buffer = FastIO(file)
                 self.flush = self.buffer.flush
@@ -102,6 +108,7 @@ if 1:
         from types import GeneratorType
 
         def bootstrap(f, stk=[]):
+
             def wrappedfunc(*args, **kwargs):
                 if stk:
                     return f(*args, **kwargs)
@@ -117,11 +124,14 @@ if 1:
                                 break
                             to = stk[-1].send(to)
                     return to
+
             return wrappedfunc
 
     if hashing:
         RANDOM = random.getrandbits(20)
+
         class Wrapper(int):
+
             def __init__(self, x):
                 int.__init__(x)
 
@@ -133,10 +143,12 @@ if 1:
         fin = open(file, 'r')
         input = lambda: fin.readline().strip()
         output_file = open("output.txt", "w")
+
         def fprint(*args, **kwargs):
             print(*args, **kwargs, file=output_file)
 
     if de:
+
         def debug(*args, **kwargs):
             print('\033[92m', end='')
             print(*args, **kwargs)
@@ -146,22 +158,24 @@ if 1:
     fmin = lambda x, y: x if x < y else y
 
     class lst_lst:
+
         def __init__(self, n) -> None:
             self.n = n
             self.pre = []
             self.cur = []
             self.lst = [-1] * n
-        
+
         def append(self, i, j):
             self.pre.append(self.lst[i])
             self.lst[i] = len(self.cur)
             self.cur.append(j)
-        
+
         def iterate(self, i):
             tmp = self.lst[i]
             while tmp != -1:
                 yield self.cur[tmp]
                 tmp = self.pre[tmp]
+
 
 #
 #   █████▒█    ██  ▄████▄   ██ ▄█▀       ██████╗ ██╗   ██╗ ██████╗
@@ -175,8 +189,11 @@ if 1:
 #           ░     ░ ░      ░  ░
 MULTITEST = 1
 MOD = 1_000_000_007
+
+
 def main():
     pass
+
 
 t = 1
 if MULTITEST:
