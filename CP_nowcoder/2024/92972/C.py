@@ -190,7 +190,9 @@ if 1:
 MULTITEST = 1
 MOD = 1_000_000_007
 def main():
-    pass
+    n = II()
+    a = LII()
+    print('yukari' if max(a) != min(a) else 'draw')
 
 t = 1
 if MULTITEST:

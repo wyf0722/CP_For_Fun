@@ -187,10 +187,22 @@ if 1:
 #  ░     ░░▒░ ░ ░   ░  ▒   ░ ░▒ ▒░
 #  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
 #           ░     ░ ░      ░  ░
-MULTITEST = 1
+MULTITEST = 0
 MOD = 1_000_000_007
 def main():
-    pass
+    n, m = MII()
+    g = [[0] * (m + 1) for _ in range(n + 1)]
+    for i in range(n):
+        row = I()
+        for j in range(m):
+            g[i][j] = 1 if row[j] == '.' else 0
+    
+    ans = 0
+    for i in range(n - 1):
+        for j in range(m - 1):
+            if g[i][j] + g[i + 1][j] + g[i][j + 1] + g[i + 1][j + 1] == 0:
+                ans += 1
+    print(ans)
 
 t = 1
 if MULTITEST:
