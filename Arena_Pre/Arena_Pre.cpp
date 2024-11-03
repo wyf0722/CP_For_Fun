@@ -50,7 +50,9 @@ template <class T, class U> void safeErase(T& t, const U& u) { auto it = t.find(
 template<class T, class U> T fstTrue(T lo, T hi, U f) { ++hi; assert(lo <= hi); while (lo < hi) { T mid = lo + (hi - lo) / 2; f(mid) ? hi = mid : lo = mid + 1; } return lo; }
 template<class T, class U> T lstTrue(T lo, T hi, U f) { --lo; assert(lo <= hi); while (lo < hi) { T mid = lo + (hi - lo + 1) / 2; f(mid) ? lo = mid : hi = mid - 1; } return lo; }
 
-/***
- * 𝓽𝓱𝓮 𝓼𝓸𝓵𝓾𝓽𝓲𝓸𝓷 𝓸𝓯 𝔀𝔂𝓯0722
- */
+/*************************************************************************
+    > Author: Wu YiFan
+    > Github: https://github.com/wyf0722
+    > Mail: wyf0722chosen@gmail.com
+************************************************************************/
 
