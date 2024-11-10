@@ -55,4 +55,3 @@ template<class T, class U> T lstTrue(T lo, T hi, U f) { --lo; assert(lo <= hi); 
     > Github: https://github.com/wyf0722
     > Mail: wyf0722chosen@gmail.com
 ************************************************************************/
-

@@ -1,6 +1,10 @@
-/**
- *    author:  WuYifan
-**/
+/*************************************************************************
+    > File Name: ${1:${TM_FILENAME}}
+    > Author: Wu YiFan
+    > Github: https://github.com/wyf0722
+    > Mail: wyf0722chosen@gmail.com
+    > Created Time: ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE} ${CURRENT_HOUR}:${CURRENT_MINUTE}
+************************************************************************/
 #include <bits/stdc++.h>
 
 using namespace std;
