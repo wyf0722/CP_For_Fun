@@ -70,7 +70,27 @@ template<class T, class U> T lstTrue(T lo, T hi, U f) { --lo; assert(lo <= hi); 
  */
 #define MULTICASE 1
 void solve() {
-    
+    int n;
+    cin >> n;
+    unordered_map<int, int> mp;
+    for (int i = 0; i < n; i++) {
+        int a;
+        cin >> a;
+        for (int x = 2; x * x <= a; x++) {
+            while (a % x == 0) {
+                mp[x]++;
+                a /= x;
+            }
+        }
+        if (a > 1) mp[a]++;
+    }
+    for (auto [_, c] : mp) {
+        if (c % n) {
+            cout << "NO\n";
+            return;
+        }
+    }
+    cout << "YES\n";
 }
 
 
