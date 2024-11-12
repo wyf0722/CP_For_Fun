@@ -28,14 +28,46 @@ search_dir = os.path.abspath(os.path.join(script_dir, args.directory))
 
 snippets = {}
 
-# Walk through the specified directory
-for subdir in os.walk(search_dir):
-    # Ignore hidden directories and .git
-    if subdir[0].startswith('.') or '.git' in subdir[0]:
-        continue
+# # Walk through the specified directory
+# for subdir in os.walk(search_dir):
+#     # Ignore hidden directories and .git
+#     if subdir[0].startswith('.') or '.git' in subdir[0]:
+#         continue
+
+#     # Process each file in the current directory
+#     for filename in subdir[2]:
+#         # Split file name and extension
+#         name, extension = os.path.splitext(filename)
+#         extension = extension.lstrip('.')  # Remove dot from extension for comparison
+        
+#         # Skip files without the specified extensions
+#         if extension not in args.extensions:
+#             continue
+
+#         # Check for duplicate snippets
+#         if name in snippets:
+#             print(f'Error: Duplicate snippet {name}', file=sys.stderr)
+#             sys.exit(1)
+
+#         # Read the file and create a snippet
+#         path = os.path.join(subdir[0], filename)
+#         with open(path, 'r', encoding='utf-8') as f:
+#             snippet = {
+#                 "prefix": name,
+#                 "body": [line.rstrip() for line in f.readlines()],
+#                 "description": name
+#             }
+#             snippets[name] = snippet
+
+#         print(f'Generated snippet for {name}', file=sys.stderr)
+
+# Walk through the specified directory recursively to find files in all levels of subdirectories
+for root, dirs, files in os.walk(search_dir):
+    # 忽略 .git 目录及隐藏目录（.开头的文件夹）
+    dirs[:] = [d for d in dirs if not d.startswith('.') and d != '.git']
 
     # Process each file in the current directory
-    for filename in subdir[2]:
+    for filename in files:
         # Split file name and extension
         name, extension = os.path.splitext(filename)
         extension = extension.lstrip('.')  # Remove dot from extension for comparison
@@ -50,16 +82,17 @@ for subdir in os.walk(search_dir):
             sys.exit(1)
 
         # Read the file and create a snippet
-        path = os.path.join(subdir[0], filename)
+        path = os.path.join(root, filename)
         with open(path, 'r', encoding='utf-8') as f:
             snippet = {
                 "prefix": name,
                 "body": [line.rstrip() for line in f.readlines()],
-                "description": name
+                "description": f"Snippet for {name}"
             }
             snippets[name] = snippet
 
         print(f'Generated snippet for {name}', file=sys.stderr)
+
 
 # Write snippets to the specified output file
 with open(args.output, 'w', encoding='utf-8') as f:
