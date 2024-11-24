@@ -14,6 +14,7 @@ const int inf = INT_MAX / 2 - 100;
 const i64 infLL = LLONG_MAX / 3;
 constexpr int MOD = 998244353; // 998244353 1000000007
 int dx[4]{1, 0, -1, 0}, dy[4]{0, 1, 0, -1};
+template <class T> using V = vector<T>;
 template<typename T> using min_heap=priority_queue<T,vector<T>,greater<T>>;
 template<typename T> using max_heap=priority_queue<T>;
 
@@ -48,7 +49,6 @@ template<class T, class U> T lstTrue(T lo, T hi, U f) { --lo; assert(lo <= hi); 
 void solve() {
     
 }
-
 
 int main() {
     cin.tie(nullptr)->sync_with_stdio(false);
