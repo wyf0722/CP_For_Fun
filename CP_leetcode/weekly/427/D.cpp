@@ -102,18 +102,22 @@ public:
         sort(yCoord.begin(), yCoord.end());
         yCoord.resize(unique(yCoord.begin(), yCoord.end()) - yCoord.begin());
 
+        auto get_id = [&](int y) -> int {
+            return lower_bound(yCoord.begin(), yCoord.end(), y) - yCoord.begin();
+        };
+
         i64 ans = -1;
         Fenwick<int> fen(yCoord.size());
-        fen.add(lower_bound(yCoord.begin(), yCoord.end(), points[0].second) - yCoord.begin(), 1);
+        fen.add(get_id(points[0].second), 1);
         unordered_map<int, tuple<int, int, int>> mp;
         for (int i = 1; i < points.size(); i++) {
             auto &[x1, y1] = points[i - 1];
             auto &[x2, y2] = points[i];
-            int idx = lower_bound(yCoord.begin(), yCoord.end(), y2) - yCoord.begin();
-            fen.add(idx, 1);
+            int id_y2 = get_id(y2);
+            fen.add(id_y2, 1);
             if (x1 != x2) continue;
 
-            int cur = fen.rangeSum(lower_bound(yCoord.begin(), yCoord.end(), y1) - yCoord.begin(), idx + 1);
+            int cur = fen.rangeSum(get_id(y1), id_y2 + 1);
             auto it = mp.find(y2);
             if (it != mp.end()) {
                 auto &[x, y, pre] = it->second;
