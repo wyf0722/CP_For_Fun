@@ -16,7 +16,7 @@ $\textcolor{#70695d}{\LARGE {\pmb {\mathfrak{I\ pledge\ my\ life\ and\ honor\ to
 
 | 作者 | 链接 |
 |------|------|
-| jiangly | [🏆](https://www.cnblogs.com/WIDA/p/17633758.html) [GitHub](https://github.com/hh2048/XCPC/tree/main/03%20-%20jiangly%E6%A8%A1%E6%9D%BF%E6%94%B6%E9%9B%86) |
+| jiangly | [🏆](https://www.cnblogs.com/WIDA/p/17633758.html) [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="GitHub" width="20" height="20"/>](https://github.com/hh2048/XCPC/tree/main/03%20-%20jiangly%E6%A8%A1%E6%9D%BF%E6%94%B6%E9%9B%86) |
 | ac-library-cpp | [🏆](https://github.com/atcoder/ac-library) |
 | nealwu | [🏆](https://github.com/nealwu/competitive-programming) |
 | kactl | [🏆](https://github.com/kth-competitive-programming/kactl) |
