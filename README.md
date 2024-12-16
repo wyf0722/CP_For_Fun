@@ -1,51 +1,66 @@
 # My Private Repository
-__code for programming test__
-<br>
+A comprehensive collection of algorithms, templates, and solutions for competitive programming contests.
 
 $\textcolor{#70695d}{\LARGE {\pmb {\mathfrak{I\ pledge\ my\ life\ and\ honor\ to\ the\ Night's\ watch,\ for\ this\ night\ and\ all\ the\ nights\ to\ come.}}}}$
 
 ## 代码模板收集列表
-名称 | 源
----- | -----
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" alt="C++" width="50" height="50"/> | $\mathcal{C++}$
-jiangly | [:blue_heart:](https://www.cnblogs.com/WIDA/p/17633758.html) [github repo](https://github.com/hh2048/XCPC/tree/main/03%20-%20jiangly%E6%A8%A1%E6%9D%BF%E6%94%B6%E9%9B%86)
-ac-library-cpp | [:blue_heart:](https://github.com/atcoder/ac-library)
-nealwu | [:blue_heart:](https://github.com/nealwu/competitive-programming)
-kactl | [:blue_heart:](https://github.com/kth-competitive-programming/kactl)
-ecnerwala | [:blue_heart:](https://github.com/ecnerwala/cp-book)
-tourist | [:blue_heart:](https://github.com/the-tourist/algo)
-JoshuaChen | [:blue_heart:](https://github.com/Joshc88/CPTemplates)
-oldyan | [:blue_heart:](https://github.com/old-yan/CP-template)
-nreyog | [:blue_heart:](https://gitee.com/nreyog/algorithm-board)
-the-hyp0cr1t3 | [:blue_heart:](https://github.com/the-hyp0cr1t3/CC)
-ShahjalalShohag | [:blue_heart:](https://github.com/ShahjalalShohag/code-library)
-Priyansh | [:blue_heart:](https://github.com/Priyansh19077/CP-Templates)
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" width="50" height="50"/> | $\mathcal{Python}$
-PyRival | [:blue_heart:](https://github.com/cheran-senthil/PyRival)
-Liupengsay | [:blue_heart:](https://github.com/liupengsay/PyIsTheBestLang)
-ac-library-python | [:blue_heart:](https://github.com/not522/ac-library-python/tree/master)
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original-wordmark.svg" alt="GoLang" width="50" height="50"/> | $\mathcal{GoLang}$
-EndlessCheng | [:blue_heart:](https://github.com/EndlessCheng/codeforces-go)
 
-## 竞赛目录
-[leetcode国服](https://leetcode.cn/contest/)
+<table>
+<tr>
+<th> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" alt="C++" width="20" height="20"/> C++ </th>
+<th> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" width="20" height="20"/> Python </th>
+<th> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original-wordmark.svg" alt="GoLang" width="20" height="20"/> GoLang </th>
+</tr>
+<tr>
+<td>
 
-[leetcode国际服](https://leetcode.com/contest/)
+| 作者 | 链接 |
+|------|------|
+| jiangly | [🏆](https://www.cnblogs.com/WIDA/p/17633758.html) [GitHub](https://github.com/hh2048/XCPC/tree/main/03%20-%20jiangly%E6%A8%A1%E6%9D%BF%E6%94%B6%E9%9B%86) |
+| ac-library-cpp | [🏆](https://github.com/atcoder/ac-library) |
+| nealwu | [🏆](https://github.com/nealwu/competitive-programming) |
+| kactl | [🏆](https://github.com/kth-competitive-programming/kactl) |
+| ecnerwala | [🏆](https://github.com/ecnerwala/cp-book) |
+| tourist | [🏆](https://github.com/the-tourist/algo) |
+| JoshuaChen | [🏆](https://github.com/Joshc88/CPTemplates) |
+| oldyan | [🏆](https://github.com/old-yan/CP-template) |
+| nreyog | [🏆](https://gitee.com/nreyog/algorithm-board) |
+| the-hyp0cr1t3 | [🏆](https://github.com/the-hyp0cr1t3/CC) |
+| ShahjalalShohag | [🏆](https://github.com/ShahjalalShohag/code-library) |
+| Priyansh | [🏆](https://github.com/Priyansh19077/CP-Templates) |
 
-[nowcoder](https://ac.nowcoder.com/acm/contest/vip-index)
+</td>
+<td>
 
-[codeforces](https://codeforces.com/contests)
+| 作者 | 链接 |
+|------|------|
+| PyRival | [🏆](https://github.com/cheran-senthil/PyRival) |
+| Liupengsay | [🏆](https://github.com/liupengsay/PyIsTheBestLang) |
+| ac-library-python | [🏆](https://github.com/not522/ac-library-python/tree/master) |
 
-[atcoder](https://atcoder.jp/contests/)
+</td>
+<td>
 
-## 题单
-[灵茶的试炼](https://docs.qq.com/sheet/DWGFoRGVZRmxNaXFz?tab=BB08J2)
+| 作者 | 链接 |
+|------|------|
+| EndlessCheng | [🏆](https://github.com/EndlessCheng/codeforces-go) |
 
-[CFTracker](https://cftracker.netlify.app/contests)
+</td>
+</tr>
+</table>
 
-[AtCoder Problems](https://kenkoooo.com/atcoder/#/table/)
+## 竞赛平台
+- [LeetCode中国](https://leetcode.cn/contest/)
+- [LeetCode全球](https://leetcode.com/contest/)
+- [牛客网](https://ac.nowcoder.com/acm/contest/vip-index)
+- [Codeforces](https://codeforces.com/contests)
+- [AtCoder](https://atcoder.jp/contests/)
 
-## 杂项
-[snippet generator](https://snippet-generator.app/?description=&tabtrigger=&snippet=&mode=vscode)
+## 题单资源
+- [灵茶的试炼](https://docs.qq.com/sheet/DWGFoRGVZRmxNaXFz?tab=BB08J2)
+- [CFTracker](https://cftracker.netlify.app/contests)
+- [AtCoder Problems](https://kenkoooo.com/atcoder/#/table/)
 
-[markdown cheatsheet](https://github.com/tchapi/markdown-cheatsheet)
+## 实用工具
+- [代码片段生成器](https://snippet-generator.app/?description=&tabtrigger=&snippet=&mode=vscode)
+- [Markdown语法指南](https://github.com/tchapi/markdown-cheatsheet)
