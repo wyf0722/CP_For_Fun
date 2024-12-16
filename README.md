@@ -5,45 +5,45 @@ $\textcolor{#70695d}{\LARGE {\pmb {\mathfrak{I\ pledge\ my\ life\ and\ honor\ to
 
 ## 代码模板收集列表
 
-<table>
-<tr>
+<table style="vertical-align: top;">
+<tr style="vertical-align: top;">
 <th> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" alt="C++" width="20" height="20"/> C++ </th>
 <th> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" width="20" height="20"/> Python </th>
 <th> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original-wordmark.svg" alt="GoLang" width="20" height="20"/> GoLang </th>
 </tr>
-<tr>
+<tr style="vertical-align: top;">
 <td>
 
 | 作者 | 链接 |
 |------|------|
-| jiangly | [🏆](https://www.cnblogs.com/WIDA/p/17633758.html) [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="GitHub" width="20" height="20"/>](https://github.com/hh2048/XCPC/tree/main/03%20-%20jiangly%E6%A8%A1%E6%9D%BF%E6%94%B6%E9%9B%86) |
-| ac-library-cpp | [🏆](https://github.com/atcoder/ac-library) |
-| nealwu | [🏆](https://github.com/nealwu/competitive-programming) |
-| kactl | [🏆](https://github.com/kth-competitive-programming/kactl) |
-| ecnerwala | [🏆](https://github.com/ecnerwala/cp-book) |
-| tourist | [🏆](https://github.com/the-tourist/algo) |
-| JoshuaChen | [🏆](https://github.com/Joshc88/CPTemplates) |
-| oldyan | [🏆](https://github.com/old-yan/CP-template) |
-| nreyog | [🏆](https://gitee.com/nreyog/algorithm-board) |
-| the-hyp0cr1t3 | [🏆](https://github.com/the-hyp0cr1t3/CC) |
-| ShahjalalShohag | [🏆](https://github.com/ShahjalalShohag/code-library) |
-| Priyansh | [🏆](https://github.com/Priyansh19077/CP-Templates) |
+| jiangly | [🎈](https://www.cnblogs.com/WIDA/p/17633758.html) [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="GitHub" width="20" height="20"/>](https://github.com/hh2048/XCPC/tree/main/03%20-%20jiangly%E6%A8%A1%E6%9D%BF%E6%94%B6%E9%9B%86) |
+| ac-library-cpp | [🎈](https://github.com/atcoder/ac-library) |
+| nealwu | [🎈](https://github.com/nealwu/competitive-programming) |
+| kactl | [🎈](https://github.com/kth-competitive-programming/kactl) |
+| ecnerwala | [🎈](https://github.com/ecnerwala/cp-book) |
+| tourist | [🎈](https://github.com/the-tourist/algo) |
+| JoshuaChen | [🎈](https://github.com/Joshc88/CPTemplates) |
+| oldyan | [🎈](https://github.com/old-yan/CP-template) |
+| nreyog | [🎈](https://gitee.com/nreyog/algorithm-board) |
+| the-hyp0cr1t3 | [🎈](https://github.com/the-hyp0cr1t3/CC) |
+| ShahjalalShohag | [🎈](https://github.com/ShahjalalShohag/code-library) |
+| Priyansh | [🎈](https://github.com/Priyansh19077/CP-Templates) |
 
 </td>
 <td>
 
 | 作者 | 链接 |
 |------|------|
-| PyRival | [🏆](https://github.com/cheran-senthil/PyRival) |
-| Liupengsay | [🏆](https://github.com/liupengsay/PyIsTheBestLang) |
-| ac-library-python | [🏆](https://github.com/not522/ac-library-python/tree/master) |
+| PyRival | [🎈](https://github.com/cheran-senthil/PyRival) |
+| Liupengsay | [🎈](https://github.com/liupengsay/PyIsTheBestLang) |
+| ac-library-python | [🎈](https://github.com/not522/ac-library-python/tree/master) |
 
 </td>
 <td>
 
 | 作者 | 链接 |
 |------|------|
-| EndlessCheng | [🏆](https://github.com/EndlessCheng/codeforces-go) |
+| EndlessCheng | [🎈](https://github.com/EndlessCheng/codeforces-go) |
 
 </td>
 </tr>
