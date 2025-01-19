@@ -1,33 +1,50 @@
-import inspect
+import os
+import random
 import sys
-from bisect import bisect_left, bisect_right
-from collections import Counter, defaultdict, deque
-from functools import cache, cmp_to_key, lru_cache, reduce
-from heapq import heapify, heappop, heappush, heappushpop, nlargest, nsmallest
-from itertools import accumulate, count, pairwise, permutations
-from math import comb, gcd, inf, lcm, log2, perm, sqrt
-from operator import add, iand, ior, itemgetter, mul, xor
-from string import ascii_letters, ascii_lowercase, ascii_uppercase
-from typing import List
+from typing import *
+from collections import defaultdict, Counter, deque
+from functools import cache, reduce
+from itertools import pairwise, combinations, permutations, groupby, accumulate
+from bisect import bisect_left, bisect_right, insort_left, insort_right
+from heapq import *
+from math import gcd, lcm, isqrt
+from operator import add, sub, mul, floordiv, truediv, and_, or_, xor
 
-from sortedcontainers import SortedDict, SortedList, SortedSet
-
-input = lambda: sys.stdin.readline().strip()
-MOD = int(1e9 + 7)
-dx = [0, 1, 0, -1]
-dy = [1, 0, -1, 0]
-
-DEBUG_WITH_COLOR = 0
+from types import GeneratorType
 
 
-def debug(*args, **kwargs):
-    stack_info = inspect.stack()[1]  # [1] 表示获取调用栈中的第二个帧（第一个帧是当前函数）
-    line_number = stack_info.lineno
-    # 定义ANSI颜色代码
-    COLOR = '\033[95m'
-    RESET = '\033[0m'
-    # 打印调试信息
-    if DEBUG_WITH_COLOR:
-        print(f"{COLOR}Line {line_number}{RESET}: ", *args, **kwargs)
-    else:
-        print(f"Line {line_number}: ", *args, **kwargs)
+def bootstrap(f, stack=[]):
+
+    def wrappedfunc(*args, **kwargs):
+        if stack:
+            return f(*args, **kwargs)
+        else:
+            to = f(*args, **kwargs)
+            while True:
+                if type(to) is GeneratorType:
+                    stack.append(to)
+                    to = next(to)
+                else:
+                    stack.pop()
+                    if not stack:
+                        break
+                    to = stack[-1].send(to)
+            return to
+
+    return wrappedfunc
+
+
+input = sys.stdin.readline
+output = lambda x: sys.stdout.write(str(x) + "\n")
+outputL = lambda x: sys.stdout.write(" ".join(map(str, x)) + "\n")
+
+printerr = lambda *args, **kwargs: print(
+    "\u001B[31m", *args, "\u001B[0m", file=sys.stderr, **kwargs)
+
+I = lambda: input().rstrip("\n")
+II = lambda: int(input())
+MII = lambda: map(int, input().split())
+LMII = lambda: list(MII())
+TMII = lambda: tuple(MII())
+LI = lambda: list(I())
+LSI = lambda: list(map(int, I()))
