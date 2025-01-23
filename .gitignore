@@ -53,3 +53,6 @@ Cache_For_Contest/*
 *.exe
 *.out
 *.app
+
+# cph
+.cph/*
