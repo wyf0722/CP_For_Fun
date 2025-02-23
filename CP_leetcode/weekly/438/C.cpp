@@ -3,10 +3,9 @@
     > Author: Wu YiFan
     > Github: https://github.com/wyf0722
     > Mail: wyf0722chosen@gmail.com
-    > Created Time: 2025-02-23 13:00
+    > Created Time: 2025-02-24 00:11
 ************************************************************************/
 #include <bits/stdc++.h>
-
 using namespace std;
 
 template<typename A, typename B> ostream& operator<<(ostream &os, const pair<A, B> &p) { return os << '(' << p.first << ", " << p.second << ')'; }
@@ -14,32 +13,74 @@ template<typename T_container, typename T = typename enable_if<!is_same<T_contai
 
 void dbg_out() { cout << endl; }
 template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) { cout << ' ' << H; dbg_out(T...); }
-#define debug(...) cout << '[' << __LINE__ << "] (" << #__VA_ARGS__ << "):", dbg_out(__VA_ARGS__)
+#define debug(...) cout << '[' << ':' << __LINE__ << "] (" << #__VA_ARGS__ << "):", dbg_out(__VA_ARGS__)
 
-using i64 = long long;
-const int inf = INT_MAX / 2 - 100;
-const i64 infLL = LLONG_MAX / 3;
-constexpr int MOD = 998244353; // 998244353 1000000007
-int dx[4]{1, 0, -1, 0}, dy[4]{0, 1, 0, -1};
-template <class T> using V = vector<T>;
-template<typename T> using min_heap=priority_queue<T,vector<T>,greater<T>>;
-template<typename T> using max_heap=priority_queue<T>;
+const int MOD = 10;
+const int MX = 1e5;
+vector<int> f(MX + 1), inv_f(MX + 1), p2(MX + 1), p5(MX + 1);
 
-constexpr int popcount(int x) { return __builtin_popcount(x); }
-constexpr int topbit(int x) { return x == 0 ? 0 : 31 - __builtin_clz(x); }
+int power(int x, int n) {
+    int res = 1;
+    for (; n; n >>= 1, x = x * x % MOD) {
+        if (n & 1) {
+            res = res * x % MOD;
+        }
+    }
+    return res;
+}
 
-template <class T> bool chmin(T& a, const T& b) { return b < a ? a = b, 1 : 0; }  // set a = min(a,b)
-template <class T> bool chmax(T& a, const T& b) { return a < b ? a = b, 1 : 0; }  // set a = max(a,b)
+auto init = []() -> int {
+    f[0] = 1;
+    for (int i = 1; i <= MX; i++) {
+        int x = i;
+        // 计算 2 和 5 的幂次
+        int e2 = 0, e5 = 0;
+        while (x % 2 == 0) {
+            e2++;
+            x /= 2;
+        }
+        while (x % 5 == 0) {
+            e5++;
+            x /= 5;
+        }
+        f[i] = f[i - 1] * x % MOD; // ⚠️
+        p2[i] = p2[i - 1] + e2;
+        p5[i] = p5[i - 1] + e5;
+    }
 
-template<class T, class U> T fstTrue(T lo, T hi, U f) { ++hi; assert(lo <= hi); while (lo < hi) { T mid = lo + (hi - lo) / 2; f(mid) ? hi = mid : lo = mid + 1; } return lo; }
-template<class T, class U> T lstTrue(T lo, T hi, U f) { --lo; assert(lo <= hi); while (lo < hi) { T mid = lo + (hi - lo + 1) / 2; f(mid) ? lo = mid : hi = mid - 1; } return lo; }
+    // 欧拉定理 逆元
+    inv_f[MX] = power(f[MX], 3);
+    for (int i = MX; i > 0; i--) {
+        // 去掉因子 2 和 5
+        int x = i;
+        while (x % 2 == 0) x /= 2;
+        while (x % 5 == 0) x /= 5;
+        inv_f[i - 1] = inv_f[i] * x % MOD; // ⚠️
+    }
+    return 0;
+}();
+
+int comb(int n, int k) {
+    // n! / (k! (n - k)!)
+    // 上下同时提取出因子 2 和 5
+    return f[n] * inv_f[k] * inv_f[n - k] * 
+    power(2, p2[n] - p2[k] - p2[n - k]) * 
+    power(5, p5[n] - p5[k] - p5[n - k]) % MOD;
+}
 
 // [0, n - 2] and [1, n - 1]
 // sum(C(m - 1, i) * a[i] for i in range(m))
 class Solution {
 public:
     bool hasSameDigits(string s) {
-        int t = s.size() - 2;
-
+        int x = 0, y = 0;
+        int n = s.size();
+        for (int i = 0; i < n - 1; i++) {
+            x += comb(n - 2, i) * (s[i] - '0');
+            y += comb(n - 2, i) * (s[i + 1] - '0');
+            x %= MOD;
+            y %= MOD;
+        }
+        return x == y;
     }
 };
