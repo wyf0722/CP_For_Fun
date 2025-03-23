@@ -42,16 +42,15 @@ public:
             int l = 1;
             int cnt = 1;
             i64 ans = 0;
-            for (; l * 4 - 1 <= x; l *= 4, cnt++) {
-                int r = l * 4 - 1;
-                ans += 1LL * cnt * (r - l + 1);
+            for (; l <= x; l *= 4, cnt++) {
+                ans += 1LL * cnt * (min(x, l * 4 - 1) - l + 1);
             }
-            if (x >= l) ans += 1LL * cnt * (x - l + 1);
             return ans;
         };
         i64 ans = 0;
         for (auto &q : queries) {
-            ans += (f(q[1]) - f(q[0] - 1) + 1) / 2;
+            ans += max((f(q[1]) - f(q[0] - 1) + 1) / 2,
+            f(q[1]) - f(q[1] - 1));
         }
         return ans;
     }
