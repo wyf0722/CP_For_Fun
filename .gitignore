@@ -58,6 +58,6 @@ Cache_For_Contest/*
 .cph/*
 *.bin
 
-# input & output data
+# input & output
 in.text
 out.text
