@@ -57,3 +57,7 @@ Cache_For_Contest/*
 # cph
 .cph/*
 *.bin
+
+# input & output
+Arena/*.txt
+Arena_Pre/*.txt

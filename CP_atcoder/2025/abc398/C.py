@@ -168,20 +168,19 @@ if 1:
 > Github: https://github.com/wyf0722
 > Mail: wyf0722chosen@gmail.com
 '''
-MULTITEST = 1
+MULTITEST = 0
 MOD = 1_000_000_007
 def main():
-    n, m, k = MII()
-    lo, hi = 0, m
-    while lo + 1 < hi:
-        mid = (lo + hi) // 2
-        row = m // (mid + 1) * mid + m % (mid + 1)
-        total = row * n
-        if total >= k:
-            hi = mid
-        else:
-            lo = mid
-    print(hi)
+    n = II()
+    a = LII()
+    c = Counter(a)
+    mx, idx = -1, -1
+    for i, x in enumerate(a):
+        if c[x] == 1:
+            if x > mx:
+                mx = x
+                idx = i + 1
+    print(idx)
 
 
 T = 1

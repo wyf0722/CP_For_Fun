@@ -171,18 +171,21 @@ if 1:
 MULTITEST = 1
 MOD = 1_000_000_007
 def main():
-    n, m, k = MII()
-    lo, hi = 0, m
-    while lo + 1 < hi:
-        mid = (lo + hi) // 2
-        row = m // (mid + 1) * mid + m % (mid + 1)
-        total = row * n
-        if total >= k:
-            hi = mid
-        else:
-            lo = mid
-    print(hi)
-
+    n = II()
+    a = LII()
+    c = Counter([0, 1, 0, 3, 2, 0, 2, 5])
+    now = Counter()
+    for i, x in enumerate(a):
+        now[x] += 1
+        ok = 1
+        for k, v in c.items():
+            if now[k] < v:
+                ok = 0
+        if ok:
+            print(i + 1)
+            return
+    print(0)
+    
 
 T = 1
 if MULTITEST:

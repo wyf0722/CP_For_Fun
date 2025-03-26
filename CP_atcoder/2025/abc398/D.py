@@ -168,21 +168,30 @@ if 1:
 > Github: https://github.com/wyf0722
 > Mail: wyf0722chosen@gmail.com
 '''
-MULTITEST = 1
+MULTITEST = 0
 MOD = 1_000_000_007
 def main():
-    n, m, k = MII()
-    lo, hi = 0, m
-    while lo + 1 < hi:
-        mid = (lo + hi) // 2
-        row = m // (mid + 1) * mid + m % (mid + 1)
-        total = row * n
-        if total >= k:
-            hi = mid
+    n, r, c = MII()
+    s = I()
+    smoke = set()
+    smoke.add((0, 0))
+    x, y = 0, 0
+    ans = []
+    for ch in s:
+        if ch == 'N':
+            x += 1
+        elif ch == 'W':
+            y += 1
+        elif ch == 'S':
+            x -= 1
         else:
-            lo = mid
-    print(hi)
-
+            y -= 1
+        smoke.add((x, y))
+        if (r + x, c + y) in smoke:
+            ans.append('1')
+        else:
+            ans.append('0')
+    print(''.join(ans))
 
 T = 1
 if MULTITEST:

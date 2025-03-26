@@ -168,21 +168,14 @@ if 1:
 > Github: https://github.com/wyf0722
 > Mail: wyf0722chosen@gmail.com
 '''
-MULTITEST = 1
+MULTITEST = 0
 MOD = 1_000_000_007
 def main():
-    n, m, k = MII()
-    lo, hi = 0, m
-    while lo + 1 < hi:
-        mid = (lo + hi) // 2
-        row = m // (mid + 1) * mid + m % (mid + 1)
-        total = row * n
-        if total >= k:
-            hi = mid
-        else:
-            lo = mid
-    print(hi)
-
+    n = II()
+    if n & 1:
+        print('-' * (n // 2) + '=' + '-' * (n // 2))
+    else:
+        print('-' * (n // 2 - 1) + '==' + '-' * (n // 2 - 1))
 
 T = 1
 if MULTITEST:

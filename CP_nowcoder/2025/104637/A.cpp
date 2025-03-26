@@ -1,9 +1,9 @@
 /*************************************************************************
-    > File Name: D.cpp
+    > File Name: A.cpp
     > Author: Wu YiFan
     > Github: https://github.com/wyf0722
     > Mail: wyf0722chosen@gmail.com
-    > Created Time: 2025-03-23 13:46
+    > Created Time: 2025-03-23 21:44
 ************************************************************************/
 #include <bits/stdc++.h>
 
@@ -34,24 +34,22 @@ template <class T> bool chmax(T& a, const T& b) { return a < b ? a = b, 1 : 0; }
 template<class T, class U> T fstTrue(T lo, T hi, U f) { ++hi; assert(lo <= hi); while (lo < hi) { T mid = lo + (hi - lo) / 2; f(mid) ? hi = mid : lo = mid + 1; } return lo; }
 template<class T, class U> T lstTrue(T lo, T hi, U f) { --lo; assert(lo <= hi); while (lo < hi) { T mid = lo + (hi - lo + 1) / 2; f(mid) ? lo = mid : hi = mid - 1; } return lo; }
 
-class Solution {
-public:
-    long long minOperations(vector<vector<int>>& queries) {
-        auto f = [&](int x) -> i64 {
-            // [1, 3] [4, 15] ...
-            int l = 1;
-            int cnt = 1;
-            i64 ans = 0;
-            for (; l <= x; l *= 4, cnt++) {
-                ans += 1LL * cnt * (min(x, l * 4 - 1) - l + 1);
-            }
-            return ans;
-        };
-        i64 ans = 0;
-        for (auto &q : queries) {
-            ans += max((f(q[1]) - f(q[0] - 1) + 1) / 2,
-            f(q[1]) - f(q[1] - 1));
-        }
-        return ans;
+#define MULTICASE 0
+void solve() {
+    int x, y;
+    cin >> x >> y;
+    cout << (y + x - 1) / x << '\n';
+}
+
+int main() {
+    cin.tie(nullptr)->sync_with_stdio(false);
+    cout << fixed << setprecision(20);
+    int T = 1;
+#if MULTICASE
+    cin >> T;
+#endif
+    while (T--) {
+        solve();
     }
-};
+    return 0;
+}

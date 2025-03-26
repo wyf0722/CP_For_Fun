@@ -171,18 +171,18 @@ if 1:
 MULTITEST = 1
 MOD = 1_000_000_007
 def main():
-    n, m, k = MII()
-    lo, hi = 0, m
-    while lo + 1 < hi:
-        mid = (lo + hi) // 2
-        row = m // (mid + 1) * mid + m % (mid + 1)
-        total = row * n
-        if total >= k:
-            hi = mid
-        else:
-            lo = mid
-    print(hi)
-
+    n, x = MII()
+    a = LII()
+    a.sort(reverse=True)
+    ans = 0
+    now = 0
+    pre = 0
+    while now < n:
+        if x <= a[now] * (now - pre + 1):
+            pre = now + 1
+            ans += 1
+        now += 1
+    print(ans)
 
 T = 1
 if MULTITEST:

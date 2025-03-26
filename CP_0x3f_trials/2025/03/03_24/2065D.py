@@ -171,18 +171,23 @@ if 1:
 MULTITEST = 1
 MOD = 1_000_000_007
 def main():
-    n, m, k = MII()
-    lo, hi = 0, m
-    while lo + 1 < hi:
-        mid = (lo + hi) // 2
-        row = m // (mid + 1) * mid + m % (mid + 1)
-        total = row * n
-        if total >= k:
-            hi = mid
-        else:
-            lo = mid
-    print(hi)
-
+    n, m = MII()
+    v = []
+    for _ in range(n):
+        v.append(LII())
+    # 考虑每个数字的贡献
+    f = [sum(a) for a in v]
+    idx = list(range(n))
+    idx.sort(key=lambda x: -f[x])
+    nums = []
+    for id in idx:
+        nums += v[id]
+    s = 0
+    ans = 0
+    for x in nums:
+        s += x
+        ans += s
+    print(ans)
 
 T = 1
 if MULTITEST:

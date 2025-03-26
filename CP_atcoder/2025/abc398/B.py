@@ -168,21 +168,20 @@ if 1:
 > Github: https://github.com/wyf0722
 > Mail: wyf0722chosen@gmail.com
 '''
-MULTITEST = 1
+MULTITEST = 0
 MOD = 1_000_000_007
 def main():
-    n, m, k = MII()
-    lo, hi = 0, m
-    while lo + 1 < hi:
-        mid = (lo + hi) // 2
-        row = m // (mid + 1) * mid + m % (mid + 1)
-        total = row * n
-        if total >= k:
-            hi = mid
-        else:
-            lo = mid
-    print(hi)
-
+    c = Counter(LII())
+    three, two = 0, 0
+    for v in c.values():
+        if v >= 3:
+            if three:
+                two += 1
+            else:
+                three += 1
+        elif v >= 2:
+            two += 1
+    print('Yes' if three and two else 'No')
 
 T = 1
 if MULTITEST:
