@@ -110,14 +110,23 @@ vector<i64> get_dis(vector<int>& nums, int k) {
     LazyHeap<int> L;                // 大根堆
     LazyHeap<int, greater<int>> R;  // 小根堆
 
+    auto maintain = [&]() {
+        while (L.size() < R.size()) {
+            L.push(R.pop());
+        }
+        while (L.size() > R.size() + 1) {
+            R.push(L.pop());
+        }
+    };
+
     for (int i = 0; i < n; i++) {
         int in = nums[i];
         if (L.size() == R.size()) {
-            L.push(R.push_pop(in));
+            R.push(in);
         } else {
-            R.push(L.push_pop(in));
+            L.push(in);
         }
-
+        maintain();
         if (i < k - 1) continue;
         int l = i - k + 1;
 
@@ -130,15 +139,10 @@ vector<i64> get_dis(vector<int>& nums, int k) {
         int out = nums[l];
         if (out <= L.top()) {
             L.remove(out);
-            if (L.size() < R.size()) {
-                L.push(R.pop());
-            }
         } else {
             R.remove(out);
-            if (L.size() > R.size() + 1) {
-                R.push(L.pop());
-            }
         }
+        maintain();
     }
     return ans;
 }
@@ -148,11 +152,12 @@ public:
     long long minOperations(vector<int>& nums, int x, int k) {
         int n =  nums.size();
         auto dis = get_dis(nums, x);
-        V f(k + 1, V<i64>(n + 1));
+        V f(k + 1, V<i64>(n + 1, infLL));
+        for (int i = 0; i <= n; i++) f[0][i] = 0;
         for (int i = 1; i <= k; i++) {
-            f[i][i * x - 1] = infLL;
             for (int j = i * x; j <= n - (k - i) * x; j++) {
-                f[i][j] = min(f[i][j - 1], f[i - 1][j - x] + dis[j - x]);
+                chmin(f[i][j], f[i][j - 1]);
+                chmin(f[i][j], f[i - 1][j - x] + dis[j - x]);
             }
         }
         return f[k][n];
