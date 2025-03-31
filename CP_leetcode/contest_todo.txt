@@ -1,0 +1,23 @@
+biweekly_135: {D}
+biweekly_143: {D}
+biweekly_144: {C}
+biweekly_146: {D}
+biweekly_147: {D}
+biweekly_149: {D}
+biweekly_150: {C}
+biweekly_151: {D}
+biweekly_152: {D}
+biweekly_153: {D}
+weekly_408: {D}
+weekly_409: {D}
+weekly_411: {D}
+weekly_412: {D}
+weekly_413: {C, D}
+weekly_414: {D}
+weekly_421: {D}
+weekly_424: {D}
+weekly_433: {D}
+weekly_434: {D}
+weekly_435: {D}
+weekly_436: {D}
+weekly_438: {D}
