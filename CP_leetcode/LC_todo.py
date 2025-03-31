@@ -4,6 +4,8 @@ from collections import defaultdict
 from typing import Dict, Set, List
 
 TARGET_PROBLEMS = set('ABCD')
+BIWEEKLY = 'biweekly'
+WEEKLY = 'weekly'
 
 
 def get_unsolved_problems() -> Dict[str, List[str]]:
@@ -18,8 +20,12 @@ def get_unsolved_problems() -> Dict[str, List[str]]:
         path_components = root.split(os.path.sep)
         if len(path_components) < 3:
             continue
-        contest_id = f"{path_components[-3]}_{path_components[-1]}"
-        # print(contest_id, files)
+        contest_id = ''
+        if WEEKLY in path_components:
+            contest_id += WEEKLY
+        if BIWEEKLY in path_components:
+            contest_id += BIWEEKLY
+        contest_id += '_' + path_components[-1]
 
         # 获取已解决的题目
         solved_problems = {
