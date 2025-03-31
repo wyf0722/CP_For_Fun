@@ -18,7 +18,6 @@ jobs:
       with:
         python-version: '3.x'
         
-        
     - name: Run todo generator
       run: python CP_leetcode/LC_todo.py
     
@@ -27,6 +26,6 @@ jobs:
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         git add .
-        if git commit -m "generated"; then
+        if git commit -m "feat(CP_leetcode):generate todo list"; then
           git push
         fi
