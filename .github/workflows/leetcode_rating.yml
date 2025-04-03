@@ -54,7 +54,7 @@ jobs:
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
-        git add CP_leetcode/rating.json
+        git add .
         if git commit -m "feat(CP_leetcode): update problem ratings"; then
           git push
         fi
