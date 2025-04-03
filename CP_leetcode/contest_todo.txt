@@ -5,133 +5,88 @@ biweekly_135
 ------------------------------
   Problem D  - (Rating: 3027.9)
 
-biweekly_135:
-  D (3027.8558407399)
 biweekly_143
 ------------------------------
   Problem D  - (Rating: 3101.5)
 
-biweekly_143:
-  D (3101.4829146106)
 biweekly_146
 ------------------------------
   Problem D  - (Rating: 2799.5)
 
-biweekly_146:
-  D (2799.5363565342)
 biweekly_147
 ------------------------------
   Problem D  - (Rating: 2843.7)
 
-biweekly_147:
-  D (2843.655465882)
 biweekly_149
 ------------------------------
   Problem D  - (Rating: 2764.6)
 
-biweekly_149:
-  D (2764.5966131386)
 biweekly_150
 ------------------------------
   Problem C  - (Rating: 2671.1)
 
-biweekly_150:
-  C (2671.1046123182)
 biweekly_151
 ------------------------------
   Problem D  - (Rating: 2473.7)
 
-biweekly_151:
-  D (2473.7239890264)
 biweekly_152
 ------------------------------
   Problem D  - Unknown Rating
 
-biweekly_152:
-  D
 biweekly_153
 ------------------------------
   Problem D  - Unknown Rating
 
-biweekly_153:
-  D
 weekly_408
 ------------------------------
   Problem D  - (Rating: 3773.8)
 
-weekly_408:
-  D (3773.7596150919)
 weekly_409
 ------------------------------
   Problem D  - (Rating: 3112.0)
 
-weekly_409:
-  D (3112.0402038423)
 weekly_411
 ------------------------------
   Problem D  - (Rating: 2658.9)
 
-weekly_411:
-  D (2658.9223715182)
 weekly_412
 ------------------------------
   Problem D  - (Rating: 2545.1)
 
-weekly_412:
-  D (2545.1080433595)
 weekly_413
 ------------------------------
   Problem C  - (Rating: 2402.6)
   Problem D  - (Rating: 2692.7)
 
-weekly_413:
-  C (2402.6213260468)
-  D (2692.6778614397)
 weekly_414
 ------------------------------
   Problem D  - (Rating: 2473.3)
 
-weekly_414:
-  D (2473.2589317118)
 weekly_421
 ------------------------------
   Problem D  - (Rating: 2411.8)
 
-weekly_421:
-  D (2411.8113388167)
 weekly_424
 ------------------------------
   Problem D  - (Rating: 3077.2)
 
-weekly_424:
-  D (3077.2342981036)
 weekly_433
 ------------------------------
   Problem D  - (Rating: 2645.0)
 
-weekly_433:
-  D (2644.9681021386)
 weekly_434
 ------------------------------
   Problem D  - (Rating: 3027.9)
 
-weekly_434:
-  D (3027.89612787)
 weekly_435
 ------------------------------
   Problem D  - (Rating: 2693.6)
 
-weekly_435:
-  D (2693.5604276923)
 weekly_436
 ------------------------------
   Problem D  - (Rating: 2748.1)
 
-weekly_436:
-  D (2748.125042961)
 weekly_438
 ------------------------------
   Problem D  - (Rating: 2806.0)
 
-weekly_438:
-  D (2805.990278358)
