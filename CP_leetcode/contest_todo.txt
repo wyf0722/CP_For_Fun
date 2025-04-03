@@ -1,6 +1,5 @@
 biweekly_135: {D}
 biweekly_143: {D}
-biweekly_144: {C}
 biweekly_146: {D}
 biweekly_147: {D}
 biweekly_149: {D}
