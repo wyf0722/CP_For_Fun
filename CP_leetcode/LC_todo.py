@@ -64,15 +64,6 @@ def get_unsolved_problems() -> Dict[str, List[str]]:
 
             # 在比赛之间添加空行
             f.write("\n")
-            problems = unsolved_by_contest[contest]
-            # 输出题目及对应rating
-            f.write(f'{contest}:\n')
-            for problem in problems:
-                rating = problem_ratings.get((contest, problem))
-                if rating:
-                    f.write(f'  {problem} ({rating})\n')
-                else:
-                    f.write(f'  {problem}\n')
     return unsolved_by_contest
 
 
