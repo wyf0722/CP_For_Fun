@@ -8,14 +8,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>竞赛编程模板</h1>
-            <nav>
+    <nav class="top-nav">
+        <div class="nav-content">
+            <div class="nav-title">CP Template</div>
+            <div class="nav-buttons">
                 <button onclick="showLanguage('cpp')">C++</button>
                 <button onclick="showLanguage('python')">Python</button>
-            </nav>
-        </header>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="sidebar" id="sidebar">
+            <!-- 目录树将通过JavaScript动态生成 -->
+        </div>
         
         <main id="content">
             <!-- 内容将通过JavaScript动态加载 -->
