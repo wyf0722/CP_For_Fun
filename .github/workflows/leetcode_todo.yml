@@ -1,11 +1,40 @@
-name: LeetCode Todo Generator
+name: LeetCode Ratings and TODO Generator
 
 on:
   schedule:
-    - cron: '0 16 * * *'  # 每天UTC 16:00 (北京时间 0:00)
+    - cron: '0 16 * * 0'  # 每周日UTC 16:00 (北京时间 0:00)
   workflow_dispatch:  # 允许手动触发
 
 jobs:
+  generate-ratings:
+      runs-on: ubuntu-latest
+      
+      steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+          
+      - name: Run rating generator
+        run: python .github/scripts/LC_ratings.py
+      
+      - name: Commit changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add .
+          if git commit -m "feat(leetcode): update problem ratings"; then
+            git push
+          fi
+          
   generate-todo:
     runs-on: ubuntu-latest
     
@@ -19,13 +48,15 @@ jobs:
         python-version: '3.x'
         
     - name: Run todo generator
-      run: python .github/scipts/LC_todo.py
+      run: python .github/scripts/LC_todo.py
     
     - name: Commit changes
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         git add .
-        if git commit -m "feat(leetcode):generate todo list"; then
+        if git commit -m "feat(CP_leetcode):generate todo list"; then
           git push
         fi
+
+  
