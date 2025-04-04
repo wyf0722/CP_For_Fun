@@ -81,105 +81,76 @@ function renderTemplateCards(templates, container, language) {
         const categoryCards = document.createElement('div');
         categoryCards.className = 'category-cards';
         
-        // 在创建模板卡片的部分进行修改
-        for (const [name, code] of Object.entries(templates[category])) {
-            const card = document.createElement('div');
-            card.className = 'template-card';
+        // 在创建模板卡片的部分修改展开/收起按钮的点击事件
+        const expandBtn = document.createElement('button');
+        expandBtn.className = 'expand-btn';
+        expandBtn.textContent = '展开';
+        expandBtn.onclick = function() {
+            const codeBlock = this.closest('.template-card').querySelector('.code-block');
             
-            const cardHeader = document.createElement('div');
-            cardHeader.className = 'card-header';
-            
-            const fileName = document.createElement('h3');
-            fileName.textContent = name;
-            cardHeader.appendChild(fileName);
-            
-            const cardButtons = document.createElement('div');
-            cardButtons.className = 'card-buttons';
-            
-            const copyBtn = document.createElement('button');
-            copyBtn.className = 'copy-btn';
-            copyBtn.textContent = '复制';
-            copyBtn.onclick = function() {
-                navigator.clipboard.writeText(code).then(() => {
-                    this.textContent = '已复制';
-                    this.classList.add('copied');
-                    setTimeout(() => {
-                        this.textContent = '复制';
-                        this.classList.remove('copied');
-                    }, 2000);
-                });
-            };
-            cardButtons.appendChild(copyBtn);
-            
-            const expandBtn = document.createElement('button');
-            expandBtn.className = 'expand-btn';
-            expandBtn.textContent = '展开';
-            expandBtn.onclick = function() {
-                const codeBlock = this.closest('.template-card').querySelector('.code-block');
+            if (codeBlock.classList.contains('expanded')) {
+                // 收起动画
+                codeBlock.style.maxHeight = codeBlock.scrollHeight + 'px';
+                // 强制回流
+                codeBlock.offsetHeight;
+                codeBlock.style.maxHeight = '0';
+                codeBlock.classList.remove('expanded');
+                this.textContent = '展开';
                 
-                if (codeBlock.classList.contains('expanded')) {
-                    // 收起动画
-                    codeBlock.style.maxHeight = codeBlock.scrollHeight + 'px';
-                    // 强制回流
-                    codeBlock.offsetHeight;
-                    codeBlock.style.maxHeight = '0';
-                    codeBlock.classList.remove('expanded');
-                    this.textContent = '展开';
-                    
-                    // 动画结束后隐藏
-                    setTimeout(() => {
-                        if (!codeBlock.classList.contains('expanded')) {
-                            codeBlock.style.display = 'none';
-                        }
-                    }, 300);
-                } else {
-                    // 展开动画
-                    codeBlock.style.display = 'block';
-                    // 强制回流
-                    codeBlock.offsetHeight;
-                    codeBlock.style.maxHeight = '0';
-                    // 强制回流
-                    codeBlock.offsetHeight;
-                    codeBlock.style.maxHeight = codeBlock.scrollHeight + 'px';
-                    codeBlock.classList.add('expanded');
-                    this.textContent = '收起';
-                    
-                    // 动画结束后移除高度限制
-                    setTimeout(() => {
-                        if (codeBlock.classList.contains('expanded')) {
-                            codeBlock.style.maxHeight = 'none';
-                        }
-                    }, 300);
-                }
-            };
-            cardButtons.appendChild(expandBtn);
-            
-            cardHeader.appendChild(cardButtons);
-            card.appendChild(cardHeader);
-            
-            const codeBlock = document.createElement('div');
-            codeBlock.className = 'code-block';
-            codeBlock.style.display = 'none';
-            
-            const pre = document.createElement('pre');
-            const codeElement = document.createElement('code');
-            // 根据文件扩展名设置语言
-            const fileExt = name.split('.').pop().toLowerCase();
-            const codeLanguage = fileExt === 'py' ? 'python' : 
-                          (fileExt === 'cpp' || fileExt === 'hpp') ? 'cpp' : language;
-            
-            codeElement.className = codeLanguage;
-            codeElement.textContent = code;
-            pre.appendChild(codeElement);
-            codeBlock.appendChild(pre);
-            
-            card.appendChild(codeBlock);
-            categoryCards.appendChild(card);
-        }
+                // 动画结束后隐藏
+                setTimeout(() => {
+                    if (!codeBlock.classList.contains('expanded')) {
+                        codeBlock.style.display = 'none';
+                    }
+                }, 300);
+            } else {
+                // 展开动画
+                codeBlock.style.display = 'block';
+                // 强制回流
+                codeBlock.offsetHeight;
+                codeBlock.style.maxHeight = '0';
+                // 强制回流
+                codeBlock.offsetHeight;
+                codeBlock.style.maxHeight = codeBlock.scrollHeight + 'px';
+                codeBlock.classList.add('expanded');
+                this.textContent = '收起';
+                
+                // 动画结束后移除高度限制
+                setTimeout(() => {
+                    if (codeBlock.classList.contains('expanded')) {
+                        codeBlock.style.maxHeight = 'none';
+                    }
+                }, 300);
+            }
+        };
         
-        categorySection.appendChild(categoryCards);
-        container.appendChild(categorySection);
+        cardButtons.appendChild(expandBtn);
+        
+        cardHeader.appendChild(cardButtons);
+        card.appendChild(cardHeader);
+        
+        const codeBlock = document.createElement('div');
+        codeBlock.className = 'code-block';
+        codeBlock.style.display = 'none';
+        
+        const pre = document.createElement('pre');
+        const codeElement = document.createElement('code');
+        // 根据文件扩展名设置语言
+        const fileExt = name.split('.').pop().toLowerCase();
+        const codeLanguage = fileExt === 'py' ? 'python' : 
+                          (fileExt === 'cpp' || fileExt === 'hpp') ? 'cpp' : language;
+        
+        codeElement.className = codeLanguage;
+        codeElement.textContent = code;
+        pre.appendChild(codeElement);
+        codeBlock.appendChild(pre);
+        
+        card.appendChild(codeBlock);
+        categoryCards.appendChild(card);
     }
+    
+    categorySection.appendChild(categoryCards);
+    container.appendChild(categorySection);
 }
 
 // 添加回到顶部按钮
