@@ -6,127 +6,129 @@ async function loadTemplates(language) {
         }
         const templates = await response.json();
         
-        // 生成侧边栏目录树
-        generateSidebar(templates, language);
-        
         // 清空主内容区
         const content = document.getElementById('content');
         content.innerHTML = '';
         
-        // 渲染文件内容
-        renderTemplates(templates, content, language);
+        // 添加语言选择器
+        const langSelector = document.createElement('div');
+        langSelector.className = 'language-selector';
+        langSelector.innerHTML = `
+            <button class="${language === 'cpp' ? 'active' : ''}" onclick="loadTemplates('cpp')">C++</button>
+            <button class="${language === 'python' ? 'active' : ''}" onclick="loadTemplates('python')">Python</button>
+        `;
+        content.appendChild(langSelector);
+        
+        // 添加标题
+        const title = document.createElement('h1');
+        title.textContent = `${language === 'cpp' ? 'C++' : 'Python'} 模板库`;
+        content.appendChild(title);
+        
+        // 创建模板卡片容器
+        const cardsContainer = document.createElement('div');
+        cardsContainer.className = 'template-cards';
+        content.appendChild(cardsContainer);
+        
+        // 渲染所有模板卡片
+        renderTemplateCards(templates, cardsContainer, language);
         
         // 确保代码高亮在DOM更新后执行
         setTimeout(() => {
             hljs.highlightAll();
         }, 100);
-        
-        // 更新当前语言状态
-        document.querySelectorAll('.nav-buttons button').forEach(btn => {
-            if (btn.getAttribute('data-lang') === language) {
-                btn.classList.add('active');
-            } else {
-                btn.classList.remove('active');
-            }
-        });
     } catch (error) {
         console.error('加载模板失败:', error);
         document.getElementById('content').innerHTML = `<div class="error">加载模板失败: ${error.message}</div>`;
     }
 }
 
-function generateSidebar(templates, language) {
-    const sidebar = document.getElementById('sidebar');
-    sidebar.innerHTML = '';
+function renderTemplateCards(templates, container, language) {
+    // 创建分类索引
+    const categoriesDiv = document.createElement('div');
+    categoriesDiv.className = 'categories-index';
+    categoriesDiv.innerHTML = '<h2>目录</h2>';
     
+    const categoriesList = document.createElement('ul');
+    categoriesDiv.appendChild(categoriesList);
+    
+    // 添加分类索引到容器
+    container.appendChild(categoriesDiv);
+    
+    // 按分类渲染模板
     for (const category in templates) {
-        if (category === 'root') continue;
+        // 添加分类到索引
+        const categoryItem = document.createElement('li');
+        const categoryLink = document.createElement('a');
+        categoryLink.href = `#category-${encodeURIComponent(category)}`;
+        categoryLink.textContent = category === 'root' ? '根目录' : category;
+        categoryItem.appendChild(categoryLink);
+        categoriesList.appendChild(categoryItem);
         
-        const categoryDiv = document.createElement('div');
-        categoryDiv.className = 'sidebar-category';
+        // 创建分类区域
+        const categorySection = document.createElement('div');
+        categorySection.className = 'category-section';
+        categorySection.id = `category-${encodeURIComponent(category)}`;
         
-        const categoryTitle = document.createElement('h3');
-        categoryTitle.textContent = category;
-        categoryDiv.appendChild(categoryTitle);
+        const categoryTitle = document.createElement('h2');
+        categoryTitle.textContent = category === 'root' ? '根目录' : category;
+        categorySection.appendChild(categoryTitle);
         
-        const filesList = document.createElement('div');
-        filesList.className = 'sidebar-files';
-        
-        for (const fileName in templates[category]) {
-            const fileLink = document.createElement('div');
-            fileLink.className = 'sidebar-file';
-            fileLink.textContent = fileName;
-            fileLink.onclick = () => scrollToFile(category, fileName);
-            filesList.appendChild(fileLink);
-        }
-        
-        categoryDiv.appendChild(filesList);
-        sidebar.appendChild(categoryDiv);
-    }
-}
-
-function scrollToFile(category, fileName) {
-    // 使用安全的ID生成方式
-    const safeId = `file-${encodeURIComponent(category)}-${encodeURIComponent(fileName)}`;
-    const fileElement = document.getElementById(safeId);
-    if (fileElement) {
-        fileElement.scrollIntoView({ behavior: 'smooth' });
-    }
-}
-
-function renderTemplates(templates, container, language) {
-    for (const category in templates) {
-        const section = document.createElement('div');
-        section.className = 'template-section';
-        
-        const title = document.createElement('h2');
-        title.textContent = category === 'root' ? '根目录' : category;
-        section.appendChild(title);
+        // 创建该分类下的模板卡片
+        const categoryCards = document.createElement('div');
+        categoryCards.className = 'category-cards';
         
         for (const [name, code] of Object.entries(templates[category])) {
-            const fileWrapper = document.createElement('div');
-            fileWrapper.className = 'file-wrapper';
-            // 使用安全的ID生成方式
-            fileWrapper.id = `file-${encodeURIComponent(category)}-${encodeURIComponent(name)}`;
+            const card = document.createElement('div');
+            card.className = 'template-card';
+            
+            const cardHeader = document.createElement('div');
+            cardHeader.className = 'card-header';
             
             const fileName = document.createElement('h3');
             fileName.textContent = name;
-            fileWrapper.appendChild(fileName);
+            cardHeader.appendChild(fileName);
+            
+            const expandBtn = document.createElement('button');
+            expandBtn.className = 'expand-btn';
+            expandBtn.textContent = '展开';
+            expandBtn.onclick = function() {
+                const codeBlock = this.parentElement.nextElementSibling;
+                if (codeBlock.style.display === 'none' || !codeBlock.style.display) {
+                    codeBlock.style.display = 'block';
+                    this.textContent = '收起';
+                } else {
+                    codeBlock.style.display = 'none';
+                    this.textContent = '展开';
+                }
+            };
+            cardHeader.appendChild(expandBtn);
+            
+            card.appendChild(cardHeader);
+            
+            const codeBlock = document.createElement('div');
+            codeBlock.className = 'code-block';
+            codeBlock.style.display = 'none';
             
             const pre = document.createElement('pre');
             const codeElement = document.createElement('code');
             // 根据文件扩展名设置语言
             const fileExt = name.split('.').pop().toLowerCase();
             const codeLanguage = fileExt === 'py' ? 'python' : 
-                                (fileExt === 'cpp' || fileExt === 'hpp') ? 'cpp' : language;
+                              (fileExt === 'cpp' || fileExt === 'hpp') ? 'cpp' : language;
             
             codeElement.className = codeLanguage;
-            // 确保代码内容正确显示
             codeElement.textContent = code;
             pre.appendChild(codeElement);
-            fileWrapper.appendChild(pre);
+            codeBlock.appendChild(pre);
             
-            section.appendChild(fileWrapper);
+            card.appendChild(codeBlock);
+            categoryCards.appendChild(card);
         }
         
-        container.appendChild(section);
+        categorySection.appendChild(categoryCards);
+        container.appendChild(categorySection);
     }
 }
 
-// 默认加载C++模板
-window.onload = () => {
-    // 为语言按钮添加事件监听器和数据属性
-    document.querySelectorAll('.nav-buttons button').forEach(btn => {
-        const lang = btn.textContent.toLowerCase();
-        btn.setAttribute('data-lang', lang);
-        btn.onclick = () => showLanguage(lang);
-    });
-    
-    // 默认加载C++模板
-    loadTemplates('cpp');
-};
-
-// 语言切换函数
-function showLanguage(language) {
-    loadTemplates(language);
-}
+// 页面加载时默认显示C++模板
+window.onload = () => loadTemplates('cpp');
