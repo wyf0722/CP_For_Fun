@@ -7,6 +7,7 @@ on:
       - 'Copypasta_Cpp/**'
       - 'Copypasta_Python/**'
       - '.github/pages/**'
+      - '.github/scripts/**'
   workflow_dispatch:
 
 jobs:
@@ -22,7 +23,7 @@ jobs:
         python-version: '3.x'
         
     - name: Generate template JSONs
-      run: python scripts/generate_templates.py
+      run: python .github/scripts/generate_templates.py
         
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
