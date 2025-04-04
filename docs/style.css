@@ -147,3 +147,31 @@ nav button:hover {
     margin-bottom: 20px;
     border-bottom: 2px solid #e1e4e8;
 }
+
+/* 添加活动按钮样式 */
+.nav-buttons button.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: #58a6ff;
+}
+
+/* 修复导航栏显示问题 */
+.sidebar {
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+}
+
+.sidebar-category {
+    margin-bottom: 20px;
+}
+
+.sidebar-files {
+    margin-left: 15px;
+}
+
+.error {
+    color: #d73a49;
+    padding: 20px;
+    background-color: #ffeef0;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}

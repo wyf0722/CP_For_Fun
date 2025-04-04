@@ -1,21 +1,38 @@
 async function loadTemplates(language) {
-    const response = await fetch(`templates_${language}.json`);
-    const templates = await response.json();
-    
-    // 生成侧边栏目录树
-    generateSidebar(templates, language);
-    
-    // 清空主内容区
-    const content = document.getElementById('content');
-    content.innerHTML = '';
-    
-    // 渲染文件内容
-    renderTemplates(templates, content, language);
-    
-    // 确保代码高亮在DOM更新后执行
-    setTimeout(() => {
-        hljs.highlightAll();
-    }, 100);
+    try {
+        const response = await fetch(`templates_${language}.json`);
+        if (!response.ok) {
+            throw new Error(`无法加载${language}模板: ${response.status}`);
+        }
+        const templates = await response.json();
+        
+        // 生成侧边栏目录树
+        generateSidebar(templates, language);
+        
+        // 清空主内容区
+        const content = document.getElementById('content');
+        content.innerHTML = '';
+        
+        // 渲染文件内容
+        renderTemplates(templates, content, language);
+        
+        // 确保代码高亮在DOM更新后执行
+        setTimeout(() => {
+            hljs.highlightAll();
+        }, 100);
+        
+        // 更新当前语言状态
+        document.querySelectorAll('.nav-buttons button').forEach(btn => {
+            if (btn.getAttribute('data-lang') === language) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+    } catch (error) {
+        console.error('加载模板失败:', error);
+        document.getElementById('content').innerHTML = `<div class="error">加载模板失败: ${error.message}</div>`;
+    }
 }
 
 function generateSidebar(templates, language) {
@@ -97,4 +114,19 @@ function renderTemplates(templates, container, language) {
 }
 
 // 默认加载C++模板
-window.onload = () => loadTemplates('cpp');
+window.onload = () => {
+    // 为语言按钮添加事件监听器和数据属性
+    document.querySelectorAll('.nav-buttons button').forEach(btn => {
+        const lang = btn.textContent.toLowerCase();
+        btn.setAttribute('data-lang', lang);
+        btn.onclick = () => showLanguage(lang);
+    });
+    
+    // 默认加载C++模板
+    loadTemplates('cpp');
+};
+
+// 语言切换函数
+function showLanguage(language) {
+    loadTemplates(language);
+}
