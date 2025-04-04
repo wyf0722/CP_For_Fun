@@ -32,6 +32,9 @@ async function loadTemplates(language) {
         // 渲染所有模板卡片
         renderTemplateCards(templates, cardsContainer, language);
         
+        // 添加回到顶部按钮
+        addBackToTopButton();
+        
         // 确保代码高亮在DOM更新后执行
         setTimeout(() => {
             hljs.highlightAll();
@@ -149,6 +152,39 @@ function renderTemplateCards(templates, container, language) {
         categorySection.appendChild(categoryCards);
         container.appendChild(categorySection);
     }
+}
+
+// 添加回到顶部按钮
+function addBackToTopButton() {
+    // 移除已存在的按钮（如果有）
+    const existingButton = document.getElementById('back-to-top');
+    if (existingButton) {
+        existingButton.remove();
+    }
+    
+    // 创建回到顶部按钮
+    const backToTopBtn = document.createElement('button');
+    backToTopBtn.id = 'back-to-top';
+    backToTopBtn.innerHTML = '↑';
+    backToTopBtn.title = '回到顶部';
+    document.body.appendChild(backToTopBtn);
+    
+    // 添加点击事件
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    // 监听滚动事件，控制按钮显示/隐藏
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTopBtn.classList.add('visible');
+        } else {
+            backToTopBtn.classList.remove('visible');
+        }
+    });
 }
 
 // 页面加载时默认显示C++模板
