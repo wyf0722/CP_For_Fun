@@ -7,6 +7,7 @@ import json
 TARGET_PROBLEMS = set('ABCD')
 BIWEEKLY = 'biweekly'
 WEEKLY = 'weekly'
+CONTEST_LINK = 'https://leetcode.cn/contest/'
 
 
 def get_unsolved_problems() -> Dict[str, List[str]]:
@@ -14,6 +15,7 @@ def get_unsolved_problems() -> Dict[str, List[str]]:
     unsolved_by_contest = defaultdict(list)
     # 获取题目对应rating
     problem_ratings = get_problem_ratings()
+    # 遍历文件夹
     for root, dirs, files in os.walk(base_dir):
         # 跳过非叶子目录和特殊目录
         if dirs or any(skip in root for skip in ['venv', '.git']):
@@ -27,7 +29,7 @@ def get_unsolved_problems() -> Dict[str, List[str]]:
             contest_id += WEEKLY
         if BIWEEKLY in path_components:
             contest_id += BIWEEKLY
-        contest_id += '_' + path_components[-1]
+        contest_id += '-contest-' + path_components[-1]
 
         # 获取已解决的题目
         solved_problems = {
@@ -49,8 +51,10 @@ def get_unsolved_problems() -> Dict[str, List[str]]:
 
         for contest in sorted(unsolved_by_contest):
             problems = unsolved_by_contest[contest]
+            # 构建比赛链接
+            contest_link = CONTEST_LINK + contest.replace('_', '-') + '/'
             # 添加比赛标题
-            f.write(f"{contest}\n")
+            f.write(f"{contest} - {contest_link}\n")
             f.write("-" * 30 + "\n")
 
             # 输出题目及对应rating
@@ -86,24 +90,10 @@ def get_problem_ratings() -> Dict[tuple, float]:
                     ord('A') + int(problem['ProblemIndex'][1]) - 1)
                 rating = problem['Rating']
 
-                # 转换比赛ID格式（例如：weekly-contest-123 -> weekly_123）
-                # 使用split方法处理比赛ID
-                contest_types = {
-                    'biweekly-contest': 'biweekly',
-                    'weekly-contest': 'weekly'
-                }
-
-                contest_id_converted = False
-                for prefix, new_prefix in contest_types.items():
-                    if contest_id.startswith(prefix):
-                        number = contest_id.split('-')[-1]
-                        contest_id = f"{new_prefix}_{number}"
-                        contest_id_converted = True
-                        break
-
-                if not contest_id_converted:
-                    print(
-                        f"Warning: Unrecognized contest format: {contest_id}")
+                # 校验比赛ID格式为 weekly-contest-123 或者 biweekly-contest-123
+                if not re.match(r'weekly-contest-\d+|biweekly-contest-\d+',
+                                contest_id):
+                    print(f"Warning: Invalid contest ID format: {contest_id}")
                     continue
                 key = (contest_id, problem_index)
                 if key in problem_ratings:
