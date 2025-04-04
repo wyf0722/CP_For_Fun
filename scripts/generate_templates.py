@@ -4,8 +4,16 @@ from pathlib import Path
 
 def read_template_files(directory):
     templates = {}
+    base_path = Path(directory)
+    
     for root, _, files in os.walk(directory):
-        category = os.path.basename(root)
+        # 计算相对路径作为分类
+        rel_path = os.path.relpath(root, directory)
+        if rel_path == '.':
+            category = 'root'
+        else:
+            category = rel_path.replace('\\', '/')
+            
         if category not in templates:
             templates[category] = {}
             
@@ -19,19 +27,13 @@ def read_template_files(directory):
 def main():
     base_dir = Path(__file__).parent.parent
     docs_dir = base_dir / 'docs'
-    
-    # 确保docs目录存在
     docs_dir.mkdir(exist_ok=True)
     
-    # 生成C++模板JSON
-    cpp_templates = read_template_files(base_dir / 'Copypasta_Cpp')
-    with open(docs_dir / 'templates_cpp.json', 'w', encoding='utf-8') as f:
-        json.dump(cpp_templates, f, ensure_ascii=False, indent=2)
-    
-    # 生成Python模板JSON
-    python_templates = read_template_files(base_dir / 'Copypasta_Python')
-    with open(docs_dir / 'templates_python.json', 'w', encoding='utf-8') as f:
-        json.dump(python_templates, f, ensure_ascii=False, indent=2)
+    # 生成C++和Python模板JSON
+    for lang, dir_name in [('cpp', 'Copypasta_Cpp'), ('python', 'Copypasta_Python')]:
+        templates = read_template_files(base_dir / dir_name)
+        with open(docs_dir / f'templates_{lang}.json', 'w', encoding='utf-8') as f:
+            json.dump(templates, f, ensure_ascii=False, indent=2)
 
 if __name__ == '__main__':
     main()
