@@ -6,12 +6,96 @@ body {
     background-color: #f5f5f5;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+.top-nav {
+    background-color: #24292e;
+    color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
 }
 
+.nav-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-title {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.nav-buttons button {
+    padding: 8px 16px;
+    margin-left: 10px;
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+}
+
+.nav-buttons button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.container {
+    display: flex;
+    max-width: 1200px;
+    margin: 60px auto 0;
+    padding: 20px;
+    gap: 20px;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 80px;
+    height: calc(100vh - 100px);
+    overflow-y: auto;
+}
+
+.sidebar-category {
+    margin-bottom: 15px;
+}
+
+.sidebar-category h3 {
+    margin: 0 0 10px 0;
+    color: #24292e;
+    font-size: 1em;
+}
+
+.sidebar-files {
+    padding-left: 15px;
+}
+
+.sidebar-file {
+    color: #0366d6;
+    cursor: pointer;
+    padding: 3px 0;
+}
+
+.sidebar-file:hover {
+    text-decoration: underline;
+}
+
+main {
+    flex: 1;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* 保留原有的其他样式 */
 header {
     text-align: center;
     margin-bottom: 40px;

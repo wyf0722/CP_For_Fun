@@ -2,22 +2,58 @@ async function loadTemplates(language) {
     const response = await fetch(`templates_${language}.json`);
     const templates = await response.json();
     
+    // 生成侧边栏目录树
+    generateSidebar(templates);
+    
+    // 清空主内容区
     const content = document.getElementById('content');
     content.innerHTML = '';
     
-    // 创建面包屑导航
-    const breadcrumb = document.createElement('div');
-    breadcrumb.className = 'breadcrumb';
-    content.appendChild(breadcrumb);
+    // 渲染文件内容
+    renderTemplates(templates, content);
     
-    // 按目录层级排序
-    const sortedCategories = Object.keys(templates).sort((a, b) => {
-        if (a === 'root') return -1;
-        if (b === 'root') return 1;
-        return a.localeCompare(b);
-    });
+    hljs.highlightAll();
+}
+
+function generateSidebar(templates) {
+    const sidebar = document.getElementById('sidebar');
+    sidebar.innerHTML = '';
     
-    for (const category of sortedCategories) {
+    for (const category in templates) {
+        if (category === 'root') continue;
+        
+        const categoryDiv = document.createElement('div');
+        categoryDiv.className = 'sidebar-category';
+        
+        const categoryTitle = document.createElement('h3');
+        categoryTitle.textContent = category;
+        categoryDiv.appendChild(categoryTitle);
+        
+        const filesList = document.createElement('div');
+        filesList.className = 'sidebar-files';
+        
+        for (const fileName in templates[category]) {
+            const fileLink = document.createElement('div');
+            fileLink.className = 'sidebar-file';
+            fileLink.textContent = fileName;
+            fileLink.onclick = () => scrollToFile(category, fileName);
+            filesList.appendChild(fileLink);
+        }
+        
+        categoryDiv.appendChild(filesList);
+        sidebar.appendChild(categoryDiv);
+    }
+}
+
+function scrollToFile(category, fileName) {
+    const fileElement = document.getElementById(`${category}-${fileName}`);
+    if (fileElement) {
+        fileElement.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
+function renderTemplates(templates, container) {
+    for (const category in templates) {
         const section = document.createElement('div');
         section.className = 'template-section';
         
@@ -25,13 +61,10 @@ async function loadTemplates(language) {
         title.textContent = category === 'root' ? '根目录' : category;
         section.appendChild(title);
         
-        // 添加文件列表
-        const fileList = document.createElement('div');
-        fileList.className = 'file-list';
-        
         for (const [name, code] of Object.entries(templates[category])) {
             const fileWrapper = document.createElement('div');
             fileWrapper.className = 'file-wrapper';
+            fileWrapper.id = `${category}-${name}`;
             
             const fileName = document.createElement('h3');
             fileName.textContent = name;
@@ -44,18 +77,11 @@ async function loadTemplates(language) {
             pre.appendChild(codeElement);
             fileWrapper.appendChild(pre);
             
-            fileList.appendChild(fileWrapper);
+            section.appendChild(fileWrapper);
         }
         
-        section.appendChild(fileList);
-        content.appendChild(section);
+        container.appendChild(section);
     }
-    
-    hljs.highlightAll();
-}
-
-function showLanguage(language) {
-    loadTemplates(language);
 }
 
 // 默认加载C++模板
