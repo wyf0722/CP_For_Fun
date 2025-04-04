@@ -3,19 +3,22 @@ async function loadTemplates(language) {
     const templates = await response.json();
     
     // 生成侧边栏目录树
-    generateSidebar(templates);
+    generateSidebar(templates, language);
     
     // 清空主内容区
     const content = document.getElementById('content');
     content.innerHTML = '';
     
     // 渲染文件内容
-    renderTemplates(templates, content);
+    renderTemplates(templates, content, language);
     
-    hljs.highlightAll();
+    // 确保代码高亮在DOM更新后执行
+    setTimeout(() => {
+        hljs.highlightAll();
+    }, 100);
 }
 
-function generateSidebar(templates) {
+function generateSidebar(templates, language) {
     const sidebar = document.getElementById('sidebar');
     sidebar.innerHTML = '';
     
@@ -46,13 +49,15 @@ function generateSidebar(templates) {
 }
 
 function scrollToFile(category, fileName) {
-    const fileElement = document.getElementById(`${category}-${fileName}`);
+    // 使用安全的ID生成方式
+    const safeId = `file-${encodeURIComponent(category)}-${encodeURIComponent(fileName)}`;
+    const fileElement = document.getElementById(safeId);
     if (fileElement) {
         fileElement.scrollIntoView({ behavior: 'smooth' });
     }
 }
 
-function renderTemplates(templates, container) {
+function renderTemplates(templates, container, language) {
     for (const category in templates) {
         const section = document.createElement('div');
         section.className = 'template-section';
@@ -64,7 +69,8 @@ function renderTemplates(templates, container) {
         for (const [name, code] of Object.entries(templates[category])) {
             const fileWrapper = document.createElement('div');
             fileWrapper.className = 'file-wrapper';
-            fileWrapper.id = `${category}-${name}`;
+            // 使用安全的ID生成方式
+            fileWrapper.id = `file-${encodeURIComponent(category)}-${encodeURIComponent(name)}`;
             
             const fileName = document.createElement('h3');
             fileName.textContent = name;
@@ -72,7 +78,13 @@ function renderTemplates(templates, container) {
             
             const pre = document.createElement('pre');
             const codeElement = document.createElement('code');
-            codeElement.className = language;
+            // 根据文件扩展名设置语言
+            const fileExt = name.split('.').pop().toLowerCase();
+            const codeLanguage = fileExt === 'py' ? 'python' : 
+                                (fileExt === 'cpp' || fileExt === 'hpp') ? 'cpp' : language;
+            
+            codeElement.className = codeLanguage;
+            // 确保代码内容正确显示
             codeElement.textContent = code;
             pre.appendChild(codeElement);
             fileWrapper.appendChild(pre);
