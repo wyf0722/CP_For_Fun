@@ -42,6 +42,7 @@ async function loadTemplates(language) {
     }
 }
 
+// 在renderTemplateCards函数中修改卡片创建部分
 function renderTemplateCards(templates, container, language) {
     // 创建分类索引
     const categoriesDiv = document.createElement('div');
@@ -77,6 +78,7 @@ function renderTemplateCards(templates, container, language) {
         const categoryCards = document.createElement('div');
         categoryCards.className = 'category-cards';
         
+        // 在创建模板卡片的部分进行修改
         for (const [name, code] of Object.entries(templates[category])) {
             const card = document.createElement('div');
             card.className = 'template-card';
@@ -88,11 +90,29 @@ function renderTemplateCards(templates, container, language) {
             fileName.textContent = name;
             cardHeader.appendChild(fileName);
             
+            const cardButtons = document.createElement('div');
+            cardButtons.className = 'card-buttons';
+            
+            const copyBtn = document.createElement('button');
+            copyBtn.className = 'copy-btn';
+            copyBtn.textContent = '复制';
+            copyBtn.onclick = function() {
+                navigator.clipboard.writeText(code).then(() => {
+                    this.textContent = '已复制';
+                    this.classList.add('copied');
+                    setTimeout(() => {
+                        this.textContent = '复制';
+                        this.classList.remove('copied');
+                    }, 2000);
+                });
+            };
+            cardButtons.appendChild(copyBtn);
+            
             const expandBtn = document.createElement('button');
             expandBtn.className = 'expand-btn';
             expandBtn.textContent = '展开';
             expandBtn.onclick = function() {
-                const codeBlock = this.parentElement.nextElementSibling;
+                const codeBlock = this.closest('.template-card').querySelector('.code-block');
                 if (codeBlock.style.display === 'none' || !codeBlock.style.display) {
                     codeBlock.style.display = 'block';
                     this.textContent = '收起';
@@ -101,8 +121,9 @@ function renderTemplateCards(templates, container, language) {
                     this.textContent = '展开';
                 }
             };
-            cardHeader.appendChild(expandBtn);
+            cardButtons.appendChild(expandBtn);
             
+            cardHeader.appendChild(cardButtons);
             card.appendChild(cardHeader);
             
             const codeBlock = document.createElement('div');
@@ -114,7 +135,7 @@ function renderTemplateCards(templates, container, language) {
             // 根据文件扩展名设置语言
             const fileExt = name.split('.').pop().toLowerCase();
             const codeLanguage = fileExt === 'py' ? 'python' : 
-                              (fileExt === 'cpp' || fileExt === 'hpp') ? 'cpp' : language;
+                          (fileExt === 'cpp' || fileExt === 'hpp') ? 'cpp' : language;
             
             codeElement.className = codeLanguage;
             codeElement.textContent = code;
@@ -132,3 +153,25 @@ function renderTemplateCards(templates, container, language) {
 
 // 页面加载时默认显示C++模板
 window.onload = () => loadTemplates('cpp');
+
+
+// 添加复制功能的辅助函数
+function copyToClipboard(text) {
+    // 创建临时文本区域
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.select();
+    
+    try {
+        // 执行复制命令
+        document.execCommand('copy');
+        return true;
+    } catch (err) {
+        console.error('复制失败:', err);
+        return false;
+    } finally {
+        // 移除临时文本区域
+        document.body.removeChild(textArea);
+    }
+}

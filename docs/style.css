@@ -79,9 +79,10 @@ h1 {
     margin-bottom: 20px;
 }
 
+/* 修改卡片布局为单列 */
 .category-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    display: flex;
+    flex-direction: column;
     gap: 20px;
 }
 
@@ -90,8 +91,10 @@ h1 {
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    width: 100%;
 }
 
+/* 添加复制按钮样式 */
 .card-header {
     display: flex;
     justify-content: space-between;
@@ -99,6 +102,29 @@ h1 {
     padding: 15px;
     background-color: #f6f8fa;
     border-bottom: 1px solid #e1e4e8;
+}
+
+.card-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.copy-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.copy-btn:hover {
+    background-color: #218838;
+}
+
+.copy-btn.copied {
+    background-color: #6c757d;
 }
 
 .card-header h3 {
