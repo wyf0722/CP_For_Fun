@@ -147,10 +147,15 @@ h1 {
     background-color: #0255b3;
 }
 
+/* 代码块动画样式 */
 .code-block {
-    padding: 15px;
-    max-height: 400px;
-    overflow-y: auto;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    max-height: 0;
+}
+
+.code-block.expanded {
+    max-height: none;
 }
 
 .code-block pre {
