@@ -23,7 +23,12 @@ def fetch_leetcode_ratings():
 
         # 获取脚本所在目录
         script_dir = os.path.dirname(os.path.abspath(__file__))
-        output_file = os.path.join(script_dir, "leetcode_ratings.json")
+        # 保存到.github/leetcode/leetcode_ratings.json
+        output_dir = os.path.join(script_dir, "..", "leetcode")
+        output_file = os.path.join(output_dir, "leetcode_ratings.json")
+        
+        # 确保输出目录存在
+        os.makedirs(output_dir, exist_ok=True)
 
         # 将数据保存到本地文件
         with open(output_file, "w", encoding="utf-8") as f:
