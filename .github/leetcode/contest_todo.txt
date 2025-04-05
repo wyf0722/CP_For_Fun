@@ -25,10 +25,6 @@ biweekly-contest-150 - https://leetcode.cn/contest/biweekly-contest-150/
 ------------------------------
   Problem C  - (Rating: 2671.1)
 
-biweekly-contest-151 - https://leetcode.cn/contest/biweekly-contest-151/
-------------------------------
-  Problem D  - (Rating: 2473.7)
-
 biweekly-contest-152 - https://leetcode.cn/contest/biweekly-contest-152/
 ------------------------------
   Problem D  - Unknown Rating
