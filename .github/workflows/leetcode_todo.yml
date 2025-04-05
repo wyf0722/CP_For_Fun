@@ -2,7 +2,7 @@ name: LeetCode Ratings and TODO Generator
 
 on:
   schedule:
-    - cron: '0 16 * * 0'  # 每周日UTC 16:00 (北京时间 0:00)
+    - cron: '0 */3 * * *'  # 每3 小时触发一次
   workflow_dispatch:  # 允许手动触发
 
 jobs:
