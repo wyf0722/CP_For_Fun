@@ -89,5 +89,4 @@ weekly-contest-438 - https://leetcode.cn/contest/weekly-contest-438/
 weekly-contest-444 - https://leetcode.cn/contest/weekly-contest-444/
 ------------------------------
   Problem C  - Unknown Rating
-  Problem D  - Unknown Rating
 
