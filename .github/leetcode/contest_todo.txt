@@ -57,10 +57,6 @@ weekly-contest-414 - https://leetcode.cn/contest/weekly-contest-414/
 ------------------------------
   Problem D  - (Rating: 2473.3) - 🔪
 
-weekly-contest-421 - https://leetcode.cn/contest/weekly-contest-421/
-------------------------------
-  Problem D  - (Rating: 2411.8) - 🔪
-
 weekly-contest-424 - https://leetcode.cn/contest/weekly-contest-424/
 ------------------------------
   Problem D  - (Rating: 3077.2) - 💣
