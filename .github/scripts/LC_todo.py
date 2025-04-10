@@ -20,6 +20,20 @@ OUTPUT_DIR = BASE_DIR.parent / 'leetcode'
 OUTPUT_FILE = OUTPUT_DIR / 'contest_todo.txt'
 RATINGS_FILE = OUTPUT_DIR / 'leetcode_ratings.json'
 
+# 根据rating设置标签
+def get_tag(rating: float) -> str:
+    if rating < 2000:
+        return '🍰'
+    elif rating < 2200:
+        return '🛀'
+    elif rating < 2400:
+        return '🚬'
+    elif rating < 2600:
+        return '🔪'
+    elif rating < 2800:
+        return '🔫'
+    else:
+        return '💣'
 
 def get_unsolved_problems() -> Dict[str, List[str]]:
     unsolved_by_contest = defaultdict(list)
@@ -61,8 +75,8 @@ def get_unsolved_problems() -> Dict[str, List[str]]:
     OUTPUT_DIR.mkdir(exist_ok=True, parents=True)
     print(f"output_path: {OUTPUT_FILE}")
     
-    with open(OUTPUT_FILE, 'w') as f:
-        f.write("LeetCode Unsolved Problems\n")
+    with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
+        f.write("LeetCode Unsolved Problems 💜\n")
         f.write("=" * 50 + "\n\n")
 
         for contest in sorted(unsolved_by_contest):
@@ -77,8 +91,9 @@ def get_unsolved_problems() -> Dict[str, List[str]]:
             for problem in problems:
                 rating = problem_ratings.get((contest, problem))
                 if rating:
+                    tag = get_tag(rating)
                     f.write(
-                        f"  Problem {problem:<2} - (Rating: {rating:.1f})\n")
+                        f"  Problem {problem:<2} - (Rating: {rating:.1f}) - {tag}\n")
                 else:
                     f.write(f"  Problem {problem:<2} - Unknown Rating\n")
 
