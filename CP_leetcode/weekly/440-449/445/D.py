@@ -189,7 +189,7 @@ if 1:
 # 将字符串num转成b进制
 def convert(num: str, b: int) -> str:
     res = []
-    while num != '0':
+    while len(num):
         r = 0
         nxt = []
         for c in num:
@@ -199,8 +199,6 @@ def convert(num: str, b: int) -> str:
             if nxt or bit:
                 nxt.append(str(bit))
         res.append(str(r))
-        if len(nxt) == 0:
-            break
         num = ''.join(nxt)
     return ''.join(res[::-1])
 
@@ -228,7 +226,10 @@ def subone(s: str) -> str:
         return '0'
     return ''.join(res[::-1])
 
+
 MOD = 10**9 + 7
+
+
 class Solution:
 
     def countNumbers(self, l: str, r: str, b: int) -> int:
@@ -252,12 +253,6 @@ class Solution:
 
             return f(0, 0, True, False)
 
-        print(subone(l))
-        print(convert(subone(l), b))
-        print(convert(r, b))
-
         L = calc(convert(subone(l), b))
         R = calc(convert(r, b))
         return (R - L) % MOD
-
-print(subone('5581'))
