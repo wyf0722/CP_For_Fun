@@ -5,17 +5,17 @@ $\textcolor{#70695d}{\LARGE {\pmb {\mathfrak{I\ pledge\ my\ life\ and\ honor\ to
 
 ## 代码模板收集列表
 
-<table style="vertical-align: top;">
-<tr style="vertical-align: top;">
-<th> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" alt="C++" width="20" height="20"/> C++ </th>
-<th> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" width="20" height="20"/> Python </th>
-<th> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original-wordmark.svg" alt="GoLang" width="20" height="20"/> GoLang </th>
+<table>
+<tr>
+<th width="40%" align="left"> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" alt="C++" width="20" height="20"/> C++ </th>
+<th width="30%" align="left"> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" width="20" height="20"/> Python </th>
+<th width="30%" align="left"> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original-wordmark.svg" alt="GoLang" width="20" height="20"/> GoLang </th>
 </tr>
-<tr style="vertical-align: top;">
-<td>
+<tr>
+<td valign="top" style="border-right: 1px solid #444;">
 
 | 作者 | 链接 |
-|------|------|
+|:---|---:|
 | jiangly | [🎈](https://www.cnblogs.com/WIDA/p/17633758.html) [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="GitHub" width="20" height="20"/>](https://github.com/hh2048/XCPC/tree/main/03%20-%20jiangly%E6%A8%A1%E6%9D%BF%E6%94%B6%E9%9B%86) |
 | ac-library-cpp | [🎈](https://github.com/atcoder/ac-library) |
 | nealwu | [🎈](https://github.com/nealwu/competitive-programming) |
@@ -30,19 +30,19 @@ $\textcolor{#70695d}{\LARGE {\pmb {\mathfrak{I\ pledge\ my\ life\ and\ honor\ to
 | Priyansh | [🎈](https://github.com/Priyansh19077/CP-Templates) |
 
 </td>
-<td>
+<td valign="top" style="border-right: 1px solid #444;">
 
 | 作者 | 链接 |
-|------|------|
+|:---|---:|
 | PyRival | [🎈](https://github.com/cheran-senthil/PyRival) |
 | Liupengsay | [🎈](https://github.com/liupengsay/PyIsTheBestLang) |
 | ac-library-python | [🎈](https://github.com/not522/ac-library-python/tree/master) |
 
 </td>
-<td>
+<td valign="top">
 
 | 作者 | 链接 |
-|------|------|
+|:---|---:|
 | EndlessCheng | [🎈](https://github.com/EndlessCheng/codeforces-go) |
 
 </td>
