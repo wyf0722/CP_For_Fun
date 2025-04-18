@@ -58,6 +58,15 @@ function renderTemplateCards(templates, container, language) {
     // 添加分类索引到容器
     container.appendChild(categoriesDiv);
     
+    // 添加动画效果
+    anime({
+        targets: '.categories-index',
+        opacity: [0, 1],
+        translateY: [20, 0],
+        duration: 800,
+        easing: 'easeOutQuad'
+    });
+    
     // 按分类渲染模板
     for (const category in templates) {
         // 添加分类到索引
@@ -85,6 +94,7 @@ function renderTemplateCards(templates, container, language) {
         for (const [name, code] of Object.entries(templates[category])) {
             const card = document.createElement('div');
             card.className = 'template-card';
+            card.style.opacity = 0; // 初始设置为透明
             
             const cardHeader = document.createElement('div');
             cardHeader.className = 'card-header';
@@ -151,10 +161,73 @@ function renderTemplateCards(templates, container, language) {
         
         categorySection.appendChild(categoryCards);
         container.appendChild(categorySection);
+        
+        // 为该分类下的所有卡片添加动画
+        anime({
+            targets: `#category-${encodeURIComponent(category)} .template-card`,
+            opacity: [0, 1],
+            translateY: [15, 0],
+            delay: anime.stagger(100), // 每个卡片延迟100ms
+            duration: 600,
+            easing: 'easeOutQuad'
+        });
     }
 }
 
-// 添加回到顶部按钮
+// 添加展开/收起动画
+function toggleCodeBlock(button, codeBlock) {
+    const isExpanding = codeBlock.style.display === 'none' || !codeBlock.style.display;
+    
+    if (isExpanding) {
+        // 展开动画
+        codeBlock.style.display = 'block';
+        codeBlock.style.height = '0px';
+        codeBlock.style.overflow = 'hidden';
+        
+        anime({
+            targets: codeBlock,
+            height: codeBlock.scrollHeight,
+            duration: 300,
+            easing: 'easeOutQuad',
+            complete: function() {
+                codeBlock.style.height = 'auto';
+                codeBlock.style.overflow = 'visible';
+                button.textContent = '收起';
+            }
+        });
+    } else {
+        // 收起动画
+        codeBlock.style.height = codeBlock.scrollHeight + 'px';
+        codeBlock.style.overflow = 'hidden';
+        
+        anime({
+            targets: codeBlock,
+            height: 0,
+            duration: 300,
+            easing: 'easeOutQuad',
+            complete: function() {
+                codeBlock.style.display = 'none';
+                button.textContent = '展开';
+            }
+        });
+    }
+}
+
+// 修改展开按钮的点击事件
+function renderTemplateCards(templates, container, language) {
+    // 创建展开按钮的部分
+    const expandBtn = document.createElement('button');
+    expandBtn.className = 'expand-btn';
+    expandBtn.textContent = '展开';
+    expandBtn.onclick = function() {
+        const codeBlock = this.closest('.template-card').querySelector('.code-block');
+        toggleCodeBlock(this, codeBlock);
+    };
+    
+    // ... 现有代码 ...
+}
+
+// 添加回到顶部按钮动画
 function addBackToTopButton() {
     // 移除已存在的按钮（如果有）
     const existingButton = document.getElementById('back-to-top');
@@ -181,8 +254,26 @@ function addBackToTopButton() {
     window.addEventListener('scroll', () => {
         if (window.scrollY > 300) {
             backToTopBtn.classList.add('visible');
+            anime({
+                targets: '#back-to-top',
+                opacity: 1,
+                scale: [0.8, 1],
+                duration: 300,
+                easing: 'easeOutQuad'
+            });
         } else {
-            backToTopBtn.classList.remove('visible');
+            anime({
+                targets: '#back-to-top',
+                opacity: 0,
+                scale: 0.8,
+                duration: 300,
+                easing: 'easeOutQuad'
+            });
+            setTimeout(() => {
+                if (window.scrollY <= 300) {
+                    backToTopBtn.classList.remove('visible');
+                }
+            }, 300);
         }
     });
 }
