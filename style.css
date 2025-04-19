@@ -173,20 +173,20 @@ h1 {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    width: 50px;
-    height: 50px;
+    width: 50px; /* 可以根据需要调整 */
+    height: 50px; /* 可以根据需要调整 */
     border-radius: 50%;
     background-color: #0366d6;
     color: white;
     border: none;
-    font-size: 24px;
-    cursor: pointer;
+    font-size: 20px; /* 调整图标大小 */
+    cursor: pointer; /* 添加指针样式 */
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s, visibility 0.3s;
+    transition: opacity 0.3s, visibility 0.3s, background-color 0.3s; /* 添加背景色过渡 */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     z-index: 1000;
 }
@@ -198,4 +198,9 @@ h1 {
 
 #back-to-top:hover {
     background-color: #0255b3;
+}
+
+/* 确保图标正确显示 */
+#back-to-top i {
+    line-height: 1; /* 确保图标垂直居中 */
 }
