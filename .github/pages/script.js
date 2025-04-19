@@ -165,7 +165,8 @@ function addBackToTopButton() {
     // 创建回到顶部按钮
     const backToTopBtn = document.createElement('button');
     backToTopBtn.id = 'back-to-top';
-    backToTopBtn.innerHTML = '↑';
+    // 使用 Font Awesome 图标替换原来的文字
+    backToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
     backToTopBtn.title = '回到顶部';
     document.body.appendChild(backToTopBtn);
     
