@@ -95,7 +95,7 @@ h1 {
 }
 
 .template-card {
-    background-color: rgba(255, 255, 255, 0.85); /* 增加透明度 */
+    background-color: rgba(255, 255, 255, 0.1); /* 增加透明度 */
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -179,7 +179,7 @@ h1 {
     padding: 15px;
     max-height: 400px;
     overflow-y: auto;
-    background-color: rgba(255, 255, 255, 0.7); /* 增加代码块的透明度 */
+    background-color: rgba(255, 255, 255, 0.5); /* 增加代码块的透明度 */
 }
 
 .code-block pre,
