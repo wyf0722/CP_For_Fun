@@ -41,6 +41,51 @@ body {
     color: white;
 }
 
+/* 全局操作按钮容器样式 */
+.global-actions-container {
+    display: flex; /* 使用 flex 布局让按钮并排 */
+    justify-content: center; /* 居中对齐按钮 */
+    gap: 15px; /* 按钮之间的间距 */
+    margin: 20px auto; /* 上下边距20px，左右自动居中 */
+}
+
+/* 一键折叠/展开按钮通用样式 */
+#collapse-all-btn,
+#expand-all-btn {
+    /* display: block;  移除 display: block */
+    /* margin: 20px auto; 移除 margin */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+/* 一键折叠按钮特定样式 */
+#collapse-all-btn {
+    background-color: #ffc107; /* 修改为橙色 */
+}
+
+#collapse-all-btn:hover {
+    background-color: #e0a800; /* 悬停时颜色变深 */
+}
+
+/* 一键展开按钮特定样式 */
+#expand-all-btn {
+    background-color: #17a2b8; /* 修改为青色 */
+}
+
+#expand-all-btn:hover {
+    background-color: #138496; /* 悬停时颜色变深 */
+}
+
+#collapse-all-btn i,
+#expand-all-btn i {
+    margin-right: 8px; /* 图标和文字间距 */
+}
+
 h1 {
     text-align: center;
     margin-bottom: 30px;
