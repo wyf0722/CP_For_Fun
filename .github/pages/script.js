@@ -5,11 +5,11 @@ async function loadTemplates(language) {
             throw new Error(`无法加载${language}模板: ${response.status}`);
         }
         const templates = await response.json();
-        
+
         // 清空主内容区
         const content = document.getElementById('content');
         content.innerHTML = '';
-        
+
         // 添加语言选择器
         const langSelector = document.createElement('div');
         langSelector.className = 'language-selector';
@@ -18,30 +18,69 @@ async function loadTemplates(language) {
             <button class="${language === 'python' ? 'active' : ''}" onclick="loadTemplates('python')">Python</button>
         `;
         content.appendChild(langSelector);
-        
-        // 添加标题
+
+        // 创建按钮容器
+        const buttonContainer = document.createElement('div');
+        buttonContainer.className = 'global-actions-container';
+
+        // 添加一键折叠按钮
+        const collapseAllBtn = document.createElement('button');
+        collapseAllBtn.id = 'collapse-all-btn';
+        collapseAllBtn.innerHTML = '<i class="fas fa-compress-alt"></i> 一键折叠';
+        collapseAllBtn.onclick = function() {
+            const allCodeBlocks = document.querySelectorAll('.code-block');
+            allCodeBlocks.forEach(block => {
+                if (block.style.display !== 'none') {
+                    block.style.display = 'none';
+                    // 找到对应的展开/收起按钮并更新图标
+                    const expandBtn = block.closest('.template-card').querySelector('.expand-btn');
+                    if (expandBtn) {
+                        expandBtn.innerHTML = '<i class="fas fa-chevron-down"></i>';
+                    }
+                }
+            });
+        };
+        buttonContainer.appendChild(collapseAllBtn); // 添加到容器
+
+        // 添加一键展开按钮
+        const expandAllBtn = document.createElement('button');
+        expandAllBtn.id = 'expand-all-btn';
+        expandAllBtn.innerHTML = '<i class="fas fa-expand-alt"></i> 一键展开';
+        expandAllBtn.onclick = function() {
+            const allCodeBlocks = document.querySelectorAll('.code-block');
+            allCodeBlocks.forEach(block => {
+                if (block.style.display === 'none' || !block.style.display) {
+                    block.style.display = 'block';
+                    // 找到对应的展开/收起按钮并更新图标
+                    const expandBtn = block.closest('.template-card').querySelector('.expand-btn');
+                    if (expandBtn) {
+                        expandBtn.innerHTML = '<i class="fas fa-chevron-up"></i>';
+                    }
+                }
+            });
+        };
+        buttonContainer.appendChild(expandAllBtn); // 添加到容器
+
+        content.appendChild(buttonContainer); // 将按钮容器添加到内容区域
+
+        // 添加页面标题
         const title = document.createElement('h1');
-        title.textContent = `${language === 'cpp' ? 'C++' : 'Python'} 模板库`;
+        title.textContent = `CP Template (${language.toUpperCase()})`;
         content.appendChild(title);
-        
-        // 创建模板卡片容器
-        const cardsContainer = document.createElement('div');
-        cardsContainer.className = 'template-cards';
-        content.appendChild(cardsContainer);
-        
-        // 渲染所有模板卡片
-        renderTemplateCards(templates, cardsContainer, language);
-        
+
+        // 渲染模板卡片
+        renderTemplateCards(templates, content, language);
+
+        // 高亮所有代码块
+        hljs.highlightAll();
+
         // 添加回到顶部按钮
         addBackToTopButton();
-        
-        // 确保代码高亮在DOM更新后执行
-        setTimeout(() => {
-            hljs.highlightAll();
-        }, 100);
+
     } catch (error) {
-        console.error('加载模板失败:', error);
-        document.getElementById('content').innerHTML = `<div class="error">加载模板失败: ${error.message}</div>`;
+        const content = document.getElementById('content');
+        content.innerHTML = `<div class="error">${error.message}</div>`;
+        console.error(error);
     }
 }
 
