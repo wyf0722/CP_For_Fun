@@ -31,13 +31,19 @@ body {
     margin: 0 10px;
     border: none;
     border-radius: 5px;
-    background-color: #e1e4e8;
+    background-color: #e6dff6; /* 修改为淡紫色 */
     cursor: pointer;
     font-size: 16px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* 添加颜色过渡 */
+    color: #333; /* 设置默认文字颜色 */
+}
+
+.language-selector button:hover {
+    background-color: #d1c4e9; /* 悬停时颜色加深 */
 }
 
 .language-selector button.active {
-    background-color: #0366d6;
+    background-color: #6f42c1; /* 修改为紫色 */
     color: white;
 }
 
@@ -248,6 +254,27 @@ h1 {
     background-color: #ffeef0;
     border-radius: 5px;
     margin-bottom: 20px;
+}
+
+/* 添加一个晃动动画 */
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%, 50%, 70% {
+    transform: translate3d(-3px, 0, 0);
+  }
+  40%, 60% {
+    transform: translate3d(3px, 0, 0);
+  }
+}
+
+/* 用于触发动画的类 */
+.already-done {
+  animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
 }
 
 /* 回到顶部按钮样式 */
