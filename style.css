@@ -173,11 +173,12 @@ h1 {
     overflow-y: auto;
 }
 
-.code-block pre {
+.code-block pre,
+.code-block code {
+    font-family: 'Consolas', 'Monaco', 'Menlo', 'Courier New', 'DejaVu Sans Mono', monospace;
+    font-size: 14px;
+    line-height: 1.5;
     margin: 0;
-    background-color: #f6f8fa;
-    border-radius: 5px;
-    padding: 10px;
 }
 
 .error {
