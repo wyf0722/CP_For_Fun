@@ -15,7 +15,7 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.8); /* 增加透明度 */
     min-height: 100vh;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
@@ -48,7 +48,7 @@ h1 {
 }
 
 .categories-index {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.85); /* 增加透明度 */
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 30px;
@@ -95,7 +95,7 @@ h1 {
 }
 
 .template-card {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.85); /* 增加透明度 */
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -108,7 +108,7 @@ h1 {
     justify-content: space-between;
     align-items: center;
     padding: 15px;
-    background-color: #f6f8fa;
+    background-color: rgba(246, 248, 250, 0.9); /* 增加透明度 */
     border-bottom: 1px solid #e1e4e8;
 }
 
@@ -179,6 +179,7 @@ h1 {
     padding: 15px;
     max-height: 400px;
     overflow-y: auto;
+    background-color: rgba(255, 255, 255, 0.7); /* 增加代码块的透明度 */
 }
 
 .code-block pre,
@@ -187,6 +188,13 @@ h1 {
     font-size: 14px;
     line-height: 1.5;
     margin: 0;
+    background-color: transparent !important; /* 强制代码元素背景透明 */
+}
+
+/* 覆盖 highlight.js 的背景样式 */
+.hljs {
+    background-color: transparent !important;
+    padding: 0 !important;
 }
 
 .error {
