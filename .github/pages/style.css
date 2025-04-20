@@ -3,7 +3,7 @@ body {
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background-image: url('../assets/background.png');  /* 使用相对路径 */
+    background-image: url('/assets/background.png');  /* 修改为相对于根目录的绝对路径 */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
