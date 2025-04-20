@@ -109,14 +109,21 @@ h1 {
     gap: 10px;
 }
 
+.copy-btn, .expand-btn {
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
 .copy-btn {
     background-color: #28a745;
     color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 5px 10px;
-    cursor: pointer;
-    font-size: 14px;
 }
 
 .copy-btn:hover {
@@ -125,6 +132,19 @@ h1 {
 
 .copy-btn.copied {
     background-color: #6c757d;
+}
+
+.expand-btn {
+    background-color: #0366d6;
+    color: white;
+}
+
+.expand-btn:hover {
+    background-color: #0255b3;
+}
+
+.copy-btn i, .expand-btn i {
+    font-size: 16px;
 }
 
 .card-header h3 {

@@ -98,13 +98,14 @@ function renderTemplateCards(templates, container, language) {
             
             const copyBtn = document.createElement('button');
             copyBtn.className = 'copy-btn';
-            copyBtn.textContent = '复制';
+            copyBtn.innerHTML = '<i class="fas fa-copy"></i>';
+            copyBtn.title = '复制代码';
             copyBtn.onclick = function() {
                 navigator.clipboard.writeText(code).then(() => {
-                    this.textContent = '已复制';
+                    this.innerHTML = '<i class="fas fa-check"></i>';
                     this.classList.add('copied');
                     setTimeout(() => {
-                        this.textContent = '复制';
+                        this.innerHTML = '<i class="fas fa-copy"></i>';
                         this.classList.remove('copied');
                     }, 2000);
                 });
@@ -113,15 +114,16 @@ function renderTemplateCards(templates, container, language) {
             
             const expandBtn = document.createElement('button');
             expandBtn.className = 'expand-btn';
-            expandBtn.textContent = '展开';
+            expandBtn.innerHTML = '<i class="fas fa-chevron-down"></i>';
+            expandBtn.title = '展开/收起';
             expandBtn.onclick = function() {
                 const codeBlock = this.closest('.template-card').querySelector('.code-block');
                 if (codeBlock.style.display === 'none' || !codeBlock.style.display) {
                     codeBlock.style.display = 'block';
-                    this.textContent = '收起';
+                    this.innerHTML = '<i class="fas fa-chevron-up"></i>';
                 } else {
                     codeBlock.style.display = 'none';
-                    this.textContent = '展开';
+                    this.innerHTML = '<i class="fas fa-chevron-down"></i>';
                 }
             };
             cardButtons.appendChild(expandBtn);
