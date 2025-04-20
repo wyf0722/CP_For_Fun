@@ -3,13 +3,21 @@ body {
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
+    background-image: url('https://gitee.com/wyf0722/images/raw/master/background/wallhaven-yxdrex.png');  /* 这里替换成你的图片URL */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
+/* 添加一个半透明遮罩层让内容更易读 */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    min-height: 100vh;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
 .language-selector {
@@ -175,7 +183,7 @@ h1 {
 
 .code-block pre,
 .code-block code {
-    font-family: 'Consolas', 'Monaco', 'Menlo', 'Courier New', 'DejaVu Sans Mono', monospace;
+    font-family: 'Monaco', 'Consolas', 'Menlo', 'Courier New', 'DejaVu Sans Mono', monospace;
     font-size: 14px;
     line-height: 1.5;
     margin: 0;
