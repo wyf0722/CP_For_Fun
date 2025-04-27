@@ -85,7 +85,3 @@ weekly-contest-444 - https://leetcode.cn/contest/weekly-contest-444/
 ------------------------------
   Problem C  - (Rating: 2702.7) - 🔫
 
-weekly-contest-447 - https://leetcode.cn/contest/weekly-contest-447/
-------------------------------
-  Problem D  - Unknown Rating
-
