@@ -37,7 +37,7 @@ template<class T, class U> T lstTrue(T lo, T hi, U f) { --lo; assert(lo <= hi); 
 class Solution {
 public:
     vector<int> concatenatedDivisibility(vector<int>& nums, int k) {
-        ranges::sort(nums);
+        // ranges::sort(nums);
         int n = nums.size();
 
         vector<int> digits(n);
@@ -76,7 +76,8 @@ public:
                     int nj = (j + p10[cnt[i]] * nums[d]) % k;
                     int ni = i | x;
 
-                    if (d < dp[nj][ni]) {
+                    // 按 nums 最小值填写
+                    if (dp[nj][ni] == n || nums[d] < nums[dp[nj][ni]]) {
                         dp[nj][ni] = d;
                         pre[nj][ni] = j;
                     }
