@@ -30,7 +30,7 @@ jobs:
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         git add ./.github/pages
-        git diff --quiet && git diff --staged --quiet || (git commit -m "feat(workflow):update template JSONs" && git push)
+        git diff --quiet && git diff --staged --quiet || (git commit -m "feat(workflows):update template JSONs" && git push)
         
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
