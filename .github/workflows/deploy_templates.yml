@@ -25,6 +25,13 @@ jobs:
     - name: Generate template JSONs
       run: python .github/scripts/generate_templates.py
         
+    - name: Commit and push if changed
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add ./.github/pages
+        git diff --quiet && git diff --staged --quiet || (git commit -m "feat(workflow):update template JSONs" && git push)
+        
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
