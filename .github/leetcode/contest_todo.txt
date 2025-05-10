@@ -33,6 +33,10 @@ biweekly-contest-153 - https://leetcode.cn/contest/biweekly-contest-153/
 ------------------------------
   Problem D  - (Rating: 2940.5) - 💣
 
+biweekly-contest-156 - https://leetcode.cn/contest/biweekly-contest-156/
+------------------------------
+  Problem D  - Unknown Rating
+
 weekly-contest-408 - https://leetcode.cn/contest/weekly-contest-408/
 ------------------------------
   Problem D  - (Rating: 3773.8) - 💣
