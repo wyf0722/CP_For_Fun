@@ -64,3 +64,6 @@ $\textcolor{#70695d}{\LARGE {\pmb {\mathfrak{I\ pledge\ my\ life\ and\ honor\ to
 ## 实用工具
 - [代码片段生成器](https://snippet-generator.app/?description=&tabtrigger=&snippet=&mode=vscode)
 - [Markdown语法指南](https://github.com/tchapi/markdown-cheatsheet)
+
+## 学习资料
+- [ ] [Efficient and easy segment trees](https://codeforces.com/blog/entry/18051)
