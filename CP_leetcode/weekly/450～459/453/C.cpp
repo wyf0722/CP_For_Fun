@@ -187,6 +187,38 @@ Info operator+(const Info &a, const Info &b) {
     return Info{(a.x + b.x) % MOD};
 }
 
+// class Solution {
+// public:
+//     int countPartitions(vector<int>& nums, int k) {
+//         int n = nums.size();
+//         SparseTable<int, decltype(get_min)> st_mn(nums, get_min);
+//         SparseTable<int, decltype(get_max)> st_mx(nums, get_max);
+//         vector<int> dp(n + 1);
+//         dp[0] = 1;
+//         SegmentTree<Info> seg(n + 1);
+//         seg.modify(0, Info{1});
+//         for (int i = 0, j = 0; i < n; i++) {
+//             while (st_mx.query(j, i) - st_mn.query(j, i) > k) {
+//                 j++;
+//             }
+//             // 左端点 [j, i] 均合法
+//             // for (int l = j; l <= i; l++) {
+//             //     dp[i + 1] += dp[l];
+//             //     dp[i + 1] %= MOD;
+//             // }
+//             int delta = seg.rangeQuery(j, i + 1).x;
+//             dp[i + 1] += delta;
+//             dp[i + 1] %= MOD;
+//             seg.modify(i + 1, Info{dp[i + 1]});
+//         }
+//         return dp[n];
+//     }
+// };
+
+void add_mod(int &x, int y) {
+    x = (x + y) % MOD;
+    if (x < 0) x += MOD;
+}
 class Solution {
 public:
     int countPartitions(vector<int>& nums, int k) {
@@ -195,8 +227,8 @@ public:
         SparseTable<int, decltype(get_max)> st_mx(nums, get_max);
         vector<int> dp(n + 1);
         dp[0] = 1;
-        SegmentTree<Info> seg(n + 1);
-        seg.modify(0, Info{1});
+        vector<int> dp_s(n + 1);
+        dp_s[0] = 1;
         for (int i = 0, j = 0; i < n; i++) {
             while (st_mx.query(j, i) - st_mn.query(j, i) > k) {
                 j++;
@@ -206,10 +238,8 @@ public:
             //     dp[i + 1] += dp[l];
             //     dp[i + 1] %= MOD;
             // }
-            int delta = seg.rangeQuery(j, i + 1).x;
-            dp[i + 1] += delta;
-            dp[i + 1] %= MOD;
-            seg.modify(i + 1, Info{dp[i + 1]});
+            add_mod(dp[i + 1], dp_s[i] - (j ? dp_s[j - 1] : 0));
+            add_mod(dp_s[i + 1], dp_s[i] + dp[i + 1]);
         }
         return dp[n];
     }
