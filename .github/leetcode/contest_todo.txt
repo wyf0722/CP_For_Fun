@@ -117,6 +117,5 @@ weekly-contest-455 - https://leetcode.cn/contest/weekly-contest-455/
 
 weekly-contest-457 - https://leetcode.cn/contest/weekly-contest-457/
 ------------------------------
-  Problem C  - Unknown Rating
   Problem D  - Unknown Rating
 
