@@ -109,7 +109,7 @@ weekly-contest-451 - https://leetcode.cn/contest/weekly-contest-451/
 
 weekly-contest-452 - https://leetcode.cn/contest/weekly-contest-452/
 ------------------------------
-  Problem D  - Unknown Rating
+  Problem D  - (Rating: 2697.4) - 🔫
 
 weekly-contest-453 - https://leetcode.cn/contest/weekly-contest-453/
 ------------------------------
