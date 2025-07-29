@@ -484,6 +484,17 @@
         "ContestID_zh": "第 399 场周赛"
     },
     {
+        "Rating": 2697.378123783,
+        "ID": 3569,
+        "Title": "Maximize Count of Distinct Primes After Split",
+        "TitleZH": "分割数组后不同质数的最大数目",
+        "TitleSlug": "maximize-count-of-distinct-primes-after-split",
+        "ContestSlug": "weekly-contest-452",
+        "ProblemIndex": "Q4",
+        "ContestID_en": "Weekly Contest 452",
+        "ContestID_zh": "第 452 场周赛"
+    },
+    {
         "Rating": 2695.809667046,
         "ID": 2977,
         "Title": "Minimum Cost to Convert String II",
@@ -4508,6 +4519,17 @@
         "ProblemIndex": "Q4",
         "ContestID_en": "Biweekly Contest 53",
         "ContestID_zh": "第 53 场双周赛"
+    },
+    {
+        "Rating": 2143.028994471,
+        "ID": 3568,
+        "Title": "Minimum Moves to Clean the Classroom",
+        "TitleZH": "清理教室的最少移动",
+        "TitleSlug": "minimum-moves-to-clean-the-classroom",
+        "ContestSlug": "weekly-contest-452",
+        "ProblemIndex": "Q3",
+        "ContestID_en": "Weekly Contest 452",
+        "ContestID_zh": "第 452 场周赛"
     },
     {
         "Rating": 2140.0220703954,
@@ -13519,6 +13541,17 @@
         "ContestID_zh": "第 100 场双周赛"
     },
     {
+        "Rating": 1568.2500590119,
+        "ID": 3567,
+        "Title": "Minimum Absolute Difference in Sliding Submatrix",
+        "TitleZH": "子矩阵的最小绝对差",
+        "TitleSlug": "minimum-absolute-difference-in-sliding-submatrix",
+        "ContestSlug": "weekly-contest-452",
+        "ProblemIndex": "Q2",
+        "ContestID_en": "Weekly Contest 452",
+        "ContestID_zh": "第 452 场周赛"
+    },
+    {
         "Rating": 1567.8396535313,
         "ID": 3243,
         "Title": "Shortest Distance After Road Addition Queries I",
@@ -15695,6 +15728,17 @@
         "ProblemIndex": "Q2",
         "ContestID_en": "Biweekly Contest 90",
         "ContestID_zh": "第 90 场双周赛"
+    },
+    {
+        "Rating": 1459.1307655664,
+        "ID": 3566,
+        "Title": "Partition Array into Two Equal Product Subsets",
+        "TitleZH": "等积子集的划分方案",
+        "TitleSlug": "partition-array-into-two-equal-product-subsets",
+        "ContestSlug": "weekly-contest-452",
+        "ProblemIndex": "Q1",
+        "ContestID_en": "Weekly Contest 452",
+        "ContestID_zh": "第 452 场周赛"
     },
     {
         "Rating": 1458.356493039,
