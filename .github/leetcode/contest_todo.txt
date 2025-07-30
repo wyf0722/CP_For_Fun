@@ -128,3 +128,9 @@ weekly-contest-459 - https://leetcode.cn/contest/weekly-contest-459/
   Problem C  - Unknown Rating
   Problem D  - Unknown Rating
 
+weekly-contest-460 - https://leetcode.cn/contest/weekly-contest-460/
+------------------------------
+  Problem B  - Unknown Rating
+  Problem C  - Unknown Rating
+  Problem D  - Unknown Rating
+
