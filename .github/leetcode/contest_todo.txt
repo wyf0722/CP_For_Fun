@@ -130,6 +130,6 @@ weekly-contest-459 - https://leetcode.cn/contest/weekly-contest-459/
 
 weekly-contest-460 - https://leetcode.cn/contest/weekly-contest-460/
 ------------------------------
-  Problem C  - Unknown Rating
-  Problem D  - Unknown Rating
+  Problem C  - (Rating: 2139.3) - 🛀
+  Problem D  - (Rating: 2743.9) - 🔫
 
