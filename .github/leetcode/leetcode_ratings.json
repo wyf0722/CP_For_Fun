@@ -407,6 +407,17 @@
         "ContestID_zh": "第 436 场周赛"
     },
     {
+        "Rating": 2743.9313067671,
+        "ID": 3630,
+        "Title": "Partition Array for Maximum XOR and AND",
+        "TitleZH": "划分数组得到最大异或运算和与运算之和",
+        "TitleSlug": "partition-array-for-maximum-xor-and-and",
+        "ContestSlug": "weekly-contest-460",
+        "ProblemIndex": "Q4",
+        "ContestID_en": "Weekly Contest 460",
+        "ContestID_zh": "第 460 场周赛"
+    },
+    {
         "Rating": 2735.0909781144,
         "ID": 3117,
         "Title": "Minimum Sum of Values by Dividing Array",
@@ -4684,6 +4695,17 @@
         "ProblemIndex": "Q4",
         "ContestID_en": "Weekly Contest 102",
         "ContestID_zh": "第 102 场周赛"
+    },
+    {
+        "Rating": 2139.3079901181,
+        "ID": 3629,
+        "Title": "Minimum Jumps to Reach End via Prime Teleportation",
+        "TitleZH": "通过质数传送到达终点的最少跳跃次数",
+        "TitleSlug": "minimum-jumps-to-reach-end-via-prime-teleportation",
+        "ContestSlug": "weekly-contest-460",
+        "ProblemIndex": "Q3",
+        "ContestID_en": "Weekly Contest 460",
+        "ContestID_zh": "第 460 场周赛"
     },
     {
         "Rating": 2137.5633267453,
@@ -10470,6 +10492,17 @@
         "ProblemIndex": "Q4",
         "ContestID_en": "Biweekly Contest 10",
         "ContestID_zh": "第 10 场双周赛"
+    },
+    {
+        "Rating": 1753.6218466339,
+        "ID": 3628,
+        "Title": "Maximum Number of Subsequences After One Inserting",
+        "TitleZH": "插入一个字母的最大子序列数",
+        "TitleSlug": "maximum-number-of-subsequences-after-one-inserting",
+        "ContestSlug": "weekly-contest-460",
+        "ProblemIndex": "Q2",
+        "ContestID_en": "Weekly Contest 460",
+        "ContestID_zh": "第 460 场周赛"
     },
     {
         "Rating": 1753.4775753993,
@@ -21184,6 +21217,17 @@
         "ProblemIndex": "Q1",
         "ContestID_en": "Weekly Contest 141",
         "ContestID_zh": "第 141 场周赛"
+    },
+    {
+        "Rating": 1262.1554079997,
+        "ID": 3627,
+        "Title": "Maximum Median Sum of Subsequences of Size 3",
+        "TitleZH": "中位数之和的最大值",
+        "TitleSlug": "maximum-median-sum-of-subsequences-of-size-3",
+        "ContestSlug": "weekly-contest-460",
+        "ProblemIndex": "Q1",
+        "ContestID_en": "Weekly Contest 460",
+        "ContestID_zh": "第 460 场周赛"
     },
     {
         "Rating": 1262.100652797,
