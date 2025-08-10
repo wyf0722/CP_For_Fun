@@ -140,3 +140,9 @@ weekly-contest-461 - https://leetcode.cn/contest/weekly-contest-461/
 ------------------------------
   Problem D  - (Rating: 2277.6) - 🚬
 
+weekly-contest-462 - https://leetcode.cn/contest/weekly-contest-462/
+------------------------------
+  Problem B  - Unknown Rating
+  Problem C  - Unknown Rating
+  Problem D  - Unknown Rating
+
