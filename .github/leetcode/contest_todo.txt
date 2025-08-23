@@ -148,3 +148,7 @@ weekly-contest-462 - https://leetcode.cn/contest/weekly-contest-462/
 ------------------------------
   Problem D  - (Rating: 2445.0) - 🔪
 
+weekly-contest-463 - https://leetcode.cn/contest/weekly-contest-463/
+------------------------------
+  Problem D  - (Rating: 2453.9) - 🔪
+
