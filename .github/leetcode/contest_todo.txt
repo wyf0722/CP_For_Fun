@@ -154,6 +154,5 @@ weekly-contest-463 - https://leetcode.cn/contest/weekly-contest-463/
 
 weekly-contest-464 - https://leetcode.cn/contest/weekly-contest-464/
 ------------------------------
-  Problem C  - (Rating: 2187.4) - 🛀
   Problem D  - (Rating: 2525.0) - 🔪
 
