@@ -60,9 +60,9 @@ biweekly-contest-163 - https://leetcode.cn/contest/biweekly-contest-163/
 
 biweekly-contest-164 - https://leetcode.cn/contest/biweekly-contest-164/
 ------------------------------
-  Problem B  - Unknown Rating
-  Problem C  - Unknown Rating
-  Problem D  - Unknown Rating
+  Problem B  - (Rating: 2157.9) - 🛀
+  Problem C  - (Rating: 1883.0) - 🍰
+  Problem D  - (Rating: 2476.6) - 🔪
 
 weekly-contest-408 - https://leetcode.cn/contest/weekly-contest-408/
 ------------------------------
