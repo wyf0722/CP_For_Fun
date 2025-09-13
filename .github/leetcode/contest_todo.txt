@@ -39,7 +39,6 @@ biweekly-contest-156 - https://leetcode.cn/contest/biweekly-contest-156/
 
 biweekly-contest-158 - https://leetcode.cn/contest/biweekly-contest-158/
 ------------------------------
-  Problem C  - (Rating: 2257.8) - 🚬
   Problem D  - (Rating: 2359.7) - 🚬
 
 biweekly-contest-159 - https://leetcode.cn/contest/biweekly-contest-159/
@@ -158,8 +157,4 @@ weekly-contest-464 - https://leetcode.cn/contest/weekly-contest-464/
 weekly-contest-465 - https://leetcode.cn/contest/weekly-contest-465/
 ------------------------------
   Problem D  - (Rating: 2647.1) - 🔫
-
-weekly-contest-466 - https://leetcode.cn/contest/weekly-contest-466/
-------------------------------
-  Problem D  - (Rating: 2222.8) - 🚬
 
