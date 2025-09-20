@@ -163,7 +163,3 @@ weekly-contest-465 - https://leetcode.cn/contest/weekly-contest-465/
 ------------------------------
   Problem D  - (Rating: 2647.1) - 🔫
 
-weekly-contest-467 - https://leetcode.cn/contest/weekly-contest-467/
-------------------------------
-  Problem D  - (Rating: 1969.3) - 🍰
-
