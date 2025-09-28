@@ -64,7 +64,6 @@ biweekly-contest-165 - https://leetcode.cn/contest/biweekly-contest-165/
 
 biweekly-contest-166 - https://leetcode.cn/contest/biweekly-contest-166/
 ------------------------------
-  Problem B  - Unknown Rating
   Problem C  - Unknown Rating
   Problem D  - Unknown Rating
 
