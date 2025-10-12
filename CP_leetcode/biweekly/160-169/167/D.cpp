@@ -83,27 +83,18 @@ public:
             return 0;
         }
 
-        auto check = [&](int low) -> bool {
-            vector<int8_t> colors(n);
-
-            auto dfs = [&](this auto&& dfs, int x, int8_t c) -> bool {
-                colors[x] = c;
-                auto& p = points[x];
-                for (int y = 0; y < n; y++) {
-                    auto& q = points[y];
-                    if (y == x || abs(p[0] - q[0]) + abs(p[1] - q[1]) >= low) { // 符合要求
-                        continue;
-                    }
-                    if (colors[y] == c || colors[y] == 0 && !dfs(y, -c)) {
-                        return false; // 不是二分图
+        auto check = [&](int x) -> bool {
+            DSU dsu(2 * n);
+            for (int i = 0; i < n; i++) {
+                for (int j = i + 1; j < n; j++) {
+                    if (abs(points[i][0] - points[j][0]) + abs(points[i][1] - points[j][1]) < x) {
+                        dsu.merge(i, j + n);
+                        dsu.merge(i + n, j);
                     }
                 }
-                return true;
-            };
-
-            // 可能有多个连通块
+            }
             for (int i = 0; i < n; i++) {
-                if (colors[i] == 0 && !dfs(i, 1)) {
+                if (dsu.find(i) == dsu.find(i + n)) {
                     return false;
                 }
             }
