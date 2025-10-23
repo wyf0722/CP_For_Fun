@@ -451,6 +451,17 @@
         "ContestID_zh": "第 427 场周赛"
     },
     {
+        "Rating": 2719.5708628451,
+        "ID": 3721,
+        "Title": "Longest Balanced Subarray II",
+        "TitleZH": "最长平衡子数组 II",
+        "TitleSlug": "longest-balanced-subarray-ii",
+        "ContestSlug": "weekly-contest-472",
+        "ProblemIndex": "Q4",
+        "ContestID_en": "Weekly Contest 472",
+        "ContestID_zh": "第 472 场周赛"
+    },
+    {
         "Rating": 2711.8717381409,
         "ID": 2603,
         "Title": "Collect Coins in a Tree",
@@ -7544,6 +7555,17 @@
         "ProblemIndex": "Q3",
         "ContestID_en": "Weekly Contest 314",
         "ContestID_zh": "第 314 场周赛"
+    },
+    {
+        "Rating": 1952.8654631276,
+        "ID": 3720,
+        "Title": "Lexicographically Smallest Permutation Greater Than Target",
+        "TitleZH": "大于目标字符串的最小字典序排列",
+        "TitleSlug": "lexicographically-smallest-permutation-greater-than-target",
+        "ContestSlug": "weekly-contest-472",
+        "ProblemIndex": "Q3",
+        "ContestID_en": "Weekly Contest 472",
+        "ContestID_zh": "第 472 场周赛"
     },
     {
         "Rating": 1952.7073399331,
@@ -16533,6 +16555,17 @@
         "ContestID_zh": "第 182 场周赛"
     },
     {
+        "Rating": 1464.1993668092,
+        "ID": 3719,
+        "Title": "Longest Balanced Subarray I",
+        "TitleZH": "最长平衡子数组 I",
+        "TitleSlug": "longest-balanced-subarray-i",
+        "ContestSlug": "weekly-contest-472",
+        "ProblemIndex": "Q2",
+        "ContestID_en": "Weekly Contest 472",
+        "ContestID_zh": "第 472 场周赛"
+    },
+    {
         "Rating": 1463.2825992167,
         "ID": 3638,
         "Title": "Maximum Balanced Shipments",
@@ -23230,6 +23263,17 @@
         "ProblemIndex": "Q1",
         "ContestID_en": "Weekly Contest 184",
         "ContestID_zh": "第 184 场周赛"
+    },
+    {
+        "Rating": 1223.1316465704,
+        "ID": 3718,
+        "Title": "Smallest Missing Multiple of K",
+        "TitleZH": "缺失的最小倍数",
+        "TitleSlug": "smallest-missing-multiple-of-k",
+        "ContestSlug": "weekly-contest-472",
+        "ProblemIndex": "Q1",
+        "ContestID_en": "Weekly Contest 472",
+        "ContestID_zh": "第 472 场周赛"
     },
     {
         "Rating": 1222.2354919459,
