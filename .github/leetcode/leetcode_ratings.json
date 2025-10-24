@@ -429,6 +429,17 @@
         "ContestID_zh": "第 393 场周赛"
     },
     {
+        "Rating": 2723.5212649775,
+        "ID": 3721,
+        "Title": "Longest Balanced Subarray II",
+        "TitleZH": "最长平衡子数组 II",
+        "TitleSlug": "longest-balanced-subarray-ii",
+        "ContestSlug": "weekly-contest-472",
+        "ProblemIndex": "Q4",
+        "ContestID_en": "Weekly Contest 472",
+        "ContestID_zh": "第 472 场周赛"
+    },
+    {
         "Rating": 2723.2974277194,
         "ID": 3414,
         "Title": "Maximum Score of Non-overlapping Intervals",
@@ -449,17 +460,6 @@
         "ProblemIndex": "Q4",
         "ContestID_en": "Weekly Contest 427",
         "ContestID_zh": "第 427 场周赛"
-    },
-    {
-        "Rating": 2719.5708628451,
-        "ID": 3721,
-        "Title": "Longest Balanced Subarray II",
-        "TitleZH": "最长平衡子数组 II",
-        "TitleSlug": "longest-balanced-subarray-ii",
-        "ContestSlug": "weekly-contest-472",
-        "ProblemIndex": "Q4",
-        "ContestID_en": "Weekly Contest 472",
-        "ContestID_zh": "第 472 场周赛"
     },
     {
         "Rating": 2711.8717381409,
@@ -7513,6 +7513,17 @@
         "ContestID_zh": "第 455 场周赛"
     },
     {
+        "Rating": 1958.1499109036,
+        "ID": 3720,
+        "Title": "Lexicographically Smallest Permutation Greater Than Target",
+        "TitleZH": "大于目标字符串的最小字典序排列",
+        "TitleSlug": "lexicographically-smallest-permutation-greater-than-target",
+        "ContestSlug": "weekly-contest-472",
+        "ProblemIndex": "Q3",
+        "ContestID_en": "Weekly Contest 472",
+        "ContestID_zh": "第 472 场周赛"
+    },
+    {
         "Rating": 1956.7059585934,
         "ID": 1463,
         "Title": "Cherry Pickup II",
@@ -7555,17 +7566,6 @@
         "ProblemIndex": "Q3",
         "ContestID_en": "Weekly Contest 314",
         "ContestID_zh": "第 314 场周赛"
-    },
-    {
-        "Rating": 1952.8654631276,
-        "ID": 3720,
-        "Title": "Lexicographically Smallest Permutation Greater Than Target",
-        "TitleZH": "大于目标字符串的最小字典序排列",
-        "TitleSlug": "lexicographically-smallest-permutation-greater-than-target",
-        "ContestSlug": "weekly-contest-472",
-        "ProblemIndex": "Q3",
-        "ContestID_en": "Weekly Contest 472",
-        "ContestID_zh": "第 472 场周赛"
     },
     {
         "Rating": 1952.7073399331,
@@ -16522,6 +16522,17 @@
         "ContestID_zh": "第 63 场双周赛"
     },
     {
+        "Rating": 1467.0171625203,
+        "ID": 3719,
+        "Title": "Longest Balanced Subarray I",
+        "TitleZH": "最长平衡子数组 I",
+        "TitleSlug": "longest-balanced-subarray-i",
+        "ContestSlug": "weekly-contest-472",
+        "ProblemIndex": "Q2",
+        "ContestID_en": "Weekly Contest 472",
+        "ContestID_zh": "第 472 场周赛"
+    },
+    {
         "Rating": 1465.7023558248,
         "ID": 1414,
         "Title": "Find the Minimum Number of Fibonacci Numbers Whose Sum Is K",
@@ -16553,17 +16564,6 @@
         "ProblemIndex": "Q3",
         "ContestID_en": "Weekly Contest 182",
         "ContestID_zh": "第 182 场周赛"
-    },
-    {
-        "Rating": 1464.1993668092,
-        "ID": 3719,
-        "Title": "Longest Balanced Subarray I",
-        "TitleZH": "最长平衡子数组 I",
-        "TitleSlug": "longest-balanced-subarray-i",
-        "ContestSlug": "weekly-contest-472",
-        "ProblemIndex": "Q2",
-        "ContestID_en": "Weekly Contest 472",
-        "ContestID_zh": "第 472 场周赛"
     },
     {
         "Rating": 1463.2825992167,
@@ -23133,6 +23133,17 @@
         "ContestID_zh": "第 87 场周赛"
     },
     {
+        "Rating": 1227.6337833819,
+        "ID": 3718,
+        "Title": "Smallest Missing Multiple of K",
+        "TitleZH": "缺失的最小倍数",
+        "TitleSlug": "smallest-missing-multiple-of-k",
+        "ContestSlug": "weekly-contest-472",
+        "ProblemIndex": "Q1",
+        "ContestID_en": "Weekly Contest 472",
+        "ContestID_zh": "第 472 场周赛"
+    },
+    {
         "Rating": 1227.3485530532,
         "ID": 1118,
         "Title": "Number of Days in a Month",
@@ -23263,17 +23274,6 @@
         "ProblemIndex": "Q1",
         "ContestID_en": "Weekly Contest 184",
         "ContestID_zh": "第 184 场周赛"
-    },
-    {
-        "Rating": 1223.1316465704,
-        "ID": 3718,
-        "Title": "Smallest Missing Multiple of K",
-        "TitleZH": "缺失的最小倍数",
-        "TitleSlug": "smallest-missing-multiple-of-k",
-        "ContestSlug": "weekly-contest-472",
-        "ProblemIndex": "Q1",
-        "ContestID_en": "Weekly Contest 472",
-        "ContestID_zh": "第 472 场周赛"
     },
     {
         "Rating": 1222.2354919459,
