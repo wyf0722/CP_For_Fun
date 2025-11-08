@@ -168,6 +168,9 @@ weekly-contest-470 - https://leetcode.cn/contest/weekly-contest-470/
 
 weekly-contest-472 - https://leetcode.cn/contest/weekly-contest-472/
 ------------------------------
-  Problem C  - (Rating: 1958.1) - 🍰
   Problem D  - (Rating: 2723.5) - 🔫
+
+weekly-contest-474 - https://leetcode.cn/contest/weekly-contest-474/
+------------------------------
+  Problem D  - (Rating: 2330.0) - 🚬
 
