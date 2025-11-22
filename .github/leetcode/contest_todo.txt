@@ -178,3 +178,7 @@ weekly-contest-475 - https://leetcode.cn/contest/weekly-contest-475/
 ------------------------------
   Problem D  - (Rating: 3124.5) - 💣
 
+weekly-contest-476 - https://leetcode.cn/contest/weekly-contest-476/
+------------------------------
+  Problem D  - (Rating: 2209.1) - 🚬
+
