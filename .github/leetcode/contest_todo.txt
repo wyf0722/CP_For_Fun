@@ -191,3 +191,8 @@ weekly-contest-477 - https://leetcode.cn/contest/weekly-contest-477/
   Problem C  - (Rating: 1968.5) - 🍰
   Problem D  - (Rating: 2519.5) - 🔪
 
+weekly-contest-478 - https://leetcode.cn/contest/weekly-contest-478/
+------------------------------
+  Problem C  - Unknown Rating
+  Problem D  - Unknown Rating
+
