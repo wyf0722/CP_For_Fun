@@ -71,7 +71,7 @@ biweekly-contest-170 - https://leetcode.cn/contest/biweekly-contest-170/
 
 biweekly-contest-171 - https://leetcode.cn/contest/biweekly-contest-171/
 ------------------------------
-  Problem D  - Unknown Rating
+  Problem D  - (Rating: 2157.8) - 🛀
 
 weekly-contest-408 - https://leetcode.cn/contest/weekly-contest-408/
 ------------------------------
