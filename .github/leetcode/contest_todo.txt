@@ -203,6 +203,5 @@ weekly-contest-480 - https://leetcode.cn/contest/weekly-contest-480/
 
 weekly-contest-481 - https://leetcode.cn/contest/weekly-contest-481/
 ------------------------------
-  Problem C  - Unknown Rating
   Problem D  - Unknown Rating
 
