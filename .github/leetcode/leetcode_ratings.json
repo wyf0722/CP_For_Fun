@@ -5115,6 +5115,17 @@
         "ContestID_zh": "第 100 场周赛"
     },
     {
+        "Rating": 2132.2407826356,
+        "ID": 3791,
+        "Title": "Number of Balanced Integers in a Range",
+        "TitleZH": "给定范围内平衡整数的数目",
+        "TitleSlug": "number-of-balanced-integers-in-a-range",
+        "ContestSlug": "weekly-contest-482",
+        "ProblemIndex": "Q4",
+        "ContestID_en": "Weekly Contest 482",
+        "ContestID_zh": "第 482 场周赛"
+    },
+    {
         "Rating": 2132.1944636902,
         "ID": 2910,
         "Title": "Minimum Number of Groups to Create a Valid Assignment",
@@ -14311,6 +14322,17 @@
         "ContestID_zh": "第 407 场周赛"
     },
     {
+        "Rating": 1593.2313178073,
+        "ID": 3790,
+        "Title": "Smallest All-Ones Multiple",
+        "TitleZH": "最小全 1 倍数",
+        "TitleSlug": "smallest-all-ones-multiple",
+        "ContestSlug": "weekly-contest-482",
+        "ProblemIndex": "Q3",
+        "ContestID_en": "Weekly Contest 482",
+        "ContestID_zh": "第 482 场周赛"
+    },
+    {
         "Rating": 1591.5492530876,
         "ID": 930,
         "Title": "Binary Subarrays With Sum",
@@ -14551,6 +14573,17 @@
         "ProblemIndex": "Q2",
         "ContestID_en": "Weekly Contest 459",
         "ContestID_zh": "第 459 场周赛"
+    },
+    {
+        "Rating": 1579.7469658937,
+        "ID": 3789,
+        "Title": "Minimum Cost to Acquire Required Items",
+        "TitleZH": "采购的最小花费",
+        "TitleSlug": "minimum-cost-to-acquire-required-items",
+        "ContestSlug": "weekly-contest-482",
+        "ProblemIndex": "Q2",
+        "ContestID_en": "Weekly Contest 482",
+        "ContestID_zh": "第 482 场周赛"
     },
     {
         "Rating": 1579.2309881035,
@@ -21063,6 +21096,17 @@
         "ProblemIndex": "Q1",
         "ContestID_en": "Weekly Contest 93",
         "ContestID_zh": "第 93 场周赛"
+    },
+    {
+        "Rating": 1306.3856807921,
+        "ID": 3788,
+        "Title": "Maximum Score of a Split",
+        "TitleZH": "分割的最大得分",
+        "TitleSlug": "maximum-score-of-a-split",
+        "ContestSlug": "weekly-contest-482",
+        "ProblemIndex": "Q1",
+        "ContestID_en": "Weekly Contest 482",
+        "ContestID_zh": "第 482 场周赛"
     },
     {
         "Rating": 1306.2821637677,
