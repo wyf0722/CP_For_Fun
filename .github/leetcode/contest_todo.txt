@@ -203,5 +203,5 @@ weekly-contest-481 - https://leetcode.cn/contest/weekly-contest-481/
 
 weekly-contest-482 - https://leetcode.cn/contest/weekly-contest-482/
 ------------------------------
-  Problem D  - Unknown Rating
+  Problem D  - (Rating: 2132.2) - 🛀
 
