@@ -195,6 +195,6 @@ weekly-contest-483 - https://leetcode.cn/contest/weekly-contest-483/
 
 weekly-contest-485 - https://leetcode.cn/contest/weekly-contest-485/
 ------------------------------
-  Problem C  - Unknown Rating
-  Problem D  - Unknown Rating
+  Problem C  - (Rating: 1853.8) - 🍰
+  Problem D  - (Rating: 2376.6) - 🚬
 
