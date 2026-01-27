@@ -193,8 +193,3 @@ weekly-contest-483 - https://leetcode.cn/contest/weekly-contest-483/
 ------------------------------
   Problem D  - (Rating: 2398.6) - 🚬
 
-weekly-contest-485 - https://leetcode.cn/contest/weekly-contest-485/
-------------------------------
-  Problem C  - (Rating: 1853.8) - 🍰
-  Problem D  - (Rating: 2376.6) - 🚬
-
