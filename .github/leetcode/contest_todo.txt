@@ -205,3 +205,8 @@ weekly-contest-492 - https://leetcode.cn/contest/weekly-contest-492/
 ------------------------------
   Problem D  - (Rating: 2032.5) - 🛀
 
+weekly-contest-494 - https://leetcode.cn/contest/weekly-contest-494/
+------------------------------
+  Problem C  - Unknown Rating
+  Problem D  - Unknown Rating
+
