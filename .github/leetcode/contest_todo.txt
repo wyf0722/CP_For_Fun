@@ -212,6 +212,6 @@ weekly-contest-493 - https://leetcode.cn/contest/weekly-contest-493/
 
 weekly-contest-494 - https://leetcode.cn/contest/weekly-contest-494/
 ------------------------------
-  Problem C  - Unknown Rating
-  Problem D  - Unknown Rating
+  Problem C  - (Rating: 1745.1) - 🍰
+  Problem D  - (Rating: 2230.1) - 🚬
 
