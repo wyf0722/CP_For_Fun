@@ -61,3 +61,7 @@ Cache_For_Contest/*
 # input & output
 Arena/*.txt
 Arena_Pre/*.txt
+
+# uv 核心（必须）
+.venv/
+.uv/
