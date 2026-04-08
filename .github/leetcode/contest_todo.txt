@@ -1,6 +1,6 @@
 💜 LeetCode 未解决竞赛题目清单
 ============================================================
-📊  总统计: 共 54 场比赛，56 道题目待完成
+📊  总统计: 共 53 场比赛，55 道题目待完成
 
 📋  难度图标说明
 ----------------------------------------
@@ -203,11 +203,6 @@
 🔗  比赛链接: https://leetcode.cn/contest/weekly-contest-462/
 ----------------------------------------
 🔹  Problem D  | Rating: 2445  | 难度: 🔪 Expert
-
-🏆  weekly-contest-463
-🔗  比赛链接: https://leetcode.cn/contest/weekly-contest-463/
-----------------------------------------
-🔹  Problem D  | Rating: 2454  | 难度: 🔪 Expert
 
 🏆  weekly-contest-464
 🔗  比赛链接: https://leetcode.cn/contest/weekly-contest-464/
