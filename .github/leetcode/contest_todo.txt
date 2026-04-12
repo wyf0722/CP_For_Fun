@@ -275,9 +275,9 @@
 ----------------------------------------
 🔹  Problem D  | Rating: 2230  | 难度: 🚬 Hard
 
-🏆  weekly-contest-495
-🔗  比赛链接: https://leetcode.cn/contest/weekly-contest-495/
+🏆  weekly-contest-496
+🔗  比赛链接: https://leetcode.cn/contest/weekly-contest-496/
 ----------------------------------------
-🔹  Problem C  | Rating: 1999  | 难度: 🍰 Easy
-🔹  Problem D  | Rating: 2128  | 难度: 🛀 Medium
+🔹  Problem C  | Rating: 1953  | 难度: 🍰 Easy
+🔹  Problem D  | Rating: 2280  | 难度: 🚬 Hard
 
