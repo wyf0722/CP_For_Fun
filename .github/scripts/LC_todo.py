@@ -17,30 +17,24 @@ BASE_DIR: Path = SCRIPT_PATH.parent
 REPO_ROOT: Path = BASE_DIR.parent.parent
 CODE_DIR: Path = REPO_ROOT / 'CP_leetcode'
 OUTPUT_DIR: Path = BASE_DIR.parent / 'leetcode'
-OUTPUT_FILE: Path = OUTPUT_DIR / 'contest_todo.txt'
+OUTPUT_FILE: Path = OUTPUT_DIR / 'contest_todo.md'  # 改为 md 格式
 RATINGS_FILE: Path = OUTPUT_DIR / 'leetcode_ratings.json'
 
-# 输出样式配置
-SEPARATOR_LINE: str = "=" * 60
-SUB_SEPARATOR: str = "-" * 40
-HEADER_EMOJI: str = "💜"
-PROBLEM_EMOJI: str = "🔹"
-
 # ==================== 核心功能函数 ====================
-def get_tag(rating: float) -> str:
-    """根据难度Rating返回对应标签"""
+def get_tag(rating: float) -> Tuple[str, str]:
+    """根据难度Rating返回对应标签和图标"""
     if rating < 2000:
-        return '🍰 Easy'
+        return ('🍰', 'Easy')
     elif rating < 2200:
-        return '🛀 Medium'
+        return ('🛀', 'Medium')
     elif rating < 2400:
-        return '🚬 Hard'
+        return ('🚬', 'Hard')
     elif rating < 2600:
-        return '🔪 Expert'
+        return ('🔪', 'Expert')
     elif rating < 2800:
-        return '🔫 Master'
+        return ('🔫', 'Master')
     else:
-        return '💣 Legend'
+        return ('💣', 'Legend')
 
 def get_problem_ratings() -> Dict[Tuple[str, str], float]:
     """加载题目Rating映射表"""
@@ -121,31 +115,33 @@ def _write_output_file(
     ratings: Dict[Tuple[str, str], float],
     total: int
 ) -> None:
-    """将结果写入格式化的输出文件，添加难度图标图例"""
+    """将结果写入Markdown格式的输出文件"""
     OUTPUT_DIR.mkdir(exist_ok=True, parents=True)
     
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
         # 1. 标题
-        f.write(f"{HEADER_EMOJI} LeetCode 未解决竞赛题目清单\n")
-        f.write(f"{SEPARATOR_LINE}\n")
+        f.write("# 💜 LeetCode 未解决竞赛题目清单\n\n")
+        f.write("---\n\n")
         
         # 2. 总统计
-        f.write(f"📊  总统计: 共 {len(unsolved)} 场比赛，{total} 道题目待完成\n\n")
+        f.write("## 📊 总统计\n\n")
+        f.write(f"- 待完成比赛：**{len(unsolved)}** 场\n")
+        f.write(f"- 待完成题目：**{total}** 道\n\n")
         
-        # 【新增】3. 难度图标-分数对应图例
-        f.write(f"📋  难度图标说明\n")
-        f.write(f"{SUB_SEPARATOR}\n")
-        f.write(f"🍰 Easy    : Rating < 2000\n")
-        f.write(f"🛀 Medium  : 2000 ≤ Rating < 2200\n")
-        f.write(f"🚬 Hard    : 2200 ≤ Rating < 2400\n")
-        f.write(f"🔪 Expert  : 2400 ≤ Rating < 2600\n")
-        f.write(f"🔫 Master  : 2600 ≤ Rating < 2800\n")
-        f.write(f"💣 Legend  : Rating ≥ 2800\n")
-        f.write(f"\n")
+        # 3. 难度说明
+        f.write("## 📋 难度等级说明\n\n")
+        f.write("| 图标 | 难度等级 | 分数范围       |\n")
+        f.write("|------|----------|----------------|\n")
+        f.write("| 🍰   | Easy     | Rating < 2000  |\n")
+        f.write("| 🛀   | Medium   | 2000 ≤ Rating < 2200 |\n")
+        f.write("| 🚬   | Hard     | 2200 ≤ Rating < 2400 |\n")
+        f.write("| 🔪   | Expert   | 2400 ≤ Rating < 2600 |\n")
+        f.write("| 🔫   | Master   | 2600 ≤ Rating < 2800 |\n")
+        f.write("| 💣   | Legend   | Rating ≥ 2800  |\n\n")
         
         # 4. 比赛详情
-        f.write(f"🏆  未解决题目详情\n")
-        f.write(f"{SEPARATOR_LINE}\n\n")
+        f.write("## 🏆 未解决题目详情\n\n")
+        f.write("---\n\n")
         
         for contest_id in sorted(
             unsolved.keys(),
@@ -157,22 +153,23 @@ def _write_output_file(
             problems = unsolved[contest_id]
             contest_link = f"{CONTEST_LINK}{contest_id}/"
             
-            f.write(f"🏆  {contest_id}\n")
-            f.write(f"🔗  比赛链接: {contest_link}\n")
-            f.write(f"{SUB_SEPARATOR}\n")
-
+            f.write(f"### 🏆 {contest_id}\n\n")
+            f.write(f"🔗 比赛链接：[{contest_link}]({contest_link})\n\n")
+            f.write("#### 📝 题目列表\n\n")
+            
             for problem in problems:
                 rating = ratings.get((contest_id, problem))
                 if rating:
-                    tag = get_tag(rating)
+                    icon, level = get_tag(rating)
                     f.write(
-                        f"{PROBLEM_EMOJI}  Problem {problem}  "
-                        f"| Rating: {rating:4.0f}  | 难度: {tag}\n"
+                        f"- {icon} **Problem {problem}** | "
+                        f"Rating: **{rating:4.0f}** | "
+                        f"难度: {level}\n"
                     )
                 else:
                     f.write(
-                        f"{PROBLEM_EMOJI}  Problem {problem}  "
-                        f"| Rating: 未知  | 难度: 待评估\n"
+                        f"- 🔹 **Problem {problem}** | "
+                        f"Rating: 未知 | 难度: 待评估\n"
                     )
             f.write("\n")
 
