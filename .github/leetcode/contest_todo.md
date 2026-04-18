@@ -4,8 +4,8 @@
 
 ## 📊 总统计
 
-- 待完成比赛：**55** 场
-- 待完成题目：**58** 道
+- 待完成比赛：**54** 场
+- 待完成题目：**57** 道
 
 ## 📋 难度等级说明
 
@@ -165,14 +165,6 @@
 #### 📝 题目列表
 
 - 🚬 **Problem D** | Rating: **2384** | 难度: Hard
-
-### 🏆 biweekly-contest-179
-
-🔗 比赛链接：[https://leetcode.cn/contest/biweekly-contest-179/](https://leetcode.cn/contest/biweekly-contest-179/)
-
-#### 📝 题目列表
-
-- 🛀 **Problem D** | Rating: **2172** | 难度: Medium
 
 ### 🏆 biweekly-contest-180
 
