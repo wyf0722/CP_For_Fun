@@ -4,8 +4,8 @@
 
 ## 📊 总统计
 
-- 待完成比赛：**54** 场
-- 待完成题目：**56** 道
+- 待完成比赛：**55** 场
+- 待完成题目：**58** 道
 
 ## 📋 难度等级说明
 
@@ -455,4 +455,13 @@
 
 - 🛀 **Problem C** | Rating: **2135** | 难度: Medium
 - 🔪 **Problem D** | Rating: **2545** | 难度: Expert
+
+### 🏆 weekly-contest-498
+
+🔗 比赛链接：[https://leetcode.cn/contest/weekly-contest-498/](https://leetcode.cn/contest/weekly-contest-498/)
+
+#### 📝 题目列表
+
+- 🔹 **Problem C** | Rating: 未知 | 难度: 待评估
+- 🔹 **Problem D** | Rating: 未知 | 难度: 待评估
 
