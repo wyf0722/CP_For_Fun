@@ -462,6 +462,6 @@
 
 #### 📝 题目列表
 
-- 🔹 **Problem C** | Rating: 未知 | 难度: 待评估
-- 🔹 **Problem D** | Rating: 未知 | 难度: 待评估
+- 🍰 **Problem C** | Rating: **1671** | 难度: Easy
+- 🛀 **Problem D** | Rating: **2160** | 难度: Medium
 
