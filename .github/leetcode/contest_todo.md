@@ -188,7 +188,7 @@
 
 #### 📝 题目列表
 
-- 🔹 **Problem D** | Rating: 未知 | 难度: 待评估
+- 🛀 **Problem D** | Rating: **2080** | 难度: Medium
 
 ### 🏆 weekly-contest-408
 
