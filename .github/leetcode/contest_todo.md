@@ -4,8 +4,8 @@
 
 ## 📊 总统计
 
-- 待完成比赛：**61** 场
-- 待完成题目：**66** 道
+- 待完成比赛：**62** 场
+- 待完成题目：**69** 道
 
 ## 📋 难度等级说明
 
@@ -514,4 +514,14 @@
 
 - 🍰 **Problem C** | Rating: **1855** | 难度: Easy
 - 🔪 **Problem D** | Rating: **2410** | 难度: Expert
+
+### 🏆 weekly-contest-504
+
+🔗 比赛链接：[https://leetcode.cn/contest/weekly-contest-504/](https://leetcode.cn/contest/weekly-contest-504/)
+
+#### 📝 题目列表
+
+- 🍰 **Problem B** | Rating: **1728** | 难度: Easy
+- 🚬 **Problem C** | Rating: **2215** | 难度: Hard
+- 🛀 **Problem D** | Rating: **2122** | 难度: Medium
 
