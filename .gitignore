@@ -6,6 +6,9 @@
 # cache file
 Cache_For_Contest/*
 
+# leetcode training
+Leetcode_train/
+
 # Global/VisualStudioCode.gitignore
 .vscode/*
 !.vscode/settings.json
