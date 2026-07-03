@@ -5,58 +5,44 @@ on:
     - cron: '0 */3 * * *'  # 每3 小时触发一次
   workflow_dispatch:  # 允许手动触发
 
+permissions:
+  contents: write
+
+concurrency:
+  group: leetcode-todo
+  cancel-in-progress: false
+
 jobs:
-  generate-ratings:
-      runs-on: ubuntu-latest
-      
-      steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.x'
-          
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install requests
-          
-      - name: Run rating generator
-        run: python .github/scripts/LC_ratings.py
-      
-      - name: Commit changes
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add .
-          if git commit -m "feat(leetcode): update problem ratings"; then
-            git push
-          fi
-          
-  generate-todo:
+  generate:
     runs-on: ubuntu-latest
-    
+    timeout-minutes: 10
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-      
+
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
-        python-version: '3.x'
-        
+        python-version: '3.12'
+        cache: 'pip'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests
+
+    - name: Run rating generator
+      run: python .github/scripts/LC_ratings.py
+
     - name: Run todo generator
       run: python .github/scripts/LC_todo.py
-    
-    - name: Commit changes
+
+    - name: Commit and push changes
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
-        git add .
-        if git commit -m "feat(leetcode):generate todo list"; then
+        git add .github/leetcode/leetcode_ratings.json .github/leetcode/contest_todo.md
+        if git commit -m "feat(leetcode): update ratings and todo list"; then
           git push
         fi
-
-  
