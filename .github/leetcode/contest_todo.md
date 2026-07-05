@@ -5,7 +5,7 @@
 ## 📊 总统计
 
 - 待完成比赛：**71** 场
-- 待完成题目：**95** 道
+- 待完成题目：**92** 道
 
 ## 📋 难度等级说明
 
@@ -587,9 +587,6 @@
 
 #### 📝 题目列表
 
-- 🍰 **Problem A** | Rating: **1279** | 难度: Easy
-- 🍰 **Problem B** | Rating: **1397** | 难度: Easy
-- 🍰 **Problem C** | Rating: **1840** | 难度: Easy
 - 🛀 **Problem D** | Rating: **2195** | 难度: Medium
 
 ### 🏆 weekly-contest-508
