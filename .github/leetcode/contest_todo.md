@@ -4,8 +4,8 @@
 
 ## 📊 总统计
 
-- 待完成比赛：**71** 场
-- 待完成题目：**89** 道
+- 待完成比赛：**72** 场
+- 待完成题目：**93** 道
 
 ## 📋 难度等级说明
 
@@ -607,4 +607,15 @@
 - 🍰 **Problem B** | Rating: **1755** | 难度: Easy
 - 🍰 **Problem C** | Rating: **1944** | 难度: Easy
 - 🚬 **Problem D** | Rating: **2202** | 难度: Hard
+
+### 🏆 weekly-contest-510
+
+🔗 比赛链接：[https://leetcode.cn/contest/weekly-contest-510/](https://leetcode.cn/contest/weekly-contest-510/)
+
+#### 📝 题目列表
+
+- 🔹 **Problem A** | Rating: 未知 | 难度: 待评估
+- 🔹 **Problem B** | Rating: 未知 | 难度: 待评估
+- 🔹 **Problem C** | Rating: 未知 | 难度: 待评估
+- 🔹 **Problem D** | Rating: 未知 | 难度: 待评估
 
