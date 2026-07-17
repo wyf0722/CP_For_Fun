@@ -614,8 +614,8 @@
 
 #### 📝 题目列表
 
-- 🔹 **Problem A** | Rating: 未知 | 难度: 待评估
-- 🔹 **Problem B** | Rating: 未知 | 难度: 待评估
-- 🔹 **Problem C** | Rating: 未知 | 难度: 待评估
-- 🔹 **Problem D** | Rating: 未知 | 难度: 待评估
+- 🍰 **Problem A** | Rating: **1205** | 难度: Easy
+- 🍰 **Problem B** | Rating: **1550** | 难度: Easy
+- 🛀 **Problem C** | Rating: **2055** | 难度: Medium
+- 🛀 **Problem D** | Rating: **2014** | 难度: Medium
 
