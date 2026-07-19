@@ -4,8 +4,8 @@
 
 ## 📊 总统计
 
-- 待完成比赛：**73** 场
-- 待完成题目：**97** 道
+- 待完成比赛：**74** 场
+- 待完成题目：**101** 道
 
 ## 📋 难度等级说明
 
@@ -629,4 +629,15 @@
 - 🍰 **Problem B** | Rating: **1550** | 难度: Easy
 - 🛀 **Problem C** | Rating: **2055** | 难度: Medium
 - 🛀 **Problem D** | Rating: **2014** | 难度: Medium
+
+### 🏆 weekly-contest-511
+
+🔗 比赛链接：[https://leetcode.cn/contest/weekly-contest-511/](https://leetcode.cn/contest/weekly-contest-511/)
+
+#### 📝 题目列表
+
+- 🔹 **Problem A** | Rating: 未知 | 难度: 待评估
+- 🔹 **Problem B** | Rating: 未知 | 难度: 待评估
+- 🔹 **Problem C** | Rating: 未知 | 难度: 待评估
+- 🔹 **Problem D** | Rating: 未知 | 难度: 待评估
 
