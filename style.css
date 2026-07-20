@@ -196,6 +196,9 @@ h1 {
 .expand-btn {
     background-color: #0366d6;
     color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 .expand-btn:hover {
@@ -210,20 +213,6 @@ h1 {
     margin: 0;
     font-size: 16px;
     color: #24292e;
-}
-
-.expand-btn {
-    background-color: #0366d6;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 5px 10px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.expand-btn:hover {
-    background-color: #0255b3;
 }
 
 .code-block {
@@ -254,6 +243,20 @@ h1 {
     background-color: #ffeef0;
     border-radius: 5px;
     margin-bottom: 20px;
+}
+
+.loading {
+    text-align: center;
+    padding: 40px;
+    color: #586069;
+    font-size: 16px;
+}
+
+/* 键盘焦点可见性（可访问性） */
+button:focus-visible,
+a:focus-visible {
+    outline: 2px solid #0366d6;
+    outline-offset: 2px;
 }
 
 /* 添加一个晃动动画 */
