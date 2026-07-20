@@ -13,7 +13,11 @@
     <div class="container">
         <main id="content">
             <!-- 内容将通过JavaScript动态加载 -->
+            <div class="loading">加载中…</div>
         </main>
+        <noscript>
+            <div class="error">本页面需要启用 JavaScript 才能查看模板。</div>
+        </noscript>
         
         <!-- 添加GitHub图标链接 -->
         <a href="https://github.com/wyf0722/CP_For_Fun" target="_blank" class="github-corner" aria-label="View source on GitHub">
@@ -26,6 +30,6 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
