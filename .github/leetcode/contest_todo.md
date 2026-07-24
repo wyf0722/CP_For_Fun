@@ -229,10 +229,10 @@
 
 #### 📝 题目列表
 
-- 🔹 **Problem A** | Rating: 未知 | 难度: 待评估
-- 🔹 **Problem B** | Rating: 未知 | 难度: 待评估
-- 🔹 **Problem C** | Rating: 未知 | 难度: 待评估
-- 🔹 **Problem D** | Rating: 未知 | 难度: 待评估
+- 🍰 **Problem A** | Rating: **1251** | 难度: Easy
+- 🍰 **Problem B** | Rating: **1452** | 难度: Easy
+- 🍰 **Problem C** | Rating: **1705** | 难度: Easy
+- 🛀 **Problem D** | Rating: **2101** | 难度: Medium
 
 ### 🏆 weekly-contest-408
 
@@ -634,8 +634,8 @@
 
 #### 📝 题目列表
 
-- 🔹 **Problem A** | Rating: 未知 | 难度: 待评估
-- 🔹 **Problem B** | Rating: 未知 | 难度: 待评估
-- 🔹 **Problem C** | Rating: 未知 | 难度: 待评估
-- 🔹 **Problem D** | Rating: 未知 | 难度: 待评估
+- 🍰 **Problem A** | Rating: **1260** | 难度: Easy
+- 🍰 **Problem B** | Rating: **1427** | 难度: Easy
+- 🍰 **Problem C** | Rating: **1862** | 难度: Easy
+- 🛀 **Problem D** | Rating: **2162** | 难度: Medium
 
