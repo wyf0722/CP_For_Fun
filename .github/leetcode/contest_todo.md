@@ -4,8 +4,8 @@
 
 ## 📊 总统计
 
-- 待完成比赛：**74** 场
-- 待完成题目：**99** 道
+- 待完成比赛：**75** 场
+- 待完成题目：**103** 道
 
 ## 📋 难度等级说明
 
@@ -638,4 +638,15 @@
 - 🍰 **Problem B** | Rating: **1427** | 难度: Easy
 - 🍰 **Problem C** | Rating: **1862** | 难度: Easy
 - 🛀 **Problem D** | Rating: **2162** | 难度: Medium
+
+### 🏆 weekly-contest-512
+
+🔗 比赛链接：[https://leetcode.cn/contest/weekly-contest-512/](https://leetcode.cn/contest/weekly-contest-512/)
+
+#### 📝 题目列表
+
+- 🔹 **Problem A** | Rating: 未知 | 难度: 待评估
+- 🔹 **Problem B** | Rating: 未知 | 难度: 待评估
+- 🔹 **Problem C** | Rating: 未知 | 难度: 待评估
+- 🔹 **Problem D** | Rating: 未知 | 难度: 待评估
 
