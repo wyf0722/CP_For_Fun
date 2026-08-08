@@ -1,0 +1,39 @@
+name: LeetCode Contest Directory Creator
+
+on:
+  schedule:
+    - cron: '0 5 * * *'  # daily at 05:00 UTC (13:00 Asia/Shanghai)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: leetcode-mkdir
+  cancel-in-progress: false
+
+jobs:
+  create:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+
+    - name: Create missing contest directories
+      run: python .github/scripts/LC_mkdir.py
+
+    - name: Commit and push changes
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add CP_leetcode
+        if git commit -m "feat(leetcode): auto-create contest directories"; then
+          git push
+        fi
