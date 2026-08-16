@@ -1496,6 +1496,17 @@
         "ContestID_zh": "第 63 场双周赛"
     },
     {
+        "Rating": 2515.773375505,
+        "ID": 4017,
+        "Title": "Peaks in Array II",
+        "TitleZH": "数组中的峰值 II",
+        "TitleSlug": "peaks-in-array-ii",
+        "ContestSlug": "weekly-contest-514",
+        "ProblemIndex": "Q4",
+        "ContestID_en": "Weekly Contest 514",
+        "ContestID_zh": "第 514 场周赛"
+    },
+    {
         "Rating": 2515.7520586008,
         "ID": 2272,
         "Title": "Substring With Largest Variance",
@@ -8369,6 +8380,17 @@
         "ProblemIndex": "Q3",
         "ContestID_en": "Weekly Contest 455",
         "ContestID_zh": "第 455 场周赛"
+    },
+    {
+        "Rating": 1958.6578981998,
+        "ID": 4016,
+        "Title": "Maximum Area of Two Non-Overlapping Square Submatrices",
+        "TitleZH": "两个不重叠子正方形的最大面积",
+        "TitleSlug": "maximum-area-of-two-non-overlapping-square-submatrices",
+        "ContestSlug": "weekly-contest-514",
+        "ProblemIndex": "Q3",
+        "ContestID_en": "Weekly Contest 514",
+        "ContestID_zh": "第 514 场周赛"
     },
     {
         "Rating": 1958.1499109036,
@@ -16696,6 +16718,17 @@
         "ProblemIndex": "Q2",
         "ContestID_en": "Weekly Contest 92",
         "ContestID_zh": "第 92 场周赛"
+    },
+    {
+        "Rating": 1534.1987521915,
+        "ID": 4015,
+        "Title": "Weighted Sum of a Tree",
+        "TitleZH": "树的加权和",
+        "TitleSlug": "weighted-sum-of-a-tree",
+        "ContestSlug": "weekly-contest-514",
+        "ProblemIndex": "Q2",
+        "ContestID_en": "Weekly Contest 514",
+        "ContestID_zh": "第 514 场周赛"
     },
     {
         "Rating": 1534.0648719302,
@@ -26783,6 +26816,17 @@
         "ProblemIndex": "Q1",
         "ContestID_en": "Weekly Contest 187",
         "ContestID_zh": "第 187 场周赛"
+    },
+    {
+        "Rating": 1192.1392606464,
+        "ID": 4014,
+        "Title": "Minimum Total Price After Applying Discounts",
+        "TitleZH": "应用折扣后的最低总价",
+        "TitleSlug": "minimum-total-price-after-applying-discounts",
+        "ContestSlug": "weekly-contest-514",
+        "ProblemIndex": "Q1",
+        "ContestID_en": "Weekly Contest 514",
+        "ContestID_zh": "第 514 场周赛"
     },
     {
         "Rating": 1191.3681720998,
