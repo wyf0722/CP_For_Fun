@@ -262,7 +262,7 @@
 
 #### 📝 题目列表
 
-- 💣 **Problem D** | Rating: **3774** | 难度: Legend
+- 🔹 **Problem D** | Rating: 未知 | 难度: 待评估
 
 ### 🏆 weekly-contest-409
 
