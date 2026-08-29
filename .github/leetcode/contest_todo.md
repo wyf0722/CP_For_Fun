@@ -4,8 +4,8 @@
 
 ## 📊 总统计
 
-- 待完成比赛：**81** 场
-- 待完成题目：**114** 道
+- 待完成比赛：**82** 场
+- 待完成题目：**116** 道
 
 ## 📋 难度等级说明
 
@@ -255,6 +255,17 @@
 - 🍰 **Problem B** | Rating: **1518** | 难度: Easy
 - 🍰 **Problem C** | Rating: **1915** | 难度: Easy
 - 🚬 **Problem D** | Rating: **2280** | 难度: Hard
+
+### 🏆 biweekly-contest-190
+
+🔗 比赛链接：[https://leetcode.cn/contest/biweekly-contest-190/](https://leetcode.cn/contest/biweekly-contest-190/)
+
+#### 📝 题目列表
+
+- 🔹 **Problem A** | Rating: 未知 | 难度: 待评估
+- 🔹 **Problem B** | Rating: 未知 | 难度: 待评估
+- 🔹 **Problem C** | Rating: 未知 | 难度: 待评估
+- 🔹 **Problem D** | Rating: 未知 | 难度: 待评估
 
 ### 🏆 weekly-contest-408
 
@@ -687,8 +698,6 @@
 
 #### 📝 题目列表
 
-- 🍰 **Problem A** | Rating: **1184** | 难度: Easy
-- 🍰 **Problem B** | Rating: **1457** | 难度: Easy
 - 🍰 **Problem C** | Rating: **1675** | 难度: Easy
 - 🚬 **Problem D** | Rating: **2201** | 难度: Hard
 
