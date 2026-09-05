@@ -2860,6 +2860,17 @@
         "ContestID_zh": "第 431 场周赛"
     },
     {
+        "Rating": 2372.3911352536,
+        "ID": 4037,
+        "Title": "Maximum Valid Split Positions II",
+        "TitleZH": "最多有效分割位置 II",
+        "TitleSlug": "maximum-valid-split-positions-ii",
+        "ContestSlug": "biweekly-contest-190",
+        "ProblemIndex": "Q4",
+        "ContestID_en": "Biweekly Contest 190",
+        "ContestID_zh": "第 190 场双周赛"
+    },
+    {
         "Rating": 2370.3848537389,
         "ID": 3260,
         "Title": "Find the Largest Palindrome Divisible by K",
@@ -5971,6 +5982,17 @@
         "ProblemIndex": "Q4",
         "ContestID_en": "Weekly Contest 74",
         "ContestID_zh": "第 74 场周赛"
+    },
+    {
+        "Rating": 2099.5449851425,
+        "ID": 4041,
+        "Title": "Minimum Operations to Form Subset Sum II",
+        "TitleZH": "构造子集和的最少操作次数 II",
+        "TitleSlug": "minimum-operations-to-form-subset-sum-ii",
+        "ContestSlug": "weekly-contest-517",
+        "ProblemIndex": "Q4",
+        "ContestID_en": "Weekly Contest 517",
+        "ContestID_zh": "第 517 场周赛"
     },
     {
         "Rating": 2096.6201393558,
@@ -9823,6 +9845,17 @@
         "ContestID_zh": "第 35 场双周赛"
     },
     {
+        "Rating": 1869.6681915726,
+        "ID": 4040,
+        "Title": "Minimum Operations to Form Subset Sum I",
+        "TitleZH": "构造子集和的最少操作次数 I",
+        "TitleSlug": "minimum-operations-to-form-subset-sum-i",
+        "ContestSlug": "weekly-contest-517",
+        "ProblemIndex": "Q3",
+        "ContestID_en": "Weekly Contest 517",
+        "ContestID_zh": "第 517 场周赛"
+    },
+    {
         "Rating": 1869.6387617474,
         "ID": 3635,
         "Title": "Earliest Finish Time for Land and Water Rides II",
@@ -13211,6 +13244,17 @@
         "ContestID_zh": "第 251 场周赛"
     },
     {
+        "Rating": 1704.2500585576,
+        "ID": 4036,
+        "Title": "Lexicographically Largest String After Pair Transformations",
+        "TitleZH": "字符对转换后字典序最大的字符串",
+        "TitleSlug": "lexicographically-largest-string-after-pair-transformations",
+        "ContestSlug": "biweekly-contest-190",
+        "ProblemIndex": "Q3",
+        "ContestID_en": "Biweekly Contest 190",
+        "ContestID_zh": "第 190 场双周赛"
+    },
+    {
         "Rating": 1704.1007546159,
         "ID": 3457,
         "Title": "Eat Pizzas!",
@@ -14023,6 +14067,17 @@
         "ProblemIndex": "Q4",
         "ContestID_en": "Biweekly Contest 4",
         "ContestID_zh": "第 4 场双周赛"
+    },
+    {
+        "Rating": 1663.8618362886,
+        "ID": 4035,
+        "Title": "Maximum Valid Split Positions I",
+        "TitleZH": "最多有效分割位置 I",
+        "TitleSlug": "maximum-valid-split-positions-i",
+        "ContestSlug": "biweekly-contest-190",
+        "ProblemIndex": "Q2",
+        "ContestID_en": "Biweekly Contest 190",
+        "ContestID_zh": "第 190 场双周赛"
     },
     {
         "Rating": 1663.7602365518,
@@ -18368,6 +18423,17 @@
         "ProblemIndex": "Q3",
         "ContestID_en": "Weekly Contest 182",
         "ContestID_zh": "第 182 场周赛"
+    },
+    {
+        "Rating": 1463.4278500234,
+        "ID": 4039,
+        "Title": "Sum of Decoded Numbers",
+        "TitleZH": "解码值之和",
+        "TitleSlug": "sum-of-decoded-numbers",
+        "ContestSlug": "weekly-contest-517",
+        "ProblemIndex": "Q2",
+        "ContestID_en": "Weekly Contest 517",
+        "ContestID_zh": "第 517 场周赛"
     },
     {
         "Rating": 1463.2825992167,
@@ -25080,6 +25146,17 @@
         "ContestID_zh": "第 437 场周赛"
     },
     {
+        "Rating": 1244.3415447142,
+        "ID": 4034,
+        "Title": "Minimum Bishop Moves to Reach Target",
+        "TitleZH": "象到达目标格子的最少移动步数",
+        "TitleSlug": "minimum-bishop-moves-to-reach-target",
+        "ContestSlug": "biweekly-contest-190",
+        "ProblemIndex": "Q1",
+        "ContestID_en": "Biweekly Contest 190",
+        "ContestID_zh": "第 190 场双周赛"
+    },
+    {
         "Rating": 1244.317367883,
         "ID": 1228,
         "Title": "Missing Number In Arithmetic Progression",
@@ -27608,6 +27685,17 @@
         "ProblemIndex": "Q1",
         "ContestID_en": "Weekly Contest 502",
         "ContestID_zh": "第 502 场周赛"
+    },
+    {
+        "Rating": 1165.8323613401,
+        "ID": 4038,
+        "Title": "Count Integers Appearing in a Single Block",
+        "TitleZH": "计算单个区间中出现的整数数量",
+        "TitleSlug": "count-integers-appearing-in-a-single-block",
+        "ContestSlug": "weekly-contest-517",
+        "ProblemIndex": "Q1",
+        "ContestID_en": "Weekly Contest 517",
+        "ContestID_zh": "第 517 场周赛"
     },
     {
         "Rating": 1165.8314068327,
