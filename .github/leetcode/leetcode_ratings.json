@@ -4719,6 +4719,17 @@
         "ContestID_zh": "第 12 场双周赛"
     },
     {
+        "Rating": 2202.5428925053,
+        "ID": 4086,
+        "Title": "Minimum Interval Selection to Cover Target Intervals",
+        "TitleZH": "覆盖目标区间的最少区间",
+        "TitleSlug": "minimum-interval-selection-to-cover-target-intervals",
+        "ContestSlug": "weekly-contest-524",
+        "ProblemIndex": "Q4",
+        "ContestID_en": "Weekly Contest 524",
+        "ContestID_zh": "第 524 场周赛"
+    },
+    {
         "Rating": 2201.968109609,
         "ID": 3985,
         "Title": "Palindromic Subarray Sum",
@@ -9865,6 +9876,17 @@
         "ProblemIndex": "Q3",
         "ContestID_en": "Weekly Contest 506",
         "ContestID_zh": "第 506 场周赛"
+    },
+    {
+        "Rating": 1878.5055503376,
+        "ID": 4085,
+        "Title": "Find Root of a Colored Tree",
+        "TitleZH": "找到颜色树的根",
+        "TitleSlug": "find-root-of-a-colored-tree",
+        "ContestSlug": "weekly-contest-524",
+        "ProblemIndex": "Q3",
+        "ContestID_en": "Weekly Contest 524",
+        "ContestID_zh": "第 524 场周赛"
     },
     {
         "Rating": 1877.8983358307,
@@ -19976,6 +19998,17 @@
         "ContestID_zh": "第 438 场周赛"
     },
     {
+        "Rating": 1415.9222347407,
+        "ID": 4084,
+        "Title": "Last Visited Cell in a Directional Grid",
+        "TitleZH": "有向网格中的最后访问单元格",
+        "TitleSlug": "last-visited-cell-in-a-directional-grid",
+        "ContestSlug": "weekly-contest-524",
+        "ProblemIndex": "Q2",
+        "ContestID_en": "Weekly Contest 524",
+        "ContestID_zh": "第 524 场周赛"
+    },
+    {
         "Rating": 1414.6100987673,
         "ID": 2825,
         "Title": "Make String a Subsequence Using Cyclic Increments",
@@ -26453,6 +26486,17 @@
         "ProblemIndex": "Q1",
         "ContestID_en": "Biweekly Contest 110",
         "ContestID_zh": "第 110 场双周赛"
+    },
+    {
+        "Rating": 1214.6135182084,
+        "ID": 4083,
+        "Title": "Minimum Deletions to Make Array Sharp",
+        "TitleZH": "使相邻元素按位异或非零的最少删除次数",
+        "TitleSlug": "minimum-deletions-to-make-array-sharp",
+        "ContestSlug": "weekly-contest-524",
+        "ProblemIndex": "Q1",
+        "ContestID_en": "Weekly Contest 524",
+        "ContestID_zh": "第 524 场周赛"
     },
     {
         "Rating": 1214.542864891,

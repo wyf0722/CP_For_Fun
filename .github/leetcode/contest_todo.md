@@ -816,10 +816,10 @@
 
 #### 📝 题目列表
 
-- 🔹 **Problem A** | Rating: 未知 | 难度: 待评估
-- 🔹 **Problem B** | Rating: 未知 | 难度: 待评估
-- 🔹 **Problem C** | Rating: 未知 | 难度: 待评估
-- 🔹 **Problem D** | Rating: 未知 | 难度: 待评估
+- 🍰 **Problem A** | Rating: **1215** | 难度: Easy
+- 🍰 **Problem B** | Rating: **1416** | 难度: Easy
+- 🍰 **Problem C** | Rating: **1879** | 难度: Easy
+- 🚬 **Problem D** | Rating: **2203** | 难度: Hard
 
 ### 🏆 weekly-contest-525
 
