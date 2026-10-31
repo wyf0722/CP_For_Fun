@@ -3212,6 +3212,17 @@
         "ContestID_zh": "第 449 场周赛"
     },
     {
+        "Rating": 2343.4108764468,
+        "ID": 4095,
+        "Title": "Count Frequency Staircase Subarrays II",
+        "TitleZH": "统计频次阶梯子数组的数目 II",
+        "TitleSlug": "count-frequency-staircase-subarrays-ii",
+        "ContestSlug": "weekly-contest-525",
+        "ProblemIndex": "Q4",
+        "ContestID_en": "Weekly Contest 525",
+        "ContestID_zh": "第 525 场周赛"
+    },
+    {
         "Rating": 2341.4506355884,
         "ID": 810,
         "Title": "Chalkboard XOR Game",
@@ -5366,6 +5377,17 @@
         "ProblemIndex": "Q4",
         "ContestID_en": "Biweekly Contest 181",
         "ContestID_zh": "第 181 场双周赛"
+    },
+    {
+        "Rating": 2155.4953744271,
+        "ID": 4091,
+        "Title": "Count Magical Substring Pairs II",
+        "TitleZH": "统计神奇子字符串对 II",
+        "TitleSlug": "count-magical-substring-pairs-ii",
+        "ContestSlug": "biweekly-contest-194",
+        "ProblemIndex": "Q4",
+        "ContestID_en": "Biweekly Contest 194",
+        "ContestID_zh": "第 194 场双周赛"
     },
     {
         "Rating": 2155.3424932408,
@@ -12496,6 +12518,17 @@
         "ContestID_zh": "第 309 场周赛"
     },
     {
+        "Rating": 1750.9618198683,
+        "ID": 4094,
+        "Title": "Count Frequency Staircase Subarrays I",
+        "TitleZH": "统计频次阶梯子数组的数目 I",
+        "TitleSlug": "count-frequency-staircase-subarrays-i",
+        "ContestSlug": "weekly-contest-525",
+        "ProblemIndex": "Q3",
+        "ContestID_en": "Weekly Contest 525",
+        "ContestID_zh": "第 525 场周赛"
+    },
+    {
         "Rating": 1749.9743684275,
         "ID": 2856,
         "Title": "Minimum Array Length After Pair Removals",
@@ -12879,6 +12912,17 @@
         "ProblemIndex": "Q2",
         "ContestID_en": "Weekly Contest 264",
         "ContestID_zh": "第 264 场周赛"
+    },
+    {
+        "Rating": 1733.9326252632,
+        "ID": 4090,
+        "Title": "Count Magical Substring Pairs I",
+        "TitleZH": "统计神奇子字符串对 I",
+        "TitleSlug": "count-magical-substring-pairs-i",
+        "ContestSlug": "biweekly-contest-194",
+        "ProblemIndex": "Q3",
+        "ContestID_en": "Biweekly Contest 194",
+        "ContestID_zh": "第 194 场双周赛"
     },
     {
         "Rating": 1732.7813534239,
@@ -19008,6 +19052,17 @@
         "ContestID_zh": "第 407 场周赛"
     },
     {
+        "Rating": 1451.7718171473,
+        "ID": 4093,
+        "Title": "Maximize Sum After At Most K Digit Rearrangements",
+        "TitleZH": "至多 K 次数字重排后的最大和",
+        "TitleSlug": "maximize-sum-after-at-most-k-digit-rearrangements",
+        "ContestSlug": "weekly-contest-525",
+        "ProblemIndex": "Q2",
+        "ContestID_en": "Weekly Contest 525",
+        "ContestID_zh": "第 525 场周赛"
+    },
+    {
         "Rating": 1451.1091190361,
         "ID": 3200,
         "Title": "Maximum Height of a Triangle",
@@ -21019,6 +21074,17 @@
         "ProblemIndex": "Q2",
         "ContestID_en": "Weekly Contest 153",
         "ContestID_zh": "第 153 场周赛"
+    },
+    {
+        "Rating": 1382.0010392064,
+        "ID": 4089,
+        "Title": "Count Subarrays With Loose Bounds",
+        "TitleZH": "统计宽界子数组的数目",
+        "TitleSlug": "count-subarrays-with-loose-bounds",
+        "ContestSlug": "biweekly-contest-194",
+        "ProblemIndex": "Q2",
+        "ContestID_en": "Biweekly Contest 194",
+        "ContestID_zh": "第 194 场双周赛"
     },
     {
         "Rating": 1381.4199385224,
@@ -28006,6 +28072,17 @@
         "ContestID_zh": "第 315 场周赛"
     },
     {
+        "Rating": 1167.57583872,
+        "ID": 4088,
+        "Title": "Difference Between Peaks and Valleys",
+        "TitleZH": "峰值与谷值的差",
+        "TitleSlug": "difference-between-peaks-and-valleys",
+        "ContestSlug": "biweekly-contest-194",
+        "ProblemIndex": "Q1",
+        "ContestID_en": "Biweekly Contest 194",
+        "ContestID_zh": "第 194 场双周赛"
+    },
+    {
         "Rating": 1167.1331831913,
         "ID": 1304,
         "Title": "Find N Unique Integers Sum up to Zero",
@@ -28741,6 +28818,17 @@
         "ProblemIndex": "Q1",
         "ContestID_en": "Weekly Contest 190",
         "ContestID_zh": "第 190 场周赛"
+    },
+    {
+        "Rating": 1124.2609178735,
+        "ID": 4092,
+        "Title": "Binary Digit Score",
+        "TitleZH": "二进制位得分",
+        "TitleSlug": "binary-digit-score",
+        "ContestSlug": "weekly-contest-525",
+        "ProblemIndex": "Q1",
+        "ContestID_en": "Weekly Contest 525",
+        "ContestID_zh": "第 525 场周赛"
     },
     {
         "Rating": 1121.0677596555,
