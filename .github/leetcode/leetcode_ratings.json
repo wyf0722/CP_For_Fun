@@ -3762,6 +3762,17 @@
         "ContestID_zh": "第 103 场双周赛"
     },
     {
+        "Rating": 2281.8211240346,
+        "ID": 4100,
+        "Title": "Minimum Cost Path With Even XOR Parity",
+        "TitleZH": "平衡异或路径的最小开销",
+        "TitleSlug": "minimum-cost-path-with-even-xor-parity",
+        "ContestSlug": "weekly-contest-526",
+        "ProblemIndex": "Q4",
+        "ContestID_en": "Weekly Contest 526",
+        "ContestID_zh": "第 526 场周赛"
+    },
+    {
         "Rating": 2280.3553600661,
         "ID": 3892,
         "Title": "Minimum Operations to Achieve At Least K Peaks",
@@ -10912,6 +10923,17 @@
         "ContestID_zh": "第 227 场周赛"
     },
     {
+        "Rating": 1828.400075794,
+        "ID": 4099,
+        "Title": "Minimum Operations to Sort With Locked Indices",
+        "TitleZH": "将锁定数组排序的最少操作次数",
+        "TitleSlug": "minimum-operations-to-sort-with-locked-indices",
+        "ContestSlug": "weekly-contest-526",
+        "ProblemIndex": "Q3",
+        "ContestID_en": "Weekly Contest 526",
+        "ContestID_zh": "第 526 场周赛"
+    },
+    {
         "Rating": 1828.2700238306,
         "ID": 2135,
         "Title": "Count Words Obtained After Adding a Letter",
@@ -12989,6 +13011,17 @@
         "ProblemIndex": "Q4",
         "ContestID_en": "Weekly Contest 157",
         "ContestID_zh": "第 157 场周赛"
+    },
+    {
+        "Rating": 1729.4376339596,
+        "ID": 4098,
+        "Title": "Minimize the Maximum Value of GCD-Connected Array",
+        "TitleZH": "最小化 GCD 连通数组的最大值",
+        "TitleSlug": "minimize-the-maximum-value-of-gcd-connected-array",
+        "ContestSlug": "weekly-contest-526",
+        "ProblemIndex": "Q2",
+        "ContestID_en": "Weekly Contest 526",
+        "ContestID_zh": "第 526 场周赛"
     },
     {
         "Rating": 1729.1782719522,
@@ -28015,6 +28048,17 @@
         "ProblemIndex": "Q1",
         "ContestID_en": "Weekly Contest 481",
         "ContestID_zh": "第 481 场周赛"
+    },
+    {
+        "Rating": 1169.6793598112,
+        "ID": 4097,
+        "Title": "Minimum Value of Merged Integers",
+        "TitleZH": "合并整数后的最小值",
+        "TitleSlug": "minimum-value-of-merged-integers",
+        "ContestSlug": "weekly-contest-526",
+        "ProblemIndex": "Q1",
+        "ContestID_en": "Weekly Contest 526",
+        "ContestID_zh": "第 526 场周赛"
     },
     {
         "Rating": 1169.4209117977,
