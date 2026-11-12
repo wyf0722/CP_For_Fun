@@ -3,33 +3,227 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CP Template</title>
+    <title>CP Template · 算法竞赛模板速查</title>
+    <meta name="description" content="CP_For_Fun 算法竞赛模板速查：C++ / Python 常用数据结构与算法模板，支持搜索、复制、下载与源码跳转。">
+    <meta name="theme-color" content="#6f42c1">
+
+    <!-- Code highlight themes; the disabled one is switched on in dark mode -->
+    <link id="hljs-light" rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+    <link id="hljs-dark" rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" disabled>
+
+    <!-- Element Plus -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/element-plus@2.8.4/dist/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/element-plus@2.8.4/theme-chalk/dark/css-vars.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
-    <!-- 添加 Font Awesome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <main id="content">
-            <!-- 内容将通过JavaScript动态加载 -->
-            <div class="loading">加载中…</div>
-        </main>
-        <noscript>
-            <div class="error">本页面需要启用 JavaScript 才能查看模板。</div>
-        </noscript>
-        
-        <!-- 添加GitHub图标链接 -->
-        <a href="https://github.com/wyf0722/CP_For_Fun" target="_blank" class="github-corner" aria-label="View source on GitHub">
-            <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
-                <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-                <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
-                <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
-            </svg>
-        </a>
+    <div id="app">
+        <div class="boot-loading">加载中…</div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <!--
+        Kept in a x-template block so the markup is compiled by Vue instead of the
+        HTML parser: in-DOM templates lowercase tag names and drop self-closing
+        slashes, which would break PascalCase icon components.
+    -->
+    <script type="text/x-template" id="app-template">
+        <div class="app-shell">
+            <header class="app-header">
+                <div class="app-header__inner">
+                    <div class="brand">
+                        <span class="brand__logo">
+                            <el-icon><DataLine /></el-icon>
+                        </span>
+                        <div class="brand__text">
+                            <h1 class="brand__title">CP Template</h1>
+                            <p class="brand__subtitle">算法竞赛模板速查</p>
+                        </div>
+                    </div>
+
+                    <div class="header-controls">
+                        <el-input
+                            ref="searchInput"
+                            v-model="keyword"
+                            class="search-input"
+                            placeholder="搜索模板或分类…"
+                            clearable
+                            :disabled="loading"
+                        >
+                            <template #prefix>
+                                <el-icon><Search /></el-icon>
+                            </template>
+                        </el-input>
+
+                        <el-radio-group
+                            v-model="language"
+                            class="lang-switch"
+                            :disabled="loading"
+                            @change="onLanguageChange"
+                        >
+                            <el-radio-button v-for="item in languages" :key="item.key" :value="item.key">
+                                {{ item.label }}
+                            </el-radio-button>
+                        </el-radio-group>
+
+                        <div class="header-buttons">
+                            <el-tooltip :content="isDark ? '切换浅色主题' : '切换深色主题'" placement="bottom" :show-after="300">
+                                <el-button circle :aria-label="isDark ? '切换浅色主题' : '切换深色主题'" @click="toggleTheme">
+                                    <el-icon><component :is="isDark ? 'Sunny' : 'Moon'" /></el-icon>
+                                </el-button>
+                            </el-tooltip>
+                            <el-tooltip content="GitHub 仓库" placement="bottom" :show-after="300">
+                                <a class="github-link" :href="repoUrl" target="_blank" rel="noopener noreferrer" aria-label="GitHub 仓库">
+                                    <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true">
+                                        <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                                    </svg>
+                                </a>
+                            </el-tooltip>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="app-main">
+                <el-alert v-if="loadError" type="error" show-icon :closable="false" class="state-block" :title="loadError">
+                    <el-button size="small" type="primary" plain @click="loadTemplates(language, true)">重新加载</el-button>
+                </el-alert>
+
+                <div v-else-if="loading" class="state-block">
+                    <el-skeleton animated>
+                        <template #template>
+                            <el-skeleton-item variant="h1" style="width: 180px; height: 20px; margin-bottom: 16px;"></el-skeleton-item>
+                            <el-skeleton-item
+                                v-for="i in 5"
+                                :key="i"
+                                variant="rect"
+                                style="height: 58px; border-radius: 12px; margin-bottom: 12px;"
+                            ></el-skeleton-item>
+                        </template>
+                    </el-skeleton>
+                </div>
+
+                <template v-else>
+                    <div class="toolbar">
+                        <div class="toolbar__info">
+                            <el-tag effect="plain" round>{{ languageLabel }} · {{ totalCount }} 个模板</el-tag>
+                            <el-tag v-if="keyword" type="warning" effect="plain" round closable @close="keyword = ''">
+                                筛选 “{{ keyword }}” · {{ filteredCount }} 个
+                            </el-tag>
+                        </div>
+                        <div class="toolbar__actions">
+                            <el-button @click="setAll(true, $event)">
+                                <el-icon><Expand /></el-icon><span>展开全部</span>
+                            </el-button>
+                            <el-button @click="setAll(false, $event)">
+                                <el-icon><Fold /></el-icon><span>收起全部</span>
+                            </el-button>
+                        </div>
+                    </div>
+
+                    <nav v-if="visibleCategories.length" class="category-nav" aria-label="分类导航">
+                        <button
+                            v-for="cat in visibleCategories"
+                            :key="cat.slug"
+                            type="button"
+                            class="category-chip"
+                            :class="{ 'is-active': activeCategory === cat.slug }"
+                            @click="scrollToCategory(cat.slug)"
+                        >
+                            {{ cat.name }}
+                            <span class="category-chip__count">{{ cat.files.length }}</span>
+                        </button>
+                    </nav>
+
+                    <el-empty v-if="!visibleCategories.length" description="没有匹配的模板，换个关键词试试"></el-empty>
+
+                    <section
+                        v-for="cat in visibleCategories"
+                        :key="cat.slug"
+                        :id="'category-' + cat.slug"
+                        class="category-section"
+                        :data-category="cat.slug"
+                    >
+                        <div class="category-section__head">
+                            <h2>{{ cat.name }}</h2>
+                            <el-tag size="small" type="info" effect="plain" round>{{ cat.files.length }}</el-tag>
+                        </div>
+
+                        <el-card
+                            v-for="file in cat.files"
+                            :key="file.path"
+                            class="template-card"
+                            :class="{ 'is-open': expanded.has(file.path) }"
+                            shadow="hover"
+                        >
+                            <template #header>
+                                <div class="card-header">
+                                    <div class="card-header__main">
+                                        <el-icon class="card-header__icon"><Document /></el-icon>
+                                        <span class="card-header__name" :title="file.name">{{ file.name }}</span>
+                                        <el-tag size="small" effect="light" :type="file.tagType">{{ file.langLabel }}</el-tag>
+                                        <span class="card-header__meta">{{ file.lines }} 行</span>
+                                    </div>
+                                    <div class="card-header__actions">
+                                        <el-tooltip content="复制代码" placement="top" :show-after="300">
+                                            <el-button
+                                                text
+                                                circle
+                                                :type="copiedPath === file.path ? 'success' : 'default'"
+                                                :aria-label="'复制 ' + file.name"
+                                                @click="copy(file)"
+                                            >
+                                                <el-icon><component :is="copiedPath === file.path ? 'Select' : 'CopyDocument'" /></el-icon>
+                                            </el-button>
+                                        </el-tooltip>
+                                        <el-tooltip content="下载文件" placement="top" :show-after="300">
+                                            <el-button text circle :aria-label="'下载 ' + file.name" @click="download(file)">
+                                                <el-icon><Download /></el-icon>
+                                            </el-button>
+                                        </el-tooltip>
+                                        <el-tooltip content="在 GitHub 查看源码" placement="top" :show-after="300">
+                                            <a class="icon-link" :href="file.sourceUrl" target="_blank" rel="noopener noreferrer" :aria-label="'查看 ' + file.name + ' 源码'">
+                                                <el-icon><TopRight /></el-icon>
+                                            </a>
+                                        </el-tooltip>
+                                        <el-tooltip :content="expanded.has(file.path) ? '收起' : '展开'" placement="top" :show-after="300">
+                                            <el-button
+                                                text
+                                                circle
+                                                :aria-expanded="expanded.has(file.path) ? 'true' : 'false'"
+                                                :aria-label="(expanded.has(file.path) ? '收起 ' : '展开 ') + file.name"
+                                                @click="toggle(file.path)"
+                                            >
+                                                <el-icon class="chevron" :class="{ 'is-open': expanded.has(file.path) }"><ArrowDown /></el-icon>
+                                            </el-button>
+                                        </el-tooltip>
+                                    </div>
+                                </div>
+                            </template>
+
+                            <el-collapse-transition>
+                                <div v-show="expanded.has(file.path)" class="code-wrap">
+                                    <pre class="code-block"><code class="hljs" v-html="file.html"></code></pre>
+                                </div>
+                            </el-collapse-transition>
+                        </el-card>
+                    </section>
+                </template>
+            </main>
+
+            <el-backtop :right="28" :bottom="28" :visibility-height="320" />
+        </div>
+    </script>
+
+    <noscript>
+        <div class="noscript">本页面需要启用 JavaScript 才能查看模板。</div>
+    </noscript>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.4.38/dist/vue.global.prod.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/element-plus@2.8.4/dist/index.full.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@element-plus/icons-vue@2.3.1/dist/index.iife.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" defer></script>
     <script src="script.js" defer></script>
 </body>
 </html>
