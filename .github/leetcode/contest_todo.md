@@ -4,8 +4,8 @@
 
 ## 📊 总统计
 
-- 待完成比赛：**98** 场
-- 待完成题目：**157** 道
+- 待完成比赛：**99** 场
+- 待完成题目：**161** 道
 
 ## 📋 难度等级说明
 
@@ -864,4 +864,15 @@
 - 🍰 **Problem B** | Rating: **1621** | 难度: Easy
 - 🛀 **Problem C** | Rating: **2016** | 难度: Medium
 - 🚬 **Problem D** | Rating: **2384** | 难度: Hard
+
+### 🏆 weekly-contest-528
+
+🔗 比赛链接：[https://leetcode.cn/contest/weekly-contest-528/](https://leetcode.cn/contest/weekly-contest-528/)
+
+#### 📝 题目列表
+
+- 🔹 **Problem A** | Rating: 未知 | 难度: 待评估
+- 🔹 **Problem B** | Rating: 未知 | 难度: 待评估
+- 🔹 **Problem C** | Rating: 未知 | 难度: 待评估
+- 🔹 **Problem D** | Rating: 未知 | 难度: 待评估
 
