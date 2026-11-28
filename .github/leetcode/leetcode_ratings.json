@@ -3971,6 +3971,17 @@
         "ContestID_zh": "第 409 场周赛"
     },
     {
+        "Rating": 2269.5918751979,
+        "ID": 4119,
+        "Title": "Minimum Set Bits in a Valid Integer",
+        "TitleZH": "有效整数中最少置位数目",
+        "TitleSlug": "minimum-set-bits-in-a-valid-integer",
+        "ContestSlug": "biweekly-contest-196",
+        "ProblemIndex": "Q4",
+        "ContestID_en": "Biweekly Contest 196",
+        "ContestID_zh": "第 196 场双周赛"
+    },
+    {
         "Rating": 2267.7081680968,
         "ID": 3068,
         "Title": "Find the Maximum Sum of Node Values",
@@ -7326,6 +7337,17 @@
         "ContestID_zh": "第 450 场周赛"
     },
     {
+        "Rating": 2035.2642807766,
+        "ID": 4118,
+        "Title": "Minimum Operations to Make Mountain Array I",
+        "TitleZH": "构造山脉数组的最少操作次数 I",
+        "TitleSlug": "minimum-operations-to-make-mountain-array-i",
+        "ContestSlug": "biweekly-contest-196",
+        "ProblemIndex": "Q3",
+        "ContestID_en": "Biweekly Contest 196",
+        "ContestID_zh": "第 196 场双周赛"
+    },
+    {
         "Rating": 2034.9740902393,
         "ID": 1140,
         "Title": "Stone Game II",
@@ -7643,6 +7665,17 @@
         "ProblemIndex": "Q3",
         "ContestID_en": "Weekly Contest 325",
         "ContestID_zh": "第 325 场周赛"
+    },
+    {
+        "Rating": 2020.2671013813,
+        "ID": 4123,
+        "Title": "Minimum Cost to Delete Array",
+        "TitleZH": "删除数组的最小代价",
+        "TitleSlug": "minimum-cost-to-delete-array",
+        "ContestSlug": "weekly-contest-529",
+        "ProblemIndex": "Q4",
+        "ContestID_en": "Weekly Contest 529",
+        "ContestID_zh": "第 529 场周赛"
     },
     {
         "Rating": 2020.1846215023,
@@ -10580,6 +10613,17 @@
         "ProblemIndex": "Q3",
         "ContestID_en": "Biweekly Contest 132",
         "ContestID_zh": "第 132 场双周赛"
+    },
+    {
+        "Rating": 1848.738253434,
+        "ID": 4122,
+        "Title": "Earliest Signal Activation Times",
+        "TitleZH": "信号激活的最早时刻",
+        "TitleSlug": "earliest-signal-activation-times",
+        "ContestSlug": "weekly-contest-529",
+        "ProblemIndex": "Q3",
+        "ContestID_en": "Weekly Contest 529",
+        "ContestID_zh": "第 529 场周赛"
     },
     {
         "Rating": 1848.5480405143,
@@ -16489,6 +16533,17 @@
         "ContestID_zh": "第 193 场双周赛"
     },
     {
+        "Rating": 1566.3897379336,
+        "ID": 4121,
+        "Title": "Minimum Cost to Make All Array Elements Equal",
+        "TitleZH": "使数组中所有元素相等的最小成本",
+        "TitleSlug": "minimum-cost-to-make-all-array-elements-equal",
+        "ContestSlug": "weekly-contest-529",
+        "ProblemIndex": "Q2",
+        "ContestID_en": "Weekly Contest 529",
+        "ContestID_zh": "第 529 场周赛"
+    },
+    {
         "Rating": 1566.2526716951,
         "ID": 769,
         "Title": "Max Chunks To Make Sorted",
@@ -18942,6 +18997,17 @@
         "ContestID_zh": "第 112 场周赛"
     },
     {
+        "Rating": 1461.8531357237,
+        "ID": 4117,
+        "Title": "Minimum Range After Sum Operations",
+        "TitleZH": "求和操作以后的最小极差",
+        "TitleSlug": "minimum-range-after-sum-operations",
+        "ContestSlug": "biweekly-contest-196",
+        "ProblemIndex": "Q2",
+        "ContestID_en": "Biweekly Contest 196",
+        "ContestID_zh": "第 196 场双周赛"
+    },
+    {
         "Rating": 1461.2892510067,
         "ID": 1909,
         "Title": "Remove One Element to Make the Array Strictly Increasing",
@@ -19831,6 +19897,17 @@
         "ProblemIndex": "Q2",
         "ContestID_en": "Weekly Contest 488",
         "ContestID_zh": "第 488 场周赛"
+    },
+    {
+        "Rating": 1428.1519743827,
+        "ID": 4116,
+        "Title": "Assign Umbrella on Rainy Days",
+        "TitleZH": "下雨天安排伞",
+        "TitleSlug": "assign-umbrella-on-rainy-days",
+        "ContestSlug": "biweekly-contest-196",
+        "ProblemIndex": "Q1",
+        "ContestID_en": "Biweekly Contest 196",
+        "ContestID_zh": "第 196 场双周赛"
     },
     {
         "Rating": 1428.1443796872,
@@ -24770,6 +24847,17 @@
         "ProblemIndex": "Q2",
         "ContestID_en": "Biweekly Contest 109",
         "ContestID_zh": "第 109 场双周赛"
+    },
+    {
+        "Rating": 1266.4859623619,
+        "ID": 4120,
+        "Title": "Count Dominant Elements",
+        "TitleZH": "统计优势元素的数量",
+        "TitleSlug": "count-dominant-elements",
+        "ContestSlug": "weekly-contest-529",
+        "ProblemIndex": "Q1",
+        "ContestID_en": "Weekly Contest 529",
+        "ContestID_zh": "第 529 场周赛"
     },
     {
         "Rating": 1266.341468955,
